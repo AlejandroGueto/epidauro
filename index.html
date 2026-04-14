@@ -42,21 +42,53 @@
         .custom-scrollbar::-webkit-scrollbar-track { background: #0f172a; border-radius: 4px; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #1e3a8a; border-radius: 4px; }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
+
+        /* Efectos Místicos */
+        .particulas-misticas {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #38bdf8, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 40px 70px, #e2e8f0, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 50px 160px, #38bdf8, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 90px 40px, #e2e8f0, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 130px 80px, #38bdf8, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 160px 120px, #e2e8f0, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            animation: zoom 15s infinite linear;
+            opacity: 0.3;
+        }
+        @keyframes zoom {
+            0% { transform: scale(1) translateY(0); }
+            100% { transform: scale(1.5) translateY(-50px); opacity: 0; }
+        }
+        @keyframes shake { 
+            0%, 100% { transform: translateX(0); } 
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); } 
+            20%, 40%, 60%, 80% { transform: translateX(5px); } 
+        }
+        .error-shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; border-color: #ef4444 !important; }
     </style>
 </head>
 <body class="flex flex-col items-center p-4 md:p-8 relative">
 
-    <header class="w-full max-w-7xl flex justify-between items-center border-b border-cyan-900/50 pb-4 mb-8 hidden-stage" id="gameHeader">
+    <div class="particulas-misticas"></div>
+    <audio id="musicaFondo" loop preload="auto">
+        <source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_1efc7bb905.mp3?filename=ancient-mystery-105152.mp3" type="audio/mpeg">
+    </audio>
+
+    <header class="w-full max-w-7xl flex justify-between items-center border-b border-cyan-900/50 pb-4 mb-8 hidden-stage relative z-10" id="gameHeader">
         <div class="text-xl md:text-2xl font-cinzel text-cyan-400 tracking-widest flex items-center gap-2">
             <i data-lucide="landmark" class="w-6 h-6"></i> Santuario de Epidauro
         </div>
-        <div class="flex items-center gap-3 text-cyan-300 font-cinzel text-2xl font-bold bg-cyan-950/80 px-4 py-2 rounded-md shadow-[0_0_15px_rgba(6,182,212,0.5)] border border-cyan-800">
+        <div class="flex items-center gap-3 text-cyan-300 font-cinzel text-2xl font-bold bg-cyan-950/80 px-4 py-2 rounded-md shadow-[0_0_15px_rgba(6,182,212,0.5)] border border-cyan-800 transition-colors duration-300" id="timerContainer">
             <i data-lucide="hourglass" class="w-6 h-6 animate-pulse"></i>
             <span id="timerDisplay">90:00</span>
         </div>
     </header>
 
-    <div id="introStage" class="w-full max-w-4xl flex flex-col items-center text-center mt-6 md:mt-12 space-y-8">
+    <div id="introStage" class="w-full max-w-4xl flex flex-col items-center text-center mt-6 md:mt-12 space-y-8 relative z-10">
         <h1 class="text-5xl md:text-6xl text-cyan-400 tracking-widest uppercase flex flex-col items-center">
             El Misterio<br><span class="text-4xl md:text-5xl text-slate-300 mt-2">de Epidauro</span>
         </h1>
@@ -70,7 +102,7 @@
             </div>
 
             <p class="text-lg md:text-xl leading-relaxed mb-8 text-slate-300 text-justify">
-                "Siglo V a.C. Habéis llegado al santuario de curación de Asclepio en Epidauro, junto a Diceópolis y su hijo ciego, Filipo. Mientras esperáis el milagro en el <i>ábaton</i>, llegan noticias del norte: Mardonio y los persas avanzan nuevamente hacia Atenas. Vuestro deber es descifrar los 4 textos sagrados de la Unidad XVIII, comprender la gramática y los principios de la ciencia griega, y enviar un mensaje de advertencia. Tenéis 60 minutos."
+                "Siglo V a.C. Habéis llegado al santuario de curación de Asclepio en Epidauro, junto a Diceópolis y su hijo ciego, Filipo. Mientras esperáis el milagro en el <i>ábaton</i>, llegan noticias del norte: Mardonio y los persas avanzan nuevamente hacia Atenas. Vuestro deber es descifrar los 4 textos sagrados de la Unidad XVIII, comprender la gramática y los principios de la ciencia griega, y enviar un mensaje de advertencia. Tenéis 90 minutos."
             </p>
             
             <div class="mb-6 bg-blue-950/30 p-6 rounded border border-blue-900/50">
@@ -85,7 +117,7 @@
         </div>
     </div>
 
-    <div id="gameStage" class="w-full max-w-7xl grid grid-cols-1 xl:grid-cols-12 gap-8 hidden-stage">
+    <div id="gameStage" class="w-full max-w-7xl grid grid-cols-1 xl:grid-cols-12 gap-8 hidden-stage relative z-10">
         
         <!-- PESTAÑAS Y TEXTOS -->
         <div class="xl:col-span-7 flex flex-col h-full gap-6">
@@ -96,7 +128,7 @@
                     <button onclick="switchTab('tab-beta')" id="btn-beta" class="tab-btn px-4 py-3 font-cinzel text-sm font-bold rounded-t-lg border border-transparent text-slate-400 hover:text-cyan-400">Texto β</button>
                     <button onclick="switchTab('tab-persas')" id="btn-persas" class="tab-btn px-4 py-3 font-cinzel text-sm font-bold rounded-t-lg border border-transparent text-slate-400 hover:text-cyan-400">Persas</button>
                     <button onclick="switchTab('tab-eval')" id="btn-eval" class="tab-btn px-4 py-3 font-cinzel text-sm font-bold rounded-t-lg border border-transparent text-slate-400 hover:text-cyan-400">Eval</button>
-                    <button onclick="switchTab('tab-cultura')" id="btn-cultura" class="tab-btn px-4 py-3 font-cinzel text-sm font-bold rounded-t-lg border border-transparent text-amber-400 hover:text-amber-300"><i data-lucide="scroll" class="inline w-4 h-4 mr-1"></i>Cultura (PDF)</button>
+                    <button onclick="switchTab('tab-cultura')" id="btn-cultura" class="tab-btn px-4 py-3 font-cinzel text-sm font-bold rounded-t-lg border border-transparent text-amber-400 hover:text-amber-300"><i data-lucide="scroll" class="inline w-4 h-4 mr-1"></i>Cultura</button>
                 </div>
                 <button onclick="toggleTranslation()" id="btn-translate" class="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-cinzel text-sm font-bold bg-emerald-900/30 px-3 py-1.5 rounded border border-emerald-700/50 transition mt-2 md:mt-0">
                     <i data-lucide="languages" class="w-4 h-4"></i> Mostrar Español
@@ -174,7 +206,8 @@
                         <input type="text" id="p1-q3" class="input-griego w-full p-2 bg-slate-900/50 rounded border border-slate-700 focus:border-cyan-500" autocomplete="off" spellcheck="false" placeholder="ej: epiphaneνai">
                     </div>
                 </div>
-                <div class="mt-6 text-right">
+                <div class="mt-6 flex justify-end gap-2">
+                    <button onclick="pedirPista('Recuerda que el futuro lleva la marca -σ- (sigma) y los participios activos suelen terminar en -ων o -οντος. Las formas medias acaban en -ομεθα.')" class="px-4 py-3 bg-amber-900/50 hover:bg-amber-800/50 text-amber-300 font-bold font-cinzel text-xs rounded transition uppercase border border-amber-600 shadow-lg"><i data-lucide="help-circle" class="inline w-4 h-4 mr-1"></i>Pista (-3 min)</button>
                     <button onclick="checkPrueba1()" class="px-6 py-3 bg-cyan-700 hover:bg-cyan-600 text-white font-bold font-cinzel text-sm rounded shadow-lg transition uppercase tracking-wider">Desbloquear I</button>
                 </div>
                 <p id="p1-error" class="text-red-400 text-sm mt-3 hidden text-right font-bold">Morfología incorrecta. Los dioses exigen precisión (-100 pts).</p>
@@ -205,7 +238,8 @@
                         </select>
                     </div>
                 </div>
-                <div class="mt-6 text-right">
+                <div class="mt-6 flex justify-end gap-2">
+                    <button onclick="pedirPista('Revisa el Códice: el verbo τυγχάνω siempre rige genitivo y la partícula ὡς con participio de futuro marca una finalidad o intención.')" class="px-4 py-3 bg-amber-900/50 hover:bg-amber-800/50 text-amber-300 font-bold font-cinzel text-xs rounded transition uppercase border border-amber-600 shadow-lg"><i data-lucide="help-circle" class="inline w-4 h-4 mr-1"></i>Pista (-3 min)</button>
                     <button onclick="checkPrueba2()" class="px-6 py-3 bg-blue-700 hover:bg-blue-600 text-white font-bold font-cinzel text-sm rounded shadow-lg transition uppercase tracking-wider">Desbloquear II</button>
                 </div>
                 <p id="p2-error" class="text-red-400 text-sm mt-3 hidden text-right font-bold">Error sintáctico fatal (-100 pts).</p>
@@ -236,7 +270,8 @@
                         </select>
                     </div>
                 </div>
-                <div class="mt-6 text-right">
+                <div class="mt-6 flex justify-end gap-2">
+                    <button onclick="pedirPista('Lee bien la pestaña Cultura: Teorema viene de observar, Aristóteles defiende que la naturaleza tiene un fin (teleología), y Pericles unió causa natural y fin divino.')" class="px-4 py-3 bg-amber-900/50 hover:bg-amber-800/50 text-amber-300 font-bold font-cinzel text-xs rounded transition uppercase border border-amber-600 shadow-lg"><i data-lucide="help-circle" class="inline w-4 h-4 mr-1"></i>Pista (-3 min)</button>
                     <button onclick="checkPrueba3()" class="px-6 py-3 bg-indigo-700 hover:bg-indigo-600 text-white font-bold font-cinzel text-sm rounded shadow-lg transition uppercase tracking-wider">Desbloquear III</button>
                 </div>
                 <p id="p3-error" class="text-red-400 text-sm mt-3 hidden text-right font-bold">Ignoras la historia de tu pueblo (-100 pts).</p>
@@ -267,7 +302,8 @@
                         </select>
                     </div>
                 </div>
-                <div class="mt-6 text-right">
+                <div class="mt-6 flex justify-end gap-2">
+                    <button onclick="pedirPista('Busca en el texto de Los Persas: Mardonio lidera, los atenienses huyen a Salamina, y ἐὰν παύσωνται es un subjuntivo condicional (si cesaran).')" class="px-4 py-3 bg-amber-900/50 hover:bg-amber-800/50 text-amber-300 font-bold font-cinzel text-xs rounded transition uppercase border border-amber-600 shadow-lg"><i data-lucide="help-circle" class="inline w-4 h-4 mr-1"></i>Pista (-3 min)</button>
                     <button onclick="checkPrueba4()" class="px-6 py-3 bg-purple-700 hover:bg-purple-600 text-white font-bold font-cinzel text-sm rounded shadow-lg transition uppercase tracking-wider">Desbloquear IV</button>
                 </div>
                 <p id="p4-error" class="text-red-400 text-sm mt-3 hidden text-right font-bold">Respuesta incorrecta (-100 pts).</p>
@@ -298,7 +334,8 @@
                         </select>
                     </div>
                 </div>
-                <div class="mt-6 text-right">
+                <div class="mt-6 flex justify-end gap-2">
+                    <button onclick="pedirPista('¡Atención a los participios! λέξοντα expresa intención (para que le diga) y ἀποθανόντας equivale a los muertos (los que murieron).')" class="px-4 py-3 bg-amber-900/50 hover:bg-amber-800/50 text-amber-300 font-bold font-cinzel text-xs rounded transition uppercase border border-amber-600 shadow-lg"><i data-lucide="help-circle" class="inline w-4 h-4 mr-1"></i>Pista (-3 min)</button>
                     <button onclick="checkPrueba5()" class="px-6 py-3 bg-fuchsia-700 hover:bg-fuchsia-600 text-white font-bold font-cinzel text-sm rounded shadow-lg transition uppercase tracking-wider">Desbloquear V</button>
                 </div>
                 <p id="p5-error" class="text-red-400 text-sm mt-3 hidden text-right font-bold">Traducción inaceptable para los clásicos (-100 pts).</p>
@@ -337,7 +374,8 @@
                     </div>
                 </div>
 
-                <div class="text-center w-full">
+                <div class="text-center w-full flex flex-col gap-4">
+                    <button onclick="pedirPista('Código: Ἀθήνας (1ª decl), γαστέρα (3ª decl), el Genitivo es el 4º caso, ὕπνῳ (2ª decl), ἔμενεν (3ª persona), y solo hay 1 participio de futuro en esa frase.')" class="w-full md:w-auto self-center px-6 py-2 bg-amber-900/50 hover:bg-amber-800/50 text-amber-300 font-bold font-cinzel text-sm rounded transition uppercase border border-amber-600 shadow-lg"><i data-lucide="help-circle" class="inline w-4 h-4 mr-1"></i>Pista Final (-3 min)</button>
                     <button onclick="checkPrueba6()" class="w-full py-4 bg-gradient-to-r from-emerald-800 to-emerald-600 hover:from-emerald-700 hover:to-emerald-500 text-white font-cinzel font-bold text-2xl rounded-lg transition shadow-[0_0_25px_rgba(16,185,129,0.8)] border-2 border-emerald-400 uppercase tracking-widest">
                         ENCIENDE LA PIRA
                     </button>
@@ -395,7 +433,6 @@
         <div id="oracle-content"></div>
     </div>
 
-    <!-- SCRIPT PRINCIPAL: CÓDIGO COMPRIMIDO DE DICCIONARIO Y LÓGICA -->
     <script>
         // ==========================================
         // TEXTOS Y TRADUCCIONES COMPLETAS
@@ -745,22 +782,18 @@
             'καθαρον':{ l:"καθαρός, -ά, -όν", es:{morph:"Adjetivo, Fem, Acus, Sg", syntax:"Atributo", def:"pura, limpia", exp:"Asimila el fem a forma neutra/masc en esta frase."}, t: () => buildNounT('καθαρός','καθαρέ','καθαρόν','καθαροῦ','καθαρῷ','καθαροί','καθαροί','καθαρούς','καθαρῶν','καθαροῖς') },
             'καθαρος':{ l:"καθαρός, -ά, -όν", es:{morph:"Adjetivo, Masc, Nom, Sg", syntax:"Predicativo", def:"puro, limpio"}, t: () => buildNounT('καθαρός','καθαρέ','καθαρόν','καθαροῦ','καθαρῷ','καθαροί','καθαροί','καθαρούς','καθαρῶν','καθαροῖς') },
             'καθαροις':{ l:"καθαρός, -ά, -όν", es:{morph:"Adjetivo, Masc, Dat, Pl", syntax:"Atributo", def:"a los puros"}, t: () => buildNounT('καθαρός','καθαρέ','καθαρόν','καθαροῦ','καθαρῷ','καθαροί','καθαροί','καθαρούς','καθαρῶν','καθαροῖς') },
-            'φιλανθρωποτατε':{ l:"φιλάνθρωπος (Superlativo)", m:"Adjetivo Superlativo, Masc, Vocativo, Sg", s:"Apelación", d:"¡el más amigo de los hombres!", t: () => G.n2M('φιλανθρωπότατ') },
+            'φιλανθρωποτατε':{ l:"φιλάνθρωπος (Superlativo)", es:{morph:"Adjetivo Superlativo, Masc, Vocativo, Sg", syntax:"Apelación", def:"¡el más amigo de los hombres!"}, t: () => G.n2M('φιλανθρωπότατ') },
             'φιλανθρωποτατος':{ l:"φιλάνθρωπος (Superlativo)", es:{morph:"Adjetivo Superlativo, Masc, Nom, Sg", syntax:"Atributo", def:"el más amigo del hombre"}, t: () => G.n2M('φιλανθρωπότατ') },
             'ιλαος':{ l:"ἵλεως, ἵλεων / ἵλαος", es:{morph:"Adjetivo, Masc, Nom, Sg", syntax:"Atributo", def:"propicio, benevolente"}, t: () => G.n2M('ἵλα') },
 
             // == VERBOS Y PARTICIPIOS ==
-            'αγε':{ l:"ἄγε", es:{morph:"Verbo, 2ª Sg, Imperativo Presente Activo", syntax:"Núcleo / Exhortación", def:"¡ea! / ¡vamos!", exp:"Forma del verbo ἄγω que a menudo se usa como interjección exhortativa."}, t: () => buildVerbT('-','ἄγε','ἀγέτω','-','ἄγετε','ἀγόντων','Imperativo') },
+            'αγε':{ l:"ἄγω", es:{morph:"Verbo, 2ª Sg, Imperativo Presente Activo", syntax:"Núcleo / Exhortación", def:"¡ea! / ¡vamos!", exp:"Forma del verbo ἄγω que a menudo se usa como interjección exhortativa."}, t: () => buildVerbT('-','ἄγε','ἀγέτω','-','ἄγετε','ἀγόντων','Imperativo') },
             'κανασταντες':{ l:"καὶ ἀνίστημι (Crasis)", es:{morph:"Participio, Aoristo Radical Activo, Nom Pl Masc", syntax:"Participio Concertado", def:"y habiéndose levantado", exp:"Presenta crasis: fusión de la conjunción καὶ con el participio ἀναστάντες (de ἀνίστημι)."}, t: () => buildNounT('ἀναστάς','-στάς','-στάντα','-στάντος','-στάντι','ἀναστάντες','-στάντες','-στάντας','-στάντων','-στᾶσι') },
             'αμυνουσαν':{ l:"ἀμύνω", es:{morph:"Participio, Futuro Activo, Acus Sg Fem", syntax:"Adyacente / Finalidad (con ὡς)", def:"para defender / rechazar", exp:"Participio de futuro que, junto a la partícula ὡς, expresa la intención de defender el Ática de los bárbaros."}, t: () => buildNounT('ἀμυνοῦσα','ἀμυνοῦσα','ἀμυνοῦσαν','ἀμυνούσης','ἀμυνούσῃ','ἀμυνοῦσαι','ἀμυνοῦσαι','ἀμυνούσας','ἀμυνουσῶν','ἀμυνούσαις') },
-            'αγε':{ l:"ἄγω", es:{morph:"Verbo, 2ª Sg, Imperativo Presente Activo", syntax:"Núcleo / Exhortación", def:"¡ea! / ¡vamos!", exp:"A menudo se usa como interjección exhortativa."}, t: () => buildVerbT('-','ἄγε','ἀγέτω','-','ἄγετε','ἀγόντων','Imperativo') },
-            'ηλπιζον':{ l:"ἐλπίζω", m:"Verbo, 3ª Pl, Imperfecto Ind. Activo", s:"Núcleo", d:"esperaban", t: () => G.vImpA('ἤ','λπιζ') },
-            'αμυνουσαν':{ l:"ἀμύνω", m:"Participio, Futuro Activo, Acus, Sg, Fem", s:"Finalidad (con ὡς)", d:"para defender / rechazar", t: () => buildNounT('ἀμυνοῦσα','ἀμυνοῦσα','ἀμυνοῦσαν','ἀμυνούσης','ἀμυνούσῃ','ἀμυνοῦσαι','ἀμυνοῦσαι','ἀμυνούσας','ἀμυνουσῶν','ἀμυνούσαις') },
-            'εξεκομισαν':{ l:"ἐκκομίζω", m:"Verbo, 3ª Pl, Aoristo Ind. Activo", s:"Núcleo", d:"evacuaron, sacaron", t: () => buildVerbT('ἐξεκόμισα','-ας','-ε','-αμεν','-ατε','ἐξεκόμισαν','Aoristo Ind.') },
-            'εβοηθουν':{ l:"βοηθέω", m:"Verbo, 3ª Plural, Imperfecto Ind. Activo", s:"Núcleo", d:"ayudaban", t: () => buildVerbT('ἐβοήθουν','ἐβοήθεις','ἐβοήθει','ἐβοηθοῦμεν','ἐβοηθεῖτε','ἐβοήθουν','Imperfecto Activo') },
-            'παυσωνται':{ l:"παύω", m:"Verbo, 3ª Pl, Aoristo Subjuntivo Medio", s:"Núcleo (con ἐὰν)", d:"cesen, detengan", t: () => buildVerbT('παύσωμαι','παύσῃ','παύσηται','παυσώμεθα','παύσησθε','παύσωνται','Aoristo Subjuntivo Medio') },
-            'βοηθησοντα':{ l:"βοηθέω", m:"Participio, Futuro Activo, Acus, Sg, Masc", s:"Finalidad (junto a ὡς)", d:"para ayudar", t: () => buildNounT('βοηθήσων','βοηθήσων','βοηθήσοντα','βοηθήσοντος','βοηθήσοντι','βοηθήσοντες','βοηθήσοντες','βοηθήσοντας','βοηθησόντων','βοηθήσουσι') },
-            'κανασταντες':{ l:"καὶ ἀνίστημι (Crasis)", es:{morph:"Participio, Aoristo Radical Activo, Nom Pl Masc", syntax:"Participio Concertado", def:"y habiéndose levantado", exp:"Presenta crasis: fusión de la conjunción καὶ con el participio ἀναστάντες."}, t: () => buildNounT('ἀναστάς','-στάς','-στάντα','-στάντος','-στάντι','ἀναστάντες','-στάντες','-στάντας','-στάντων','-στᾶσι') },
+            'ηλπιζον':{ l:"ἐλπίζω", es:{morph:"Verbo, 3ª Pl, Imperfecto Ind. Activo", syntax:"Núcleo", def:"esperaban"}, t: () => G.vImpA('ἤ','λπιζ') },
+            'εβοηθουν':{ l:"βοηθέω", es:{morph:"Verbo, 3ª Plural, Imperfecto Ind. Activo", syntax:"Núcleo", def:"ayudaban"}, t: () => buildVerbT('ἐβοήθουν','ἐβοήθεις','ἐβοήθει','ἐβοηθοῦμεν','ἐβοηθεῖτε','ἐβοήθουν','Imperfecto Activo') },
+            'παυσωνται':{ l:"παύω", es:{morph:"Verbo, 3ª Pl, Aoristo Subjuntivo Medio", syntax:"Núcleo (con ἐὰν)", def:"cesen, detengan"}, t: () => buildVerbT('παύσωμαι','παύσῃ','παύσηται','παυσώμεθα','παύσησθε','παύσωνται','Aoristo Subjuntivo Medio') },
+            'βοηθησοντα':{ l:"βοηθέω", es:{morph:"Participio, Futuro Activo, Acus, Sg, Masc", syntax:"Finalidad (junto a ὡς)", def:"para ayudar"}, t: () => buildNounT('βοηθήσων','βοηθήσων','βοηθήσοντα','βοηθήσοντος','βοηθήσοντι','βοηθήσοντες','βοηθήσοντες','βοηθήσοντας','βοηθησόντων','βοηθήσουσι') },
             'κελευουσι':{ l:"κελεύω", es:{morph:"Verbo, 3ª Plural, Presente Ind. Activo", syntax:"Núcleo", def:"ordenan, mandan"}, t: () => G.vPresA('κελεύ') },
             'εκελευσεν':{ l:"κελεύω", es:{morph:"Verbo, 3ª Sing, Aoristo Ind. Activo", syntax:"Núcleo", def:"ordenó, mandó"}, t: () => buildVerbT('ἐκέλευσα','-ας','ἐκέλευσε','-αμεν','-ατε','-αν','Aoristo') },
             'κελευομεν':{ l:"κελεύω", es:{morph:"Verbo, 1ª Plural, Presente Ind. Activo", syntax:"Núcleo", def:"ordenamos"}, t: () => G.vPresA('κελεύ') },
@@ -799,7 +832,7 @@
             'βουλομενοι':{ l:"βούλομαι", es:{morph:"Participio, Presente Medio, Nom Pl Masc", syntax:"Concertado", def:"queriendo / los que quieren"}, t: () => buildNounT('βουλόμενος','-ε','-ον','-ου','-ῳ','βουλόμενοι','-οι','-ους','-ων','-οις') },
             'ζητησαι':{ l:"ζητέω", es:{morph:"Verbo, Infinitivo Aoristo Activo", syntax:"Régimen", def:"buscar"}, t: () => buildVerbT('ἐζήτησα','-ας','-ε','-αμεν','-ατε','-αν','Aoristo Ind.') },
             'ζητησων':{ l:"ζητέω", es:{morph:"Participio, Futuro Activo, Nom Sg Masc", syntax:"Finalidad (con ὡς)", def:"para buscar"}, t: () => buildNounT('ζητήσων','-ων','-οντα','-οντος','-οντι','-οντες','-οντες','-οντας','-οντων','-ουσι') },
-            'ελεσθαι':{ l:"αἱρέω", es:{morph:"Verbo, Infinitivo Aoristo Fuerte Medio", syntax:"Régimen", def:"tomar (para sí), escoger", exp:"Aoristo fuerte εἷλον / εἱλόμην."}, t: () => buildVerbT('εἱλόμην','εἵλου','εἵλετο','εἱλόμεθα','εἵλεσθε','εἵλοντο','Aoristo Medio') },
+            'ελεσθαι':{ l:"αἱρέω", es:{morph:"Verbo, Infinitivo Aoristo Fuerte Medio", syntax:"Régimen", def:"tomar (para sí), escoger", exp:"Aoristo fuerte εἷλον / εἱλόμην."}, t: () => buildVerbT('εἱλόμην','εἵλου','εἱλετο','εἱλόμεθα','εἵλεσθε','εἵλοντο','Aoristo Medio') },
             'αιρει':{ l:"αἱρέω", es:{morph:"Verbo, 3ª Sg, Presente Ind. Activo", syntax:"Núcleo", def:"toma, captura"}, t: () => buildVerbT('αἱρῶ','αἱρεῖς','αἱρεῖ','αἱροῦμεν','αἱρεῖτε','αἱροῦσι','Presente Activo Contracto') },
             'εψομαι':{ l:"ἕπομαι", es:{morph:"Verbo Deponente, 1ª Sg, Futuro Ind.", syntax:"Núcleo", def:"seguiré"}, t: () => G.vFutM('ἕψ') },
             'επου':{ l:"ἕπομαι", es:{morph:"Verbo Deponente, 2ª Sg, Imperativo Presente", syntax:"Núcleo", def:"¡sigue!"}, t: () => buildVerbT('-','ἕπου','ἑπέσθω','-','ἕπεσθε','ἑπέσθων','Imperativo') },
@@ -817,7 +850,7 @@
             'παρεσομεθα':{ l:"πάρειμι", es:{morph:"Verbo, 1ª Pl, Futuro Ind. Medio", syntax:"Núcleo", def:"estaremos presentes"}, t: () => buildVerbT('παρέσομαι','παρέσῃ','παρέσται','παρεσόμεθα','παρέσεσθε','παρέσονται','Futuro Medio') },
             'διαλεγομενοι':{ l:"διαλέγομαι", es:{morph:"Participio, Presente Medio, Nom Pl Masc", syntax:"Concertado", def:"conversando"}, t: () => buildNounT('διαλεγόμενος','-ε','-ον','-ου','-ῳ','διαλεγόμενοι','-οι','-ους','-ων','-οις') },
             'ηρετο':{ l:"ἔρομαι", es:{morph:"Verbo, 3ª Sg, Aoristo Fuerte Medio", syntax:"Núcleo", def:"preguntó"}, t: () => buildVerbT('ἠρόμην','ἤρου','ἤρετο','ἠρόμεθα','ἤρεσθε','ἤροντο','Aoristo Medio') },
-            'ερωτησω':{ l:"ἐρωτάω", es:{morph:"Verbo, 1ª Sg, Futuro Ind Activo", syntax:"Núcleo", def:"preguntaré"}, t: () => G.vFutA('ἐρωτή') },
+            'ερωτησω':{ l:"ἐρωτάω", es:{morph:"Verbo, 1ª Sg, Futuro Ind. Activo", syntax:"Núcleo", def:"preguntaré"}, t: () => G.vFutA('ἐρωτή') },
             'πορευεται':{ l:"πορεύομαι", es:{morph:"Verbo Deponente, 3ª Sg, Presente Ind.", syntax:"Núcleo", def:"se dirige, marcha"}, t: () => G.vPresM('πορεύ') },
             'πορευομαι':{ l:"πορεύομαι", es:{morph:"Verbo Deponente, 1ª Sg, Presente Ind.", syntax:"Núcleo", def:"me dirijo"}, t: () => G.vPresM('πορεύ') },
             'μαθουσα':{ l:"μανθάνω", es:{morph:"Participio, Aoristo Fuerte Activo, Nom Sg Fem", syntax:"Concertado", def:"habiendo aprendido / tras enterarse"}, t: () => buildNounT('μαθοῦσα','μαθοῦσα','μαθοῦσαν','μαθούσης','μαθούσῃ','μαθοῦσαι','μαθοῦσαι','μαθούσας','μαθουσῶν','μαθούσαις') },
@@ -847,7 +880,7 @@
             'απειχεν':{ l:"ἀπέχω", es:{morph:"Verbo, 3ª Sg, Imperfecto Ind. Activo", syntax:"Núcleo", def:"distaba, estaba lejos"}, t: () => G.vImpA('ἀπ','εῖχ') },
             'ακουε':{ l:"ἀκούω", es:{morph:"Verbo, 2ª Sg, Imperativo Presente", syntax:"Núcleo", def:"¡escucha!"}, t: () => buildVerbT('-','ἄκουε','ἀκουέτω','-','ἀκούετε','ἀκουόντων','Imperativo') },
             'ακουω':{ l:"ἀκούω", es:{morph:"Verbo, 1ª Sg, Presente Ind. Activo", syntax:"Núcleo", def:"escucho"}, t: () => G.vPresA('ἀκού') },
-            'ακουσεται':{ l:"ἀκούω", es:{morph:"Verbo, 3ª Sg, Futuro Ind. Medio", syntax:"Núcleo", def:"escuchará"}, t: () => G.vFutM('ἀκού') },
+            'ακουсеται':{ l:"ἀκούω", es:{morph:"Verbo, 3ª Sg, Futuro Ind. Medio", syntax:"Núcleo", def:"escuchará"}, t: () => G.vFutM('ἀκού') },
             'ηκουε':{ l:"ἀκούω", es:{morph:"Verbo, 3ª Sg, Imperfecto Ind. Activo", syntax:"Núcleo", def:"escuchaba"}, t: () => G.vImpA('ἤ','κου') },
             'γνωσομεθα':{ l:"γιγνώσκω", es:{morph:"Verbo, 1ª Pl, Futuro Ind. Medio", syntax:"Núcleo", def:"sabremos / conoceremos", exp:"Futuro medio de γιγνώσκω."}, t: () => G.vFutM('γνώ') },
             'εσπευδον':{ l:"σπεύδω", es:{morph:"Verbo, 3ª Pl, Imperfecto Ind. Activo", syntax:"Núcleo", def:"se apresuraban"}, t: () => G.vImpA('ἔ','σπευδ') },
@@ -902,7 +935,6 @@
             'επιτρεψεις':{ l:"ἐπιτρέπω", es:{morph:"Verbo, 2ª Sg, Futuro Ind. Activo", syntax:"Núcleo", def:"confiarás"}, t: () => G.vFutA('ἐπιτρέψ') },
             'επιτρεψω':{ l:"ἐπιτρέπω", es:{morph:"Verbo, 1ª Sg, Futuro Ind. Activo", syntax:"Núcleo", def:"confiaré"}, t: () => G.vFutA('ἐπιτρέψ') },
             'πιστευεις':{ l:"πιστεύω", es:{morph:"Verbo, 2ª Sg, Presente Ind. Activo", syntax:"Núcleo", def:"crees, confías"}, t: () => G.vPresA('πιστεύ') },
-            'προϊων':{ l:"πρόειμι", m:"Participio, Presente Activo, Nom, Sg, Masc", s:"Participio Concertado", d:"avanzando", t: () => buildNounT('προϊών','προϊών','προϊόντα','προϊόντος','προϊόντι','προϊόντες','προϊόντες','προϊόντας','προϊόντων','προϊοῦσι') },
             'πιστευω':{ l:"πιστεύω", es:{morph:"Verbo, 1ª Sg, Presente Ind. Activo", syntax:"Núcleo", def:"creo, confío"}, t: () => G.vPresA('πιστεύ') },
             'δυνησεται':{ l:"δύναμαι", es:{morph:"Verbo Deponente, 3ª Sg, Futuro Ind. Medio", syntax:"Núcleo", def:"podrá"}, t: () => G.vFutM('δυνή') },
             'παρασκευαζεσθαι':{ l:"παρασκευάζω", es:{morph:"Verbo, Infinitivo Presente Medio/Pasivo", syntax:"Sujeto de χρή", def:"prepararte"}, t: () => buildVerbT('παρασκευάζομαι','-ῃ','-εται','-όμεθα','-εσθε','-ονται','Presente Medio') },
@@ -930,10 +962,7 @@
             'ευχομενου':{ l:"εὔχομαι", es:{morph:"Participio, Presente Medio, Gen Sg Masc", syntax:"Régimen de ἄκουέ", def:"que suplica"}, t: () => buildNounT('εὐχόμενος','-ε','-ον','εὐχομένου','-ῳ','-οι','-οι','-ους','-ων','-οις') },
             'ευχομενος':{ l:"εὔχομαι", es:{morph:"Participio, Presente Medio, Nom Sg Masc", syntax:"Concertado", def:"suplicando"}, t: () => buildNounT('εὐχόμενος','-ε','-ον','-ου','-ῳ','-οι','-οι','-ους','-ων','-οις') },
             'καλουντος':{ l:"καλέω", es:{morph:"Participio, Presente Activo, Gen Sg Masc", syntax:"Régimen de ἀκούω", def:"llamando / del que llama"}, t: () => buildNounT('καλῶν','καλῶν','καλοῦντα','καλοῦντος','καλοῦντι','καλοῦντες','-τες','-τας','-ντων','-ουσι') },
-            'προσιοντας':{ l:"πρόσειμι", es:{morph:"Participio, Presente Activo, Acus Pl Masc", syntax:"Predicativo", def:"acercándose"}, t: () => buildNounT('προσιών','-ών','-όντα','-όντος','-όντι','-όντες','-όντες','-όντας','-όντων','-οῦσι') },
-            'μαθουσα':{ l:"μανθάνω", es:{morph:"Participio, Aoristo Fuerte Activo, Nom Sg Fem", syntax:"Concertado", def:"habiendo aprendido / tras enterarse"}, t: () => buildNounT('μαθοῦσα','μαθοῦσα','μαθοῦσαν','μαθούσης','μαθούσῃ','μαθοῦσαι','μαθοῦσαι','μαθούσας','μαθουσῶν','μαθούσαις') },
-            'παροντων':{ l:"πάρειμι", es:{morph:"Participio, Presente Activo, Gen Pl Masc", syntax:"Partitivo", def:"de los presentes"}, t: () => buildNounT('παρών','παρών','παρόντα','παρόντος','παρόντι','παρόντες','παρόντες','παρόντας','παρόντων','παροῦσι') },
-            'παρουσι':{ l:"πάρειμι", es:{morph:"Participio, Presente Activo, Dat Pl Masc", syntax:"Sustantivado (C. Indirecto)", def:"a los presentes"}, t: () => buildNounT('παρών','παρών','παρόντα','παρόντος','παρόντι','παρόντες','παρόντες','παρόντας','παρόντων','παροῦσι') }
+            'προσιοντας':{ l:"πρόσειμι", es:{morph:"Participio, Presente Activo, Acus Pl Masc", syntax:"Predicativo", def:"acercándose"}, t: () => buildNounT('προσιών','-ών','-όντα','-όντος','-όντι','-όντες','-όντες','-όντας','-όντων','-οῦσι') }
         };
 
         // ==========================================
@@ -943,7 +972,6 @@
             const raw = word.replace(/[.,;:'"«»?()·!]/g, "").trim();
             let normalized = raw.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
             
-            // Busca la palabra en la base de datos estática
             for (const key in wordDB) {
                 if (normalized === key) {
                     let entry = wordDB[key];
@@ -963,7 +991,6 @@
                 }
             }
 
-            // Fallback Genérico Si No Existe
             return {
                 enunciado: raw,
                 es: {
@@ -1059,6 +1086,11 @@
             localStorage.setItem('epidauro_pro_team', teamName);
             localStorage.setItem('epidauro_pro_mistakes', '0');
             localStorage.setItem('epidauro_pro_endTime', (Date.now() + timeRemaining * 1000).toString());
+            
+            // Audio de fondo al iniciar
+            document.getElementById('musicaFondo').volume = 0.4;
+            document.getElementById('musicaFondo').play().catch(e => console.log("Autoplay bloqueado"));
+            
             resumeGame();
         }
 
@@ -1083,7 +1115,7 @@
         function victory() {
             if (timerInterval) clearInterval(timerInterval);
             localStorage.setItem('epidauro_pro_status', 'won');
-            const secondsUsed = (60 * 60) - timeRemaining;
+            const secondsUsed = (90 * 60) - timeRemaining;
             let finalScore = BASE_SCORE - secondsUsed - (mistakes * 100);
             if (finalScore < 0) finalScore = 0; 
             const timeStr = formatTime(timeRemaining);
@@ -1142,19 +1174,19 @@
             }, 100);
         }
 
-        // ==========================================
-        // VERIFICACIÓN DE LAS 6 PRUEBAS
-        // ==========================================
-        function normalizeGreekForInput(str) { return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim(); }
-        
         function failPrueba(id) {
             mistakes++; localStorage.setItem('epidauro_pro_mistakes', mistakes.toString());
             const err = document.getElementById(id);
-            err.classList.remove('hidden'); setTimeout(() => err.classList.add('hidden'), 4000);
+            err.classList.remove('hidden'); 
+            setTimeout(() => err.classList.add('hidden'), 4000);
+            
+            const tarjeta = err.parentElement;
+            tarjeta.classList.add('error-shake');
+            setTimeout(() => tarjeta.classList.remove('error-shake'), 500);
         }
 
         function successPrueba(currentId, nextId, nextColorClass) {
-            const btn = document.querySelector(`#${currentId} button`);
+            const btn = document.querySelector(`#${currentId} button:last-child`);
             btn.innerHTML = "<i data-lucide='unlock' class='inline w-4 h-4 mr-2'></i>¡Desbloqueado!"; 
             btn.disabled = true;
             btn.classList.add('opacity-50');
@@ -1167,6 +1199,23 @@
             lucide.createIcons();
             
             next.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function pedirPista(mensaje) {
+            if(confirm("¿Estás seguro de consultar a Atenea? Esto te restará 3 minutos de tu tiempo vital.")){
+                timeRemaining -= 180; 
+                document.getElementById('timerContainer').classList.replace('border-cyan-800', 'border-red-500');
+                document.getElementById('timerContainer').classList.replace('bg-cyan-950/80', 'bg-red-900/80');
+                document.getElementById('timerDisplay').classList.replace('text-cyan-300', 'text-red-300');
+                
+                setTimeout(() => {
+                    document.getElementById('timerContainer').classList.replace('border-red-500', 'border-cyan-800');
+                    document.getElementById('timerContainer').classList.replace('bg-red-900/80', 'bg-cyan-950/80');
+                    document.getElementById('timerDisplay').classList.replace('text-red-300', 'text-cyan-300');
+                }, 3000);
+                
+                alert("El Oráculo susurra: \n\n" + mensaje);
+            }
         }
 
         function checkPrueba1() {
