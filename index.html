@@ -81,7 +81,7 @@
         .tab-btn.active { background-color: #0f172a; color: #38bdf8; border-color: #1e3a8a; border-bottom-color: transparent; }
         
         .hero-banner {
-            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 1)), url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Epidaurus_Theater.jpg/1200px-Epidaurus_Theater.jpg') center/cover;
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.5), rgba(15, 23, 42, 1)), url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Epidaurus_Theater.jpg/1200px-Epidaurus_Theater.jpg') center/cover;
             height: 250px;
         }
         
@@ -110,8 +110,9 @@
         
         <div class="bg-black/60 p-8 rounded-lg border border-cyan-900/50 shadow-2xl backdrop-blur-sm w-full">
             <div class="mb-8 rounded-lg border border-cyan-900/50 overflow-hidden shadow-inner w-full hero-banner relative flex items-center justify-center">
-                <div class="bg-black/50 p-4 rounded backdrop-blur-sm border border-cyan-500/30">
-                    <p class="font-cinzel text-cyan-300 text-2xl tracking-widest uppercase">El Ábaton de Asclepio</p>
+                <div class="bg-black/50 p-6 rounded-lg backdrop-blur-sm border border-cyan-500/30">
+                    <p class="font-cinzel text-cyan-300 text-3xl tracking-widest uppercase">El Ábaton de Asclepio</p>
+                    <p class="text-sm text-cyan-100 mt-2 font-serif italic">Centro de la medicina de la Grecia Antigua</p>
                 </div>
             </div>
 
@@ -178,7 +179,6 @@
                 </div>
             </div>
 
-            <!-- Panel de Gramática Teórica Detallada -->
             <div class="bg-slate-900 border border-cyan-900/70 p-6 rounded-lg shadow-xl relative custom-scrollbar max-h-[600px] overflow-y-auto">
                 <h3 class="text-2xl text-cyan-400 mb-6 flex items-center gap-3 font-cinzel border-b border-cyan-800 pb-3 sticky top-0 bg-slate-900 z-10">
                     <i data-lucide="scroll" class="w-6 h-6"></i> Códice Gramatical e Histórico
@@ -242,7 +242,6 @@
             </div>
         </div>
 
-        <!-- Columna Derecha: 6 Pruebas del Escape Room -->
         <div class="xl:col-span-5 flex flex-col space-y-5 max-h-[1200px] overflow-y-auto pr-2 custom-scrollbar">
             
             <div id="prueba1" class="bg-black/70 border-2 border-cyan-500 p-6 rounded-lg shadow-[0_0_20px_rgba(6,182,212,0.3)] relative transition-all duration-500">
@@ -383,7 +382,7 @@
                         <select id="p5-q2" class="select-griego text-sm p-3 rounded shadow-inner border border-slate-700 focus:border-fuchsia-500">
                             <option value="">Selecciona...</option>
                             <option value="a">Ellos siempre honraron a los muertos de esa batalla terrible.</option>
-                            <option value="b">Siempre honraremos a los que murieron (habiendo muerto) en esta batalla.</option>
+                            <option value="b">Siempre honraremos a los que murieron (a los habiendo muerto) en esta batalla.</option>
                             <option value="c">Es digno honrar la batalla y a todos los que murieron en ella.</option>
                         </select>
                     </div>
@@ -655,6 +654,7 @@
             'μαρδονιος':{ l:"Μαρδόνιος, -ου, ὁ", es:{morph:"Sustantivo Propio, Masc, Nom, Sg", syntax:"Sujeto", def:"Mardonio (general persa)", etym:"Persa (Mṛduniya)"}, t:G.n2M('Μαρδόνι') },
             'θεσσαλιας':{ l:"Θεσσαλία, -ας, ἡ", es:{morph:"Sustantivo Propio, Fem, Gen, Sg", syntax:"Origen (con ἐκ)", def:"de Tesalia", etym:"Pre-griego"}, t:G.n1F('Θεσσαλί', false) },
             'αστυ':{ l:"ἄστυ, ἄστεως, τό", es:{morph:"Sustantivo (3ª Decl), Neutro, Acus, Sg", syntax:"C. Directo", def:"la ciudad", etym:"PIE *h₂wost-"}, t:buildNounTable('ἄστυ','ἄστυ','ἄστυ','ἄστεως','ἄστει','ἄστη','ἄστη','ἄστη','ἄστεων','ἄστεσι') },
+            'αστει':{ l:"ἄστυ, ἄστεως, τό", es:{morph:"Sustantivo (3ª Decl), Neutro, Dat, Sg", syntax:"Lugar en donde", def:"en la ciudad", etym:"PIE *h₂wost-"}, t:buildNounTable('ἄστυ','ἄστυ','ἄστυ','ἄστεως','ἄστει','ἄστη','ἄστη','ἄστη','ἄστεων','ἄστεσι') },
             'ναυσιν':{ l:"ναῦς, νεώς, ἡ", es:{morph:"Sustantivo Irregular (3ª), Fem, Dat, Pl", syntax:"Lugar en donde", def:"en las naves", etym:"PIE *néh₂ws (latín navis)"}, t:buildNounTable('ναῦς','ναῦ','ναῦν','νεώς','νηΐ','νῆες','νῆες','ναῦς','νεῶν','ναυσί') },
             'ναυς':{ l:"ναῦς, νεώς, ἡ", es:{morph:"Sustantivo Irregular (3ª), Fem, Nom, Sg", syntax:"Sujeto", def:"la nave, barco", etym:"PIE *néh₂ws"}, t:buildNounTable('ναῦς','ναῦ','ναῦν','νεώς','νηΐ','νῆες','νῆες','ναῦς','νεῶν','ναυσί') },
             'ναυν':{ l:"ναῦς, νεώς, ἡ", es:{morph:"Sustantivo Irregular (3ª), Fem, Acus, Sg", syntax:"O. Directo / Dirección", def:"la nave", etym:"PIE *néh₂ws"}, t:buildNounTable('ναῦς','ναῦ','ναῦν','νεώς','νηΐ','νῆες','νῆες','ναῦς','νεῶν','ναυσί') },
@@ -676,19 +676,64 @@
             'στρατηγος':{ l:"στρατηγός, -οῦ, ὁ", es:{morph:"Sustantivo (2ª Decl), Masc, Nom, Sg", syntax:"Sujeto", def:"el general", etym:"στρατός + ἄγω"}, t:G.n2M('στρατηγ') },
             'ημεραν':{ l:"ἡμέρα, -ας, ἡ", es:{morph:"Sustantivo (1ª Decl), Fem, Acus, Sg", syntax:"C.C. Extensión en el tiempo", def:"el día (todo el día)", etym:"PIE *h₂eh₁mer-"}, t:G.n1F('ἡμέρ', false) },
             'ημερα':{ l:"ἡμέρα, -ας, ἡ", es:{morph:"Sustantivo (1ª Decl), Fem, Dativo, Sg", syntax:"C.C. Tiempo", def:"el día", etym:"PIE *h₂eh₁mer-"}, t:G.n1F('ἡμέρ', false) },
+            'οινοπωλιον':{ l:"οἰνοπώλιον, -ου, τό", es:{morph:"Sustantivo (2ª Decl), Neutro, Acus, Sg", syntax:"C. Directo", def:"la taberna (de vino)", etym:"οἶνος + πωλέω"}, t:G.n2N('οἰνοπώλι') },
+            'δειπνον':{ l:"δεῖπνον, -ου, τό", es:{morph:"Sustantivo (2ª Decl), Neutro, Acus, Sg", syntax:"C. Directo", def:"la cena / comida", etym:"Desconocida"}, t:G.n2N('δεῖπν') },
+            'οινον':{ l:"οἶνος, -ου, ὁ", es:{morph:"Sustantivo (2ª Decl), Masc, Acus, Sg", syntax:"C. Directo", def:"vino", etym:"PIE *wóyh₁nom (lat. vinum)"}, t:G.n2M('οἶν') },
+            'υπηρετης':{ l:"ὑπηρέτης, -ου, ὁ", es:{morph:"Sustantivo (1ª Decl), Masc, Nom, Sg", syntax:"Sujeto", def:"sirviente, ayudante", etym:"ὑπό + ἐρέτης"}, t:G.n1F('ὑπηρέτ', true) },
+            'οφθαλμους':{ l:"ὀφθαλμός, -οῦ, ὁ", es:{morph:"Sustantivo (2ª Decl), Masc, Acus, Pl", syntax:"C. Directo", def:"los ojos", etym:"De ὄψομαι"}, t:G.n2M('ὀφθαλμ') },
+            'τεμενος':{ l:"τέμενος, -ους, τό", es:{morph:"Sustantivo (3ª Decl), Neutro, Acus, Sg", syntax:"Dirección (Lugar hacia donde)", def:"santuario, recinto sagrado", exp:"Se refiere al recinto cortado/separado para el dios.", etym:"De τέμνω (cortar)"}, t:buildNounTable('τέμενος','τέμενος','τέμενος','τεμένους','τεμένει','τεμένη','τεμένη','τεμένη','τεμενῶν','τεμέσι') },
+            'αυλην':{ l:"αὐλή, -ῆς, ἡ", es:{morph:"Sustantivo (1ª Decl), Fem, Acus, Sg", syntax:"Dirección", def:"al patio", etym:"PIE *h₂wel-"}, t:G.n1F('αὐλ', true) },
+            'ιερον':{ l:"ἱερόν, -οῦ, τό", es:{morph:"Sustantivo (2ª Decl), Neutro, Acus, Sg", syntax:"Dirección", def:"al santuario", etym:"De ἱερός"}, t:G.n2N('ἱερ') },
+            'ιερου':{ l:"ἱερόν, -οῦ, τό", es:{morph:"Sustantivo (2ª Decl), Neutro, Gen, Sg", syntax:"C. de Adverbio (ἐγγὺς)", def:"del santuario", etym:"De ἱερός"}, t:G.n2N('ἱερ') },
+            'ιερω':{ l:"ἱερόν, -οῦ, τό", es:{morph:"Sustantivo (2ª Decl), Neutro, Dat, Sg", syntax:"Lugar en donde", def:"en el santuario", etym:"De ἱερός"}, t:G.n2N('ἱερ') },
+            'βωμον':{ l:"βωμός, -οῦ, ὁ", es:{morph:"Sustantivo (2ª Decl), Masc, Acus, Sg", syntax:"Dirección", def:"al altar", etym:"De βαίνω"}, t:G.n2M('βωμ') },
+            'σπονδην':{ l:"σπονδή, -ῆς, ἡ", es:{morph:"Sustantivo (1ª Decl), Fem, Acus, Sg", syntax:"C. Directo", def:"libación", etym:"PIE *spend-"}, t:G.n1F('σπονδ', true) },
+            'νομον':{ l:"νόμος, -ου, ὁ", es:{morph:"Sustantivo (2ª Decl), Masc, Acus, Sg", syntax:"Régimen de preposición (κατὰ)", def:"la ley / costumbre", etym:"De νέμω"}, t:G.n2M('νόμ') },
+            'φιαλην':{ l:"φιάλη, -ης, ἡ", es:{morph:"Sustantivo (1ª Decl), Fem, Acus, Sg", syntax:"C. Directo", def:"copa, pátera", etym:"Desconocida"}, t:G.n1F('φιάλ', true) },
+            'χερσι':{ l:"χείρ, χειρός, ἡ", es:{morph:"Sustantivo (3ª Decl), Fem, Dat, Pl", syntax:"Dativo de Instrumento", def:"con las manos", etym:"PIE *ǵhes-"}, t:buildNounTable('χείρ','χείρ','χεῖρα','χειρός','χειρί','χεῖρες','χεῖρες','χεῖρας','χειρῶν','χερσί') },
+            'χειρας':{ l:"χείρ, χειρός, ἡ", es:{morph:"Sustantivo (3ª Decl), Fem, Acus, Pl", syntax:"C. Directo", def:"las manos", etym:"PIE *ǵhes-"}, t:buildNounTable('χείρ','χείρ','χεῖρα','χειρός','χειρί','χεῖρες','χεῖρες','χεῖρας','χειρῶν','χερσί') },
+            'ουρανον':{ l:"οὐρανός, -οῦ, ὁ", es:{morph:"Sustantivo (2ª Decl), Masc, Acus, Sg", syntax:"Dirección", def:"al cielo", etym:"Desconocida"}, t:G.n2M('οὐραν') },
+            'σωτερ':{ l:"σωτήρ, σωτῆρος, ὁ", es:{morph:"Sustantivo (3ª Decl), Masc, Vocativo, Sg", syntax:"Apelación", def:"¡salvador!", etym:"De σῴζω"}, t:buildNounTable('σωτήρ','σῶτερ','σωτῆρα','σωτῆρος','σωτῆρι','σωτῆρες','σωτῆρες','σωτῆρας','σωτήρων','σωτῆρσι') },
+            'ικετης':{ l:"ἱκέτης, -ου, ὁ", es:{morph:"Sustantivo (1ª Decl), Masc, Nom, Sg", syntax:"Atributo", def:"suplicante", etym:"De ἵκω"}, t:G.n1F('ἱκέτ', true) },
+            'αβατον':{ l:"ἄβατον, -ου, τό", es:{morph:"Sustantivo (2ª Decl), Neutro, Acus, Sg", syntax:"Dirección", def:"al ábaton (recinto sagrado / dormitorio)", exp:"Literalmente 'lugar no pisable' para los impuros.", etym:"ἀ- (privativa) + βαίνω"}, t:G.n2N('ἄβατ') },
+            'αβατω':{ l:"ἄβατον, -ου, τό", es:{morph:"Sustantivo (2ª Decl), Neutro, Dat, Sg", syntax:"Lugar en donde", def:"en el ábaton", etym:"ἀ- + βαίνω"}, t:G.n2N('ἄβατ') },
+            'χρονον':{ l:"χρόνος, -ου, ὁ", es:{morph:"Sustantivo (2ª Decl), Masc, Acus, Sg", syntax:"Extensión en el tiempo", def:"tiempo", etym:"Desconocida"}, t:G.n2M('χρόν') },
+            'σκοτος':{ l:"σκότος, -ους, τό", es:{morph:"Sustantivo (3ª Decl), Neutro, Nom, Sg", syntax:"Sujeto", def:"oscuridad", etym:"PIE *skot-"}, t:buildNounTable('σκότος','σκότος','σκότος','σκότους','σκότει','σκότη','σκότη','σκότη','σκοτῶν','σκότεσι') },
+            'σιγη':{ l:"σιγή, -ῆς, ἡ", es:{morph:"Sustantivo (1ª Decl), Fem, Nom, Sg", syntax:"Sujeto", def:"silencio", etym:"Desconocida"}, t:G.n1F('σιγ', true) },
+            'οφεων':{ l:"ὄφις, -εως, ὁ", es:{morph:"Sustantivo (3ª Decl), Masc, Gen, Pl", syntax:"Régimen del verbo (ἀκούω)", def:"de las serpientes", etym:"PIE *h₁ogʷh-i-"}, t:buildNounTable('ὄφις','ὄφι','ὄφιν','ὄφεως','ὄφει','ὄφεις','ὄφεις','ὄφεις','ὄφεων','ὄφεσι') },
+
+            // Adjetivos Claves
+            'παρουσι':{ l:"πάρειμι (Participio)", es:{morph:"Participio, Presente Activo, Dat, Pl, Masc", syntax:"Sustantivado", def:"a los presentes (los que estaban allí)", etym:"παρά + εἰμί"}, t:buildNounTable('παρών','παρών','παρόντα','παρόντος','παρόντι','παρόντες','παρόντες','παρόντας','παρόντων','παροῦσι') },
+            'παροντων':{ l:"πάρειμι (Participio)", es:{morph:"Participio, Presente Activo, Gen, Pl, Masc", syntax:"Partitivo", def:"de los presentes", etym:"παρά + εἰμί"}, t:buildNounTable('παρών','παρών','παρόντα','παρόντος','παρόντι','παρόντες','παρόντες','παρόντας','παρόντων','παροῦσι') },
+            'ολιγου':{ l:"ὀλίγος, -η, -ον", es:{morph:"Adjetivo, Masc/Neutro, Gen, Sg", syntax:"En la expresión δι' ὀλίγου", def:"de poco (tiempo)", etym:"Desconocida"}, t:G.n2M('ὀλίγ') },
+            'ουριου':{ l:"οὔριος, -α, -ον", es:{morph:"Adjetivo, Masc, Gen, Sg", syntax:"Adyacente (Genitivo Absoluto)", def:"favorable, propicio", etym:"De οὖρος (viento favorable)"}, t:G.n2M('οὐρί') },
+            'ουριος':{ l:"οὔριος, -α, -ον", es:{morph:"Adjetivo, Masc, Nom, Sg", syntax:"Adyacente", def:"favorable", etym:"De οὖρος"}, t:G.n2M('οὐρί') },
+            'κακον':{ l:"κακός, -ή, -όν", es:{morph:"Adjetivo, Neutro, Acus, Sg", syntax:"C. Directo", def:"malo, mal", etym:"Desconocida"}, t:G.n2N('κακ') },
+            'τυφλος':{ l:"τυφλός, -ή, -όν", es:{morph:"Adjetivo, Masc, Nom, Sg", syntax:"Atributo", def:"ciego", etym:"De τύφω"}, t:G.n2M('τυφλ') },
+            'τυφλω':{ l:"τυφλός, -ή, -όν", es:{morph:"Adjetivo, Masc, Dat, Sg", syntax:"Adyacente", def:"al ciego", etym:"De τύφω"}, t:G.n2M('τυφλ') },
+            'μεγαλην':{ l:"μέγας, μεγάλη, μέγα", es:{morph:"Adjetivo, Fem, Acus, Sg", syntax:"Adyacente", def:"grande", etym:"PIE *meǵh₂s"}, t:buildNounTable('μεγάλη','μεγάλη','μεγάλην','μεγάλης','μεγάλῃ','μεγάλαι','μεγάλαι','μεγάλας','μεγάλων','μεγάλαις') },
+            'γεραιος':{ l:"γεραιός, -ά, -όν", es:{morph:"Adjetivo, Masc, Nom, Sg", syntax:"Adyacente", def:"anciano, viejo", etym:"De γέρων"}, t:G.n2M('γεραι') },
+            'δυνατα':{ l:"δυνατός, -ή, -όν", es:{morph:"Adjetivo, Neutro, Nom, Pl", syntax:"Atributo", def:"posibles", etym:"De δύναμαι"}, t:G.n2N('δυνατ') },
+            'ετοιμα':{ l:"ἕτοιμος, -η, -ον", es:{morph:"Adjetivo, Neutro, Nom, Pl", syntax:"Atributo", def:"listas, preparadas", etym:"Desconocida"}, t:G.n2N('ἑτοίμ') },
+            'μονος':{ l:"μόνος, -η, -ον", es:{morph:"Adjetivo, Masc, Nom, Sg", syntax:"Predicativo", def:"solo", etym:"PIE *men-"}, t:G.n2M('μόν') },
+            'πολυν':{ l:"πολύς, πολλή, πολύ", es:{morph:"Adjetivo, Masc, Acus, Sg", syntax:"Adyacente", def:"mucho", etym:"PIE *pel-"}, t:buildNounTable('πολύς','πολύ','πολύν','πολλοῦ','πολλῷ','πολλοί','πολλοί','πολλούς','πολλῶν','πολλοῖς') },
+            'πολυ':{ l:"πολύς, πολλή, πολύ", es:{morph:"Adjetivo, Neutro, Acus, Sg / Adverbio", syntax:"Adverbial", def:"mucho", etym:"PIE *pel-"}, t:inv },
+            'ερημον':{ l:"ἔρημος, -ον", es:{morph:"Adjetivo (2 term), Neutro/Masc/Fem, Acus, Sg", syntax:"Predicativo", def:"desierto, vacío", etym:"Desconocida"}, t:G.n2M('ἐρήμ') },
+            'επιτηδειους':{ l:"ἐπιτήδειος, -α, -ον", es:{morph:"Adjetivo, Masc, Acus, Pl", syntax:"Adyacente", def:"convenientes, adecuados", etym:"De ἐπιτηδές"}, t:G.n2M('ἐπιτηδεί') },
+            'πλειστοι':{ l:"πλεῖστος, -η, -ον", es:{morph:"Adjetivo (Superlativo), Masc, Nom, Pl", syntax:"Sujeto", def:"los más, la mayoría", etym:"Superlativo de πολύς"}, t:G.n2M('πλεῖστ') },
             
             // Verbos Clave y Participios
-            'αποπλευσεται':{ l:"ἀποπλέω", es:{morph:"Verbo, 3ª Sg, Futuro Ind. Medio", syntax:"Núcleo del predicado", def:"zarpará", exp:"El verbo ἀποπλέω forma su futuro en voz media (ἀποπλεύσομαι) con alargamiento de vocal de raíz.", etym:"ἀπό + πλέω"}, t:G.vFutM('ἀποπλεύ') },
-            'αποθανοντας':{ l:"ἀποθνῄσκω", es:{morph:"Participio, Aoristo Radical Activo, Acus, Pl, Masc", syntax:"Sustantivado (C. Directo)", def:"a los que murieron (a los habiendo muerto)", exp:"Aoristo radical (fuerte) basado en la raíz θαν-.", etym:"ἀπό + θνῄσκω"}, t:buildNounTable('ἀποθανών','ἀποθανών','ἀποθανόντα','ἀποθανόντος','ἀποθανόντι','ἀποθανόντες','ἀποθανόντες','ἀποθανόντας','ἀποθανόντων','ἀποθανοῦσι') },
-            'μενεις':{ l:"μένω", es:{morph:"Verbo, 2ª Sg, Futuro Ind. Activo", syntax:"Núcleo", def:"permanecerás", exp:"Futuro asigmático (líquida). La raíz men- rechaza la sigma y añade -ε- que contrae con la desinencia (μενεῖς).", etym:"PIE *men-"}, t:buildVerbTable('μενῶ','μενεῖς','μενεῖ','μενοῦμεν','μενεῖτε','μενοῦσι','Futuro Ind Activo (Contracto)') },
+            'αποπλευσεται':{ l:"ἀποπλέω", es:{morph:"Verbo, 3ª Sg, Futuro Ind. Medio", syntax:"Núcleo", def:"zarpará", exp:"ἀποπλέω forma su futuro en voz media (ἀποπλεύσομαι).", etym:"ἀπό + πλέω"}, t:G.vFutM('ἀποπλεύ') },
+            'αποθανοντας':{ l:"ἀποθνῄσκω", es:{morph:"Participio, Aoristo Radical Activo, Acus, Pl, Masc", syntax:"Sustantivado", def:"a los que murieron", exp:"Aoristo radical θαν-.", etym:"ἀπό + θνῄσκω"}, t:buildNounTable('ἀποθανών','ἀποθανών','ἀποθανόντα','ἀποθανόντος','ἀποθανόντι','ἀποθανόντες','ἀποθανόντες','ἀποθανόντας','ἀποθανόντων','ἀποθανοῦσι') },
+            'μενεις':{ l:"μένω", es:{morph:"Verbo, 2ª Sg, Futuro Ind. Activo", syntax:"Núcleo", def:"permanecerás", exp:"Futuro asigmático. La raíz añade -ε- que contrae con la desinencia (μενεῖς).", etym:"PIE *men-"}, t:buildVerbTable('μενῶ','μενεῖς','μενεῖ','μενοῦμεν','μενεῖτε','μενοῦσι','Futuro Ind Activo (Contracto)') },
             'εμενεν':{ l:"μένω", es:{morph:"Verbo, 3ª Sg, Imperfecto Ind. Activo", syntax:"Núcleo", def:"permanecía", etym:"PIE *men-"}, t:G.vImpA('ἔ','μεν') },
             'εμενον':{ l:"μένω", es:{morph:"Verbo, 3ª Pl, Imperfecto Ind. Activo", syntax:"Núcleo", def:"permanecían", etym:"PIE *men-"}, t:G.vImpA('ἔ','μεν') },
             'σπευσεις':{ l:"σπεύδω", es:{morph:"Verbo, 2ª Sg, Futuro Ind. Activo", syntax:"Núcleo", def:"te apresurarás", exp:"La dental δ cae ante la σ del futuro.", etym:"Desconocida"}, t:G.vFutA('σπεύ') },
             'εσπευδον':{ l:"σπεύδω", es:{morph:"Verbo, 3ª Pl, Imperfecto Ind. Activo", syntax:"Núcleo", def:"se apresuraban", etym:"Desconocida"}, t:G.vImpA('ἔ','σπευδ') },
-            'τιμησομεν':{ l:"τιμάω", es:{morph:"Verbo, 1ª Plural, Futuro Ind. Activo", syntax:"Núcleo", def:"honraremos", exp:"La vocal α de la raíz (τιμα-) se alarga a η ante la σ del futuro.", etym:"De τιμή"}, t:G.vFutA('τιμή') },
-            'βοηθησοντα':{ l:"βοηθέω", es:{morph:"Participio, Futuro Activo, Acus, Sg, Masc", syntax:"Finalidad (junto a ὡς)", def:"para ayudar / con intención de ayudar", exp:"La ε de la raíz se alarga a η ante la σ.", etym:"De βοηθός"}, t:buildNounTable('βοηθήσων','βοηθήσων','βοηθήσοντα','βοηθήσοντος','βοηθήσοντι','βοηθήσοντες','βοηθήσοντες','βοηθήσοντας','βοηθησόντων','βοηθήσουσι') },
+            'τιμησομεν':{ l:"τιμάω", es:{morph:"Verbo, 1ª Plural, Futuro Ind. Activo", syntax:"Núcleo", def:"honraremos", exp:"La vocal α de la raíz (τιμα-) se alarga a η ante la σ.", etym:"De τιμή"}, t:G.vFutA('τιμή') },
+            'βοηθησοντα':{ l:"βοηθέω", es:{morph:"Participio, Futuro Activo, Acus, Sg, Masc", syntax:"Finalidad (con ὡς)", def:"para ayudar", exp:"La ε de la raíz se alarga a η.", etym:"De βοηθός"}, t:buildNounTable('βοηθήσων','βοηθήσων','βοηθήσοντα','βοηθήσοντος','βοηθήσοντι','βοηθήσοντες','βοηθήσοντες','βοηθήσοντας','βοηθησόντων','βοηθήσουσι') },
             'εβοηθουν':{ l:"βοηθέω", es:{morph:"Verbo, 3ª Plural, Imperfecto Ind. Activo", syntax:"Núcleo", def:"ayudaban", etym:"De βοηθός"}, t:buildVerbTable('ἐβοήθουν','ἐβοήθεις','ἐβοήθει','ἐβοηθοῦμεν','ἐβοηθεῖτε','ἐβοήθουν','Imperfecto Activo Contracto') },
-            'μεμψομενοι':{ l:"μέμφομαι", es:{morph:"Participio, Futuro Medio, Nom, Pl, Masc", syntax:"Finalidad (junto a ὡς)", def:"para reprochar / con intención de quejarse", etym:"Desconocida"}, t:buildNounTable('μεμψόμενος','-ε','-ον','-ου','-ῳ','μεμψόμενοι','μεμψόμενοι','μεμψομένους','μεμψομένων','μεμψομένοις') },
+            'μεμψομενοι':{ l:"μέμφομαι", es:{morph:"Participio, Futuro Medio, Nom, Pl, Masc", syntax:"Finalidad (con ὡς)", def:"para reprochar", etym:"Desconocida"}, t:buildNounTable('μεμψόμενος','-ε','-ον','-ου','-ῳ','μεμψόμενοι','μεμψόμενοι','μεμψομένους','μεμψομένων','μεμψομένοις') },
             'προϊων':{ l:"πρόειμι", es:{morph:"Participio, Presente Activo, Nom, Sg, Masc", syntax:"Participio Concertado", def:"avanzando", etym:"πρό + εἶμι"}, t:buildNounTable('προϊών','προϊών','προϊόντα','προϊόντος','προϊόντι','προϊόντες','προϊόντες','προϊόντας','προϊόντων','προϊοῦσι') },
             'προϊοντι':{ l:"πρόειμι", es:{morph:"Participio, Presente Activo, Dat, Sg, Masc", syntax:"Sustantivado / Concertado", def:"al que avanzaba (a él avanzando)", etym:"πρό + εἶμι"}, t:buildNounTable('προϊών','προϊών','προϊόντα','προϊόντος','προϊόντι','προϊόντες','προϊόντες','προϊόντας','προϊόντων','προϊοῦσι') },
             'ιεναι':{ l:"εἶμι", es:{morph:"Verbo, Infinitivo Presente", syntax:"C. Directo", def:"ir", etym:"PIE *h₁ey-"}, t:buildVerbTable('εἶμι','εἶ','εἶσι','ἴμεν','ἴτε','ἴασι','Presente Ind. (Irregular)') },
@@ -744,19 +789,44 @@
             'ακουε':{ l:"ἀκούω", es:{morph:"Verbo, 2ª Sg, Imperativo Presente Activo", syntax:"Núcleo", def:"¡escucha!", etym:"Desconocida"}, t:G.vPresA('ἀκού') },
             'ακου':{ l:"ἀκέομαι", es:{morph:"Verbo Deponente, 2ª Sg, Imperativo Aoristo Medio", syntax:"Núcleo", def:"¡cura!", exp:"Forma contracta de ἄκεσ-αι > ἄκεαι > ἀκοῦ.", etym:"Desconocida"}, t:buildVerbTable('ἠκεσάμην','ἤκεσω','ἤκεσατο','ἠκεσάμεθα','ἤκεσασθε','ἤκεσαντο','Aoristo Medio') },
             'κοψον':{ l:"κόπτω", es:{morph:"Verbo, 2ª Sg, Imperativo Aoristo Activo", syntax:"Núcleo", def:"¡llama! (a la puerta) / golpea", exp:"La π de la raíz + σ del aoristo = ψ.", etym:"PIE *kop-"}, t:buildVerbTable('ἔκοψα','ἔκοψας','ἔκοψε','ἐκόψαμεν','ἐκόψατε','ἔκοψαν','Aoristo Activo') },
-            'κοψω':{ l:"κόπτω", es:{morph:"Verbo, 1ª Sg, Futuro Ind. Activo (o Subj Aoristo)", syntax:"Núcleo", def:"llamaré / golpearé", etym:"PIE *kop-"}, t:G.vFutA('κόψ') },
+            'κοψω':{ l:"κόπτω", es:{morph:"Verbo, 1ª Sg, Futuro Ind. Activo", syntax:"Núcleo", def:"llamaré / golpearé", etym:"PIE *kop-"}, t:G.vFutA('κόψ') },
             'θαρρει':{ l:"θαρρέω", es:{morph:"Verbo, 2ª Sg, Imperativo Presente Activo", syntax:"Núcleo", def:"¡ten valor!, ¡anímate!", etym:"De θάρσος"}, t:buildVerbTable('θαρρῶ','-εῖς','-εῖ','-οῦμεν','-εῖτε','-οῦσι','Presente Activo Contracto') },
-            'μαθων':{ l:"μανθάνω", es:{morph:"Participio, Aoristo Radical Activo, Nom Sg Masc", syntax:"Concertado", def:"habiendo aprendido / tras enterarse", etym:"PIE *men-"}, t:buildNounTable('μαθών','μαθών','μαθόντα','μαθόντος','μαθόντι','μαθόντες','μαθόντες','μαθόντας','μαθόντων','μαθοῦσι') }
+            'μαθων':{ l:"μανθάνω", es:{morph:"Participio, Aoristo Radical Activo, Nom Sg Masc", syntax:"Concertado", def:"habiendo aprendido / tras enterarse", etym:"PIE *men-"}, t:buildNounTable('μαθών','μαθών','μαθόντα','μαθόντος','μαθόντι','μαθόντες','μαθόντες','μαθόντας','μαθόντων','μαθοῦσι') },
+            'εισβητε':{ l:"εἰσβαίνω", es:{morph:"Verbo, 2ª Pl, Imperativo Aoristo Radical Activo", syntax:"Núcleo", def:"¡embarcad!", etym:"εἰς + βαίνω"}, t:buildVerbTable('εἰσέβην','εἰσέβης','εἰσέβη','εἰσέβημεν','εἰσέβητε','εἰσέβησαν','Aoristo Radical') },
+            'εισεβησαν':{ l:"εἰσβαίνω", es:{morph:"Verbo, 3ª Pl, Aoristo Radical Activo", syntax:"Núcleo", def:"embarcaron", etym:"εἰς + βαίνω"}, t:buildVerbTable('εἰσέβην','εἰσέβης','εἰσέβη','εἰσέβημεν','εἰσέβητε','εἰσέβησαν','Aoristo Radical') },
+            'εισηλθον':{ l:"εἰσέρχομαι", es:{morph:"Verbo, 3ª Pl, Aoristo Radical Activo", syntax:"Núcleo", def:"entraron", etym:"εἰς + ἔρχομαι"}, t:buildVerbTable('εἰσῆλθον','εἰσῆλθες','εἰσῆλθε','εἰσήλθομεν','εἰσήλθετε','εἰσῆλθον','Aoristo Radical') },
+            'ηρεμα':{ l:"ἠρέμα", es:{morph:"Adverbio", syntax:"CC Modo", def:"suavemente, en silencio", etym:"Desconocida"}, t:inv },
+            'συριζοντων':{ l:"συρίζω", es:{morph:"Participio, Presente Activo, Gen Pl Masc", syntax:"Régimen del verbo (escuchaba a...)", def:"silbando / de los que silbaban", etym:"Onomatopéyica"}, t:buildNounTable('συρίζων','συρίζων','συρίζοντα','συρίζοντος','συρίζοντι','συρίζοντες','συρίζοντες','συρίζοντας','συριζόντων','συρίζουσι') },
+            'οφεων':{ l:"ὄφις, -εως, ὁ", es:{morph:"Sustantivo (3ª Decl), Masc, Gen, Pl", syntax:"Régimen verbal", def:"de las serpientes", etym:"PIE *h₁ogʷh-i-"}, t:buildNounTable('ὄφις','ὄφι','ὄφιν','ὄφεως','ὄφει','ὄφεις','ὄφεις','ὄφεις','ὄφεων','ὄφεσι') },
+            'ηκουε':{ l:"ἀκούω", es:{morph:"Verbo, 3ª Sg, Imperfecto Ind Activo", syntax:"Núcleo", def:"escuchaba", etym:"Desconocida"}, t:G.vImpA('ἤ','κου') },
+            'σπανιως':{ l:"σπανίως", es:{morph:"Adverbio", syntax:"CC Tiempo/Modo", def:"raramente, apenas", etym:"De σπάνιος"}, t:inv },
+            'σιγη':{ l:"σιγή, -ῆς, ἡ", es:{morph:"Sustantivo (1ª Decl), Fem, Nom, Sg", syntax:"Sujeto", def:"silencio", etym:"Desconocida"}, t:G.n1F('σιγ', true) },
+            'σκοτος':{ l:"σκότος, -ους, τό", es:{morph:"Sustantivo (3ª Decl), Neutro, Nom, Sg", syntax:"Sujeto", def:"oscuridad", etym:"PIE *skot-"}, t:buildNounTable('σκότος','σκότος','σκότος','σκότους','σκότει','σκότη','σκότη','σκότη','σκοτῶν','σκότεσι') },
+            'πανταχου':{ l:"πανταχοῦ", es:{morph:"Adverbio", syntax:"CC Lugar", def:"por todas partes", etym:"De πᾶς"}, t:inv },
+            'εφοβειτο':{ l:"φοβέομαι", es:{morph:"Verbo Deponente, 3ª Sg, Imperfecto Medio/Pasivo", syntax:"Núcleo", def:"temía, tenía miedo", etym:"De φόβος"}, t:buildVerbTable('ἐφοβούμην','ἐφοβοῦ','ἐφοβεῖτο','ἐφοβούμεθα','ἐφοβεῖσθε','ἐφοβοῦντο','Imperfecto Medio/Pasivo') },
+            'μαλα':{ l:"μάλα", es:{morph:"Adverbio", syntax:"CC Cantidad", def:"muy, mucho", etym:"Desconocida"}, t:inv },
+            'μονος':{ l:"μόνος, -η, -ον", es:{morph:"Adjetivo, Masc, Nom, Sg", syntax:"Predicativo", def:"solo", etym:"PIE *men-"}, t:G.n2M('μόν') },
+            'εδυνατο':{ l:"δύναμαι", es:{morph:"Verbo Deponente, 3ª Sg, Imperfecto Medio", syntax:"Núcleo", def:"podía", etym:"Desconocida"}, t:buildVerbTable('ἐδυνάμην','ἐδύνασο','ἐδύνατο','ἐδυνάμεθα','ἐδύνασθε','ἐδύναντο','Imperfecto Medio') },
+            'χρονον':{ l:"χρόνος, -ου, ὁ", es:{morph:"Sustantivo (2ª Decl), Masc, Acus, Sg", syntax:"CC Extensión en el tiempo", def:"tiempo", etym:"Desconocida"}, t:G.n2M('χρόν') },
+            'πολυν':{ l:"πολύς, πολλή, πολύ", es:{morph:"Adjetivo, Masc, Acus, Sg", syntax:"Adyacente", def:"mucho", etym:"PIE *pel-"}, t:buildNounTable('πολύς','πολύ','πολύν','πολλοῦ','πολλῷ','πολλοί','πολλοί','πολλούς','πολλῶν','πολλοῖς') },
+            'κατεκειτο':{ l:"κατάκειμαι", es:{morph:"Verbo Deponente, 3ª Sg, Imperfecto Medio", syntax:"Núcleo", def:"yacía, estaba tumbado", etym:"κατά + κεῖμαι"}, t:buildVerbTable('κατεκείμην','κατέκεισο','κατέκειτο','κατεκείμεθα','κατέκεισθε','κατέκειντο','Imperfecto Medio') },
+            'καθευδειν':{ l:"καθεύδω", es:{morph:"Verbo, Infinitivo Presente Activo", syntax:"Régimen", def:"dormir", etym:"κατά + εὕδω"}, t:buildVerbTable('καθεύδω','-εις','-ει','-ομεν','-ετε','-ουσι','Presente Activo') },
+            'κειμενον':{ l:"κεῖμαι", es:{morph:"Participio, Presente Medio, Acus Sg Masc", syntax:"Predicativo / Concertado", def:"yaciendo, tumbado", etym:"PIE *ḱey-"}, t:buildNounTable('κείμενος','-ε','-ον','-ου','-ῳ','κείμενοι','-οι','-ους','-ων','-οις') },
+            'αβατον':{ l:"ἄβατον, -ου, τό", es:{morph:"Sustantivo (2ª Decl), Neutro, Acus, Sg", syntax:"Dirección", def:"al ábaton (recinto sagrado)", exp:"Lugar no pisable por impuros.", etym:"ἀ- + βαίνω"}, t:G.n2N('ἄβατ') },
+            'αβατω':{ l:"ἄβατον, -ου, τό", es:{morph:"Sustantivo (2ª Decl), Neutro, Dat, Sg", syntax:"Lugar en donde", def:"en el ábaton", etym:"ἀ- + βαίνω"}, t:G.n2N('ἄβατ') },
+            'οικαδε':{ l:"οἴκαδε", es:{morph:"Adverbio de dirección", syntax:"Dirección", def:"a casa, hacia casa", etym:"De οἶκος"}, t:inv },
+            'αστει':{ l:"ἄστυ, ἄστεως, τό", es:{morph:"Sustantivo (3ª Decl), Neutro, Dat, Sg", syntax:"Lugar en donde", def:"en la ciudad", etym:"PIE *h₂wost-"}, t:buildNounTable('ἄστυ','ἄστυ','ἄστυ','ἄστεως','ἄστει','ἄστη','ἄστη','ἄστη','ἄστεων','ἄστεσι') },
+            'πολεμου':{ l:"πόλεμος, -ου, ὁ", es:{morph:"Sustantivo (2ª Decl), Masc, Gen, Sg", syntax:"Régimen del verbo (παύσωνται)", def:"de la guerra", etym:"PIE *pel-"}, t:G.n2M('πολέμ') }
         };
 
         // ==========================================
-        // SISTEMA DE DEPURACIÓN Y FALLBACK SEGURO
+        // SISTEMA DE DEPURACIÓN (SIN IA FALSA)
         // ==========================================
-        function guessMorphology(word) {
+        function getDictionaryEntry(word) {
             const raw = word.replace(/[.,;:'"«»?()·!]/g, "").trim();
             let normalized = raw.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
             
-            // 1. Búsqueda exacta en diccionario (Cubre el texto casi al 100%)
+            // Búsqueda en el diccionario base (100% estricto)
             for (const key in wordDB) {
                 if (normalized === key) {
                     let exactMatch = JSON.parse(JSON.stringify(wordDB[key]));
@@ -765,16 +835,16 @@
                 }
             }
 
-            // 2. Fallback Seguro (No inventa declinaciones ni raíces falsas)
+            // Si por algún milagro ortográfico no está mapeada exactamente, NO se inventan tablas.
             return {
                 enunciado: raw,
                 es: {
                     morph: "Forma presente en los textos",
-                    syntax: "Dependiente de la oración",
-                    def: "Consulta tu diccionario de clase para mayor precisión.",
-                    exp: "El Oráculo no dispone del análisis exacto para esta variante ortográfica. Te sugerimos revisar las desinencias y compararlo con los paradigmas estudiados."
+                    syntax: "Analizable en contexto",
+                    def: "Consulta el diccionario de clase",
+                    exp: "Esta variante ortográfica exacta no está en el índice principal del Códice."
                 },
-                t: `<div class="mt-4 p-4 border-l-4 border-slate-500 bg-slate-800/80 rounded-r text-sm text-slate-300 italic"><p>La conexión con el diccionario no contiene la flexión completa de este término específico. Consulta con tu profesor para su análisis profundo.</p></div>`
+                t: `<div class="mt-4 p-4 border-l-4 border-slate-500 bg-slate-800/80 rounded-r text-sm text-slate-300 italic"><p>El Oráculo no dispone de la flexión completa para esta forma específica en este momento.</p></div>`
             };
         }
 
@@ -912,7 +982,7 @@
             
             setTimeout(() => {
                 try {
-                    let res = guessMorphology(word);
+                    let res = getDictionaryEntry(word);
 
                     c.innerHTML = `
                         <div class="mb-10 border-b-2 border-cyan-900 pb-6 text-center mt-4 relative">
