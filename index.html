@@ -52,7 +52,7 @@
         </div>
         <div class="flex items-center gap-3 text-cyan-300 font-cinzel text-2xl font-bold bg-cyan-950/80 px-4 py-2 rounded-md shadow-[0_0_15px_rgba(6,182,212,0.5)] border border-cyan-800">
             <i data-lucide="hourglass" class="w-6 h-6 animate-pulse"></i>
-            <span id="timerDisplay">60:00</span>
+            <span id="timerDisplay">90:00</span>
         </div>
     </header>
 
@@ -750,6 +750,9 @@
             'ιλαος':{ l:"ἵλεως, ἵλεων / ἵλαος", es:{morph:"Adjetivo, Masc, Nom, Sg", syntax:"Atributo", def:"propicio, benevolente"}, t: () => G.n2M('ἵλα') },
 
             // == VERBOS Y PARTICIPIOS ==
+            'αγε':{ l:"ἄγε", es:{morph:"Verbo, 2ª Sg, Imperativo Presente Activo", syntax:"Núcleo / Exhortación", def:"¡ea! / ¡vamos!", exp:"Forma del verbo ἄγω que a menudo se usa como interjección exhortativa."}, t: () => buildVerbT('-','ἄγε','ἀγέτω','-','ἄγετε','ἀγόντων','Imperativo') },
+            'κανασταντες':{ l:"καὶ ἀνίστημι (Crasis)", es:{morph:"Participio, Aoristo Radical Activo, Nom Pl Masc", syntax:"Participio Concertado", def:"y habiéndose levantado", exp:"Presenta crasis: fusión de la conjunción καὶ con el participio ἀναστάντες (de ἀνίστημι)."}, t: () => buildNounT('ἀναστάς','-στάς','-στάντα','-στάντος','-στάντι','ἀναστάντες','-στάντες','-στάντας','-στάντων','-στᾶσι') },
+            'αμυνουσαν':{ l:"ἀμύνω", es:{morph:"Participio, Futuro Activo, Acus Sg Fem", syntax:"Adyacente / Finalidad (con ὡς)", def:"para defender / rechazar", exp:"Participio de futuro que, junto a la partícula ὡς, expresa la intención de defender el Ática de los bárbaros."}, t: () => buildNounT('ἀμυνοῦσα','ἀμυνοῦσα','ἀμυνοῦσαν','ἀμυνούσης','ἀμυνούσῃ','ἀμυνοῦσαι','ἀμυνοῦσαι','ἀμυνούσας','ἀμυνουσῶν','ἀμυνούσαις') },
             'αγε':{ l:"ἄγω", es:{morph:"Verbo, 2ª Sg, Imperativo Presente Activo", syntax:"Núcleo / Exhortación", def:"¡ea! / ¡vamos!", exp:"A menudo se usa como interjección exhortativa."}, t: () => buildVerbT('-','ἄγε','ἀγέτω','-','ἄγετε','ἀγόντων','Imperativo') },
             'ηλπιζον':{ l:"ἐλπίζω", m:"Verbo, 3ª Pl, Imperfecto Ind. Activo", s:"Núcleo", d:"esperaban", t: () => G.vImpA('ἤ','λπιζ') },
             'αμυνουσαν':{ l:"ἀμύνω", m:"Participio, Futuro Activo, Acus, Sg, Fem", s:"Finalidad (con ὡς)", d:"para defender / rechazar", t: () => buildNounT('ἀμυνοῦσα','ἀμυνοῦσα','ἀμυνοῦσαν','ἀμυνούσης','ἀμυνούσῃ','ἀμυνοῦσαι','ἀμυνοῦσαι','ἀμυνούσας','ἀμυνουσῶν','ἀμυνούσαις') },
@@ -1009,7 +1012,7 @@
             btn.classList.remove('text-slate-400', 'border-transparent');
         }
 
-        let timeRemaining = 60 * 60;
+        let timeRemaining = 90 * 60;
         let timerInterval = null;
         let teamName = "";
         let mistakes = 0;
