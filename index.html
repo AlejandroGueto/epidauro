@@ -829,7 +829,7 @@
 
         const inv = '<div class="mt-8 p-6 border-l-4 border-slate-500 bg-slate-900/80 rounded-r-xl shadow-md flex items-center gap-4"><i data-lucide="lock" class="w-8 h-8 text-slate-400"></i><div><p class="text-sm uppercase tracking-widest font-bold text-slate-300">Naturaleza Invariable</p><p class="text-base font-serif text-slate-400 mt-1">Esta palabra es una partícula, conjunción, preposición o adverbio. No se declina ni se conjuga en la oración.</p></div></div>';
 
-        // Generadores Rápidos (Atajos de construcción para la Base de Datos)
+       // Generadores Rápidos (Atajos de construcción para la Base de Datos)
         const G = {
             n1F: (r, eta) => buildNounT(r+(eta?'η':'α'), r+(eta?'η':'α'), r+(eta?'ην':'αν'), r+(eta?'ης':'ας'), r+(eta?'ῃ':'ᾳ'), r+'αι', r+'αι', r+'ας', r+'ων', r+'αις'),
             n1M: (r) => buildNounT(r+'ης', r+'α', r+'ην', r+'ου', r+'ῃ', r+'αι', r+'αι', r+'ας', r+'ων', r+'αις'),
@@ -837,8 +837,6 @@
             n2N: (r) => buildNounT(r+'ον', r+'ον', r+'ον', r+'ου', r+'ῳ', r+'α', r+'α', r+'α', r+'ων', r+'οις'),
             vPresA: (r) => buildVerbT(r+'ω', r+'εις', r+'ει', r+'ομεν', r+'ετε', r+'ουσι(ν)', "Presente de Indicativo Activo"),
             vPresM: (r) => buildVerbT(r+'ομαι', r+'ῃ', r+'εται', r+'όμεθα', r+'εσθε', r+'ονται', "Presente de Indicativo Medio"),
-            vFutA: (r) => buildVerbT(r+'σω', r+'σεις', r+'σει', r+'σομεν', r+'σετε', r+'σουσι(ν)', "Futuro de Indicativo Activo"),
-            vFutM: (r) => buildVerbT(r+'σομαι', r+'σῃ', r+'σεται', r+'σομεθα', r+'σεσθε', r+'σονται', "Futuro de Indicativo Medio"),
             vFutA: (r) => buildVerbT(r+'σω', r+'σεις', r+'σει', r+'σομεν', r+'σετε', r+'σουσι(ν)', "Futuro de Indicativo Activo"),
             vFutM: (r) => buildVerbT(r+'σομαι', r+'σῃ', r+'σεται', r+'σομεθα', r+'σεσθε', r+'σονται', "Futuro de Indicativo Medio"),
             vImpfA: (a, r) => buildVerbT(a+r+'ον', a+r+'ες', a+r+'ε(ν)', a+r+'ομεν', a+r+'ετε', a+r+'ον', "Imperfecto de Indicativo Activo"),
