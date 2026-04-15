@@ -855,7 +855,20 @@
             'με': { l: 'ἐγώ', m: 'Pronombre Personal, 1ª pers. Sg., Acusativo', s: 'Sujeto del Infinitivo / O. Directo de κελεύουσι', d: 'me, a mí', t: () => buildNounT('ἐγώ','-','ἐμέ/με','ἐμοῦ/μου','ἐμοί/μοι','ἡμεῖς','-','ἡμᾶς','ἡμῶν','ἡμῖν') },
             'παρα': { l: 'παρά', m: 'Preposición', s: 'Dirección (Rige Acusativo de persona)', d: 'hacia, junto a', t: () => inv },
             'τον': { l: 'ὁ, ἡ, τό', m: 'Artículo Definido, Masc. Acus. Sg.', s: 'Determinante', d: 'al, el', t: () => G.artM() },
-            'ασκληπιον': { l: 'Ἀσκλήπιος, -ου, ὁ', m: 'Sust. Propio (2ª decl), Acusativo Sg.', s: 'CC de Dirección (Término de la prep.)', d: 'Asclepio (Dios de la medicina)', t: () => G.n2M('Ἀσκληπι') },
+          'ασκληπιον': { 
+    l: 'Ἀσκλήπιος, -ου, ὁ', 
+    m: 'Sustantivo Propio (2ª decl), Acusativo Sg. Masc.', 
+    s: 'Dirección (con παρά / πρός)', 
+    d: 'Asclepio (Dios de la Medicina)', 
+    t: () => buildNounT('Ἀσκλήπιος', 'Ἀσκλήπιε', 'Ἀσκλήπιον', 'Ἀσκληπίου', 'Ἀσκληπίῳ', '-', '-', '-', '-', '-') 
+},
+'ασκληπιε': { 
+    l: 'Ἀσκλήπιος, -ου, ὁ', 
+    m: 'Sustantivo Propio (2ª decl), Vocativo Sg. Masc.', 
+    s: 'Apelación directa (Invocación)', 
+    d: '¡Oh Asclepio!', 
+    t: () => buildNounT('Ἀσκλήπιος', 'Ἀσκλήπιε', 'Ἀσκλήπιον', 'Ἀσκληπίου', 'Ἀσκληπίῳ', '-', '-', '-', '-', '-') 
+},
             'ιεναι': { l: 'εἶμι', m: 'Verbo Irregular, Infinitivo Presente', s: 'Núcleo de la Oración de Infinitivo (O.D. de κελεύουσι)', d: 'ir, marchar', t: () => buildVerbT('εἶμι','εἶ','εἶσι','ἴμεν','ἴτε','ἴασι','Presente Ind. (Irreg.)') },
             'ισως': { l: 'ἴσως', m: 'Adverbio', s: 'CC de Duda', d: 'quizás, tal vez', t: () => inv },
             'γαρ': { l: 'γάρ', m: 'Conjunción Causal / Explicativa (Pospositiva)', s: 'Nexo', d: 'pues, en efecto, porque', t: () => inv },
@@ -1061,9 +1074,20 @@
             'εψομαι': { l: 'ἕπομαι', m: 'Verbo Deponente, 1ª Sg., Futuro Indicativo', s: 'Núcleo', d: 'seguiré, iré detrás', t: () => buildVerbT('ἕψομαι','ἕψῃ','ἕψεται','ἑψόμεθα','ἕψεσθε','ἕψονται','Futuro Indicativo Medio') },
             
             /* Nombres Propios: Familia y Personajes */
-            'δικαιοπολις': { l: 'Δικαιόπολις, -εως, ὁ', m: 'Sustantivo Propio (3ª decl), Nominativo Sg.', s: 'Sujeto', d: 'Diceópolis', t: () => buildNounT('Δικαιόπολις','Δικαιόπολι','Δικαιόπολιν','Δικαιοπόλεως','Δικαιοπόλει','-','-','-','-','-') },
-            'δικαιοπολιν': { l: 'Δικαιόπολις, -εως, ὁ', m: 'Sustantivo Propio (3ª decl), Acusativo Sg.', s: 'Objeto Directo', d: 'a Diceópolis', t: () => buildNounT('Δικαιόπολις','Δικαιόπολι','Δικαιόπολιν','Δικαιοπόλεως','Δικαιοπόλει','-','-','-','-','-') },
-            'δικαιοπολει': { l: 'Δικαιόπολις, -εως, ὁ', m: 'Sustantivo Propio (3ª decl), Dativo Sg.', s: 'Complemento / Régimen', d: 'a/para Diceópolis', t: () => buildNounT('Δικαιόπολις','Δικαιόπολι','Δικαιόπολιν','Δικαιοπόλεως','Δικαιοπόλει','-','-','-','-','-') },
+            'δικαιοπολις': { 
+    l: 'Δικαιόπολις, -εως, ὁ', 
+    m: 'Sustantivo Propio (3ª decl), Nominativo Sg. Masc.', 
+    s: 'Sujeto de la oración', 
+    d: 'Diceópolis', 
+    t: () => buildNounT('Δικαιόπολις', 'Δικαιόπολι', 'Δικαιόπολιν', 'Δικαιοπόλεως', 'Δικαιοπόλει', '-', '-', '-', '-', '-') 
+},
+'δικαιοπολι': { 
+    l: 'Δικαιόπολις, -εως, ὁ', 
+    m: 'Sustantivo Propio (3ª decl), Vocativo Sg. Masc.', 
+    s: 'Apelación directa', 
+    d: '¡Oh Diceópolis!', 
+    t: () => buildNounT('Δικαιόπολις', 'Δικαιόπολι', 'Δικαιόπολιν', 'Δικαιοπόλεως', 'Δικαιοπόλει', '-', '-', '-', '-', '-') 
+},
             'φιλιπποσ': { l: 'Φίλιππος, -ου, ὁ', m: 'Sustantivo Propio (2ª decl), Nominativo Sg.', s: 'Sujeto', d: 'Filipo', t: () => buildNounT('Φίλιππος','Φίλιππε','Φίλιππον','Φιλίππου','Φιλίππῳ','-','-','-','-','-') },
             'φιλιππω': { l: 'Φίλιππος, -ου, ὁ', m: 'Sustantivo Propio (2ª decl), Dativo Sg.', s: 'C. Indirecto / Compañía', d: 'a Filipo', t: () => buildNounT('Φίλιππος','Φίλιππε','Φίλιππον','Φιλίππου','Φιλíππῳ','-','-','-','-','-') },
             'φιλιππον': { l: 'Φίλιππος, -ου, ὁ', m: 'Sustantivo Propio (2ª decl), Acusativo Sg.', s: 'Objeto Directo', d: 'a Filipo', t: () => buildNounT('Φίλιππος','Φίλιππε','Φίλιππον','Φιλίππου','Φιλíππῳ','-','-','-','-','-') },
