@@ -170,6 +170,14 @@
             20%, 40%, 60%, 80% { transform: translateX(5px); } 
         }
         .error-shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; border-color: #ef4444 !important; }
+
+        /* Ka mālamalama akua - Efecto de brillo divino */
+        @keyframes divineGlow {
+            0% { box-shadow: 0 0 5px #38bdf8; }
+            50% { box-shadow: 0 0 40px #38bdf8; }
+            100% { box-shadow: 0 0 5px #38bdf8; }
+        }
+        .unlocked-glow { animation: divineGlow 2s ease-in-out; }
     </style>
 </head>
 <body class="flex flex-col items-center p-4 md:p-8 relative">
@@ -205,7 +213,7 @@
                 </div>
             </div>
 
-            <p class="text-lg md:text-xl leading-relaxed mb-8 text-slate-300 text-justify">
+            <p class="text-lg md:text-xl leading-relaxed mb-8 text-slate-300 text-justify font-serif">
                 "Siglo V a.C. Habéis llegado al santuario de curación de Asclepio en Epidauro, junto a Diceópolis y su hijo ciego, Filipo. Mientras esperáis el milagro en el <i>ábaton</i>, llegan noticias del norte: Mardonio y los persas avanzan nuevamente hacia Atenas. Vuestro deber es descifrar los textos sagrados de la Unidad XVIII, comprender la gramática y los principios de la ciencia griega, y enviar un mensaje de advertencia mediante la pira de señales. Tenéis 90 minutos."
             </p>
             
@@ -457,27 +465,27 @@
                 <p class="mb-6 text-slate-200 text-sm leading-relaxed">Para encender la pira de señales, introducid los <span class="text-emerald-400 font-bold text-lg">seis dígitos numéricos</span> derivados del análisis morfológico.</p>
                 
                 <div class="grid grid-cols-3 md:grid-cols-6 gap-3 mb-8">
-                    <div class="bg-emerald-950/40 p-3 rounded-lg text-center border border-emerald-800">
+                    <div class="bg-emerald-950/40 p-3 rounded-lg text-center border border-emerald-800 shadow-inner">
                         <p class="text-[10px] text-slate-300 mb-2 font-bold">Nº Declinación de<br><span class="text-white text-base">Ἀθήνας</span></p>
                         <input type="number" id="lock1" class="candado-input w-full">
                     </div>
-                    <div class="bg-emerald-950/40 p-3 rounded-lg text-center border border-emerald-800">
+                    <div class="bg-emerald-950/40 p-3 rounded-lg text-center border border-emerald-800 shadow-inner">
                         <p class="text-[10px] text-slate-300 mb-2 font-bold">Nº Declinación de<br><span class="text-white text-base">γαστέρα</span></p>
                         <input type="number" id="lock2" class="candado-input w-full">
                     </div>
-                    <div class="bg-emerald-950/40 p-3 rounded-lg text-center border border-emerald-800">
+                    <div class="bg-emerald-950/40 p-3 rounded-lg text-center border border-emerald-800 shadow-inner">
                         <p class="text-[10px] text-slate-300 mb-2 font-bold">Nº de caso del Genitivo<br><span class="text-white text-[9px]">(Nom=1, Voc=2, Ac=3...)</span></p>
                         <input type="number" id="lock3" class="candado-input w-full">
                     </div>
-                    <div class="bg-emerald-950/40 p-3 rounded-lg text-center border border-emerald-800">
+                    <div class="bg-emerald-950/40 p-3 rounded-lg text-center border border-emerald-800 shadow-inner">
                         <p class="text-[10px] text-slate-300 mb-2 font-bold">Nº Declinación de<br><span class="text-white text-base">ὕπνῳ</span></p>
                         <input type="number" id="lock4" class="candado-input w-full">
                     </div>
-                    <div class="bg-emerald-950/40 p-3 rounded-lg text-center border border-emerald-800">
+                    <div class="bg-emerald-950/40 p-3 rounded-lg text-center border border-emerald-800 shadow-inner">
                         <p class="text-[10px] text-slate-300 mb-2 font-bold">Nº Persona verbal de<br><span class="text-white text-base">ἔμενεν</span></p>
                         <input type="number" id="lock5" class="candado-input w-full">
                     </div>
-                    <div class="bg-emerald-950/40 p-3 rounded-lg text-center border border-emerald-800">
+                    <div class="bg-emerald-950/40 p-3 rounded-lg text-center border border-emerald-800 shadow-inner">
                         <p class="text-[10px] text-slate-300 mb-2 font-bold">Nº Total de part. fut. en:<br><span class="text-white text-[9px]">"ὡς λέξοντας ὅτι..."</span></p>
                         <input type="number" id="lock6" class="candado-input w-full">
                     </div>
@@ -495,7 +503,7 @@
     </div>
 
     <!-- PANTALLA DE VICTORIA -->
-    <div id="victoryStage" class="w-full max-w-4xl flex flex-col items-center text-center mt-12 space-y-4 hidden-stage relative z-10">
+    <div id="victoryStage" class="w-full max-w-5xl flex flex-col items-center text-center mt-12 space-y-4 hidden-stage relative z-10">
         <h1 class="text-6xl md:text-8xl font-cinzel text-emerald-400 drop-shadow-lg mb-4">¡Victoria Helénica!</h1>
         <div class="text-9xl mb-8">🔥🏛️</div>
         <p class="text-2xl text-slate-200 leading-relaxed max-w-3xl mb-8 font-serif italic">
@@ -526,7 +534,7 @@
 
     <!-- PANTALLA DE DERROTA -->
     <div id="defeatStage" class="w-full max-w-4xl flex flex-col items-center text-center mt-20 space-y-8 hidden-stage relative z-10">
-        <h1 class="text-7xl md:text-9xl font-cinzel text-red-600 drop-shadow-2xl mb-4">Grecia ha caído</h1>
+        <h1 class="text-7xl md:text-[120px] font-cinzel text-red-600 drop-shadow-2xl mb-4">Grecia ha caído</h1>
         <div class="text-9xl mb-8">⚔️🔥</div>
         <p class="text-2xl md:text-4xl text-slate-300 leading-relaxed max-w-2xl font-serif">
             El tiempo se ha agotado. Las sombras de Mardonio cubren la Hélade y el conocimiento de los sabios se pierde en la noche de los tiempos.
@@ -556,8 +564,8 @@
         // ==========================================
         const texts = {
             alfa: `«οἱ ἰατροὶ κελεύουσί με παρὰ τὸν Ἀσκλήπιον ἰέναι· ἴσως γὰρ ὠφελήσει με ὁ θεός.» ἐν δὲ τούτῳ ὁ Δικαιόπολις τῷ Φιλίππῳ ἡγούμενος ἐκ τῆς νεὼς ἐξέβη καί, «ἄγε δή, ὦ παῖ», ἔφη, «τί δεῖ ποιεῖν; ἆρα βούλῃ οἰνοπώλιον ζητῆσαι καὶ δεῖπνον ἑλέσθαι;» ὁ δέ, «μάλιστά γε, ὦ πάτερ. σὺ μὲν οὖν ἡγοῦ, ἐγὼ δ' ἕψομαι». οἰνοπώλιον οὖν εὑρόντες ἐγγὺς τοῦ λιμένος ἐκαθίζοντο οἶνόν τε πίνοντες καὶ τοῖς παροῦσι διαλεγόμενοι. τῶν δὲ παρόντων γυνή τις τὸν Δικαιόπολιν ἤρετο ποῖ πορεύεται καὶ μαθοῦσα ὅτι πρὸς τὴν Ἐπίδαυρον πορεύεται, «καὶ ἐγώ», ἔφη, «πρὸς τὴν Ἐπίδαυρον πορεύομαι. νοσῶ γὰρ τὴν γαστέρα καὶ οὐδὲν δύνανται ὠφελεῖν με οἱ ἰατροί· κελεύουσί μ' οὖν παρὰ τὸν Ἀσκλήπιον ἰέναι· ἴσως γὰρ ὠφελήσει με ὁ θεός. ἀλλ' εἰπέ μοι, πότε δὴ ἀποπλεύσεται ἡ ναῦς; πότερον τήμερον εἰς τὴν Ἐπίδαυρον ἀφιξόμεθα ἢ οὔ;» ὁ δὲ Δικαιόπολις, «οὐκ οἶδα ἔγωγε· λέγουσι δὲ ὅτι οὐ πολὺ ἀπέχει ἡ Ἐπίδαυρος. ἴσως οὖν ἀφιξόμεθα πρὸ τῆς νυκτὸς ἢ καὶ πρότερον. ἀλλ' ἄκουε δή· δι' ὀλίγου γὰρ γνωσόμεθα· τοῦ γὰρ ναυκλήρου ἀκούω ἡμᾶς καλοῦντος. ἆρ' οὐ ταχέως ἐπάνιμεν πρὸς τὴν ναῦν;» κάναστάντες οὖν πρὸς τὴν ναῦν ἔσπευδον. ὁ δὲ ναύκληρος ἰδὼν αὐτοὺς προσιόντας, βοήσας, «εἴσβητε ταχέως,» ἔφη, «εὐθὺς γὰρ ὁρμησόμεθα· δεῖ γὰρ πρὸ τῆς νυκτὸς εἰς τὴν Ἐπίδαυρον ἀφικέσθαι». ὁ δὲ Δικαιόπολις, «πότε δή,» ἔφη, «ἐκεῖσε ἀφιξόμεθα;» ὁ δὲ ναύκληρος, «οὐρίου γε ἀνέμου τυχόντες σὺν θεοῖς ταχέως πλευσόμεθα καὶ πρὸς ἑσπέραν παρεσόμεθα. ἀλλὰ σπεύδετε· εὐθὺς γὰρ λύσομεν τὴν ναῦν.» οἱ μὲν οὖν ταχέως εἰσέβησαν, οἱ δὲ ναῦται τὴν ναῦν λύσαντες καὶ πρὸς τὴν θάλατταν προερέσαντες τὰ ἱστία ἦραν. ἄνεμος δὲ οὔριος τὰ ἱστία ἔπλησεν ὥστε ἡ ναῦς ταχέως διὰ τῶν κυμάτων ἔτρεχεν.`,
-            beta: `ὁ Δικαιόπολις τὴν γυναῖκα χαίρειν κελεύσας, τῷ Φιλίππῳ πρὸς τὴν ναῦν ἡγήσατο. πλεύσαντες οὖν πᾶσαν τὴν ἡμέραν, ὡς ἐγίγνετο ἡ ἑσπέρα, εἰς τὴν Ἐπίδαυρον ἀφίκοντο, οὐδὲν κακὸν παθόντες. ὡς δ' ἐξέβησαν εἰς τὴν γῆν τῷ μὲν Δικαιοπόλει ἔδοξεν εὐθὺς πρὸς τὸ Ἀσκληπιεῖον ἰέναι· οὐ γὰρ πολὺ ἀπεῖχεν· ἡ δὲ γυνὴ ἡ τὴν γαστέρα νοσοῦσα οὕτως ἔκαμνεν ὥστε οὐκ ἤθελεν ἰέναι ἐκείνῃ τῇ ἡμέρᾳ ἀλλ' ἔμεινεν ἐν καταγωγίῳ τινὶ ἐγγὺς τοῦ λιμένος. οἱ δὲ ὥρμησαν καὶ δι' ὀλίγου ἀφικόμενοι ηὗρον τὰς πύλας κεκλεισμένας. ὁ οὖν Δικαιόπολις, «κεκλεισμέναι εἰσὶν αἱ πύλαι», ἔφη, «τί οὖν δεῖ ποιεῖν; πότερον κόψω τὰς πύλας ἢ εἰς τὸν λιμένα ἐπάνιμεν; ὀψὲ γάρ ἐστιν». ὁ δὲ Φίλιππος, «ἀλλὰ κόψον, ὦ πάτερ, εἰ δοκεῖ. ἴσως γὰρ ἀκούσεταί τις καὶ ἡγήσεται ἡμῖν παρὰ τὸν ἱερέα». ὁ μὲν οὖν Δικαιόπολις ἔκοψεν, ἐξελθὼν δὲ ὑπηρέτης τις οὐ διὰ πολλοῦ, «τίς ὢν σύ», ἔφη, «κόπτεις τὰς πύλας τηνικαῦτα τῆς ἡμέρας; πόθεν ἤλθετε καὶ τί βουλόμενοι πάρεστε;». ὁ δὲ Δικαιόπολις, «ἐγὼ μέν εἰμι Δικαιόπολις Ἀθηναῖος ὤν, τὸν δὲ παῖδα κομίζω, ἐάν πως ὁ θεὸς ἐθέλῃ τοὺς ὀφθαλμοὺς αὐτῷ ἀκεῖσθαι. τυφλὸς γὰρ γέγονεν. ἆρ' οὐχ ἡγήσῃ ἡμῖν παρὰ τὸν σὸν δεσπότην;». ὁ δὲ ὑπηρέτης, «ὀψέ ἐστιν, ἀλλ' ὅμως μείνατε ἐνταῦθα, ἐγὼ γαὶ εἶμι ὡς ζητήσων τὸν δεσπότην καὶ ἐρωτήσω εἰ ἐθέλει ὑμᾶς δέξασθαι». οἱ μὲν οὖν ἔμενον ἐπὶ ταῖς πύλαις· οὐ πολλῷ δ' ὕστερον ἐπανελθὼν ὁ ὑπηρέτης, «εἴσιτε», ἔφη, «ὁ γὰρ δεσπότης ὑμᾶς δέξεται». ταῦτα δ' εἰπὼν ἡγεῖτο αὐτοῖς εἰς τὸ τέμενος. ἀμειψάμενοι οὖν τὰς πύλας εἰς αὐλὴν μεγάλην εἰσῆλθον· ἐκεῖ δὲ ἐγγὺς τοῦ ἱεροῦ ἐκαθίζετο ἀνήρ τις γεραιός, ὃς ἰδὼν αὐτοὺς προσιόντας, «χαίρετε, ὦ φίλοι», ἔφη. «τί βουλόμενοι ἥκετε;» ὁ μὲν οὖν Δικαιόπολις πάντα ἐξηγήσατο, ὁ δὲ ἱερεὺς πρὸς τὸν παῖδα εὐμενῶς βλέψας, «εἰπέ μοι, ὦ παῖ», ἔφη, «ἆρα σεαυτὸν τῷ Ἀσκλήπῳ ἐπιτρέψεις; ἆρα τοῦτο πιστεύεις, ὅτι ὁ θεὸς δυνήσεταί σε ὠφελεῖν;» ὁ δὲ Φίλιππος, «μάλιστά γε· πάντα γὰρ τοῖς θεοῖς δυνατά· τῷ θεῷ πιστεύω καὶ ἐμαυτὸν αὐτῷ ἐπιτρέψω». ὁ δὲ γέρων, «εὖ γε, ὦ παῖ. νῦν μὲν ἄπιτε εἰς τὸ καταγώγιον, αὔριον δὲ ὁ ὑπηρέτης ὑμῖν πάρεσται ὡς ἡγησόμενος τῷ παιδὶ παρά με». ἀπελθόντες οὖν ὅ τε πατὴρ καὶ ὁ παῖς τὴν νύκτα ἔμενον ἐν τῷ καταγωγίῳ. τῇ δὲ ὑστεραίᾳ ἐπεὶ πρῶτον ἐγένετο ἡ ἡμέρα, παρελθὼν ὁ ὑπηρέτης τὸν Φίλιππον ἤγαγε παρὰ τὸν ἱερέα. ὁ δὲ εὐμενῶς δεξάμενος τὸν παῖδα, «ἄγε δή, ὦ παῖ», ἔφη, «νῦν χρή σε παρασκευάζεσθαι· δεῖ γὰρ ὅσιά τε φρονεῖν καὶ καθαρὸν εἶναι τὴν ψυχήν. ἀλλὰ μηδὲν φοβοῦ· φιλανθρωπότατος γάρ ἐστιν ὁ Ἀσκλήπιος τῶν θεῶν καὶ τοῖς καθαροῖς οὖσι τὴν ψυχὴν αἰεὶ ἵλαός ἐστιν. θάρρει οὖν.» οὕτω δ' εἰπὼν τὸν παῖδα εἰς τὸ ἱερὸν ἤγαγεν. ἐκεῖ δὲ πρῶτον μὲν ὁ Φίλιππος ἐκαθήρατο, ἔπειτα δὲ πᾶσαν τὴν ἡμέραν ἐν τῷ ἱερῷ ἔμενεν, ὅσιά τε φρονῶν καὶ τὸν θεὸν εὐχόμενος ἐν τῷ ὕπνῳ ἐπιφανῆναι. τέλος δὲ ἐπεὶ ἐγίγνετο ἡ ἑσπέρα, ἐπανελθὼν ὁ ἱερεύς, «ἄγε δή, ὦ παῖ», ἔφη, «πάντα γὰρ ἕτοιμά ἐστιν. ἕπου μοι». τὸν δὲ παῖδα ἐκ τοῦ ἱεροῦ ἀγαγὼν πρὸς τὸν βωμόν, ἐκέλευσεν αὐτὸν σπονδὴν κατὰ νόμον ποιεῖσθαι. ὁ δὲ τὴν φιάλην ταῖς χερσὶ λαβὼν σπονδὴν ἐποιήσατο καὶ τὰς χεῖρας πρὸς τὸν οὐρανὸν ἄρας, «Ἀσκλήπιε», ἔφη, «σῶτερ, φιλανθρωπότατε τῶν θεῶν, ἄκουέ μου εὐχομένου, ὃς ὅσιά τε φρονῶν καὶ καθαρὸς ὢν τὴν ψυχὴν ἱκέτης σοῦ πάρειμι. ἵλαος ἴσθι μοι τυφλῷ γεγονότι καί, εἴ σοι δοκεῖ, τοὺς ὀφθαλμούς μοι ἀκοῦ». ἐνταῦθα δὴ ὁ ἱερεὺς τῷ παιδὶ εἰς τὸ ἄβατον ἡγησάμενος ἐκέλευσεν αὐτὸν ἐπὶ τῇ γῇ κείμενον καθεύδειν. ὁ οὖν Φίλιππος κατέκειτο ἀλλὰ πολὺν δὴ χρόνον οὐκ ἐδύνατο καθεύδειν· μόνος γὰρ ὢν ἐν τῷ ἀβάτῳ μάλα ἐφοβεῖτο· νὺξ γὰρ ἦν καὶ πανταχοῦ σκότος καὶ σιγή, εἰ μὴ σπανίως ἤκουε τῶν ἱερῶν ὄφεων ἠρέμα συριζόντων.`,
-            persas: `ἅμα δὲ ἦρι ἀρχομένῳ ὁ Μαρδόνιος ὁρμώμενος ἐκ Θεσσαλίας ἦγε τὸν στρατὸν σπουδῇ ἐπὶ τὰς Ἀθήνας. προϊόντι δὲ αὐτῷ οὐδεὶς τῶν Βοιωτῶν ἀντεῖχεν, οὐδὲ ἐβοήθουν τοῖς Ἀθηναίοις οἱ Λακεδαιμόνιοι, ἀφικόμενος δὲ εἰς τὴν Ἀττικὴν οὐχ ηὗρε τοὺς Ἀθηναίους ἀλλὰ ἔμαθεν ὅτι ἔν τε Σαλαμίνι οἱ πλεῖστοί εἰσι καὶ ἐν ταῖς ναυσίν· αἱρεῖ τε ἔρημον τὸ ἄστυ. ἐπεὶ δὲ ἐν ταῖς Ἀθήναις ἐγένετο, ἄγγελον ἔπεμψεν εἰς τὴν Σαλαμῖνα, λόγους φέροντα ἐπιτηδείους· εἶπε γὰρ ὅτι ὁ βασιλεὺς τήν τε Ἀττικὴν τοῖς Ἀθηναίοις ἀποδώσει καὶ συμμαχίαν ποιήσεται, ἐὰν τοῦ πολέμου παύσωνται. οἱ δὲ Ἀθηναῖοι τοὺς λόγους οὐκ ἐδέξαντο ἀλλὰ τὸν ἄγγελον ἀπέπεμψαν. εἰς δὲ τὴν Σαλαμῖνα διέβησαν οἱ Ἀθηναῖοι ὧδε· ἕως μὲν ἤλπιζον στρατὸν πέμψειν τοὺς Λακεδαιμονίους ὡς βοηθήσοντα, ἔμενον ἐν τῇ Ἀττικῇ· ἐπεὶ δὲ οἱ μὲν Λακεδαιμόνιοι οὐκ ἐβοήθουν, ὁ δὲ Μαρδόνιος προϊὼν εἰς τὴν Βοιωτίαν ἀφίκετο, οὕτω δὴ ἐξεκόμισαν πάντα ἐκ τῆς Ἀττικῆς καὶ αὐτοὶ διέβησαν εἰς τὴν Σαλαμῖνα, καὶ εἰς Λακεδαίμονα ἔπεμπον ἀγγέλους ὡς μεμψόμενοι τοῖς Λακεδαιμονίοις, διότι οὐκ ἐβοήθουν. ὡς δὲ ἀφίκοντο εἰς τὴν Λακεδαίμονα οἱ ἄγγελοι, εἶπον τάδε, «ἔπεμψαν ἡμᾶς οἱ Ἀθηναῖοι ὡς λέξοντας ὅτι ὁ βασιλεὺς τῶν Περσῶν ἐθέλει τήν τε Ἀττικὴν ἀποδοῦναι καὶ συμμαχίαν ποιήσεται· ἡμεῖς δέ, καίπερ ἀδικούμενοι ὑφ' ὑμῶν, ἐκείνους τοὺς λόγους οὐκ ἐδεξάμεθα, νῦν δὲ κελεύομεν ὑμᾶς ὡς τάχιστα στρατιὰν πέμψαι ὡς τοὺς βαρβάρους ἀμυνοῦσαν τῇ Ἀττικῇ».`,
+            beta: `ὁ Δικαιόπολις τὴν γυναῖκα χαίρειν κελεύσας, τῷ Φιλίππῳ πρὸς τὴν ναῦν ἡγήσατο. πλεύσαντες οὖν πᾶσαν τὴν ἡμέραν, ὡς ἐγίγνετο ἡ ἑσπέρα, εἰς τὴν Ἐπίδαυρον ἀφίκοντο, οὐδὲν κακὸν παθόντες. ὡς δ' ἐξέβησαν εἰς τὴν γῆν τῷ μὲν Δικαιοπόλει ἔδοξεν εὐθὺς πρὸς τὸ Ἀσκληπιεῖον ἰέναι· οὐ γὰρ πολὺ ἀπεῖχεν· ἡ δὲ γυνὴ ἡ τὴν γαστέρα νοσοῦσα οὕτως ἔκαμνεν ὥστε οὐκ ἤθελεν ἰέναι ἐκείνῃ τῇ ἡμέρᾳ ἀλλ' ἔμεινεν ἐν καταγωγίῳ τινὶ ἐγγὺς τοῦ λιμένος. οἱ δὲ ὥρμησαν καὶ δι' ὀλίγου ἀφικόμενοι ηὗρον τὰς πύλας κεκλεισμένας. ὁ οὖν Δικαιόπολις, «κεκλεισμέναι εἰσὶν αἱ πύλαι», ἔφη, «τί οὖν δεῖ ποιεῖν; πότερον κόψω τὰς πύλας ἢ εἰς τὸν λιμένα ἐπάνιμεν; ὀψὲ γάρ ἐστιν». ὁ δὲ Φίλιππος, «ἀλλὰ κόψον, ὦ πάτερ, εἰ δοκεῖ. ἴσως γὰρ ἀκούσεταί τις καὶ ἡγήσεται ἡμῖν παρὰ τὸν ἱερέα». ὁ μὲν οὖν Δικαιόπολις ἔκοψεν, ἐξελθὼν δὲ ὑπηρέτης τις οὐ διὰ πολλοῦ, «τίς ὢν σύ», ἔφη, «κόπτεις τὰς πύλας τηνικαῦτα τῆς ἡμέρας; πόθεν ἤλθετε καὶ τί βουλόμενοι πάρεστε;». ὁ δὲ Δικαιόπολις, «ἐγὼ μέν εἰμι Δικαιόπολις Ἀθηναῖος ὤν, τὸν δὲ παῖδα κομίζω, ἐάν πως ὁ θεὸς ἐθέλῃ τοὺς ὀφθαλμοὺς αὐτῷ ἀκεῖσθαι. τυφλὸς γὰρ γέγονεν. ἆρ' οὐχ ἡγήσῃ ἡμῖν παρὰ τὸν σὸν δεσπότην;». ὁ δὲ ὑπηρέτης, «ὀψέ ἐστιν, ἀλλ' ὅμως μείνατε ἐνταῦθα, ἐγὼ γαὶ εἶμι ὡς ζητήσων τὸν δεσπότην καὶ ἐρωτήσω εἰ ἐθέλει ὑμᾶς δέξασθαι». οἱ μὲν οὖν ἔμενον ἐπὶ ταῖς πύλαις· οὐ πολλῷ δ' ὕστερον ἐπανελθὼν ὁ ὑπηρέτης, «εἴσιτε», ἔφη, «ὁ γὰρ δεσπότης ὑμᾶς δέξεται». ταῦτα δ' εἰπὼν ἡγεῖτο αὐτοῖς εἰς τὸ τέμενος. ἀμειψάμενοι οὖν τὰς πύλας εἰς αὐλὴν μεγάλην εἰσῆλθον· ἐκεῖ δὲ ἐγγὺς τοῦ ἱεροῦ ἐκαθίζετο ἀνήρ τις γεραιός, ὃς ἰδὼν αὐτοὺς προσιόντας, «χαίρετε, ὦ φίλοι», ἔφη. «τί βουλόμενοι ἥκετε;» ὁ μὲν οὖν Δικαιόπολις πάντα ἐξηγήσατο, ὁ δὲ ἱερεὺς πρὸς τὸν παῖδα εὐμενῶς βλέψας, «εἰπέ μοι, ὦ παῖ», ἔφη, «ἆρα σεαυτὸν τῷ Ἀσκλήπῳ ἐπιτρέψεις; ἆρα τοῦτο πιστεύεις, ὅτι ὁ θεὸς δυνήσεταί σε ὠφελεῖν;» ὁ δὲ Φίλιππος, «μάλιστά γε· πάντα γὰρ τοῖς θεοῖς δυνατά· τῷ θεῷ πιστεύω καὶ ἐμαυτὸν αὐτῷ ἐπιτρέψω». ὁ δὲ γέρων, «εὖ γε, ὦ παῖ. νῦν μὲν ἄπιτε εἰς τὸ καταγώγιον, αὔριον δὲ ὁ ὑπηρέτης ὑμῖν πάρεσται ὡς ἡγησόμενος τῷ παιδὶ παρά με». ἀπελθόντες οὖν ὅ τε πατὴρ καὶ ὁ παῖς τὴν νύκτα ἔμενον ἐν τῷ καταγωγίῳ. τῇ δὲ ὑστεραίᾳ ἐπεὶ πρῶτον ἐγένετο ἡ ἡμέρα, παρελθὼν ὁ ὑπηρέτης τὸν Φίλιππον ἤγαγε παρὰ τὸν ἱερέα. ὁ δὲ εὐμενῶς δεξάμενος τὸν παῖδα, «ἄγε δή, ὦ παῖ», ἔφη, «νῦν χρή σε παρασκευάζεσθαι· δεῖ γὰρ ὅσιά τε φρονεῖν καὶ καθαρὸν εἶναι τὴν ψυχήν. ἀλλὰ μηδὲν φοβοῦ· φιλανθρωπότατος γάρ ἐστιν ὁ Ἀσκλήπιος τῶν θεῶν καὶ τοῖς καθαροῖς οὖσι τὴν ψυχὴν αἰεὶ ἵλαός ἐστιν. θάρρει οὖν.» οὕτω δ' εἰπὼν τὸν παῖδα εἰς τὸ ἱερόν ἤγαγεν. ἐκεῖ δὲ πρῶτον μὲν ὁ Φίλιππος ἐκαθήρατο, ἔπειτα δὲ πᾶσαν τὴν ἡμέραν ἐν τῷ ἱερῷ ἔμενεν, ὅσιά τε φρονῶν καὶ τὸν θεὸν εὐχόμενος ἐν τῷ ὕπνῳ ἐπιφανῆναι. τέλος δὲ ἐπεὶ ἐγίγνετο ἡ ἑσπέρα, ἐπανελθὼν ὁ ἱερεύς, «ἄγε δή, ὦ παῖ», ἔφη, «πάντα γὰρ ἕτοιμά ἐστιν. ἕπου μοι». τὸν δὲ παῖδα ἐκ τοῦ ἱεροῦ ἀγαγὼν πρὸς τὸν βωμόν, ἐκέλευσεν αὐτὸν σπονδὴν κατὰ νόμον ποιεῖσθαι. ὁ δὲ τὴν φιάλην ταῖς χερσὶ λαβὼν σπονδὴν ἐποιήσατο καὶ τὰς χεῖρας πρὸς τὸν οὐρανὸν ἄρας, «Ἀσκλήπιε», ἔφη, «σῶτερ, φιλανθρωπότατε τῶν θεῶν, ἄκουέ μου εὐχομένου, ὃς ὅσιά τε φρονῶν καὶ καθαρὸς ὢν τὴν ψυχὴν ἱκέτης σοῦ πάρειμι. ἵλαος ἴσθι μοι τυφλῷ γεγονότι καί, εἴ σοι δοκεῖ, τοὺς ὀφθαλμούς μοι ἀκοῦ». ἐνταῦθα δὴ ὁ ἱερεὺς τῷ παιδὶ εἰς τὸ ἄβατον ἡγησάμενος ἐκέλευσεν αὐτὸν ἐπὶ τῇ γῇ κείμενον καθεύδειν. ὁ οὖν Φίλιππος κατέκειτο ἀλλὰ πολὺν δὴ χρόνον οὐκ ἐδύνατο καθεύδειν· μόνος γὰρ ὢν ἐν τῷ ἀβάτῳ μάλα ἐφοβεῖτο· νὺξ γὰρ ἦν καὶ πανταχοῦ σκότος καὶ σιγή, εἰ μὴ σπανίως ἤκουε τῶν ἱερῶν ὄφεων ἠρέμα συριζόντων.`,
+            persas: `ἅμα δὲ ἦρι ἀρχομένῳ ὁ Μαρδόνιος ὁρμώμενος ἐκ Θεσσαλίας ἦγε τὸν στρατὸν σπουδῇ ἐπὶ τὰς Ἀθήνας. προϊόντι δὲ αὐτῷ οὐδεὶς τῶν Βοιωτῶν ἀντεῖχεν, οὐδὲ ἐβοήθουν τοῖς Ἀθηναίοις οἱ Λακεδαιμόνιοι, ἀφικόμενος δὲ εἰς τὴν Ἀττικὴν οὐχ ηὗρε τοὺς Ἀθηναίους ἀλλὰ ἔμαθεν ὅτι ἔν τε Σαλαμίνι οἱ πλεῖστοί εἰσι καὶ ἐν ταῖς ναυσίν· αἱρεῖ τε ἔρημον τὸ ἄστυ. ἐπεὶ δὲ ἐν ταῖς Ἀθήναις ἐγένετο, ἄγγελον ἔπεμψεν εἰς τὴν Σαλαμῖνα, λόγους φέροντα ἐπιτηδείους· εἶπε γὰρ ὅτι ὁ βασιλεὺς τήν τε Ἀττικὴν τοῖς Ἀθηναίοις ἀποδώσει καὶ συμμαχίαν ποιήσεται, ἐὰν τοῦ πολέμου παύσωνται. οἱ δὲ Ἀθηναῖοι τοὺς λόγους οὐκ ἐδέξαντο ἀλλὰ τὸν ἄγγελον ἀπέπεμψαν. εἰς δὲ τὴν Σαλαμῖνα διέβησαν οἱ Ἀθηναίους ὧδε· ἕως μὲν ἤλπιζον στρατὸν πέμψειν τοὺς Λακεδαιμονίους ὡς βοηθήσοντα, ἔμενον ἐν τῇ Ἀττικῇ· ἐπεὶ δὲ οἱ μὲν Λακεδαιμόνιοι οὐκ ἐβοήθουν, ὁ δὲ Μαρδόνιος προϊὼν εἰς τὴν Βοιωτίαν ἀφίκετο, οὕτω δὴ ἐξεκόμισαν πάντα ἐκ τῆς Ἀττικῆς καὶ αὐτοὶ διέβησαν εἰς τὴν Σαλαμῖνα, καὶ εἰς Λακεδαίμονα ἔπεμπον ἀγγέλους ὡς μεμψόμενοι τοῖς Λακεδαιμονίοις, διότι οὐκ ἐβοήθουν. ὡς δὲ ἀφίκοντο εἰς τὴν Λακεδαίμονα οἱ ἄγγελοι, εἶπον τάδε, «ἔπεμψαν ἡμᾶς οἱ Ἀθηναῖοι ὡς λέξοντας ὅτι ὁ βασιλεὺς τῶν Περσῶν ἐθέλει τήν τε Ἀττικὴν ἀποδοῦναι καὶ συμμαχίαν ποιήσεται· ἡμεῖς δέ, καίπερ ἀδικούμενοι ὑφ' ὑμῶν, ἐκείνους τοὺς λόγους οὐκ ἐδεξάμεθα, νῦν δὲ κελεύομεν ὑμᾶς ὡς τάχιστα στρατιὰν πέμψαι ὡς τοὺς βαρβάρους ἀμυνοῦσαν τῇ Ἀττικῇ».`,
             eval: `α) πότερον ἐν τῷ ἄστει πᾶσαν τὴν ἡμέραν μενεῖς ἢ οἴκαδε σπεύσεις;
 β) ταῦτα μαθὼν ὁ στρατηγὸς βοήθειαν ἡμῖν εὐθὺς πέμψει.
 γ) δεῖ σε ἄγγελον πέμψαι ὡς τῷ βασιλεῖ πάντα λέξοντα.
@@ -622,7 +630,7 @@
         };
 
         // ==========================================
-        // 3. EL GRAN DICCIONARIO (MÁS DE 250 ENTRADAS PARA LLEGAR A 1400+ LÍNEAS)
+        // 3. EL GRAN DICCIONARIO (MÁS DE 250 ENTRADAS)
         // ==========================================
         const wordDB = {
             'ιατροι': { l: 'ἰατρός, -οῦ, ὁ', m: 'Sustantivo (2ª decl), Masc, Nom, Plural', s: 'Sujeto', d: 'los médicos', t: () => G.n2M('ἰατρ') },
@@ -642,7 +650,7 @@
             'τουτω': { l: 'οὗτος, αὕτη, τοῦτο', m: 'Pronombre Demostrativo, Neutro, Dativo Singular', s: 'CC de Tiempo (en esto)', t: () => buildNounT('τοῦτο','-','τοῦτο','τούτου','τούτῳ','ταῦτα','-','ταῦτα','τούτων','τούτοis') },
             'δικαιοπολις': { l: 'Δικαιόπολις, -εως, ὁ', m: 'Sustantivo Propio (3ª decl), Nominativo Singular', s: 'Sujeto', d: 'Diceópolis', t: () => buildNounT('Δικαιόπολις','Δικαιόπολι','Δικαιόπολιν','Δικαιοπόλεως','Δικαιοπόλει','-','-','-','-','-') },
             'τω': { l: 'ὁ, ἡ, τό', m: 'Artículo Definido, Masc, Dativo Singular', s: 'Determinante', d: 'al, con el', t: () => G.artM() },
-            'φιλιππω': { l: 'Φίλιππος, -ου, ὁ', m: 'Sustantivo Propio (2ª decl), Dativo Singular', s: 'Complemento de Compañía / Indirecto', d: 'a Filipo', t: () => G.n2M('Φιλίππ') },
+            'φιλιππω': { l: 'Φίλιππος, -ου, ὁ', m: 'Sustantivo Propio (2ª decl), Dativo Singular', s: 'Complemento de Compañía / Indirecto', d: 'a Filipo', t: () => G.n2M('Φίλιππ') },
             'ηγουμενος': { l: 'ἡγέομαι', m: 'Participio Presente Medio, Nominativo Singular Masc.', s: 'Participio Concertado', d: 'guiando', t: () => buildNounT('ἡγούμενος','-ε','-ον','-ου','-ῳ','ἡγούμενοι','-οι','-ους','-ων','-οις') },
             'εκ': { l: 'ἐκ / ἐξ', m: 'Preposición de Genitivo', s: 'CC de Procedencia / Origen', d: 'de, desde', t: () => inv },
             'νεως': { l: 'ναῦς, νεώς, ἡ', m: 'Sustantivo Irregular (3ª decl), Genitivo Singular', s: 'Complemento de Origen', d: 'de la nave', t: () => buildNounT('ναῦς','ναῦ','ναῦν','νεώς','νηΐ','νῆες','-','ναῦς','νεῶν','ναυσί') },
@@ -664,8 +672,8 @@
             'ελεσθαι': { l: 'αἱρέω', m: 'Verbo Irregular, Infinitivo Aoristo Medio', s: 'Complemento de βούλῃ', d: 'tomar (para sí), elegir', t: () => buildVerbT('εἱλόμην','-ου','-ετο','-ομεθα','-εσθε','-οντο','Aoristo Medio') },
             'μαλιστα': { l: 'μάλιστα', m: 'Adverbio (Superlativo de μάλα)', s: 'CC de Grado / Afirmación', d: 'muy bien, por supuesto, sobre todo', t: () => inv },
             'γε': { l: 'γε', m: 'Partícula enclítica restrictiva / enfática', s: 'Énfasis', d: 'al menos, ciertamente', t: () => inv },
-            'πατερ': { l: 'πατήρ, πατρός, ὁ', m: 'Sustantivo (3ª decl), Vocativo Singular', s: 'Vocativo', d: '¡oh padre!', t: () => buildNounT('πατήρ','πάτερ','πατέρα','πατρός','πατρί','πατέρες','-','πατέρας','πατέρων','πατράσι') },
-            'συ': { l: 'σύ', m: 'Pronombre Personal, 2ª pers, Nominativo Singular', s: 'Sujeto', d: 'tú', t: () => buildNounT('σύ','σύ','σέ/σε','σοῦ/σου','σοί/σοι','ὑμεῖς','-','ὑμᾶς','ὑμῶν','ὑμῖν') },
+            'πατερ': { l: 'πατήρ, πατρός, ὁ', m: 'Sustantivo (3ª decl), Vocativo Singular', s: 'Vocativo', d: '¡oh padre!', t: () => buildNounT('πατήρ','πάter','πατέρα','πατρός','πατρί','πατέρες','-','πατέρας','πατέρων','πατράσι') },
+            'συ': { l: 'σύ', m: 'Pronombre Personal, 2ª pers, Nominativo Singular', s: 'Sujeto', d: 'tú', t: () => buildNounT('σύ','σύ','σé/σε','σοῦ/σου','σοί/σοι','ὑμεῖς','-','ὑμᾶς','ὑμῶν','ὑμῖν') },
             'ουν': { l: 'οὖν', m: 'Partícula Ilativa / Consecutiva', s: 'Nexo', d: 'así pues, por lo tanto, en consecuencia', t: () => inv },
             'ηγου': { l: 'ἡγέομαι', m: 'Verbo Deponente, 2ª pers, Singular, Imperativo Presente', s: 'Núcleo', d: 'guía, manda, lidera', t: () => buildVerbT('-','ἡγοῦ','-','-','ἡγεῖσθε','-','Imperativo Medio') },
             'εγω': { l: 'ἐγώ', m: 'Pronombre Personal, 1ª pers, Nominativo Singular', s: 'Sujeto', d: 'yo', t: () => buildNounT('ἐγώ','-','ἐμέ/με','ἐμοῦ/μου','ἐμοί/μοι','ἡμεῖς','-','ἡμᾶς','ἡμῶν','ἡμῖν') },
@@ -724,7 +732,7 @@
             'ταχεως': { l: 'ταχέως', m: 'Adverbio de modo', s: 'CC de Modo', d: 'rápidamente', t: () => inv },
             'επανιμεν': { l: 'ἐπάνειμι', m: 'Verbo Irregular Compuesto, 1ª pers, Plural, Pres. (valor Fut)', s: 'Núcleo', d: 'regresamos, volveremos', t: () => buildVerbT('ἐπάνειμι','-εἶ','-εῖσι','-ιμεν','-ιτε','-ιασιν','Pres. Ind.') },
             'ναυν': { l: 'ναῦς, νεώς, ἡ', m: 'Sustantivo Irregular, Acusativo Singular', s: 'Objeto Directo / Dirección', d: 'la nave', t: () => buildNounT('ναῦς','-','ναῦν','νεώς','νηΐ','-','-','-','-','-') },
-            'εκαμνεν': { l: 'κάμνω', m: 'Verbo, 3ª pers, Singular, Imperfecto Indicativo Activo', s: 'Núcleo', d: 'estaba cansada, sufría', t: () => G.vImpfA('ἔ','καμν') },
+            'εκαμνεν': { l: 'κάμνω', m: 'Verbo, 3ª pers, Singular, Imperfecto Indicativo Activo', s: 'Núcleo', d: 'estaba cansada, sufría', t: () => G.vImpfA('ἔ','κάμν') },
             'ηθελεν': { l: 'ἐθέλω', m: 'Verbo, 3ª pers, Singular, Imperfecto Indicativo Activo', s: 'Núcleo', d: 'quería, deseaba', t: () => G.vImpfA('ἤ','θελ') },
             'εκεινη': { l: 'ἐκεῖνος, -η, -ο', m: 'Pronombre Demostrativo, Fem, Dativo Singular', s: 'CC de Tiempo', d: 'aquella, en aquella', t: () => buildNounT('ἐκεῖνος','-','ἐκεῖνον','ἐκείνου','ἐκείνῳ','-','-','-','-','-') },
             'ημερα': { l: 'ἡμέρα, -ας, ἡ', m: 'Sustantivo (1ª decl), Dativo Singular', s: 'CC de Tiempo', d: 'día, en el día', t: () => G.n1F('ἡμέρ', false) },
@@ -745,7 +753,7 @@
             'εκοψεν': { l: 'κόπτω', m: 'Verbo, 3ª pers, Singular, Aoristo Indicativo Activo', s: 'Núcleo', d: 'golpeó, llamó', t: () => buildVerbT('ἔκοψα','-ας','-ε','-αμεν','-ατε','-αν','Aoristo Activo') },
             'εξελθων': { l: 'ἐξέρχομαι', m: 'Participio Aoristo Radical Activo, Nom. Singular Masc.', s: 'Participio Concertado', d: 'habiendo salido', t: () => buildNounT('ἐξελθών','-','-όντα','-όντος','-όντι','-','-','-','-','-') },
             'υπηρετης': { l: 'ὑπηρέτης, -ου, ὁ', m: 'Sustantivo (1ª decl), Nominativo Singular Masc.', s: 'Sujeto', d: 'el sirviente, ayudante', t: () => G.n1M('ὑπηρέτ') },
-            'ων': { l: 'εἰμί', m: 'Participio Presente Activo, Nominativo Singular Masc.', s: 'Participio Concertado', d: 'siendo, que es', t: () => buildNounT('ὤν','-','ὄντα','ὄντος','ὄντι','ὄντες','-','ὄντας','ὄντων','οὖσι') },
+            'ων': { l: 'εἰμί', m: 'Participio Presente Activo, Nominativo Singular Masc.', s: 'Participio Concertado', d: 'siendo, que es', t: () => buildNounT('ὤν','-','ὄντα','ὄντος','ὄντι','ὄνtes','-','ὄντας','ὄντων','οὖσι') },
             'τηνικαυτα': { l: 'τηνικαῦτα', m: 'Adverbio de tiempo', s: 'CC de Tiempo', d: 'a esta hora, en este momento', t: () => inv },
             'ποθεν': { l: 'πόθεν', m: 'Adverbio interrogativo de origen', s: 'CC de Procedencia', d: '¿de dónde?', t: () => inv },
             'βουλομενοι': { l: 'βούλομαι', m: 'Participio Presente Medio, Nom. Plural Masc.', s: 'Participio Concertado', d: 'queriendo, con qué intención', t: () => inv },
@@ -761,7 +769,7 @@
             'δεσποτην': { l: 'δεσπότης, -ου, ὁ', m: 'Sustantivo (1ª decl), Acusativo Singular Masc.', s: 'CC de Dirección', d: 'al amo, dueño, señor', t: () => G.n1M('δεσπότ') },
             'ζητησων': { l: 'ζητέω', m: 'Participio Futuro Activo, Nom. Singular Masc.', s: 'P. Concertado (Intención)', d: 'con intención de buscar, para buscar', t: () => buildNounT('ζητήσων','-','ζητήσοντα','ζητήσοντος','ζητήσοντι','ζητήσοντες','-','ζητήσοντας','ζητησόντων','ζητήσουσι') },
             'ερωτησω': { l: 'ἐρωτάω', m: 'Verbo (contr.), 1ª pers, Singular, Futuro Indicativo Activo', s: 'Núcleo del Predicado', d: 'preguntaré', t: () => G.vFutA('ερωτή') },
-            'εθελει': { l: 'ἐθέλω', m: 'Verbo, 3ª pers, Singular, Presente Indicativo Activo', s: 'Núcleo', d: 'quiere, desea', t: () => G.vPresA('εθέλ') },
+            'εθεlei': { l: 'ἐθέλω', m: 'Verbo, 3ª pers, Singular, Presente Indicativo Activo', s: 'Núcleo', d: 'quiere, desea', t: () => G.vPresA('εθέλ') },
             'δεξασθαι': { l: 'δέχομαι', m: 'Verbo Deponente, Infinitivo Aoristo Medio', s: 'Complemento Directo', d: 'recibir, aceptar', t: () => buildVerbT('ἐδεξάμην','-ω','-ατο','-αμεθα','-ασθε','-αντο','Aoristo Med.') },
             'εμενον': { l: 'μένω', m: 'Verbo, 3ª pers, Plural, Imperfecto Indicativo Activo', s: 'Núcleo del Predicado', d: 'permanecían, se quedaban', t: () => buildVerbT('ἔμενον','-ες','-ε','-ομεν','-ετε','-ον','Impf. Act.') },
             'δεξεται': { l: 'δέχομαι', m: 'Verbo Deponente, 3ª pers, Singular, Futuro Indicativo Medio', s: 'Núcleo', d: 'recibirá', t: () => G.vFutM('δέξ') },
@@ -790,7 +798,7 @@
             'πιστευω': { l: 'πιστεύω', m: 'Verbo, 1ª pers, Singular, Presente Indicativo Activo', s: 'Núcleo del Predicado', d: 'creo, confío', t: () => G.vPresA('πιστεύ') },
             'εμαυτον': { l: 'ἐμαυτοῦ, -ῆς', m: 'Pronombre Reflexivo, Acusativo Singular Masc.', s: 'Objeto Directo', d: 'a mí mismo', t: () => buildNounT('-','-','εμαυτόν','εμαυτοῦ','εμαυτῷ','-','-','-','-','-') },
             'επιτρεψω': { l: 'ἐπιτρέπω', m: 'Verbo, 1ª pers, Singular, Futuro Indicativo Activo', s: 'Núcleo del Predicado', d: 'confiaré, encomendaré', t: () => G.vFutA('επιτρέψ') },
-            'γερων': { l: 'γέρων, γέροντος, ὁ', m: 'Sustantivo (3ª decl), Nominativo Singular', s: 'Sujeto', d: 'el anciano', t: () => buildNounT('γέρων','-','γέροντα','γέροντος','γέροντι','γέρονtes','-','γέροντας','γερόντων','γέρουσι') },
+            'γερων': { l: 'γέρων, γέροντος, ὁ', m: 'Sustantivo (3ª decl), Nominativo Singular', s: 'Sujeto', d: 'el anciano', t: () => buildNounT('γέρων','-','γέροντα','γέροντος','γέροντι','γέροντες','-','γέροντας','γερόντων','γέρουσι') },
             'ευ': { l: 'εὖ', m: 'Adverbio de modo', s: 'CC de Modo', d: 'bien, correctamente', t: () => inv },
             'νυν': { l: 'νῦν', m: 'Adverbio de tiempo', s: 'CC de Tiempo', d: 'ahora', t: () => inv },
             'μεν': { l: 'μέν', m: 'Partícula coordinante correlativa', s: 'Nexo', d: 'por un lado, ciertamente', t: () => inv },
@@ -804,7 +812,7 @@
             'πατηρ': { l: 'πατήρ, πατρός, ὁ', m: 'Sustantivo (3ª decl), Nominativo Singular', s: 'Sujeto', d: 'el padre', t: () => buildNounT('πατήρ','πάτερ','πατέρα','πατρός','πατρί','πατέρες','-','πατέρας','πατέρων','πατράσι') },
             'παις': { l: 'παῖς, παιδός, ὁ', m: 'Sustantivo (3ª decl), Nominativo Singular', s: 'Sujeto', d: 'el hijo, el niño', t: () => buildNounT('παῖς','-','παῖδα','παιδός','παιδί','παῖδες','-','παῖδας','παίδων','παισί') },
             'νυκτα': { l: 'νύξ, νυκτός, ἡ', m: 'Sustantivo (3ª decl), Acusativo Singular', s: 'CC de Extensión Temporal', d: 'la noche, durante la noche', t: () => buildNounT('νύξ','-','νύκτα','νυκτός','νυκτί','-','-','-','-','-') },
-            'υστεραια': { l: 'ὑστεραῖος, -α, -ον', m: 'Adjetivo, Dativo Singular Fem.', s: 'CC de Tiempo', d: 'al día siguiente', t: () => G.n1F('ὑστεραί', false) },
+            'υστεραια': { l: 'ὑστεραῖος, -α, -ον', m: 'Adjetivo, Dativo Singular Fem.', s: 'CC de Tiempo', d: 'al día siguiente', t: () => G.n1F('ὑστεραí', false) },
             'επει': { l: 'ἐπεί', m: 'Conjunción temporal', s: 'Nexo', d: 'cuando, después de que', t: () => inv },
             'πρωτον': { l: 'πρῶτον', m: 'Adverbio / Neutro de πρότερος', s: 'CC de Tiempo', d: 'al principio, primero', t: () => inv },
             'εγενετο': { l: 'γίγνομαι', m: 'Verbo Deponente, 3ª pers, Singular, Aoristo Radical', s: 'Núcleo', d: 'se hizo, llegó a ser, nació', t: () => buildVerbT('ἐγενόμην','-ου','-ετο','-ομεθα','-εσθε','-οντο','Aoristo Radical Medio') },
@@ -880,7 +888,7 @@
             'μονος': { l: 'μόνος, -η, -ον', m: 'Adjetivo, Nominativo Singular Masc.', s: 'Atributo / Predicativo', d: 'solo', t: () => G.n2M('μόν') },
             'εφοβειτο': { l: 'φοβέομαι', m: 'Verbo Deponente, 3ª pers, Singular, Imperfecto Indicativo', s: 'Núcleo', d: 'temía, tenía miedo', t: () => buildVerbT('ἐφοβούμην','-ου','-ειτο','-ουμεθα','-εισθε','-ουντο','Impf. Medio') },
             'νυξ': { l: 'νύξ, νυκτός, ἡ', m: 'Sustantivo (3ª decl), Nominativo Singular', s: 'Sujeto / Atributo', d: 'la noche', t: () => buildNounT('νύξ','-','-τα','-τός','-τί','-','-','-','-','-') },
-            'ην': { l: 'εἰμί', m: 'Verbo Irregular, 3ª pers, Singular, Imperfecto Activo', s: 'Núcleo (Cópula)', d: 'era, estaba', t: () => buildVerbT('ἦν','ἦσθα','ἦν','ἦμεν','ἦτε','ἦσαν','Impf. Act.') },
+            'ην': { l: 'εἰμί', m: 'Verbo Irregular, 3ª pers, Singular, Imperfecto Activo', s: 'Núcleo (Cópula)', d: 'era, estaba', t: () => buildVerbT('ἦν','ἦσθα','ἦν','ἦμεν','ἦte','ἦσαν','Impf. Act.') },
             'πανταχου': { l: 'πανταχοῦ', m: 'Adverbio de lugar', s: 'CC de Lugar', d: 'por todas partes', t: () => inv },
             'σκοτος': { l: 'σκότος, -ους, τό', m: 'Sustantivo (3ª decl), Nominativo Singular', s: 'Sujeto', d: 'la oscuridad, tinieblas', t: () => buildNounT('σκότος','-','-ος','-ους','-ει','-η','-','-η','-ων','-εσι') },
             'σιγη': { l: 'σιγή, -ῆς, ἡ', m: 'Sustantivo (1ª decl), Nominativo Singular', s: 'Sujeto', d: 'el silencio', t: () => G.n1F('σιγ', true) },
@@ -916,7 +924,7 @@
             'εμαθεν': { l: 'μανθάνω', m: 'Verbo, 3ª pers, Singular, Aoristo Radical Activo', s: 'Núcleo', d: 'aprendió, supo, se enteró', t: () => buildVerbT('ἔμαθον','-ες','-ε','-ομεν','-ετε','-ον','Aoristo Radical') },
             'σαλαμινι': { l: 'Σαλαμίς, -ῖνος, ἡ', m: 'Sustantivo Propio (3ª decl), Dativo Singular', s: 'CC de Lugar', d: 'en Salamina', t: () => buildNounT('Σαλαμίς','-','Σαλαμῖνα','Σαλαμῖνος','Σαλαμῖνι','-','-','-','-','-') },
             'πλειστοι': { l: 'πλεῖστος, -η, -ον', m: 'Adjetivo (Superlativo de πολύς), Nom. Plural Masc.', s: 'Sujeto', d: 'la mayoría, la mayor parte', t: () => G.n2M('πλεῖστ') },
-            'εισι': { l: 'εἰμί', m: 'Verbo Irregular, 3ª pers, Plural, Presente Indicativo', s: 'Núcleo (Existencial)', d: 'están, son', t: () => buildVerbT('εἰμί','εἶ','ἐστί','ἐσμέν','ἐστέ','εἰσί','Pres. Ind.') },
+            'εισι': { l: 'εἰμί', m: 'Verbo Irregular, 3ª pers, Plural, Presente Indicativo', s: 'Núcleo (Existencial)', d: 'están, son', t: () => buildVerbT('εἰμί','εἶ','ἐστί','ἐσμέν','ἐσté','εἰσί','Pres. Ind.') },
             'ναυσιν': { l: 'ναῦς, νεώς, ἡ', m: 'Sustantivo Irregular, Dativo Plural', s: 'CC de Lugar', d: 'en las naves', t: () => inv },
             'αιρει': { l: 'αἱρέω', m: 'Verbo, 3ª pers, Singular, Presente Indicativo Activo', s: 'Núcleo del Predicado', d: 'toma, captura, conquista', t: () => G.vPresA('αἱρ') },
             'ερημον': { l: 'ἔρημος, -ον', m: 'Adjetivo (2 terminaciones), Acusativo Singular Neutro', s: 'Predicativo de αστυ', d: 'desierto, yermo, vacío', t: () => buildNounT('ἔρημος','-','ἔρημον','ἐρήμου','ἐρήμῳ','-','-','-','-','-') },
@@ -929,7 +937,7 @@
             'ειπε': { l: 'λέγω', m: 'Verbo Irregular, 3ª pers, Singular, Aoristo Radical Activo', s: 'Núcleo', d: 'dijo, afirmó', t: () => buildVerbT('εἶπον','-ες','-ε','-ομεν','-ετε','-ον','Aoristo Radical') },
             'βασιλευς': { l: 'βασιλεύς, -έως, ὁ', m: 'Sustantivo (3ª decl), Nominativo Singular', s: 'Sujeto', d: 'el rey', t: () => buildNounT('βασιλεύς','-','βασιλέα','βασιλέως','βασιλεῖ','-','-','-','-','-') },
             'αποδωσει': { l: 'ἀποδίδωμι', m: 'Verbo Compuesto, 3ª pers, Singular, Futuro Indicativo Activo', s: 'Núcleo', d: 'devolverá, restituirá', t: () => inv },
-            'συμμαχιαν': { l: 'συμμαχία, -ας, ἡ', m: 'Sustantivo (1ª decl), Acusativo Singular', s: 'Objeto Directo', d: 'una alianza, coalición', t: () => G.n1F('συμμαχί', false) },
+            'συμμαχιαν': { l: 'συμμαχία, -ας, ἡ', m: 'Sustantivo (1ª decl), Acusativo Singular', s: 'Objeto Directo', d: 'una alianza, coalición', t: () => G.n1F('συμμαχí', false) },
             'ποιησεται': { l: 'ποιέω', m: 'Verbo (contr.), 3ª pers, Singular, Futuro Indicativo Medio', s: 'Núcleo', d: 'hará (en su interés), realizará', t: () => G.vFutM('ποιή') },
             'πολεμου': { l: 'πόλεμος, -ου, ὁ', m: 'Sustantivo (2ª decl), Genitivo Singular', s: 'Complemento de Régimen (de παύσωνται)', d: 'de la guerra', t: () => G.n2M('πόλεμ') },
             'παυσωνται': { l: 'παύω', m: 'Verbo, 3ª pers, Plural, Subjuntivo Aoristo Medio', s: 'Núcleo de la Condición', d: 'cesen, se detengan', t: () => buildVerbT('παύσωμαι','-ῃ','-ηται','-ωμεθα','-ησθε','-ωνται','Subjuntivo Aoristo Med.') },
@@ -941,18 +949,18 @@
             'πεmψειν': { l: 'πέμπω', m: 'Verbo, Infinitivo Futuro Activo', s: 'Complemento Directo (Oración de Inf.)', d: 'que enviarían', t: () => inv },
             'βοηθησοντα': { l: 'βοηθέω', m: 'Participio Futuro Activo, Acusativo Singular Masc.', s: 'Participio de Intención / Finalidad', d: 'para ayudar, con intención de ayudar', t: () => buildNounT('βοηθήσων','-','-οντα','-οντος','-οντι','-οντες','-','-οντας','-όντων','-ουσι') },
             'προϊων': { l: 'πρόειμι', m: 'Participio Presente Activo, Nominativo Singular Masc.', s: 'Participio Concertado', d: 'avanzando, marchando hacia delante', t: () => buildNounT('προϊών','-','-όντα','-όντος','-όντι','-όντες','-','-όντας','-όντων','-οῦσι') },
-            'βοιωτιαν': { l: 'Βοιωτία, -ας, ἡ', m: 'Sustantivo Propio (1ª decl), Acusativo Singular', s: 'CC de Dirección', d: 'Beocia', t: () => G.n1F('Βοιωτί', false) },
+            'βοιωτιαν': { l: 'Βοιωτία, -ας, ἡ', m: 'Sustantivo Propio (1ª decl), Acusativo Singular', s: 'CC de Dirección', d: 'Beocia', t: () => G.n1F('Βοιωτí', false) },
             'αφικετο': { l: 'ἀφikνέομαι', m: 'Verbo Deponente, 3ª pers, Singular, Aoristo Indicativo', s: 'Núcleo', d: 'llegó', t: () => buildVerbT('ἀφικόμην','-ου','-ετο','-ομεθα','-ασθε','-αντο','Aoristo Radical Medio') },
             'εξεκομισαν': { l: 'ἐκκομίζω', m: 'Verbo Compuesto, 3ª pers, Plural, Aoristo Indicativo Activo', s: 'Núcleo', d: 'sacaron, evacuaron, pusieron a salvo', t: () => inv },
             'λακεδαιμονα': { l: 'Λακεδαίμων, -ονος, ἡ', m: 'Sustantivo Propio (3ª decl), Acusativo Singular', s: 'CC de Dirección', d: 'Lacedemonia (Esparta)', t: () => buildNounT('Λακεδαίμων','-','-ονα','-ονος','-ονι','-','-','-','-','-') },
             'μεμψομενοι': { l: 'μέμφομαι', m: 'Participio Futuro Medio, Nominativo Plural Masc.', s: 'Participio de Intención / Finalidad', d: 'para quejarse, para reprochar', t: () => buildNounT('μεμψόμενος','-','-ον','-ου','-ῳ','-οι','-','-ους','-ων','-οις') },
             'διοτι': { l: 'διότι', m: 'Conjunción Causal', s: 'Nexo', d: 'porque, por la razón de que', t: () => inv },
-            'αφικοντο': { l: 'ἀφικνέομαι', m: 'Verbo Deponente, 3ª pers, Plural, Aoristo Indicativo', s: 'Núcleo', d: 'llegaron', t: () => inv },
+            'αφικοντο': { l: 'ἀφikνέομαι', m: 'Verbo Deponente, 3ª pers, Plural, Aoristo Indicativo', s: 'Núcleo', d: 'llegaron', t: () => inv },
             'ελεγον': { l: 'λέγω', m: 'Verbo, 3ª pers, Plural, Imperfecto / Aoristo Activo', s: 'Núcleo', d: 'decían, dijeron', t: () => G.vImpfA('ἔ','λεγ') },
             'ταδε': { l: 'ὅδε, ἥδε, τόδε', m: 'Pronombre Demostrativo, Neutro Plural, Acusativo', s: 'Objeto Directo (lo siguiente)', t: () => buildNounT('τόδε','-','τόδε','τοῦδε','τῷδε','τάδε','-','τάδε','τῶνδε','τοῖσδε') },
             'λεξοντας': { l: 'λέγω', m: 'Participio Futuro Activo, Acusativo Plural Masc.', s: 'Participio de Finalidad (con ὡς)', d: 'para decir, con intención de decir', t: () => buildNounT('λέξων','-','λέξοντα','-οντος','-οντι','-οντες','-','-οντας','-όντων','-ουσι') },
             'περσων': { l: 'Πέρσης, -ου, ὁ', m: 'Sustantivo Propio (1ª decl), Genitivo Plural Masc.', s: 'Complemento del Nombre', d: 'de los persas', t: () => buildNounT('Πέρσης','-','Πέρσην','Πέρσου','Πέρσῃ','Πέρσαι','-','Πέρσας','Περσῶν','Πέρσαις') },
-            'εθελει': { l: 'ἐθέλω', m: 'Verbo, 3ª pers, Singular, Presente Indicativo Activo', s: 'Núcleo', d: 'quiere, desea', t: () => G.vPresA('εθέλ') },
+            'εθελει': { l: 'ἐθέλω', m: 'Verbo, 3ª pers, Singular, Presente Indicativo Activo', s: 'Núcleo', d: 'quiere, desea', t: () => G.vPresA('ἐθέλ') },
             'αποδουναι': { l: 'ἀποδίδωμι', m: 'Verbo Compuesto, Infinitivo Aoristo Radical Activo', s: 'Complemento Directo', d: 'devolver, entregar de nuevo', t: () => inv },
             'ποιησεσθαι': { l: 'ποιέω', m: 'Verbo, Infinitivo Futuro Medio', s: 'Complemento Directo', d: 'que hará (para sí), que realizará', t: () => inv },
             'ημεις': { l: 'ἐγώ', m: 'Pronombre Personal, 1ª pers, Nominativo Plural', s: 'Sujeto', d: 'nosotros', t: () => buildNounT('ἐγώ','-','ἐμέ','ἐμοῦ','ἐμοί','ἡμεῖς','-','ἡμᾶς','ἡμῶν','ἡμῖν') },
@@ -961,12 +969,12 @@
             'υφ': { l: 'ὑπό / ὑφ\'', m: 'Preposición de Genitivo', s: 'Complemento Agente', d: 'por, a manos de', t: () => inv },
             'υμων': { l: 'σύ', m: 'Pronombre Personal, 2ª pers, Genitivo Plural', s: 'Complemento Agente', d: 'vosotros, de vosotros', t: () => buildNounT('σύ','-','-','-','-','ὑμεῖς','-','ὑμᾶς','ὑμῶν','ὑμῖν') },
             'εκεινους': { l: 'ἐκεῖνος, -η, -ο', m: 'Pronombre Demostrativo, Masc, Acusativo Plural', s: 'Determinante / Modificador', d: 'aquellos, esas', t: () => buildNounT('ἐκεῖνος','-','ἐκεῖνον','ἐκείνου','ἐκείνῳ','ἐκεῖνοι','-','ἐκείνους','ἐκείνων','ἐκείνοις') },
-            'εδεξαμεθα': { l: 'δέχομαι', m: 'Verbo Deponente, 1ª pers, Plural, Aoristo Indicativo', s: 'Núcleo del Predicado', d: 'aceptamos, recibimos', t: () => buildVerbT('ἐδεξάμην','-ω','-ατο','-αμεθα','-ασθε','-αντο','Aoristo Medio') },
+            'εδεξαμεθα': { l: 'δέχομαι', m: 'Verbo Deponente, 1ª pers, Plural, Aoristo Indicativo', s: 'Núcleo del Predicado', d: 'aceptamos, recibimos', t: () => buildVerbT('ἐδεξάμην','-ω','-ατο','-αmeθα','-ασθε','-αντο','Aoristo Medio') },
             'κελευομεν': { l: 'κελεύω', m: 'Verbo, 1ª pers, Plural, Presente Indicativo Activo', s: 'Núcleo', d: 'ordenamos, mandamos', t: () => G.vPresA('κελεύ') },
             'υμας': { l: 'σύ', m: 'Pronombre Personal, 2ª pers, Acusativo Plural', s: 'Sujeto de Infinitivo', d: 'que vosotros', t: () => buildNounT('σύ','-','-','-','-','ὑμεῖς','-','ὑμᾶς','ὑμῶν','ὑμῖν') },
             'ταχιστα': { l: 'τάχιστα', m: 'Adverbio (Superlativo de ταχέως)', s: 'CC de Modo', d: 'lo más rápido posible', t: () => inv },
             'στρατιαν': { l: 'στρατιά, -ᾶς, ἡ', m: 'Sustantivo (1ª decl), Acusativo Singular', s: 'Objeto Directo', d: 'un ejército, una tropa', t: () => G.n1F('στρατι', false) },
-            'πεμψαι': { l: 'πέμπω', m: 'Verbo, Infinitivo Aoristo Activo', s: 'Complemento de κελευομεν', d: 'enviar', t: () => inv },
+            'πεmψαι': { l: 'πέμπω', m: 'Verbo, Infinitivo Aoristo Activo', s: 'Complemento de κελευομεν', d: 'enviar', t: () => inv },
             'βαρβαρους': { l: 'βάρβαρος, -ου, ὁ', m: 'Adjetivo / Sustantivado, Acusativo Plural Masc.', s: 'Objeto Directo / Dirección', d: 'a los bárbaros', t: () => G.n2M('βάρβαρ') },
             'αμυνουσαν': { l: 'ἀμύνω', m: 'Participio Futuro Activo, Acusativo Singular Fem.', s: 'Participio de Finalidad (con ὡς)', d: 'para defender, para rechazar', t: () => buildNounT('αμυνοῦσα','-','αμυνοῦσαν','-ούσης','-ούσῃ','-οῦσαι','-','-ούσας','-ουσῶν','-ούσαις') },
             'αστει': { l: 'ἄστυ, ἄστεως, τό', m: 'Sustantivo (3ª decl), Dativo Singular Neutro', s: 'CC de Lugar', d: 'en la ciudad, en el casco urbano', t: () => buildNounT('ἄστυ','-','ἄστυ','ἄστεως','ἄστει','-','-','-','-','-') },
@@ -1001,17 +1009,15 @@
         let mistakes = 0;
         const BASE_SCORE = 20000;
 
-        /** * Función Crucial: Normalización de Griego para Inputs 
-         * Elimina tildes, espíritus y normaliza la sigma final.
-         */
+        /** Normalización de Griego para Inputs */
         function normalizeGreekForInput(str) {
             if (!str) return "";
             return str.normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "") // Elimina acentos y espíritus
-                .replace(/[\u0345]/g, "")       // Elimina iota suscrita
+                .replace(/[\u0300-\u036f]/g, "") 
+                .replace(/[\u0345]/g, "")       
                 .toLowerCase()
                 .trim()
-                .replace(/ς/g, 'σ');            // Convierte sigma final en interna para coincidencia en DB
+                .replace(/ς/g, 'σ');            
         }
 
         /** Inicio del Juego */
@@ -1023,23 +1029,20 @@
                 return;
             }
             teamName = input.value;
-            localStorage.setItem('teamName', teamName);
             
             document.getElementById('introStage').classList.add('hidden-stage');
             document.getElementById('gameHeader').classList.remove('hidden-stage');
             document.getElementById('gameStage').classList.remove('hidden-stage');
             
-            initTexts(); // Carga de textos
-            startTimer(); // Inicio del tiempo
-            lucide.createIcons(); // Iconos
+            initTexts(); 
+            startTimer(); 
+            lucide.createIcons(); 
             
-            // Audio de ambiente
             const musica = document.getElementById('musicaFondo');
             musica.volume = 0.3;
-            musica.play().catch(e => console.log("Navegador bloqueó el autoplay del audio."));
+            musica.play().catch(e => console.log("Navegador bloqueó el autoplay."));
         }
 
-        /** Gestión del Reloj de Arena */
         function startTimer() {
             timerInterval = setInterval(() => {
                 timeRemaining--;
@@ -1054,7 +1057,6 @@
             }, 1000);
         }
 
-        /** Gestión de Pestañas del Codex */
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.tab-btn').forEach(el => {
@@ -1068,7 +1070,6 @@
             activeBtn.classList.remove('text-slate-400');
         }
 
-        /** Traducción del Griego al Castellano */
         function toggleTranslation() {
             const btn = document.getElementById('btn-translate');
             const isShowing = btn.innerHTML.includes('Ocultar');
@@ -1089,14 +1090,11 @@
             lucide.createIcons();
         }
 
-        /** Tokenización de los textos para hacer cada palabra clickeable */
         function initTexts() {
             const ids = ['alfa', 'beta', 'persas', 'eval'];
             ids.forEach(id => {
                 const container = document.getElementById(`content-${id}-gr`);
                 const esContainer = document.getElementById(`content-${id}-es`);
-                
-                // Cargar traducción inicial en oculto
                 esContainer.innerHTML = translations[id];
 
                 const rawText = texts[id];
@@ -1104,7 +1102,6 @@
                 
                 container.innerHTML = words.map(chunk => {
                     if (!chunk.trim()) return chunk;
-                    // Regex para limpiar puntuación y envolver en span interactivo
                     const match = chunk.match(/^([«"'(]*)(.*?)([»"',;·.!?:)]*)$/);
                     if (match && match[2]) {
                         const clean = match[2];
@@ -1115,12 +1112,9 @@
             });
         }
 
-        /** El Oráculo: Buscador de Diccionario y Generador de Tablas */
         function consultarOraculo(word) {
             const drawer = document.getElementById('oracle-drawer');
             const content = document.getElementById('oracle-content');
-            
-            // Normalizar la clave de búsqueda
             const cleanKey = normalizeGreekForInput(word);
             const entry = wordDB[cleanKey];
             
@@ -1147,29 +1141,18 @@
                                 <span class="lang-tag bg-amber-900 text-amber-100">Sintaxis</span>
                                 <p class="text-xl text-slate-200 mt-2">${entry.s}</p>
                             </div>
-                            <div class="mt-8 transition-all hover:scale-[1.01] origin-center">
+                            <div class="mt-8 transition-all hover:scale-[1.01]">
                                 ${entry.t()}
                             </div>
-                        </div>
-                    `;
+                        </div>`;
                 } else {
-                    content.innerHTML = `
-                        <div class="text-center py-20">
-                            <i data-lucide="help-circle" class="w-20 h-20 text-slate-700 mx-auto mb-6"></i>
-                            <h3 class="text-2xl font-cinzel text-slate-400 uppercase">Incógnita Filológica</h3>
-                            <p class="text-slate-600 mt-4 max-w-md mx-auto italic font-serif text-lg">
-                                "Esta forma exacta no figura en el Códice rápido de Epidauro. Consultad los diccionarios físicos o buscad la raíz de la palabra."
-                            </p>
-                        </div>
-                    `;
+                    content.innerHTML = `<div class="text-center py-20"><i data-lucide="help-circle" class="w-20 h-20 text-slate-700 mx-auto mb-6"></i><h3 class="text-2xl font-cinzel text-slate-400 uppercase">Incógnita Filológica</h3><p class="text-slate-600 mt-4 max-w-md mx-auto italic font-serif text-lg">Esta forma exacta no figura en el Códice rápido. Consultad los diccionarios físicos.</p></div>`;
                 }
                 lucide.createIcons();
             }, 300);
         }
 
-        function closeOracle() {
-            document.getElementById('oracle-drawer').classList.add('translate-x-full');
-        }
+        function closeOracle() { document.getElementById('oracle-drawer').classList.add('translate-x-full'); }
 
         /** Éxito en una prueba */
         function successPrueba(currId, nextId) {
@@ -1181,23 +1164,24 @@
             
             next.classList.remove('opacity-50', 'pointer-events-none');
             next.classList.add('ring-4', 'ring-emerald-500/50');
+            
+            // Activación del Brillo Divino (Premium)
+            next.classList.add('unlocked-glow');
+            
             next.scrollIntoView({ behavior: 'smooth', block: 'center' });
             lucide.createIcons();
         }
 
-        /** Fallo en una prueba */
         function failPrueba(errId) {
             mistakes++;
             const err = document.getElementById(errId);
             err.classList.remove('hidden');
             setTimeout(() => err.classList.add('hidden'), 4000);
-            
             const card = err.closest('div');
             card.classList.add('error-shake');
             setTimeout(() => card.classList.remove('error-shake'), 500);
         }
 
-        /** Consultar pista penalizada */
         function pedirPista(msg) {
             if(confirm("¿Deseas consultar a la Pitia? Esto te costará 3 minutos de tu tiempo vital.")){
                 timeRemaining -= 180;
@@ -1213,8 +1197,6 @@
             const q1 = normalizeGreekForInput(document.getElementById('p1-q1').value);
             const q2 = normalizeGreekForInput(document.getElementById('p1-q2').value);
             const q3 = normalizeGreekForInput(document.getElementById('p1-q3').value);
-            
-            // Solución: ζητησων (zeteson) | αφιξομεθα (aphixometha) | επιφανηναι (epiphanenai)
             if (q1 === 'ζητησων' && q2 === 'αφιξομεθα' && q3 === 'επιφανηναι') {
                 successPrueba('prueba1', 'prueba2');
             } else failPrueba('p1-error');
@@ -1223,33 +1205,29 @@
         function checkPrueba2() {
             const q1 = document.getElementById('p2-q1').value;
             const q2 = document.getElementById('p2-q2').value;
-            if (q1 === 'b' && q2 === 'b') {
-                successPrueba('prueba2', 'prueba3');
-            } else failPrueba('p2-error');
+            if (q1 === 'b' && q2 === 'b') successPrueba('prueba2', 'prueba3');
+            else failPrueba('p2-error');
         }
 
         function checkPrueba3() {
             const q1 = document.getElementById('p3-q1').value;
             const q2 = document.getElementById('p3-q2').value;
-            if (q1 === 'b' && q2 === 'b') {
-                successPrueba('prueba3', 'prueba4');
-            } else failPrueba('p3-error');
+            if (q1 === 'c' && q2 === 'b') successPrueba('prueba3', 'prueba4');
+            else failPrueba('p3-error');
         }
 
         function checkPrueba4() {
             const q1 = document.getElementById('p4-q1').value;
             const q2 = document.getElementById('p4-q2').value;
-            if (q1 === 'b' && q2 === 'c') {
-                successPrueba('prueba4', 'prueba5');
-            } else failPrueba('p4-error');
+            if (q1 === 'b' && q2 === 'c') successPrueba('prueba4', 'prueba5');
+            else failPrueba('p4-error');
         }
 
         function checkPrueba5() {
             const q1 = document.getElementById('p5-q1').value;
             const q2 = document.getElementById('p5-q2').value;
-            if (q1 === 'a' && q2 === 'b') {
-                successPrueba('prueba5', 'prueba6');
-            } else failPrueba('p5-error');
+            if (q1 === 'a' && q2 === 'b') successPrueba('prueba5', 'prueba6');
+            else failPrueba('p5-error');
         }
 
         function checkPrueba6() {
@@ -1259,30 +1237,24 @@
             const l4 = document.getElementById('lock4').value;
             const l5 = document.getElementById('lock5').value;
             const l6 = document.getElementById('lock6').value;
-
-            // Clave: 1 (Ἀθήνας=1ª) | 3 (γαστέρα=3ª) | 4 (Genitivo=4º caso) | 2 (ὕπνῳ=2ª) | 3 (ἔμενεν=3ª pers) | 1 (part fut)
             if (l1 == "1" && l2 == "3" && l3 == "4" && l4 == "2" && l5 == "3" && l6 == "1") {
                 victory();
             } else failPrueba('p6-error');
         }
 
-        /** Final de Victoria */
         function victory() {
             clearInterval(timerInterval);
             document.getElementById('gameStage').classList.add('hidden-stage');
             document.getElementById('gameHeader').classList.add('hidden-stage');
             document.getElementById('victoryStage').classList.remove('hidden-stage');
-            
             const totalSecs = (90 * 60) - timeRemaining;
             const score = Math.max(0, BASE_SCORE - totalSecs - (mistakes * 200));
-            
             document.getElementById('finalTeamName').innerText = teamName;
             document.getElementById('finalTime').innerText = document.getElementById('timerDisplay').innerText;
             document.getElementById('finalMistakes').innerText = mistakes;
             document.getElementById('finalScore').innerText = score.toLocaleString() + " pts";
         }
 
-        /** Final de Derrota */
         function gameOver() {
             clearInterval(timerInterval);
             document.getElementById('gameStage').classList.add('hidden-stage');
@@ -1290,7 +1262,6 @@
             document.getElementById('defeatStage').classList.remove('hidden-stage');
         }
 
-        // Inicializar iconos de Lucide al cargar la página
         lucide.createIcons();
     </script>
 </body>
