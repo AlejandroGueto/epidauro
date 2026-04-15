@@ -1403,6 +1403,36 @@
             'ασκληπιε': { l: 'Ἀσκλήπιος', m: 'Voc Sg', s: 'Vocativo', d: 'Asclepio', t: () => inv },
             'σωτερ': { l: 'σωτήρ', m: 'Voc Sg', s: 'Apelación', d: 'salvador', t: () => buildNounT('σωτήρ','-','-','-','-','-','-','-','-','-') },
             'ακου': { l: 'ἀκέομαι', m: '2ª Sg, Imperativo Aor Med', s: 'Núcleo', d: 'cura', t: () => inv }
+            // --- CÓDICE EXTENDIDO: LOTE 4 (CORRECCIONES Y NOMBRES PROPIOS) ---
+            
+            /* Corrección del futuro de ἕπομαι (sin doble sigma) */
+            'εψομαι': { l: 'ἕπομαι', m: 'Verbo Deponente, 1ª Sg., Futuro Indicativo', s: 'Núcleo', d: 'seguiré, iré detrás', t: () => buildVerbT('ἕψομαι','ἕψῃ','ἕψεται','ἑψόμεθα','ἕψεσθε','ἕψονται','Futuro Indicativo Medio') },
+            
+            /* Nombres Propios: Familia y Personajes */
+            'δικαιοπολις': { l: 'Δικαιόπολις, -εως, ὁ', m: 'Sustantivo Propio (3ª decl), Nominativo Sg.', s: 'Sujeto', d: 'Diceópolis', t: () => buildNounT('Δικαιόπολις','Δικαιόπολι','Δικαιόπολιν','Δικαιοπόλεως','Δικαιοπόλει','-','-','-','-','-') },
+            'δικαιοπολιν': { l: 'Δικαιόπολις, -εως, ὁ', m: 'Sustantivo Propio (3ª decl), Acusativo Sg.', s: 'Objeto Directo', d: 'a Diceópolis', t: () => buildNounT('Δικαιόπολις','Δικαιόπολι','Δικαιόπολιν','Δικαιοπόλεως','Δικαιοπόλει','-','-','-','-','-') },
+            'δικαιοπολει': { l: 'Δικαιόπολις, -εως, ὁ', m: 'Sustantivo Propio (3ª decl), Dativo Sg.', s: 'Complemento Indirecto', d: 'a/para Diceópolis', t: () => buildNounT('Δικαιόπολις','Δικαιόπολι','Δικαιόπολιν','Δικαιοπόλεως','Δικαιοπόλει','-','-','-','-','-') },
+            'φιλιππος': { l: 'Φίλιππος, -ου, ὁ', m: 'Sustantivo Propio (2ª decl), Nominativo Sg.', s: 'Sujeto', d: 'Filipo', t: () => G.n2M('Φίλιππ') },
+            'φιλιππω': { l: 'Φίλιππος, -ου, ὁ', m: 'Sustantivo Propio (2ª decl), Dativo Sg.', s: 'Complemento Indirecto / Compañía', d: 'a Filipo', t: () => G.n2M('Φίλιππ') },
+            'φιλιππον': { l: 'Φίλιππος, -ου, ὁ', m: 'Sustantivo Propio (2ª decl), Acusativo Sg.', s: 'Objeto Directo', d: 'a Filipo', t: () => G.n2M('Φίλιππ') },
+            
+            /* Verbos Irregulares y Líquidos Clave */
+            'οιδα': { l: 'οἶδα', m: 'Verbo Irregular, 1ª Sg., Perfecto (con valor de Presente)', s: 'Núcleo', d: 'sé, conozco', t: () => buildVerbT('οἶδα','οἶσθα','οἶδε(ν)','ἴσμεν','ἴστε','ἴσασι(ν)','Perfecto Irregular') },
+            'μενεις': { l: 'μένω', m: 'Verbo, 2ª Sg., Futuro Indicativo Activo (Contracto)', s: 'Núcleo', d: 'permanecerás', t: () => buildVerbT('μενῶ','μενεῖς','μενεῖ','μενοῦμεν','μενεῖτε','μενοῦσι(ν)','Futuro Activo Líquido') },
+            'απεχει': { l: 'ἀπέχω', m: 'Verbo Compuesto, 3ª Sg., Presente Activo', s: 'Núcleo', d: 'dista, está lejos', t: () => G.vPresA('ἀπέχ') },
+            'εδυνατο': { l: 'δύναμαι', m: 'Verbo Deponente, 3ª Sg., Imperfecto Indicativo', s: 'Núcleo', d: 'podía', t: () => buildVerbT('ἐδυνάμην','ἐδύνασο','ἐδύνατο','ἐδυνάμεθα','ἐδύνασθε','ἐδύναντο','Imperfecto Indicativo') },
+            
+            /* Sustantivos, Adjetivos y Participios del final del Ábaton (Serpientes) */
+            'οφεων': { l: 'ὄφις, -εως, ὁ', m: 'Sustantivo (3ª decl), Genitivo Plural', s: 'Régimen del verbo ἀκούω', d: 'de las serpientes', t: () => buildNounT('ὄφις','ὄφι','ὄφιν','ὄφεως','ὄφει','ὄφεις','-','ὄφεις','ὄφεων','ὄφεσι') },
+            'ιερων': { l: 'ἱερός, -ά, -όν', m: 'Adjetivo, Genitivo Plural Masc/Neutro', s: 'Modificador', d: 'sagradas', t: () => buildNounT('ἱερός','-','-όν','-ου','-ῳ','-οί','-','-ούς','-ῶν','-οῖς') },
+            'συριζοντων': { l: 'συρίζω', m: 'Participio Presente Activo, Genitivo Plural Masc.', s: 'Participio Predicativo', d: 'silbando (que silban)', t: () => buildNounT('συρίζων','-','-οντα','-οντος','-οντι','-οντες','-','-οντας','-όντων','-ουσι') },
+            'ηρεμα': { l: 'ἠρέμα', m: 'Adverbio', s: 'CC de Modo', d: 'suavemente, en silencio', t: () => inv },
+            
+            /* Invariables extra */
+            'ουχ': { l: 'οὐ / οὐκ / οὐχ', m: 'Adverbio de Negación', s: 'Modificador Oracional', d: 'no (ante vocal aspirada)', t: () => inv },
+            'οικαδε': { l: 'οἴκαδε', m: 'Adverbio de lugar', s: 'CC de Dirección', d: 'a casa, hacia casa', t: () => inv },
+            'πολυ': { l: 'πολύς', m: 'Adjetivo/Adverbio, Neutro Sg.', s: 'CC de Cantidad', d: 'mucho', t: () => inv },
+            'σπανιως': { l: 'σπανίως', m: 'Adverbio', s: 'CC de Modo', d: 'raramente, escasamente', t: () => inv },
         });
 
         // ==========================================
