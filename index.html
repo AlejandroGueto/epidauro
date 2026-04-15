@@ -920,7 +920,13 @@
             'οτι': { l: 'ὅτι', m: 'Conjunción completiva', s: 'Nexo subordinante', d: 'que', t: () => inv },
             'προς': { l: 'πρός', m: 'Preposición', s: 'Rige Acusativo (Dirección)', d: 'hacia', t: () => inv },
             'την': { l: 'ἡ', m: 'Artículo Definido, Fem. Acus. Sg.', s: 'Determinante', d: 'la, a la', t: () => G.artF() },
-           'επιδαυρον': { l: 'Ἐπίδαυρος, -ου, ἡ', m: 'Sustantivo Propio (2ª decl), Acusativo Sg. Fem.', s: 'Dirección (con πρός)', d: 'Epidauro', t: () => G.n2M('Ἐπιδαύρ') },
+           'επιδαυρον': { 
+    l: 'Ἐπίδαυρος, -ου, ἡ', 
+    m: 'Sustantivo Propio (2ª decl), Acusativo Sg. Fem.', 
+    s: 'Dirección (con πρός)', 
+    d: 'Epidauro', 
+    t: () => buildNounT('Ἐπίδαυρος', 'Ἐπίδαυρε', 'Ἐπίδαυρον', 'Ἐπιδαύρου', 'Ἐπιδαύρῳ', '-', '-', '-', '-', '-') 
+},
             'πορευομαι': { l: 'πορεύομαι', m: 'Verbo Deponente, 1ª Sg., Presente Indicativo', s: 'Núcleo', d: 'me dirijo, voy', t: () => G.vPresM('πορεύ') },
             'νοσω': { l: 'νοσέω', m: 'Verbo Contracto, 1ª Sg., Presente Indicativo Activo', s: 'Núcleo', d: 'estoy enfermo/a', t: () => G.vPresA('νοσ') },
             'γαστερα': { l: 'γαστήρ, γαστέρος, ἡ', m: 'Sustantivo (3ª decl), Acusativo Sg. Fem.', s: 'Acusativo de Relación', d: 'del estómago, vientre', t: () => buildNounT('γαστήρ','-','γαστέρα','-έρος','-έρι','-','-','-','-','-') },
