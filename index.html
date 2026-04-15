@@ -1091,6 +1091,65 @@
             'φιλιπποσ': { l: 'Φίλιππος, -ου, ὁ', m: 'Sustantivo Propio (2ª decl), Nominativo Sg.', s: 'Sujeto', d: 'Filipo', t: () => buildNounT('Φίλιππος','Φίλιππε','Φίλιππον','Φιλίππου','Φιλίππῳ','-','-','-','-','-') },
             'φιλιππω': { l: 'Φίλιππος, -ου, ὁ', m: 'Sustantivo Propio (2ª decl), Dativo Sg.', s: 'C. Indirecto / Compañía', d: 'a Filipo', t: () => buildNounT('Φίλιππος','Φίλιππε','Φίλιππον','Φιλίππου','Φιλíππῳ','-','-','-','-','-') },
             'φιλιππον': { l: 'Φίλιππος, -ου, ὁ', m: 'Sustantivo Propio (2ª decl), Acusativo Sg.', s: 'Objeto Directo', d: 'a Filipo', t: () => buildNounT('Φίλιππος','Φίλιππε','Φίλιππον','Φιλίππου','Φιλíππῳ','-','-','-','-','-') },
+
+            /* --- GEOGRAFÍA SAGRADA Y ESTRATÉGICA --- */
+            
+            'αθηνασ': { 
+                l: 'Ἀθῆναι, -ῶν, αἱ', 
+                m: 'Sustantivo Propio (1ª decl), Acusativo Plural Fem.', 
+                s: 'Dirección (con ἐπὶ / εἰς)', 
+                d: 'Atenas', 
+                t: () => buildNounT('-', '-', '-', '-', '-', 'Ἀθῆναι', 'Ἀθῆναι', 'Ἀθήνας', 'Ἀθηνῶν', 'Ἀθήναις') 
+            },
+            'αθηναι': { 
+                l: 'Ἀθῆναι, -ῶν, αἱ', 
+                m: 'Sustantivo Propio (1ª decl), Nominativo Plural Fem.', 
+                s: 'Sujeto', 
+                d: 'Atenas', 
+                t: () => buildNounT('-', '-', '-', '-', '-', 'Ἀθῆναι', 'Ἀθῆναι', 'Ἀθήνας', 'Ἀθηνῶν', 'Ἀθήναις') 
+            },
+            'αττικην': { 
+                l: 'Ἀττική, -ῆς, ἡ', 
+                m: 'Sustantivo Propio (1ª decl), Acusativo Sg. Fem.', 
+                s: 'Dirección (con εἰς)', 
+                d: 'el Ática', 
+                t: () => buildNounT('Ἀττική', 'Ἀττική', 'Ἀττικήν', 'Ἀττικῆς', 'Ἀττικῇ', '-', '-', '-', '-', '-') 
+            },
+            'αττικη': { 
+                l: 'Ἀττική, -ῆς, ἡ', 
+                m: 'Sustantivo Propio (1ª decl), Dativo Sg. Fem.', 
+                s: 'Lugar en donde (con ἐν)', 
+                d: 'el Ática', 
+                t: () => buildNounT('Ἀττική', 'Ἀττική', 'Ἀττικήν', 'Ἀττικῆς', 'Ἀττικῇ', '-', '-', '-', '-', '-') 
+            },
+            'θεσσαλιασ': { 
+                l: 'Θεσσαλία, -ας, ἡ', 
+                m: 'Sustantivo Propio (1ª decl), Genitivo Sg. Fem.', 
+                s: 'Origen o Procedencia (con ἐκ)', 
+                d: 'Tesalia', 
+                t: () => buildNounT('Θεσσαλία', 'Θεσσαλία', 'Θεσσαλίαν', 'Θεσσαλίας', 'Θεσσαλίᾳ', '-', '-', '-', '-', '-') 
+            },
+            'βοιωτιαν': { 
+                l: 'Βοιωτία, -ας, ἡ', 
+                m: 'Sustantivo Propio (1ª decl), Acusativo Sg. Fem.', 
+                s: 'Dirección (con εἰς)', 
+                d: 'Beocia', 
+                t: () => buildNounT('Βοιωτία', 'Βοιωτία', 'Βοιωτίαν', 'Βοιωτίας', 'Βοιωτίᾳ', '-', '-', '-', '-', '-') 
+            },
+            'σαλαμινα': { 
+                l: 'Σαλαμίς, -ῖνος, ἡ', 
+                m: 'Sustantivo Propio (3ª decl), Acusativo Sg. Fem.', 
+                s: 'Dirección (con εἰς)', 
+                d: 'Salamina', 
+                t: () => buildNounT('Σαλαμίς', 'Σαλαμίς', 'Σαλαμῖνα', 'Σαλαμῖνος', 'Σαλαμῖνι', '-', '-', '-', '-', '-') 
+            },
+            'σαλαμινι': { 
+                l: 'Σαλαμίς, -ῖνος, ἡ', 
+                m: 'Sustantivo Propio (3ª decl), Dativo Sg. Fem.', 
+                s: 'Lugar en donde (con ἐν)', 
+                d: 'Salamina', 
+                t: () => buildNounT('Σαλαμίς', 'Σαλαμίς', 'Σαλαμῖνα', 'Σαλαμῖνος', 'Σαλαμῖνι', '-', '-', '-', '-', '-') 
+            },
             
             /* Verbos Irregulares y Líquidos Clave */
             'οιδα': { l: 'οἶδα', m: 'Verbo Irregular, 1ª Sg., Perfecto (con valor de Presente)', s: 'Núcleo', d: 'sé, conozco', t: () => buildVerbT('οἶδα','οἶσθα','οἶδε(ν)','ἴσμεν','ἴστε','ἴσασι(ν)','Perfecto Irregular') },
