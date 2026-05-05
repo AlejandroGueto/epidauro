@@ -1550,6 +1550,16 @@
             'ηγησαμενοσ': { l: 'ἡγέομαι', m: 'Verbo, Participio Aoristo Medio, Nom. Sg. Masc.', s: 'Participio Concertado', d: 'habiendo guiado', t: () => G.n2M('ἡγησάμεν') },
             'εισεβησαν': { l: 'εἰσβαίνω', m: 'Verbo, 3ª Plural Aoristo Radical Activo', s: 'Núcleo', d: 'embarcaron', t: () => buildVerbT('εἰσέβην','εἰσέβης','εἰσέβη','εἰσέβημεν','εἰσέβητε','εἰσέβησαν','Aoristo Radical') },
             'εισβητε': { l: 'εἰσβαίνω', m: 'Verbo, 2ª Plural Imperativo Aoristo', s: 'Orden', d: '¡embarcad!', t: () => inv },
+            'εισεβησαν': { l: 'εἰσβαίνω', m: 'Verbo, 3ª Plural Aoristo Radical Activo', s: 'Núcleo', d: 'embarcaron', t: () => buildVerbT('εἰσέβην','εἰσέβης','εἰσέβη','εἰσέβημεν','εἰσέβητε','εἰσέβησαν','Aoristo Radical') },
+            'εισβητε': { l: 'εἰσβαίνω', m: 'Verbo, 2ª Plural Imperativo Aoristo', s: 'Orden', d: '¡embarcad!', t: () => inv },
+
+            // --- ELISIONES Y PARTÍCULAS CRÍTICAS ---
+            'μ': { l: 'ἐγώ (elidido: μ\')', m: 'Verbo / Invariable / Pron. Personal, 1ª Acus. Sg.', s: 'Objeto Directo', d: 'me / a mí', t: () => inv },
+            'δ': { l: 'δέ (elidido: δ\')', m: 'Invariable, Partícula / Conjunción', s: 'Nexo', d: 'pero / y', t: () => inv },
+            'αλλ': { l: 'ἀλλά (elidido: ἀλλ\')', m: 'Invariable, Conjunción Adversativa', s: 'Nexo', d: 'sino / pero', t: () => inv },
+            'δι': { l: 'διά (elidido: δι\')', m: 'Invariable, Preposición (rige Gen/Acus)', s: 'Tránsito / Causa', d: 'a través de / por', t: () => inv },
+            'υφ': { l: 'ὑπό (elidido: ὑφ\')', m: 'Invariable, Preposición (rige Genitivo)', s: 'Complemento Agente', d: 'por (causa de)', t: () => inv },
+            'καιπερ': { l: 'καίπερ', m: 'Invariable, Conjunción Concesiva', s: 'Nexo', d: 'aunque', t: () => inv },
         };
 
         // ==========================================
