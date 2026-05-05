@@ -1493,6 +1493,14 @@
                     document.getElementById('timerContainer').classList.remove('text-cyan-300', 'border-cyan-500/50');
                     document.body.style.animation = "cronosWrath 2s infinite";
                 }
+
+                // SI EL TIEMPO LLEGA A CERO
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    gameOver();
+                }
+            }, 1000); // <- Aquí se cierra el setInterval
+        } 
         function formatTime(s) {
             const m = Math.floor(s / 60);
             const sec = s % 60;
