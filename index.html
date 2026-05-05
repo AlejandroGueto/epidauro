@@ -1395,7 +1395,7 @@
             'ωφελειν': { l: 'ὠφελέω', m: 'Verbo, Infinitivo Presente Activo', s: 'Complemento Verbal', d: 'ayudar / socorrer', t: () => inv },
             'μεν': { l: 'μέν', m: 'Partícula', s: 'Nexo correlativo', d: 'por una parte...', t: () => inv },
             'τε': { l: 'τε', m: 'Partícula Enclítica', s: 'Nexo Copulativo', d: 'y', t: () => inv },
-            'ωστε': { l: 'ὥστε', m: 'Conjunción Consecutiva', s: 'Nexo', d: 'de modo que / así que', t: () => inv }
+            'ωστε': { l: 'ὥστε', m: 'Conjunción Consecutiva', s: 'Nexo', d: 'de modo que / así que', t: () => inv },
                 
         // --- PALABRAS RESTANTES (VERBOS, PARTICIPIOS Y SUSTANTIVOS) ---
             'εκαθιζοντο': { l: 'καθίζω', m: 'Verbo, 3ª Plural Imperfecto Medio', s: 'Núcleo', d: 'se sentaban', t: () => inv },
@@ -1735,7 +1735,9 @@
                 content.innerHTML = `
                     <div class="mb-12 border-b-2 border-${colorTema}-900 pb-8 flex justify-between items-start">
                         <div>
-                            <h3 class="greek-display text-7xl text-white mb-4 drop-shadow-lg">${word}</h3>
+                            <div class="flex items-center justify-start text-5xl md:text-7xl mb-6 font-serif tracking-widest bg-black/40 p-8 rounded-3xl border-2 border-slate-800 w-max shadow-[inset_0_0_30px_rgba(0,0,0,1)]">
+    ${diseccionarPalabra(word, entry.m)}
+</div>
                             <p class="text-3xl text-${colorTema}-400 font-cinzel italic lowercase tracking-wider flex items-center gap-3">
                                 <i data-lucide="microscope" class="w-6 h-6"></i> Lema: ${entry.l}
                             </p>
