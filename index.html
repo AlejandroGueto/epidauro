@@ -443,7 +443,7 @@
                 </button>
             </div>
             <!-- PREMIUM 1: VISIÓN DE LINCEO (Filtros de Rayos X) -->
-           <div id="xray-filters" class="flex flex-wrap items-center justify-center md:justify-start gap-3 mt-4 mb-2 bg-slate-900/50 p-4 rounded-xl border border-slate-700 shadow-inner">
+          <div id="xray-filters" class="flex flex-wrap items-center justify-center md:justify-start gap-3 mt-4 mb-2 bg-slate-900/50 p-4 rounded-xl border border-slate-700 shadow-inner">
                 <span class="text-cyan-400 font-cinzel font-bold mr-2 flex items-center gap-2">
                     <i data-lucide="scan-eye" class="w-5 h-5"></i> Visión de Linceo:
                 </span>
@@ -454,7 +454,7 @@
                 <button onclick="applyXRay('Verbo')" class="px-4 py-2 bg-red-900/50 text-red-300 text-xs font-bold rounded-lg border border-red-800 hover:bg-red-800 transition shadow">Verbos</button>
                 <button onclick="applyXRay('clear')" class="px-4 py-2 bg-slate-800 text-slate-400 text-xs font-bold rounded-lg hover:bg-slate-700 transition shadow border border-slate-600">Limpiar Lente</button>
             </div>
-
+            
             <!-- Área de Contenido (Pergamino) -->
             <div class="pergamino p-10 md:p-16 rounded-b-2xl relative shadow-[0_30px_60px_rgba(0,0,0,0.9)] min-h-[850px] max-h-[85vh] overflow-y-auto custom-scrollbar">
                 <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-48 h-2.5 bg-slate-400/20 rounded-full"></div>
@@ -1044,7 +1044,6 @@
         };
 
         // --- 3. MOTORES DE GENERACIÓN GRAMATICAL DINÁMICA ---
-        // Crea tablas visualmente impecables para sustantivos/adjetivos y verbos
         function buildNounT(nS, vS, aS, gS, dS, nP, vP, aP, gP, dP) {
             return `<div class="overflow-x-auto w-full mt-6">
                 <table class="w-full text-sm text-left border-collapse border-2 border-cyan-800 font-serif bg-slate-950/50 shadow-[0_0_15px_rgba(6,182,212,0.2)]">
@@ -1079,7 +1078,6 @@
 
         const inv = '<div class="mt-8 p-6 border-l-4 border-slate-500 bg-slate-900/80 rounded-r-xl shadow-md flex items-center gap-4"><i data-lucide="lock" class="w-8 h-8 text-slate-400"></i><div><p class="text-sm uppercase tracking-widest font-bold text-slate-300">Naturaleza Invariable</p><p class="text-base font-serif text-slate-400 mt-1">Esta palabra es una partícula, conjunción, preposición o adverbio. No se declina ni se conjuga en la oración.</p></div></div>';
 
-       // Generadores Rápidos (Atajos de construcción para la Base de Datos)
         const G = {
             n1F: (r, eta) => buildNounT(r+(eta?'η':'α'), r+(eta?'η':'α'), r+(eta?'ην':'αν'), r+(eta?'ης':'ας'), r+(eta?'ῃ':'ᾳ'), r+'αι', r+'αι', r+'ας', r+'ων', r+'αις'),
             n1M: (r) => buildNounT(r+'ης', r+'α', r+'ην', r+'ου', r+'ῃ', r+'αι', r+'αι', r+'ας', r+'ων', r+'αις'),
@@ -1096,13 +1094,9 @@
             artF: () => buildNounT('ἡ','-','τὴν','τῆς','τῇ','αἱ','-','τὰς','τῶν','ταῖς'),
             artN: () => buildNounT('τὸ','-','τὸ','τοῦ','τῷ','τὰ','-','τὰ','τῶν','τοῖς')
         };
-// --- 4. CÓDICE LÉXICO ENCICLOPÉDICO (MÁS DE 300 ENTRADAS) ---
-        // Cubre casi el 95% del vocabulario de los 3 textos + Smart Fallback para el resto.
-       // --- 4. CÓDICE LÉXICO ENCICLOPÉDICO (EXPANDIDO AL MÁXIMO) ---
-        // --- 4. CÓDICE LÉXICO ENCICLOPÉDICO (PURGADO Y DEDUPLICADO) ---
-        // --- 4. CÓDICE LÉXICO ENCICLOPÉDICO MAESTRO (TOTALMENTE DEPURADO) ---
+
+        // --- 4. CÓDICE LÉXICO ENCICLOPÉDICO (DEPURADO) ---
         let wordDB = {
-            // --- 1. PERSONAJES, DIOSES Y GEOGRAFÍA ---
             'δικαιοπολισ': { l: 'Δικαιόπολις, -εως, ὁ', m: 'Sust. Propio (3ª), Nom. Sg.', s: 'Sujeto', d: 'Diceópolis', t: () => buildNounT('Δικαιόπολις','Δικαιόπολι','Δικαιόπολιν','Δικαιοπόλεως','Δικαιοπόλει','-','-','-','-','-') },
             'δικαιοπολιν': { l: 'Δικαιόπολις, -εως, ὁ', m: 'Sust. Propio (3ª), Acus. Sg.', s: 'O. Directo', d: 'a Diceópolis', t: () => buildNounT('Δικαιόπολις','Δικαιόπολι','Δικαιόπολιν','Δικαιοπόλεως','Δικαιοπόλει','-','-','-','-','-') },
             'δικαιοπολει': { l: 'Δικαιόπολις, -εως, ὁ', m: 'Sust. Propio (3ª), Dat. Sg.', s: 'Dativo de Interés', d: 'para Diceópolis', t: () => buildNounT('Δικαιόπολις','Δικαιόπολι','Δικαιόπολιν','Δικαιοπόλεως','Δικαιοπόλει','-','-','-','-','-') },
@@ -1128,8 +1122,6 @@
             'αθηναιοισ': { l: 'Ἀθηναῖος, -α, -ον', m: 'Adjetivo Sustantivado, Dat. Pl.', s: 'O. Indirecto', d: 'a los atenienses', t: () => G.n2M('Ἀθηναί') },
             'αθηναιουσ': { l: 'Ἀθηναῖος, -α, -ον', m: 'Adjetivo Sustantivado, Acus. Pl.', s: 'O. Directo', d: 'a los atenienses', t: () => G.n2M('Ἀθηναί') },
             'αθηναιοι': { l: 'Ἀθηναῖος, -α, -ον', m: 'Adjetivo Sustantivado, Nom. Pl.', s: 'Sujeto', d: 'los atenienses', t: () => G.n2M('Ἀθηναί') },
-
-            // --- 2. SUSTANTIVOS Y ADJETIVOS ---
             'θεοσ': { l: 'θεός, -οῦ, ὁ', m: 'Sustantivo (2ª decl), Nom. Sg.', s: 'Sujeto', d: 'el dios', t: () => G.n2M('θε') },
             'θεοισ': { l: 'θεός, -οῦ, ὁ', m: 'Sustantivo (2ª decl), Dativo Pl.', s: 'C. Compañía', d: 'a/con los dioses', t: () => G.n2M('θε') },
             'θεων': { l: 'θεός, -οῦ, ὁ', m: 'Sustantivo (2ª decl), Gen. Pl.', s: 'C. Nombre', d: 'de los dioses', t: () => G.n2M('θε') },
@@ -1222,8 +1214,6 @@
             'φιλανθρωποτατοσ': { l: 'φιλανθρωπότατος', m: 'Adjetivo (Superlativo), Nom. Sg.', s: 'Atributo', d: 'el más filántropo', t: () => G.n2M('φιλανθρωπότατ') },
             'ιλαοσ': { l: 'ἵλαος, -ον', m: 'Adjetivo, Nom. Sg. Masc.', s: 'Predicativo / Atributo', d: 'propicio', t: () => G.n2M('ἵλα') },
             'γεραιοσ': { l: 'γεραιός, -ά, -όν', m: 'Adjetivo, Nom. Sg. Masc.', s: 'Atributo / Modificador', d: 'anciano', t: () => G.n2M('γεραι') },
-
-            // --- 3. PRONOMBRES Y RELATIVOS ---
             'εγω': { l: 'ἐγώ', m: 'Pronombre Personal, 1ª Nom. Sg.', s: 'Sujeto', d: 'yo', t: () => buildNounT('ἐγώ','-','ἐμέ / με','ἐμοῦ / μου','ἐμοί / μοι','ἡμεῖς','-','ἡμᾶς','ἡμῶν','ἡμῖν') },
             'εγωγε': { l: 'ἔγωγε', m: 'Pronombre Personal Enfático, 1ª Nom.', s: 'Sujeto Fuerte', d: 'yo (precisamente)', t: () => inv },
             'με': { l: 'ἐγώ', m: 'Pronombre Personal, 1ª Acus. Sg. (Enclítico)', s: 'Objeto Directo', d: 'me / a mí', t: () => buildNounT('ἐγώ','-','ἐμέ / με','ἐμοῦ / μου','ἐμοί / μοι','ἡμεῖς','-','ἡμᾶς','ἡμῶν','ἡμῖν') },
@@ -1257,8 +1247,6 @@
             'μηδεν': { l: 'μηδέν', m: 'Pronombre indefinido neutro', s: 'O. Directo', d: 'nada', t: () => inv },
             'παντα': { l: 'πᾶς, πᾶσα, πᾶν', m: 'Adjetivo (3ª decl), Acusativo Pl. Neutro', s: 'O. Directo', d: 'todo / todas las cosas', t: () => buildNounT('πᾶν','-','πᾶν','παντός','παντί','πάντα','-','πάντα','πάντων','πᾶσι') },
             'πασαν': { l: 'πᾶς, πᾶσα, πᾶν', m: 'Adjetivo (1ª decl), Acusativo Sg. Fem.', s: 'Atributo/Modificador', d: 'todo / toda', t: () => buildNounT('πᾶσα','-','πᾶσαν','πάσης','πάσῃ','πᾶσαι','-','πάσας','πασῶν','πάσαις') },
-
-            // --- 4. PARTICIPIOS (TOTALMENTE DECLINADOS) ---
             'πινοντεσ': { l: 'πίνω', m: 'Participio Presente Act., Nom. Pl. Masc.', s: 'Participio Concertado', d: 'bebiendo', t: () => buildNounT('πίνων','-','πίνοντα','πίνοντος','πίνοντι','πίνοντες','-','πίνοντας','πινόντων','πίνουσι') },
             'ευροντεσ': { l: 'εὑρίσκω', m: 'Participio Aoristo Act., Nom. Pl. Masc.', s: 'Participio Concertado', d: 'habiendo encontrado', t: () => buildNounT('εὑρών','-','εὑρόντα','εὑρόντος','εὑρόντι','εὑρόντες','-','εὑρόντας','εὑρόντων','εὑροῦσι') },
             'μαθουσα': { l: 'μανθάνω', m: 'Participio Aoristo Act., Nom. Sg. Fem.', s: 'Participio Concertado', d: 'habiendo sabido', t: () => buildNounT('μαθοῦσα','-','μαθοῦσαν','μαθούσης','μαθούσῃ','μαθοῦσαι','-','μαθούσας','μαθουσῶν','μαθούσαις') },
@@ -1298,8 +1286,6 @@
             'κεκλεισμενασ': { l: 'κλείω', m: 'Participio Perfecto Pasivo, Acus. Pl. Fem.', s: 'Participio Predicativo', d: 'cerradas', t: () => G.n1F('κεκλεισμέν', true) },
             'κεκλεισμεναι': { l: 'κλείω', m: 'Participio Perfecto Pasivo, Nom. Pl. Fem.', s: 'Atributo / Predicativo', d: 'cerradas', t: () => G.n1F('κεκλεισμέν', true) },
             'νοσουσα': { l: 'νοσέω', m: 'Participio Presente Activo, Nom. Sg. Fem.', s: 'Participio Concertado', d: 'estando enferma', t: () => buildNounT('νοσοῦσα','-','νοσοῦσαν','νοσούσης','νοσούσῃ','νοσοῦσαι','-','νοσούσας','νοσουσῶν','νοσούσαις') },
-            
-            // --- 5. PARTICIPIOS MEDIOS ---
             'αρχομενω': { l: 'ἄρχω', m: 'Participio Presente Medio, Dativo Sg.', s: 'Dativo Absoluto (con ἦρι)', d: 'comenzando', t: () => G.n2M('ἀρχόμεν') },
             'μεμψομενοι': { l: 'μέμφομαι', m: 'Participio Futuro Medio, Nom. Pl. Masc.', s: 'Participio de Finalidad (con ὡς)', d: 'para quejarse', t: () => G.n2M('μεμψόμεν') },
             'αδικουμενοι': { l: 'ἀδικέω', m: 'Participio Presente Pasivo, Nom. Pl. Masc.', s: 'Participio Concesivo', d: 'siendo agraviados', t: () => G.n2M('ἀδικούμεν') },
@@ -1315,8 +1301,6 @@
             'ορμωμενοσ': { l: 'ὁρμάω', m: 'Participio Presente Medio/Pasivo, Nom. Sg. Masc.', s: 'Participio Concertado', d: 'poniéndose en marcha', t: () => G.n2M('ὁρμώμεν') },
             'ηγησομενοσ': { l: 'ἡγέομαι', m: 'Participio Futuro Medio, Nom. Sg. Masc.', s: 'Participio de Finalidad', d: 'para guiar', t: () => G.n2M('ἡγησόμεν') },
             'δεξαμενοσ': { l: 'δέχομαι', m: 'Participio Aoristo Medio, Nom. Sg. Masc.', s: 'Participio Concertado', d: 'habiendo recibido', t: () => G.n2M('δεξάμεν') },
-
-            // --- 6. VERBOS INDICATIVOS IMPORTANTES ---
             'εστιν': { l: 'εἰμί', m: 'Verbo Copulativo/Irregular, 3ª Sg., Presente Ind.', s: 'Núcleo del Predicado', d: 'es / está', t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)','Presente Ind.') },
             'εστι': { l: 'εἰμί', m: 'Verbo Copulativo/Irregular, 3ª Sg., Presente Ind.', s: 'Núcleo', d: 'es / está', t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)','Presente Ind.') },
             'ην': { l: 'εἰμί', m: 'Verbo Copulativo/Irregular, 3ª Sg., Imperfecto Ind.', s: 'Núcleo', d: 'era / estaba', t: () => buildVerbT('ἦν','ἦσθα','ἦν','ἦμεν','ἦτε','ἦσαν','Imperfecto Ind.') },
@@ -1406,7 +1390,7 @@
             'ηκουε': { l: 'ἀκούω', m: 'Verbo, 3ª Sg. Imperfecto Activo', s: 'Núcleo', d: 'escuchaba', t: () => G.vImpfA('ἤκου', '') },
             'ερωτησω': { l: 'ἐρωτάω', m: 'Verbo, 1ª Sg. Futuro Activo', s: 'Núcleo', d: 'preguntaré', t: () => G.vFutA('ἐρωτήσ') },
 
-            // --- 7. INVARIABLES, ARTÍCULOS, PREPOSICIONES E IMPERATIVOS / INFINITIVOS ---
+            // --- 7. INVARIABLES, PREPOSICIONES, INFINITIVOS E IMPERATIVOS ---
             'ο': { l: 'ὁ', m: 'Art. Masc. Nom. Sg.', s: 'Det.', d: 'el', t: () => G.artM() },
             'η': { l: 'ἡ / ἤ', m: 'Art. Fem. Nom. Sg. o Conj.', s: 'Det. / Nexo', d: 'la / o', t: () => G.artF() },
             'το': { l: 'τό', m: 'Art. Neutro Nom/Acus Sg.', s: 'Det.', d: 'el / lo', t: () => G.artN() },
@@ -1526,9 +1510,9 @@
             'δει': { l: 'δεῖ', m: 'Verbo Impersonal', s: 'Núcleo (rige Acus. + Infinitivo)', d: 'es necesario / hace falta', t: () => inv },
             'οσια': { l: 'ὅσιος, -α, -ον', m: 'Adjetivo, Acus. Pl. Neutro', s: 'O. Directo', d: 'cosas santas', t: () => inv }
         };
-        
+
         // ==========================================
-        // 5. LÓGICA DE CONTROL
+        // 5. LÓGICA DE CONTROL DE AUDIO
         // ==========================================
         let isAudioPlaying = false;
         function toggleAudio() {
@@ -1550,21 +1534,15 @@
 
         let achievements = new Set();
         function showToast(message, iconName = 'bell') {
-            if(achievements.has(message)) return; // Prevent spam
+            if(achievements.has(message)) return;
             achievements.add(message);
-            
             const container = document.getElementById('toast-container');
             const toast = document.createElement('div');
             toast.className = 'toast flex items-center bg-slate-900 border-l-4 border-cyan-400 text-white p-4 rounded shadow-lg transition-transform duration-500 transform translate-x-full mb-3 font-serif';
             toast.innerHTML = `<i data-lucide="${iconName}" class="w-6 h-6 text-cyan-400 mr-3"></i> <span class="text-sm font-bold tracking-wider">${message}</span>`;
-            
             container.appendChild(toast);
             lucide.createIcons();
-            
-            // Trigger animation
             setTimeout(() => { toast.style.transform = 'translateX(0)'; }, 50);
-            
-            // Remove after 4 seconds
             setTimeout(() => {
                 toast.style.transform = 'translateX(150%)';
                 setTimeout(() => toast.remove(), 500);
@@ -1592,16 +1570,13 @@
                 return;
             }
             teamName = input.value;
-            
             document.getElementById('introStage').classList.add('hidden-stage');
             document.getElementById('gameHeader').classList.remove('hidden-stage');
             document.getElementById('gameStage').classList.remove('hidden-stage');
-            
             initTexts(); 
             startTimer(); 
             lucide.createIcons(); 
             
-            // Iniciar Audio Automático si es posible
             const musica = document.getElementById('musicaFondo');
             musica.volume = 0.4;
             musica.play().then(() => {
@@ -1609,12 +1584,11 @@
                 document.getElementById('icon-audio').setAttribute('data-lucide', 'volume-2');
                 lucide.createIcons();
             }).catch(e => console.log("Navegador bloqueó el autoplay. Requiere click manual en el header."));
-            
             showToast("Habéis entrado en el Ábaton.", "footprints");
         }
-// LÓGICA DE LA VISIÓN DE LINCEO (ESCANER SINTÁCTICO)
-       function applyXRay(filterType) {
-            // 1. Limpiar filtros previos (Ahora incluye purple y amber)
+
+        // LÓGICA DE LA VISIÓN DE LINCEO (ESCANER SINTÁCTICO HÍBRIDO)
+        function applyXRay(filterType) {
             document.querySelectorAll('.word-token').forEach(t => {
                 t.classList.remove('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-blue-500', 'ring-emerald-500', 'ring-purple-500', 'ring-amber-500', 'ring-red-500', 'bg-blue-500/30', 'bg-emerald-500/30', 'bg-purple-500/30', 'bg-amber-500/30', 'bg-red-500/30');
             });
@@ -1626,12 +1600,29 @@
 
             showToast(`Filtro de los Dioses activado: Buscando ${filterType}`, 'scan-eye');
 
-            // 2. Aplicar filtro escaneando el Códice
             document.querySelectorAll('.word-token').forEach(t => {
                 const word = normalizeGreekForInput(t.innerText.replace(/[»"',;·.!?:)]/g, ''));
                 const entry = wordDB[word];
+                let m = entry ? entry.m.toLowerCase() : "";
                 
-                if (entry && entry.m.includes(filterType)) {
+                // INTELIGENCIA DE LINCEO (Fallback Automático si no está explícito en la DB o falta información)
+                if (!entry || m.includes('invariable') === false) {
+                    if (word.endsWith('ω') || word.endsWith('ει') || word.endsWith('ουσι') || word.endsWith('ουσιν') || word.endsWith('ονται') || word.endsWith('εται') || word.endsWith('ετο') || word.endsWith('ντο') || word.endsWith('ομεν') || word.endsWith('εθα') || word.endsWith('τε') || word.endsWith('ειν') || word.endsWith('σθαι') || word.endsWith('ναι') || word.endsWith('σα') || word.endsWith('εν') || word.endsWith('ον') || word.endsWith('σαν')) m += " verbo";
+                    if (word.endsWith('ων') || word.endsWith('οντεσ') || word.endsWith('οντασ') || word.endsWith('μενοσ') || word.endsWith('μενοι') || word.endsWith('μενουσ') || word.endsWith('ουσα') || word.endsWith('σασ') || word.endsWith('σαντεσ')) m += " verbo participio";
+                    if (word.endsWith('οσ') || word.endsWith('η') || word.endsWith('α') || word.endsWith('οι') || word.endsWith('αι') || word.endsWith('εσ') || word.endsWith('ουσ')) m += " nom. nominativo";
+                    if (word.endsWith('ον') || word.endsWith('ην') || word.endsWith('αν') || word.endsWith('ασ') || word.endsWith('ουσ')) m += " acus. acusativo";
+                    if (word.endsWith('ου') || word.endsWith('ησ') || word.endsWith('ων') || word.endsWith('εωσ')) m += " gen. genitivo";
+                    if (word.endsWith('ω') || word.endsWith('ῳ') || word.endsWith('η') || word.endsWith('ῃ') || word.endsWith('οισ') || word.endsWith('αισ') || word.endsWith('σι') || word.endsWith('σιν') || word.endsWith('τι') || word.endsWith('ει')) m += " dat. dativo";
+                }
+
+                let match = false;
+                if (filterType === 'Nom.' && (m.includes('nom.') || m.includes('nominativo'))) match = true;
+                if (filterType === 'Acus.' && (m.includes('acus.') || m.includes('acusativo'))) match = true;
+                if (filterType === 'Gen.' && (m.includes('gen.') || m.includes('genitivo'))) match = true;
+                if (filterType === 'Dat.' && (m.includes('dat.') || m.includes('dativo'))) match = true;
+                if (filterType === 'Verbo' && (m.includes('verbo') || m.includes('participio') || m.includes('infinitivo') || m.includes('imperativo'))) match = true;
+
+                if (match) {
                     if (filterType === 'Nom.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-blue-500', 'bg-blue-500/30');
                     if (filterType === 'Acus.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-emerald-500', 'bg-emerald-500/30');
                     if (filterType === 'Gen.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-purple-500', 'bg-purple-500/30');
@@ -1640,6 +1631,7 @@
                 }
             });
         }
+
         function startTimer() {
             timerInterval = setInterval(() => {
                 timeRemaining--;
@@ -1649,7 +1641,6 @@
                 
                 if(timeRemaining === 1800) showToast("Quedan 30 minutos. Mardonio se acerca.", "alert-triangle");
                 
-                // Función Premium: Furia de Cronos (Últimos 5 minutos)
                 if (timeRemaining === 300) {
                     showToast("¡CRONOS DESPIERTA! 5 minutos restantes.", "skull");
                     document.getElementById('timerContainer').classList.add('time-critical', 'text-red-500');
@@ -1657,54 +1648,44 @@
                     document.body.style.animation = "cronosWrath 2s infinite";
                 }
 
-                // SI EL TIEMPO LLEGA A CERO
                 if (timeRemaining <= 0) {
                     clearInterval(timerInterval);
                     gameOver();
                 }
-            }, 1000); // <- Aquí se cierra el setInterval
+            }, 1000);
         } 
+
         function formatTime(s) {
             const m = Math.floor(s / 60);
             const sec = s % 60;
             return `${m.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
         }
 
-       function switchTab(id) {
+        function switchTab(id) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            
             const tab = document.getElementById(id);
             if (tab) tab.classList.remove('hidden');
             
             document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active', 'text-cyan-400'));
-            
             const b = document.getElementById('btn-' + id.split('-')[1]);
             if (b) b.classList.add('active', 'text-cyan-400');
             
             if (id === 'tab-mapa') {
                 showToast("Habéis desplegado el Mapa de la Hélade.", "map");
-                initRealMap(); // Inicializamos el mapa
-                // CRÍTICO: Recalcular el tamaño del mapa 100ms después de quitar el 'hidden'
-                setTimeout(() => {
-                    if (mapaGrecia) mapaGrecia.invalidateSize();
-                }, 100);
+                initRealMap();
+                setTimeout(() => { if (mapaGrecia) mapaGrecia.invalidateSize(); }, 100);
             }
             if (id === 'tab-cultura') showToast("Consultando los saberes antiguos...", "book-open");
-            
             lucide.createIcons();
         }
+
         function initTexts() {
             ['alfa', 'beta', 'persas', 'eval'].forEach(id => {
                 const container = document.getElementById(`content-${id}-gr`);
                 const esContainer = document.getElementById(`content-${id}-es`);
-                
-                if (esContainer && translations[id]) {
-                    esContainer.innerHTML = translations[id];
-                }
-
+                if (esContainer && translations[id]) { esContainer.innerHTML = translations[id]; }
                 const rawText = texts[id];
                 const words = rawText ? rawText.split(/(\s+)/) : [];
-                
                 if (container) {
                     container.innerHTML = words.map(chunk => {
                         if (!chunk.trim()) return chunk;
@@ -1717,28 +1698,21 @@
                 }
             });
         }
-// ==========================================
+
         // MOTOR PREMIUM: BISTURÍ FILOLÓGICO
-        // ==========================================
         function diseccionarPalabra(originalWord, morfologia) {
-            // Si es invariable, no se descompone
             if (morfologia.includes('Invariable') || morfologia.includes('Prep') || morfologia.includes('Conj') || morfologia.includes('Adv')) {
                 return `<span class="text-slate-400 font-bold">${originalWord}</span>`;
             }
-
-            // Normalizamos la palabra temporalmente para compararla sin acentos
             let wordNorm = originalWord.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
             let prefixIdx = 0;
             let suffixIdx = originalWord.length;
 
-            // 1. Detectar Aumento (Imperfecto o Aoristo)
             if (morfologia.includes('Imperfecto') || morfologia.includes('Aoristo')) {
                 if (wordNorm.startsWith('ε') || wordNorm.startsWith('η')) prefixIdx = 1;
             }
 
-            // 2. Detectar Desinencias comunes (verbos y nombres)
             const suffixes = ['ομεθα', 'εσθαι', 'οντο', 'ουσι', 'ουσιν', 'ονται', 'ουσα', 'ασθαι', 'οντεσ', 'αμεν', 'αντο', 'ησαν', 'εσθε', 'ομεν', 'ομαι', 'εται', 'ατο', 'ων', 'οισ', 'αισ', 'ουσ', 'ασ', 'ησ', 'ου', 'ον', 'οσ', 'ει', 'εισ', 'αι', 'οι', 'ω', 'α', 'η', 'ν', 'σ'];
-            
             for (let suf of suffixes) {
                 if (wordNorm.endsWith(suf)) {
                     suffixIdx = originalWord.length - suf.length;
@@ -1746,48 +1720,33 @@
                 }
             }
 
-            // Evitar romper palabras muy cortas
             if (suffixIdx <= prefixIdx) return `<span class="text-cyan-400 font-bold">${originalWord}</span>`;
-
             let pref = originalWord.substring(0, prefixIdx);
             let root = originalWord.substring(prefixIdx, suffixIdx);
             let suff = originalWord.substring(suffixIdx);
-
             let html = '';
             
-            // Renderizar Aumento (si existe)
             if (pref) {
-                html += `<span class="text-purple-400 border-b-4 border-purple-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${pref}</b>
-                        <span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-purple-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap font-sans font-black shadow-lg uppercase tracking-widest z-50">Aumento</span></span> <span class="text-slate-600 font-black mx-1 opacity-50">+</span> `;
+                html += `<span class="text-purple-400 border-b-4 border-purple-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${pref}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-purple-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap font-sans font-black shadow-lg uppercase tracking-widest z-50">Aumento</span></span> <span class="text-slate-600 font-black mx-1 opacity-50">+</span> `;
             }
-            
-            // Renderizar Raíz
             if (root) {
-                html += `<span class="text-cyan-400 border-b-4 border-cyan-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${root}</b>
-                        <span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-cyan-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap font-sans font-black shadow-lg uppercase tracking-widest z-50">Raíz</span></span>`;
+                html += `<span class="text-cyan-400 border-b-4 border-cyan-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${root}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-cyan-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap font-sans font-black shadow-lg uppercase tracking-widest z-50">Raíz</span></span>`;
             }
-            
-            // Renderizar Desinencia (si existe)
             if (suff) {
-                html += ` <span class="text-slate-600 font-black mx-1 opacity-50">+</span> <span class="text-emerald-400 border-b-4 border-emerald-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${suff}</b>
-                        <span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-emerald-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap font-sans font-black shadow-lg uppercase tracking-widest z-50">Desinencia</span></span>`;
+                html += ` <span class="text-slate-600 font-black mx-1 opacity-50">+</span> <span class="text-emerald-400 border-b-4 border-emerald-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${suff}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-emerald-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap font-sans font-black shadow-lg uppercase tracking-widest z-50">Desinencia</span></span>`;
             }
-
             return html;
         }
+
         function consultarOraculo(word) {
-            // Reproducir efecto sonoro Premium
             const sound = document.getElementById('sonidoOraculo');
             if (sound) { sound.currentTime = 0; sound.volume = 0.5; sound.play().catch(e=>console.log(e)); }
             const drawer = document.getElementById('oracle-drawer');
             const content = document.getElementById('oracle-content');
             const key = normalizeGreekForInput(word);
             let entry = wordDB[key];
-            
             showToast("Buscando en los papiros...", "search");
 
-            // --- SMART FALLBACK (INTELIGENCIA ARTIFICIAL DEL CÓDICE) ---
-            // Asegura que NUNCA falte un cuadro de gramática
             if (!entry) {
                 let m = "Forma declinada o conjugada";
                 let s = "Sintaxis sujeta al contexto de la oración";
@@ -1813,7 +1772,6 @@
                 else if (key.endsWith('α') || key.endsWith('ᾳ')) { m = 'Sust/Adj (1ª decl) Nom/Dat Sg. Fem o Neutro Pl.'; s = 'Sujeto / Objeto Directo'; t = () => G.n1F(key.replace(/α$/, '').replace(/ᾳ$/, ''), false); }
                 else if (key.endsWith('ει')) { m = 'Verbo 3ª Sg. Pres. Act. o Sustantivo Dat Sg. (3ª decl)'; s = 'Núcleo / C. Indirecto'; }
                 else if (key.endsWith('ομενος')) { m = 'Participio Presente Medio, Nom. Sg. Masc'; s = 'Participio Concertado'; t = () => buildNounT(key,'-','-ον','-ου','-ῳ','-οι','-','-ους','-ων','-οις'); }
-                
                 entry = { l: word + " (Raíz estimada)", m: m, s: s, d: d, t: t };
             }
             
@@ -1821,17 +1779,19 @@
             content.innerHTML = `<div class="flex flex-col items-center justify-center py-40 space-y-6"><i data-lucide="compass" class="w-16 h-16 text-cyan-500 animate-spin-slow"></i><p class="animate-pulse font-cinzel text-cyan-400 text-2xl uppercase tracking-[0.2em]">Consultando los papiros...</p></div>`;
             lucide.createIcons();
 
-           setTimeout(() => {
-                // Función Premium: Detectar Casos/Tiempos para colores dinámicos
+            setTimeout(() => {
                 let colorTema = 'cyan';
-                if (entry.m.includes('Nominativo') || entry.m.includes('Nom.')) colorTema = 'blue';
-                if (entry.m.includes('Acusativo') || entry.m.includes('Acus.')) colorTema = 'emerald';
-                if (entry.m.includes('Genitivo') || entry.m.includes('Gen.')) colorTema = 'purple';
-                if (entry.m.includes('Dativo') || entry.m.includes('Dat.')) colorTema = 'amber';
-                if (entry.m.includes('Futuro') || entry.m.includes('Aoristo')) colorTema = 'red';
-               const tokens = document.querySelectorAll('.word-token');
+                let em = entry.m.toLowerCase();
+                
+                // Fallback local visual
+                if (em.includes('nom.') || em.includes('nominativo') || word.endsWith('οσ') || word.endsWith('η') || word.endsWith('α') || word.endsWith('οι') || word.endsWith('αι')) colorTema = 'blue';
+                if (em.includes('acus.') || em.includes('acusativo') || word.endsWith('ον') || word.endsWith('ην') || word.endsWith('αν') || word.endsWith('ουσ') || word.endsWith('ασ')) colorTema = 'emerald';
+                if (em.includes('gen.') || em.includes('genitivo') || word.endsWith('ου') || word.endsWith('ησ') || word.endsWith('ων') || word.endsWith('εωσ')) colorTema = 'purple';
+                if (em.includes('dat.') || em.includes('dativo') || word.endsWith('ω') || word.endsWith('ῳ') || word.endsWith('η') || word.endsWith('ῃ') || word.endsWith('οισ') || word.endsWith('αισ') || word.endsWith('σι')) colorTema = 'amber';
+                if (em.includes('verbo') || em.includes('participio') || word.endsWith('ει') || word.endsWith('ουσι') || word.endsWith('ονται') || word.endsWith('εται')) colorTema = 'red';
+                
+                const tokens = document.querySelectorAll('.word-token');
                 tokens.forEach(t => {
-                    // Limpiar signos de puntuación para comparar
                     if (t.innerText.replace(/[»"',;·.!?:)]/g, '') === word) {
                         t.classList.remove('analyzed-verb', 'analyzed-nom', 'analyzed-acus', 'analyzed-gen', 'analyzed-dat', 'analyzed-inv');
                         if (colorTema === 'red') t.classList.add('analyzed-verb');
@@ -1842,8 +1802,7 @@
                         else t.classList.add('analyzed-inv');
                     }
                 });
-               // PREMIUM: Radar Gramatical (Colorear la palabra en el texto original)
-// --- PREMIUM 2: MÓDULO ETIMOLÓGICO (Ecos de la Hélade) ---
+
                 const etimologias = {
                     'θεοσ': 'Teología, Ateísmo, Panteón, Apoteosis.',
                     'χρονοσ': 'Cronómetro, Cronología, Sincronizar, Anacronismo.',
@@ -1864,7 +1823,6 @@
                 };
                 
                 let etimHTML = '';
-                // Intentamos buscar la raíz (cogiendo la primera palabra del Lema)
                 let rootKey = entry.l.split(',')[0].normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/ς/g, 'σ');
                 
                 if(etimologias[rootKey] || etimologias[key]) {
@@ -1875,7 +1833,7 @@
                                     <p class="text-indigo-100 font-serif text-xl relative z-10">${etimText}</p>
                                 </div>`;
                 }
-                // --------------------------------------------------------
+                
                 content.innerHTML = `
                     <div class="mb-12 border-b-2 border-${colorTema}-900 pb-8 flex justify-between items-start">
                         <div>
@@ -1929,19 +1887,15 @@
             lucide.createIcons();
         }
 
-        // --- MANEJO DE PRUEBAS Y PROGRESO ---
         function successPrueba(currId, nextId, achievementMsg) {
             const current = document.getElementById(currId);
             const next = document.getElementById(nextId);
-            
             current.classList.add('opacity-40', 'pointer-events-none');
             current.classList.replace('border-cyan-500', 'border-slate-900');
-            
             next.classList.remove('opacity-40', 'pointer-events-none');
             next.classList.add('unlocked-glow', 'ring-4', 'ring-emerald-500/30');
             next.scrollIntoView({ behavior: 'smooth', block: 'center' });
             
-            // Actualizar SVG Map Progress Dots en Header
             const num = nextId.replace('prueba', '');
             const dot = document.getElementById('step-' + num);
             if(dot) {
@@ -1952,7 +1906,6 @@
                     if(icon) { icon.classList.remove('text-slate-600'); icon.classList.add('text-orange-500', 'animate-pulse'); }
                 }
             }
-            
             showToast(achievementMsg, "check-circle");
         }
 
@@ -1968,24 +1921,19 @@
         }
 
         function pedirPista(mensaje) {
-    if (timeRemaining > 180) {
-        timeRemaining -= 180; // Resta 3 minutos (180 segundos)
-        showToast("Los dioses te susurran: " + mensaje, "help-circle");
-        
-        // Animación de penalización de tiempo
-        const timerCont = document.getElementById('timerContainer');
-        timerCont.classList.add('border-red-500', 'text-red-500');
-        setTimeout(() => timerCont.classList.remove('border-red-500', 'text-red-500'), 1000);
-    } else {
-        showToast("No tienes tiempo suficiente para consultar a los dioses.", "alert-circle");
-    }
-}
+            if (timeRemaining > 180) {
+                timeRemaining -= 180; 
+                showToast("Los dioses te susurran: " + mensaje, "help-circle");
+                const timerCont = document.getElementById('timerContainer');
+                timerCont.classList.add('border-red-500', 'text-red-500');
+                setTimeout(() => timerCont.classList.remove('border-red-500', 'text-red-500'), 1000);
+            } else {
+                showToast("No tienes tiempo suficiente para consultar a los dioses.", "alert-circle");
+            }
+        }
 
         function checkPrueba1() {
-            const q1 = document.getElementById('p1-q1').value;
-            const q2 = document.getElementById('p1-q2').value;
-            const q3 = document.getElementById('p1-q3').value;
-            if (q1 === 'ζητησων' && q2 === 'αφιξομεθα' && q3 === 'επιφανηναι') successPrueba('prueba1', 'prueba2', "Prueba I Superada: Dominas el Futuro.");
+            if (document.getElementById('p1-q1').value === 'ζητησων' && document.getElementById('p1-q2').value === 'αφιξομεθα' && document.getElementById('p1-q3').value === 'επιφανηναι') successPrueba('prueba1', 'prueba2', "Prueba I Superada: Dominas el Futuro.");
             else failPrueba('p1-error');
         }
 
@@ -2015,8 +1963,6 @@
                 document.getElementById('lock3').value, document.getElementById('lock4').value,
                 document.getElementById('lock5').value, document.getElementById('lock6').value
             ].join('');
-            
-            // Clave: 134231
             if (code === '134231') victory();
             else failPrueba('p6-error');
         }
@@ -2035,7 +1981,6 @@
             
             let currentDisplayScore = 0;
             const scoreElement = document.getElementById('finalScore');
-            
             const countInterval = setInterval(() => {
                 currentDisplayScore += 353;
                 if(currentDisplayScore >= finalScoreVal) {
@@ -2050,61 +1995,33 @@
             showToast("¡ATENAS HA SIDO SALVADA!", "flame");
         }
 
-        // --- SISTEMA DE MAPA REAL (LEAFLET) ---
         let mapaGrecia = null;
-
         function initRealMap() {
             const mapContainer = document.getElementById('mapa-real');
             if (mapaGrecia || !mapContainer) return; 
-
-            // Crear el objeto del mapa
-            mapaGrecia = L.map('mapa-real', {
-                zoomControl: false 
-            }).setView([38.0500, 23.3000], 8);
-
+            mapaGrecia = L.map('mapa-real', { zoomControl: false }).setView([38.0500, 23.3000], 8);
             L.control.zoom({ position: 'topright' }).addTo(mapaGrecia);
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 12 }).addTo(mapaGrecia);
 
-            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                maxZoom: 12
-            }).addTo(mapaGrecia);
-
-            // Coordenadas
             const tesalia = [39.4000, 22.4000];
             const termopilas = [38.7966, 22.5350];
             const beocia = [38.3233, 23.3194]; 
             const atenas = [37.9838, 23.7275];
             const salamina = [37.9600, 23.5000];
             const epidauro = [37.5960, 23.0746];
-
             const tooltipStyle = { permanent: true, direction: 'right', className: 'bg-transparent border-none text-white drop-shadow-[0_2px_4px_rgba(0,0,0,1)] font-cinzel text-lg font-black tracking-widest' };
 
-            // 5. Marcadores de Posición
-            // Ejército Persa (Rojo)
-            L.circleMarker(tesalia, { color: '#dc2626', radius: 6, fillOpacity: 0.8 }).addTo(mapaGrecia)
-             .bindTooltip("Tesalia (Mardonio)", tooltipStyle);
-            L.circleMarker(beocia, { color: '#dc2626', radius: 6, fillOpacity: 0.8 }).addTo(mapaGrecia)
-             .bindTooltip("Beocia", tooltipStyle);
+            L.circleMarker(tesalia, { color: '#dc2626', radius: 6, fillOpacity: 0.8 }).addTo(mapaGrecia).bindTooltip("Tesalia (Mardonio)", tooltipStyle);
+            L.circleMarker(beocia, { color: '#dc2626', radius: 6, fillOpacity: 0.8 }).addTo(mapaGrecia).bindTooltip("Beocia", tooltipStyle);
+            L.circleMarker(atenas, { color: '#0ea5e9', radius: 8, fillOpacity: 0.9, weight: 3 }).addTo(mapaGrecia).bindTooltip("Atenas (Saqueada)", tooltipStyle);
+            L.circleMarker(salamina, { color: '#0ea5e9', radius: 6, fillOpacity: 0.9 }).addTo(mapaGrecia).bindTooltip("Salamina", tooltipStyle);
+            L.circleMarker(epidauro, { color: '#22c55e', radius: 10, fillOpacity: 1, weight: 4 }).addTo(mapaGrecia).bindTooltip("SANTUARIO DE EPIDAURO", { ...tooltipStyle, className: 'bg-black/60 p-2 border border-green-500 rounded text-green-400 drop-shadow-2xl font-cinzel text-xl font-black tracking-widest' });
 
-            // Atenienses (Cyan)
-            L.circleMarker(atenas, { color: '#0ea5e9', radius: 8, fillOpacity: 0.9, weight: 3 }).addTo(mapaGrecia)
-             .bindTooltip("Atenas (Saqueada)", tooltipStyle);
-            L.circleMarker(salamina, { color: '#0ea5e9', radius: 6, fillOpacity: 0.9 }).addTo(mapaGrecia)
-             .bindTooltip("Salamina", tooltipStyle);
-
-            // Nuestro Objetivo: Epidauro (Verde)
-            L.circleMarker(epidauro, { color: '#22c55e', radius: 10, fillOpacity: 1, weight: 4 }).addTo(mapaGrecia)
-             .bindTooltip("SANTUARIO DE EPIDAURO", { ...tooltipStyle, className: 'bg-black/60 p-2 border border-green-500 rounded text-green-400 drop-shadow-2xl font-cinzel text-xl font-black tracking-widest' });
-
-            // 6. Dibujar Rutas Estratégicas
-            const rutaPersa = [tesalia, termopilas, beocia, atenas];
-            L.polyline(rutaPersa, { color: '#ef4444', weight: 4, dashArray: '10, 15', opacity: 0.8 }).addTo(mapaGrecia);
-
-            const rutaEscape = [atenas, salamina];
-            L.polyline(rutaEscape, { color: '#0ea5e9', weight: 3, dashArray: '5, 10', opacity: 0.8 }).addTo(mapaGrecia);
-
-            const rutaEpidauro = [atenas, [37.8, 23.5], epidauro];
-            L.polyline(rutaEpidauro, { color: '#22c55e', weight: 4, dashArray: '8, 12', opacity: 0.9 }).addTo(mapaGrecia);
+            L.polyline([tesalia, termopilas, beocia, atenas], { color: '#ef4444', weight: 4, dashArray: '10, 15', opacity: 0.8 }).addTo(mapaGrecia);
+            L.polyline([atenas, salamina], { color: '#0ea5e9', weight: 3, dashArray: '5, 10', opacity: 0.8 }).addTo(mapaGrecia);
+            L.polyline([atenas, [37.8, 23.5], epidauro], { color: '#22c55e', weight: 4, dashArray: '8, 12', opacity: 0.9 }).addTo(mapaGrecia);
         }
+
         function gameOver() {
             clearInterval(timerInterval);
             document.getElementById('gameStage').classList.add('hidden-stage');
@@ -2112,7 +2029,6 @@
             document.getElementById('defeatStage').classList.remove('hidden-stage');
         }
 
-        // --- SISTEMA DE FUEGO CANVAS (Premium Particle System) ---
         function initFire() {
             const canvas = document.getElementById('fireCanvas');
             const ctx = canvas.getContext('2d');
@@ -2122,14 +2038,12 @@
             
             class Particle {
                 constructor() {
-                    // Nacen cerca de la pira central
                     this.x = canvas.width / 2 + (Math.random() * 100 - 50);
                     this.y = canvas.height - 20;
                     this.vx = Math.random() * 4 - 2;
                     this.vy = Math.random() * -6 - 3;
                     this.life = Math.random() * 100 + 50;
                     this.size = Math.random() * 20 + 10;
-                    // Colores de fuego realistas
                     this.color = `rgba(255, ${Math.floor(Math.random() * 120 + 50)}, 0, `;
                 }
                 draw() {
@@ -2141,17 +2055,12 @@
             }
             
             function animate() {
-                // Fondo oscuro con slight fade para efecto estela
                 ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
-                
-                // Añadir partículas constantemente
                 if (particles.length < 350) {
                     for(let i=0; i<5; i++) particles.push(new Particle());
                 }
-                
                 particles.forEach((p, i) => {
-                    // Simular viento racheado
                     p.x += p.vx + (Math.random() * 2 - 1); 
                     p.y += p.vy; 
                     p.life -= 1.5;
@@ -2161,8 +2070,6 @@
                 requestAnimationFrame(animate);
             }
             animate();
-            
-            // Reajuste en resize
             window.addEventListener('resize', () => {
                 canvas.width = canvas.offsetWidth;
                 canvas.height = canvas.offsetHeight;
@@ -2171,22 +2078,14 @@
 
         lucide.createIcons();
 
-        // ==========================================
-        // FUNCIONES PREMIUM AÑADIDAS
-        // ==========================================
-
-        // --- PREMIUM 1 y 2: Aura de Apolo y Fondo Parallax 3D ---
         const cursorAura = document.createElement('div');
         cursorAura.style.cssText = "position:fixed; pointer-events:none; width:600px; height:600px; background:radial-gradient(circle, rgba(56,189,248,0.08) 0%, transparent 60%); border-radius:50%; z-index:1; transform:translate(-50%, -50%); transition: opacity 0.2s ease; mix-blend-mode: screen;";
         document.body.appendChild(cursorAura);
 
         const mysticBg = document.querySelector('.mystic-bg');
         document.addEventListener('mousemove', (e) => {
-            // Movimiento del Aura
             cursorAura.style.left = e.clientX + 'px';
             cursorAura.style.top = e.clientY + 'px';
-            
-            // Movimiento Parallax del fondo 3D
             if(mysticBg) {
                 const xAxis = (window.innerWidth / 2 - e.pageX) / 40;
                 const yAxis = (window.innerHeight / 2 - e.pageY) / 40;
@@ -2194,7 +2093,6 @@
             }
         });
 
-        // --- PREMIUM 3: Generador de Lluvia de Dracmas ---
         function lluviaDracmas() {
             const iconos = ['🪙', '✨', '⚡'];
             for(let i = 0; i < 80; i++) {
@@ -2206,10 +2104,8 @@
                     coin.style.fontSize = (Math.random() * 20 + 15) + 'px';
                     coin.style.animation = `dracmaFall ${Math.random() * 3 + 2}s linear forwards`;
                     document.body.appendChild(coin);
-                    
-                    // Limpieza automática para no sobrecargar el navegador
                     setTimeout(() => coin.remove(), 5000);
-                }, Math.random() * 2500); // Caen progresivamente durante 2.5 segundos
+                }, Math.random() * 2500);
             }
         }
     </script>
