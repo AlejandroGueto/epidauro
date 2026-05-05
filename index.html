@@ -1605,7 +1605,64 @@
                 }
             });
         }
+// ==========================================
+        // MOTOR PREMIUM: BISTURÍ FILOLÓGICO
+        // ==========================================
+        function diseccionarPalabra(originalWord, morfologia) {
+            // Si es invariable, no se descompone
+            if (morfologia.includes('Invariable') || morfologia.includes('Prep') || morfologia.includes('Conj') || morfologia.includes('Adv')) {
+                return `<span class="text-slate-400 font-bold">${originalWord}</span>`;
+            }
 
+            // Normalizamos la palabra temporalmente para compararla sin acentos
+            let wordNorm = originalWord.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+            let prefixIdx = 0;
+            let suffixIdx = originalWord.length;
+
+            // 1. Detectar Aumento (Imperfecto o Aoristo)
+            if (morfologia.includes('Imperfecto') || morfologia.includes('Aoristo')) {
+                if (wordNorm.startsWith('ε') || wordNorm.startsWith('η')) prefixIdx = 1;
+            }
+
+            // 2. Detectar Desinencias comunes (verbos y nombres)
+            const suffixes = ['ομεθα', 'εσθαι', 'οντο', 'ουσι', 'ουσιν', 'ονται', 'ουσα', 'ασθαι', 'οντεσ', 'αμεν', 'αντο', 'ησαν', 'εσθε', 'ομεν', 'ομαι', 'εται', 'ατο', 'ων', 'οισ', 'αισ', 'ουσ', 'ασ', 'ησ', 'ου', 'ον', 'οσ', 'ει', 'εισ', 'αι', 'οι', 'ω', 'α', 'η', 'ν', 'σ'];
+            
+            for (let suf of suffixes) {
+                if (wordNorm.endsWith(suf)) {
+                    suffixIdx = originalWord.length - suf.length;
+                    break;
+                }
+            }
+
+            // Evitar romper palabras muy cortas
+            if (suffixIdx <= prefixIdx) return `<span class="text-cyan-400 font-bold">${originalWord}</span>`;
+
+            let pref = originalWord.substring(0, prefixIdx);
+            let root = originalWord.substring(prefixIdx, suffixIdx);
+            let suff = originalWord.substring(suffixIdx);
+
+            let html = '';
+            
+            // Renderizar Aumento (si existe)
+            if (pref) {
+                html += `<span class="text-purple-400 border-b-4 border-purple-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${pref}</b>
+                        <span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-purple-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap font-sans font-black shadow-lg uppercase tracking-widest z-50">Aumento</span></span> <span class="text-slate-600 font-black mx-1 opacity-50">+</span> `;
+            }
+            
+            // Renderizar Raíz
+            if (root) {
+                html += `<span class="text-cyan-400 border-b-4 border-cyan-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${root}</b>
+                        <span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-cyan-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap font-sans font-black shadow-lg uppercase tracking-widest z-50">Raíz</span></span>`;
+            }
+            
+            // Renderizar Desinencia (si existe)
+            if (suff) {
+                html += ` <span class="text-slate-600 font-black mx-1 opacity-50">+</span> <span class="text-emerald-400 border-b-4 border-emerald-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${suff}</b>
+                        <span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-emerald-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap font-sans font-black shadow-lg uppercase tracking-widest z-50">Desinencia</span></span>`;
+            }
+
+            return html;
+        }
         function consultarOraculo(word) {
             // Reproducir efecto sonoro Premium
             const sound = document.getElementById('sonidoOraculo');
