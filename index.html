@@ -325,7 +325,7 @@
 
         <div class="flex items-center gap-6">
             <!-- Botón Mute Audio -->
-            <button onclick="toggleAudio()" id="btn-audio" class="p-3 bg-slate-800 rounded-full border border-cyan-900 text-cyan-400 hover:text-white hover:bg-cyan-900 transition shadow-lg">
+          <button onclick="toggleAudio()" id="btn-audio" aria-label="Silenciar música" title="Silenciar música" class="p-3 bg-slate-800 rounded-full border border-cyan-900 text-cyan-400 hover:text-white hover:bg-cyan-900 transition shadow-lg">
                 <i data-lucide="volume-2" id="icon-audio"></i>
             </button>
 
@@ -456,7 +456,7 @@
             </div>
             
             <!-- Área de Contenido (Pergamino) -->
-            <div class="pergamino p-10 md:p-16 rounded-b-2xl relative shadow-[0_30px_60px_rgba(0,0,0,0.9)] min-h-[850px] max-h-[85vh] overflow-y-auto custom-scrollbar">
+            <div class="pergamino p-10 md:p-16 rounded-b-2xl relative shadow-[0_30px_60px_rgba(0,0,0,0.9)] min-h-[500px] max-h-[85vh] overflow-y-auto custom-scrollbar">
                 <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-48 h-2.5 bg-slate-400/20 rounded-full"></div>
                 
                 <!-- TEXTOS GRIEGOS -->
@@ -988,7 +988,7 @@
             <h2 class="text-4xl font-cinzel text-cyan-400 flex items-center gap-6 font-black uppercase tracking-widest drop-shadow-md">
                 <i data-lucide="book-open" class="w-12 h-12"></i> Códice Helénico
             </h2>
-            <button onclick="closeOracle()" class="text-slate-500 hover:text-white bg-slate-900 p-4 rounded-full transition-all transform hover:rotate-90 border border-slate-800 hover:border-cyan-500">
+            <button onclick="closeOracle()" aria-label="Cerrar Códice" title="Cerrar Códice" class="text-slate-500 hover:text-white bg-slate-900 p-4 rounded-full transition-all transform hover:rotate-90 border border-slate-800 hover:border-cyan-500">
                 <i data-lucide="x" class="w-10 h-10"></i>
             </button>
         </div>
@@ -1717,7 +1717,7 @@ document.querySelectorAll('.word-token').forEach(t => {
             if (id === 'tab-mapa') {
                 showToast("Habéis desplegado el Mapa de la Hélade.", "map");
                 initRealMap();
-                setTimeout(() => { if (mapaGrecia) mapaGrecia.invalidateSize(); }, 100);
+                setTimeout(() => { if (mapaGrecia) mapaGrecia.invalidateSize(); }, 300);
             }
             if (id === 'tab-cultura') showToast("Consultando los saberes antiguos...", "book-open");
             lucide.createIcons();
@@ -1821,6 +1821,14 @@ document.querySelectorAll('.word-token').forEach(t => {
         }
 
         function consultarOraculo(word) {
+            // --- Feedback Visual de la palabra seleccionada ---
+            document.querySelectorAll('.word-token').forEach(t => {
+                t.classList.remove('bg-cyan-500/40', 'ring-2', 'ring-cyan-400', 'rounded');
+                if (t.innerText.replace(/[»"”“'’!,;·.?:()]/g, '') === word) {
+                    t.classList.add('bg-cyan-500/40', 'ring-2', 'ring-cyan-400', 'rounded');
+                }
+            });
+
             const sound = document.getElementById('sonidoOraculo');
             if (sound) { sound.currentTime = 0; sound.volume = 0.5; sound.play().catch(e=>console.log(e)); }
             const drawer = document.getElementById('oracle-drawer');
@@ -1863,10 +1871,8 @@ document.querySelectorAll('.word-token').forEach(t => {
 
             setTimeout(() => {
                 let colorTema = 'cyan';
-                // Validación segura para evitar crasheos si falta la morfología en la BD
                 let em = (entry && entry.m) ? entry.m.toLowerCase() : "";
                 
-                // Fallback local visual
                 if (em.includes('nom.') || em.includes('nominativo') || word.endsWith('οσ') || word.endsWith('η') || word.endsWith('α') || word.endsWith('οι') || word.endsWith('αι')) colorTema = 'blue';
                 if (em.includes('acus.') || em.includes('acusativo') || word.endsWith('ον') || word.endsWith('ην') || word.endsWith('αν') || word.endsWith('ουσ') || word.endsWith('ασ')) colorTema = 'emerald';
                 if (em.includes('gen.') || em.includes('genitivo') || word.endsWith('ου') || word.endsWith('ησ') || word.endsWith('ων') || word.endsWith('εωσ')) colorTema = 'purple';
@@ -1875,7 +1881,7 @@ document.querySelectorAll('.word-token').forEach(t => {
                 
                 const tokens = document.querySelectorAll('.word-token');
                 tokens.forEach(t => {
-                    if (t.innerText.replace(/[»"',;·.!?:)]/g, '') === word) {
+                    if (t.innerText.replace(/[»"',;·.!?:()]/g, '') === word) {
                         t.classList.remove('analyzed-verb', 'analyzed-nom', 'analyzed-acus', 'analyzed-gen', 'analyzed-dat', 'analyzed-inv');
                         if (colorTema === 'red') t.classList.add('analyzed-verb');
                         else if (colorTema === 'blue') t.classList.add('analyzed-nom');
@@ -1916,6 +1922,120 @@ document.querySelectorAll('.word-token').forEach(t => {
                                     <p class="text-indigo-100 font-serif text-xl relative z-10">${etimText}</p>
                                 </div>`;
                 }
+                
+                content.innerHTML = `
+                    <div class="mb-12 border-b-2 border-${colorTema}-900 pb-8 flex justify-between items-start">
+                        <div>
+                            <div class="flex items-center justify-start text-5xl md:text-7xl mb-6 font-serif tracking-widest bg-black/40 p-8 rounded-3xl border-2 border-slate-800 w-max shadow-[inset_0_0_30px_rgba(0,0,0,1)]">
+                                ${diseccionarPalabra(word, entry)}
+                            </div>
+                            <p class="text-3xl text-${colorTema}-400 font-cinzel italic lowercase tracking-wider flex items-center gap-3">
+                                <i data-lucide="microscope" class="w-6 h-6"></i> Lema: ${entry.l}
+                            </p>
+                        </div>
+                        <div class="bg-${colorTema}-950/50 p-4 rounded-xl border border-${colorTema}-800 text-right shadow-inner hidden md:block">
+                            <p class="text-xs text-${colorTema}-300 uppercase tracking-widest font-black mb-1">Análisis Forense</p>
+                            <p class="font-serif text-slate-200">Raíz deducida + Desinencias</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-slate-900 p-8 rounded-3xl border-t-4 border-${colorTema}-500 shadow-2xl hover:-translate-y-1 transition-transform">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="lang-tag bg-${colorTema}-900 text-${colorTema}-100">Morfología</span>
+                            </div>
+                            <p class="text-xl leading-relaxed text-slate-100 font-serif">${entry.m}</p>
+                        </div>
+                        <div class="bg-slate-900 p-8 rounded-3xl border-t-4 border-slate-600 shadow-2xl hover:-translate-y-1 transition-transform">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="lang-tag bg-slate-800 text-slate-300">Sintaxis</span>
+                            </div>
+                            <p class="text-xl leading-relaxed text-slate-100 font-serif">${entry.s}</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-slate-900 to-black p-10 rounded-3xl mt-8 border border-slate-800 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+                        <span class="lang-tag bg-amber-900 text-amber-100 mb-6 inline-block">Traducción de Contexto</span>
+                        <p class="text-4xl italic font-serif text-white border-l-4 border-amber-500 pl-6 py-2">"${entry.d}"</p>
+                    </div>
+                    ${etimHTML}
+                    <div class="mt-12 bg-slate-950/50 p-6 rounded-2xl border border-slate-800">
+                        ${entry.t()}
+                    </div>`;
+                lucide.createIcons();
+            }, 600);
+        }
+                });
+
+                const etimologias = {
+                    'θεοσ': 'Teología, Ateísmo, Panteón, Apoteosis.',
+                    'χρονοσ': 'Cronómetro, Cronología, Sincronizar, Anacronismo.',
+                    'ψυχη': 'Psicología, Psiquiatra, Psicópata.',
+                    'οφθαλμοσ': 'Oftalmólogo.',
+                    'γαστηρ': 'Gastroenteritis, Gastronomía, Gástrico.',
+                    'πολεμοσ': 'Polémica.',
+                    'ανηρ': 'Androide, Andrología, Alejandro, Poliandria.',
+                    'γυνη': 'Ginecólogo, Misógino, Andrógino.',
+                    'ιατροσ': 'Pediatra, Psiquiatra, Foniatra.',
+                    'υπνοσ': 'Hipnosis, Hipnótico.',
+                    'ναυσ': 'Náutico, Nausea, Astronauta, Cibernética.',
+                    'μονοσ': 'Monólogo, Monopolio, Monje, Monótono.',
+                    'λιμην': 'Limnología.',
+                    'αστυ': 'Astucia.',
+                    'πατηρ': 'Patriarca, Patrimonio, Patronímico.',
+                    'αγγελοσ': 'Ángel, Arcángel, Evangelio.'
+                };
+                
+                let etimHTML = '';
+                let rootKey = entry.l.split(',')[0].normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/ς/g, 'σ');
+                
+                if(etimologias[rootKey] || etimologias[key]) {
+                    let etimText = etimologias[rootKey] || etimologias[key];
+                    etimHTML = `<div class="bg-indigo-950/50 p-6 rounded-2xl border-l-4 border-indigo-500 mt-6 shadow-inner relative overflow-hidden">
+                                    <div class="absolute right-0 top-0 opacity-10 text-indigo-500"><i data-lucide="quote" class="w-24 h-24"></i></div>
+                                    <p class="text-indigo-300 text-xs font-black uppercase tracking-widest mb-2 flex items-center gap-2"><i data-lucide="link" class="w-4 h-4"></i> Ecos de la Hélade (Etimología)</p>
+                                    <p class="text-indigo-100 font-serif text-xl relative z-10">${etimText}</p>
+                                </div>`;
+                }
+                
+                content.innerHTML = `
+                    <div class="mb-12 border-b-2 border-${colorTema}-900 pb-8 flex justify-between items-start">
+                        <div>
+                            <div class="flex items-center justify-start text-5xl md:text-7xl mb-6 font-serif tracking-widest bg-black/40 p-8 rounded-3xl border-2 border-slate-800 w-max shadow-[inset_0_0_30px_rgba(0,0,0,1)]">
+                                ${diseccionarPalabra(word, entry)}
+                            </div>
+                            <p class="text-3xl text-${colorTema}-400 font-cinzel italic lowercase tracking-wider flex items-center gap-3">
+                                <i data-lucide="microscope" class="w-6 h-6"></i> Lema: ${entry.l}
+                            </p>
+                        </div>
+                        <div class="bg-${colorTema}-950/50 p-4 rounded-xl border border-${colorTema}-800 text-right shadow-inner hidden md:block">
+                            <p class="text-xs text-${colorTema}-300 uppercase tracking-widest font-black mb-1">Análisis Forense</p>
+                            <p class="font-serif text-slate-200">Raíz deducida + Desinencias</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-slate-900 p-8 rounded-3xl border-t-4 border-${colorTema}-500 shadow-2xl hover:-translate-y-1 transition-transform">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="lang-tag bg-${colorTema}-900 text-${colorTema}-100">Morfología</span>
+                            </div>
+                            <p class="text-xl leading-relaxed text-slate-100 font-serif">${entry.m}</p>
+                        </div>
+                        <div class="bg-slate-900 p-8 rounded-3xl border-t-4 border-slate-600 shadow-2xl hover:-translate-y-1 transition-transform">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="lang-tag bg-slate-800 text-slate-300">Sintaxis</span>
+                            </div>
+                            <p class="text-xl leading-relaxed text-slate-100 font-serif">${entry.s}</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-slate-900 to-black p-10 rounded-3xl mt-8 border border-slate-800 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+                        <span class="lang-tag bg-amber-900 text-amber-100 mb-6 inline-block">Traducción de Contexto</span>
+                        <p class="text-4xl italic font-serif text-white border-l-4 border-amber-500 pl-6 py-2">"${entry.d}"</p>
+                    </div>
+                    ${etimHTML}
+                    <div class="mt-12 bg-slate-950/50 p-6 rounded-2xl border border-slate-800">
+                        ${entry.t()}
+                    </div>`;
+                lucide.createIcons();
+            }, 600);
+        }
                 
                 content.innerHTML = `
                     <div class="mb-12 border-b-2 border-${colorTema}-900 pb-8 flex justify-between items-start">
@@ -2016,27 +2136,27 @@ document.querySelectorAll('.word-token').forEach(t => {
         }
 
         function checkPrueba1() {
-            if (document.getElementById('p1-q1').value === 'ζητησων' && document.getElementById('p1-q2').value === 'αφιξομεθα' && document.getElementById('p1-q3').value === 'επιφανηναι') successPrueba('prueba1', 'prueba2', "Prueba I Superada: Dominas el Futuro.");
+            if (document.getElementById('p1-q1').value.trim() === 'ζητησων' && document.getElementById('p1-q2').value === 'αφιξομεθα' && document.getElementById('p1-q3').value === 'επιφανηναι') successPrueba('prueba1', 'prueba2', "Prueba I Superada: Dominas el Futuro.");
             else failPrueba('p1-error');
         }
 
         function checkPrueba2() {
-            if (document.getElementById('p2-q1').value === 'b' && document.getElementById('p2-q2').value === 'b') successPrueba('prueba2', 'prueba3', "Prueba II Superada: Sintaxis Divina.");
+            if (document.getElementById('p2-q1').value.trim() === 'b' && document.getElementById('p2-q2').value === 'b') successPrueba('prueba2', 'prueba3', "Prueba II Superada: Sintaxis Divina.");
             else failPrueba('p2-error');
         }
 
         function checkPrueba3() {
-            if (document.getElementById('p3-q1').value === 'b' && document.getElementById('p3-q2').value === 'b') successPrueba('prueba3', 'prueba4', "Prueba III Superada: Eres un Sabio.");
+            if (document.getElementById('p3-q1').value.trim() === 'b' && document.getElementById('p3-q2').value === 'b') successPrueba('prueba3', 'prueba4', "Prueba III Superada: Eres un Sabio.");
             else failPrueba('p3-error'); 
         }
 
         function checkPrueba4() {
-            if (document.getElementById('p4-q1').value === 'b' && document.getElementById('p4-q2').value === 'c') successPrueba('prueba4', 'prueba5', "Prueba IV Superada: La Historia te avala.");
+            if (document.getElementById('p4-q1').value.trim() === 'b' && document.getElementById('p4-q2').value === 'c') successPrueba('prueba4', 'prueba5', "Prueba IV Superada: La Historia te avala.");
             else failPrueba('p4-error');
         }
 
         function checkPrueba5() {
-            if (document.getElementById('p5-q1').value === 'a' && document.getElementById('p5-q2').value === 'b') successPrueba('prueba5', 'prueba6', "Prueba V Superada: Hermenéutica Perfecta.");
+            if (document.getElementById('p5-q1').value.trim() === 'a' && document.getElementById('p5-q2').value === 'b') successPrueba('prueba5', 'prueba6', "Prueba V Superada: Hermenéutica Perfecta.");
             else failPrueba('p5-error');
         }
 
