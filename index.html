@@ -234,6 +234,18 @@
             20%, 40%, 60%, 80% { transform: translateX(6px); } 
         }
         .error-shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; border-color: #ef4444 !important; }
+        /* --- PREMIUM 3: ANIMACIÓN LLUVIA DE DRACMAS --- */
+        @keyframes dracmaFall {
+            0% { transform: translateY(-50px) rotateY(0deg) scale(1); opacity: 1; }
+            100% { transform: translateY(100vh) rotateY(720deg) scale(1.5); opacity: 0; }
+        }
+        .dracma {
+            position: fixed;
+            top: -50px;
+            z-index: 9999;
+            pointer-events: none;
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 1));
+        }
     </style>
 </head>
 <body class="flex flex-col items-center p-4 md:p-8 lg:p-12 relative overflow-y-auto">
@@ -1496,6 +1508,23 @@
             }, 20);
             
             initFire();
+            // ... (código anterior de la función victory)
+            let currentDisplayScore = 0;
+            const scoreElement = document.getElementById('finalScore');
+            // Animación de conteo de puntos
+            const countInterval = setInterval(() => {
+                currentDisplayScore += 353;
+                if(currentDisplayScore >= finalScoreVal) {
+                    currentDisplayScore = finalScoreVal;
+                    clearInterval(countInterval);
+                }
+                scoreElement.innerText = currentDisplayScore.toLocaleString() + " PTS";
+            }, 20);
+            
+            initFire();
+            lluviaDracmas(); // <-- ¡ESTA ES LA LÍNEA NUEVA!
+            showToast("¡ATENAS HA SIDO SALVADA!", "flame");
+        }
             showToast("¡ATENAS HA SIDO SALVADA!", "flame");
         }
 
@@ -1564,6 +1593,48 @@
         }
 
         lucide.createIcons();
+
+        // ==========================================
+        // FUNCIONES PREMIUM AÑADIDAS
+        // ==========================================
+
+        // --- PREMIUM 1 y 2: Aura de Apolo y Fondo Parallax 3D ---
+        const cursorAura = document.createElement('div');
+        cursorAura.style.cssText = "position:fixed; pointer-events:none; width:600px; height:600px; background:radial-gradient(circle, rgba(56,189,248,0.08) 0%, transparent 60%); border-radius:50%; z-index:1; transform:translate(-50%, -50%); transition: opacity 0.2s ease; mix-blend-mode: screen;";
+        document.body.appendChild(cursorAura);
+
+        const mysticBg = document.querySelector('.mystic-bg');
+        document.addEventListener('mousemove', (e) => {
+            // Movimiento del Aura
+            cursorAura.style.left = e.clientX + 'px';
+            cursorAura.style.top = e.clientY + 'px';
+            
+            // Movimiento Parallax del fondo 3D
+            if(mysticBg) {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 40;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 40;
+                mysticBg.style.transform = `translate(${xAxis}px, ${yAxis}px)`;
+            }
+        });
+
+        // --- PREMIUM 3: Generador de Lluvia de Dracmas ---
+        function lluviaDracmas() {
+            const iconos = ['🪙', '✨', '⚡'];
+            for(let i = 0; i < 80; i++) {
+                setTimeout(() => {
+                    let coin = document.createElement('div');
+                    coin.innerText = iconos[Math.floor(Math.random() * iconos.length)];
+                    coin.className = 'dracma';
+                    coin.style.left = Math.random() * 100 + 'vw';
+                    coin.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                    coin.style.animation = `dracmaFall ${Math.random() * 3 + 2}s linear forwards`;
+                    document.body.appendChild(coin);
+                    
+                    // Limpieza automática para no sobrecargar el navegador
+                    setTimeout(() => coin.remove(), 5000);
+                }, Math.random() * 2500); // Caen progresivamente durante 2.5 segundos
+            }
+        }
     </script>
 </body>
 </html>
