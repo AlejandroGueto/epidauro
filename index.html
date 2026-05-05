@@ -8,9 +8,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <!-- Frameworks Externos -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
     
     <!-- LIBRERÍAS DE LEAFLET PARA EL MAPA REAL -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -1639,31 +1636,37 @@
         }
 
         function victory() {
-    clearInterval(timerInterval);
-    document.getElementById('gameStage').classList.add('hidden-stage');
-    document.getElementById('gameHeader').classList.add('hidden-stage');
-    document.getElementById('victoryStage').classList.remove('hidden-stage');
-    
-    document.getElementById('finalTeamName').innerText = teamName;
-    document.getElementById('finalTime').innerText = document.getElementById('timerDisplay').innerText;
-    document.getElementById('finalMistakes').innerText = mistakes;
-    
-    // Cálculo de Score
-    const finalScoreVal = Math.max(0, BASE_SCORE - (90*60 - timeRemaining)*5 - (mistakes * 500));
-    
-    let currentDisplayScore = 0;
-    const scoreElement = document.getElementById('finalScore');
-    
-    // Animación de conteo de puntos
-    const countInterval = setInterval(() => {
-        currentDisplayScore += 353;
-        if(currentDisplayScore >= finalScoreVal) {
-            currentDisplayScore = finalScoreVal;
-            clearInterval(countInterval);
+            clearInterval(timerInterval);
+            document.getElementById('gameStage').classList.add('hidden-stage');
+            document.getElementById('gameHeader').classList.add('hidden-stage');
+            document.getElementById('victoryStage').classList.remove('hidden-stage');
+            
+            document.getElementById('finalTeamName').innerText = teamName;
+            document.getElementById('finalTime').innerText = document.getElementById('timerDisplay').innerText;
+            document.getElementById('finalMistakes').innerText = mistakes;
+            
+            // Cálculo de Score
+            const finalScoreVal = Math.max(0, BASE_SCORE - (90*60 - timeRemaining)*5 - (mistakes * 500));
+            
+            let currentDisplayScore = 0;
+            const scoreElement = document.getElementById('finalScore');
+            
+            // Animación de conteo de puntos
+            const countInterval = setInterval(() => {
+                currentDisplayScore += 353;
+                if(currentDisplayScore >= finalScoreVal) {
+                    currentDisplayScore = finalScoreVal;
+                    clearInterval(countInterval);
+                }
+                scoreElement.innerText = currentDisplayScore.toLocaleString() + " PTS";
+            }, 20);
+            
+            initFire();
+            lluviaDracmas();
+            showToast("¡ATENAS HA SIDO SALVADA!", "flame");
         }
-        scoreElement.innerText = currentDisplayScore.toLocaleString() + " PTS";
-    }, 20);
-    // --- SISTEMA DE MAPA REAL (LEAFLET) ---
+
+        // --- SISTEMA DE MAPA REAL (LEAFLET) ---
         let mapaGrecia = null;
 
         function initRealMap() {
@@ -1682,10 +1685,10 @@
                 maxZoom: 12
             }).addTo(mapaGrecia);
 
-            // 3. Coordenadas Históricas
+            // 3. Coordenadas Históricas (NOMBRES CORREGIDOS)
             const tesalia = [39.4000, 22.4000];
             const termopilas = [38.7966, 22.5350];
-            const beocia (Tebas) = [38.3233, 23.3194];
+            const beocia = [38.3233, 23.3194]; 
             const atenas = [37.9838, 23.7275];
             const salamina = [37.9600, 23.5000];
             const epidauro = [37.5960, 23.0746];
@@ -1741,11 +1744,6 @@
                 opacity: 0.9
             }).addTo(mapaGrecia);
         }
-    initFire();
-    lluviaDracmas();
-    showToast("¡ATENAS HA SIDO SALVADA!", "flame");
-}
-
         function gameOver() {
             clearInterval(timerInterval);
             document.getElementById('gameStage').classList.add('hidden-stage');
