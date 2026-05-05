@@ -610,8 +610,10 @@
     </div>
 
     <!-- VERBOS -->
-    <h4 class="text-xl font-cinzel font-bold text-red-900 mb-4 bg-red-100/50 p-3 rounded-lg border-l-4 border-red-600">III. Verbos (Ῥήματα)</h4>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-3 mb-10 font-serif text-base text-slate-800">
+    <h4 class="text-xl font-cinzel font-bold text-red-900 mb-2 mt-8 bg-red-100/50 p-3 rounded-lg border-l-4 border-red-600">III. Verbos (Ῥήματα)</h4>
+    
+    <h5 class="text-lg font-bold text-red-800 mb-3 border-b border-red-200">Tema de Presente e Imperfecto</h5>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-3 mb-6 font-serif text-base text-slate-800">
         <div><strong class="text-red-800">εἰμί:</strong> Ser, estar, haber.</div>
         <div><strong class="text-red-800">ἔρχομαι / εἶμι:</strong> Ir, venir.</div>
         <div><strong class="text-red-800">λέγω / φημί:</strong> Decir, hablar.</div>
@@ -621,7 +623,6 @@
         <div><strong class="text-red-800">εὑρίσκω:</strong> Encontrar.</div>
         <div><strong class="text-red-800">νοσέω:</strong> Estar enfermo.</div>
         <div><strong class="text-red-800">δύναμαι:</strong> Poder, ser capaz.</div>
-        <div><strong class="text-red-800">οἶδα:</strong> Saber, conocer.</div>
         <div><strong class="text-red-800">ἀκούω:</strong> Escuchar, oír (+ Gen/Acus).</div>
         <div><strong class="text-red-800">σπεύδω:</strong> Apresurarse.</div>
         <div><strong class="text-red-800">ὁρμάω:</strong> Ponerse en marcha.</div>
@@ -631,7 +632,7 @@
         <div><strong class="text-red-800">πάσχω:</strong> Sufrir, padecer.</div>
         <div><strong class="text-red-800">κάμνω:</strong> Trabajar, estar cansado.</div>
         <div><strong class="text-red-800">μένω:</strong> Quedarse, permanecer.</div>
-        <div><strong class="text-red-800">κόπτω:</strong> Golpear, llamar (a la puerta).</div>
+        <div><strong class="text-red-800">κόπτω:</strong> Golpear, llamar.</div>
         <div><strong class="text-red-800">δέχομαι:</strong> Recibir, aceptar.</div>
         <div><strong class="text-red-800">πιστεύω:</strong> Creer, confiar.</div>
         <div><strong class="text-red-800">φοβέομαι:</strong> Temer, tener miedo.</div>
@@ -642,6 +643,26 @@
         <div><strong class="text-red-800">αἱρέω:</strong> Tomar, capturar.</div>
     </div>
 
+    <h5 class="text-lg font-bold text-red-800 mb-3 border-b border-red-200">Tema de Futuro</h5>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-3 mb-6 font-serif text-base text-slate-800">
+        <div><strong class="text-red-800">ἀφιξόμεθα:</strong> Llegaremos (ἀφικνέομαι).</div>
+        <div><strong class="text-red-800">γνωσόμεθα:</strong> Sabremos (γιγνώσκω).</div>
+        <div><strong class="text-red-800">πλευσόμεθα:</strong> Navegaremos (πλέω).</div>
+        <div><strong class="text-red-800">τιμήσομεν:</strong> Honraremos (τιμάω).</div>
+        <div><strong class="text-red-800">ζητήσων:</strong> Para buscar (Part. Fut.).</div>
+        <div><strong class="text-red-800">λεξοντα:</strong> Para decir (Part. Fut.).</div>
+    </div>
+
+    <h5 class="text-lg font-bold text-red-800 mb-3 border-b border-red-200">Tema de Aoristo y Perfecto</h5>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-3 mb-10 font-serif text-base text-slate-800">
+        <div><strong class="text-red-800">οἶδα:</strong> Saber, conocer (Perf.).</div>
+        <div><strong class="text-red-800">ἦλθον:</strong> Fui / Vine (Aor. ἔρχομαι).</div>
+        <div><strong class="text-red-800">εἶπον:</strong> Dije (Aor. λέγω).</div>
+        <div><strong class="text-red-800">ἔλαβον:</strong> Tomé (Aor. λαμβάνω).</div>
+        <div><strong class="text-red-800">ἔμαθον:</strong> Aprendí (Aor. μανθάνω).</div>
+        <div><strong class="text-red-800">ἔπαθον:</strong> Sufrí (Aor. πάσχω).</div>
+    </div>
+                            
     <!-- INVARIABLES -->
     <h4 class="text-xl font-cinzel font-bold text-emerald-900 mb-4 bg-emerald-100/50 p-3 rounded-lg border-l-4 border-emerald-600">IV. Invariables (Preposiciones, Conjunciones y Adverbios)</h4>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-3 font-serif text-base text-slate-800">
@@ -1142,7 +1163,7 @@
             'ναυσιν': { l: 'ναῦς, νεώς, ἡ', m: 'Sust. Irreg. (3ª), Dat. Pl.', s: 'Lugar', d: 'en las naves', t: () => buildNounT('ναῦς','-','ναῦν','νεώς','νηΐ','νῆες','-','ναῦς','νεῶν','ναυσί') },
             'λιμενοσ': { l: 'λιμήν, -ένος, ὁ', m: 'Sust. (3ª), Gen. Sg.', s: 'C. Adverbio', d: 'del puerto', t: () => buildNounT('λιμήν','-','λιμένα','λιμένος','λιμένι','λιμένες','-','λιμένας','λιμένων','λιμέσι') },
             'λιμενα': { l: 'λιμήν, -ένος, ὁ', m: 'Sust. (3ª), Acus. Sg.', s: 'Dirección', d: 'al puerto', t: () => buildNounT('λιμήν','-','λιμένα','λιμένος','λιμένι','λιμένες','-','λιμένας','λιμένων','λιμέσι') },
-            'οινωπολιον': { l: 'οἰνοπώλιον, -ου, τό', m: 'Sust. (2ª), Acus. Sg.', s: 'O. Directo', d: 'taberna', t: () => G.n2N('οἰνοπώλι') },
+            'οινοπωλιον': { l: 'οἰνοπώλιον, -ου, τό', m: 'Sust. (2ª decl), Acus. Sg.', s: 'O. Directo', d: 'taberna', t: () => G.n2N('οἰνοπώλι') },
             'οινου': { l: 'οἶνος, -ου, ὁ', m: 'Sust. (2ª), Gen. Sg.', s: 'C. Nombre', d: 'de vino', t: () => G.n2M('οἶν') },
             'οινον': { l: 'οἶνος, -ου, ὁ', m: 'Sust. (2ª), Acus. Sg.', s: 'Objeto Directo', d: 'vino', t: () => G.n2M('οἶν') },
             'πυλασ': { l: 'πύλη, -ης, ἡ', m: 'Sust. (1ª), Acus. Pl.', s: 'O. Directo', d: 'las puertas', t: () => G.n1F('πύλ', true) },
@@ -1268,7 +1289,7 @@
             'αποθανοντασ': { l: 'ἀποθνῄσκω', m: 'Participio Aoristo Radical Act., Acus. Pl. Masc.', s: 'Participio Sustantivado (O. Directo)', d: 'a los que murieron', t: () => buildNounT('ἀποθανών','-','ἀποθανόντα','ἀποθανόντος','ἀποθανόντι','ἀποθανόντες','-','ἀποθανόντας','ἀποθανόντων','ἀποθανοῦσι') },
             'κελευσασ': { l: 'κελεύω', m: 'Participio Aoristo Activo, Nom. Sg. Masc.', s: 'Participio Concertado', d: 'habiendo ordenado', t: () => buildNounT('κελεύσας','-','κελεύσαντα','κελεύσαντος','κελεύσαντι','κελεύσαντες','-','κελεύσαντας','κελευσάντων','κελεύσασι') },
             'πλευσαντεσ': { l: 'πλέω', m: 'Participio Aoristo Activo, Nom. Pl. Masc.', s: 'Participio Concertado', d: 'habiendo navegado', t: () => buildNounT('πλεύσας','-','πλεύσαντα','πλεύσαντος','πλεύσαντι','πλεύσαντες','-','πλεύσαντας','πλευσάντων','πλεύσασι') },
-            'κανασταντεσ': { l: 'καὶ + ἀνίστημι (Crasis)', m: 'Participio Aoristo Activo, Nom. Pl. Masc.', s: 'Participio Concertado', d: 'y habiéndose levantado', t: () => buildNounT('ἀναστάς','-','ἀναστάντα','ἀναστάντος','ἀναστάντι','ἀναστάντες','-','ἀναστάντας','ἀναστάντων','ἀναστᾶσι') },
+           'κανασταντεσ': { l: 'καὶ + ἀνίστημι (Crasis)', m: 'Participio Aoristo Activo, Nom. Pl. Masc.', s: 'Participio Concertado', d: 'y habiéndose levantado', t: () => buildNounT('ἀναστάς','-','ἀναστάντα','ἀναστάντος','ἀναστάντι','ἀναστάντες','-','ἀναστάντας','ἀναστάντων','ἀναστᾶσι') },
             'αρασ': { l: 'αἴρω', m: 'Participio Aoristo Activo, Nom. Sg. Masc.', s: 'Participio Concertado', d: 'habiendo levantado', t: () => buildNounT('ἄρας','-','ἄραντα','ἄραντος','ἄραντι','ἄραντες','-','ἄραντας','ἀράντων','ἄρασι') },
             'καλουντοσ': { l: 'καλέω', m: 'Participio Presente Activo, Gen. Sg. Masc.', s: 'Genitivo Absoluto', d: 'llamando', t: () => buildNounT('καλῶν','-','καλοῦντα','καλοῦντος','καλοῦντι','καλοῦντες','-','καλοῦντας','καλούντων','καλοῦσι') },
             'συριζοντων': { l: 'συρίζω', m: 'Participio Presente Activo, Gen. Pl. Masc.', s: 'Complemento Régimen', d: 'silbando', t: () => buildNounT('συρίζων','-','συρίζοντα','συρίζοντος','συρίζοντι','συρίζοντες','-','συρίζοντας','συριζόντων','συρίζουσι') },
@@ -1336,8 +1357,8 @@
             'κελευουσι': { l: 'κελεύω', m: '3ª Pl. Pres. Ind. Activo', s: 'Núcleo', d: 'ordenan', t: () => G.vPresA('κελεύ') },
             'ωφελησει': { l: 'ὠφελέω', m: '3ª Sg. Futuro Ind. Activo', s: 'Núcleo', d: 'ayudará', t: () => G.vFutA('ὠφελή') },
             'ηγησατο': { l: 'ἡγέομαι', m: '3ª Sg. Aoristo Ind. Medio', s: 'Núcleo', d: 'guio / lideró', t: () => G.vAorM('ἡγή','') },
-            'εψεστε': { l: 'ἕπομαι', m: '2ª Pl. Futuro Ind. Medio', s: 'Núcleo', d: 'seguiréis', t: () => buildVerbT('ἕψομαι','ἕψῃ','ἕψεται','ἑψόμεθα','ἕψεσθε','ἕψονται','Futuro Medio') },
-            'εψομαι': { l: 'ἕπομαι', m: '1ª Sg. Futuro Ind. Medio', s: 'Núcleo', d: 'seguiré', t: () => buildVerbT('ἕψομαι','ἕψῃ','ἕψεται','ἑψόμεθα','ἕψεσθε','ἕψονται','Futuro Medio') },
+            'εψεσθε': { l: 'ἕπομαι', m: 'Verbo, 2ª Pl. Futuro Ind. Medio', s: 'Núcleo', d: 'seguiréis', t: () => buildVerbT('ἕψομαι','ἕψῃ','ἕψεται','ἑψόμεθα','ἕψεσθε','ἕψονται','Futuro Medio') },
+'εψομαι': { l: 'ἕπομαι', m: 'Verbo, 1ª Sg. Futuro Ind. Medio', s: 'Núcleo', d: 'seguiré', t: () => buildVerbT('ἕψομαι','ἕψῃ','ἕψεται','ἑψόμεθα','ἕψεσθε','ἕψονται','Futuro Medio') },
             'ηυρον': { l: 'εὑρίσκω', m: '3ª Pl. Aoristo Radical Act.', s: 'Núcleo', d: 'encontraron', t: () => buildVerbT('ηὗρον','-ες','-ε','-ομεν','-ετε','ηὗρον','Aoristo Radical') },
             'εμεινεν': { l: 'μένω', m: '3ª Sg. Aoristo Ind. Activo', s: 'Núcleo', d: 'permaneció', t: () => buildVerbT('ἔμεινα','-ας','-ε','-αμεν','-ατε','-αν','Aoristo Activo') },
             'εμενον': { l: 'μένω', m: 'Verbo, 3ª Plural Imperfecto Activo', s: 'Núcleo', d: 'permanecían', t: () => G.vImpfA('ἔμεν', '') },
@@ -1589,38 +1610,34 @@
 
         // LÓGICA DE LA VISIÓN DE LINCEO (ESCANER SINTÁCTICO HÍBRIDO)
         function applyXRay(filterType) {
-            document.querySelectorAll('.word-token').forEach(t => {
-                t.classList.remove('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-blue-500', 'ring-emerald-500', 'ring-purple-500', 'ring-amber-500', 'ring-red-500', 'bg-blue-500/30', 'bg-emerald-500/30', 'bg-purple-500/30', 'bg-amber-500/30', 'bg-red-500/30');
-            });
-            
-            if (filterType === 'clear') {
-                showToast("Lente purificada.", "eraser");
-                return;
-            }
-
-            showToast(`Filtro de los Dioses activado: Buscando ${filterType}`, 'scan-eye');
-
-            document.querySelectorAll('.word-token').forEach(t => {
+document.querySelectorAll('.word-token').forEach(t => {
                 const word = normalizeGreekForInput(t.innerText.replace(/[»"',;·.!?:)]/g, ''));
                 const entry = wordDB[word];
+                
+                // Si la palabra está en la DB, respetamos su análisis ESTRICTAMENTE
                 let m = entry ? entry.m.toLowerCase() : "";
                 
-                // INTELIGENCIA DE LINCEO (Fallback Automático si no está explícito en la DB o falta información)
-                if (!entry || m.includes('invariable') === false) {
-                    if (word.endsWith('ω') || word.endsWith('ει') || word.endsWith('ουσι') || word.endsWith('ουσιν') || word.endsWith('ονται') || word.endsWith('εται') || word.endsWith('ετο') || word.endsWith('ντο') || word.endsWith('ομεν') || word.endsWith('εθα') || word.endsWith('τε') || word.endsWith('ειν') || word.endsWith('σθαι') || word.endsWith('ναι') || word.endsWith('σα') || word.endsWith('εν') || word.endsWith('ον') || word.endsWith('σαν')) m += " verbo";
-                    if (word.endsWith('ων') || word.endsWith('οντεσ') || word.endsWith('οντασ') || word.endsWith('μενοσ') || word.endsWith('μενοι') || word.endsWith('μενουσ') || word.endsWith('ουσα') || word.endsWith('σασ') || word.endsWith('σαντεσ')) m += " verbo participio";
-                    if (word.endsWith('οσ') || word.endsWith('η') || word.endsWith('α') || word.endsWith('οι') || word.endsWith('αι') || word.endsWith('εσ') || word.endsWith('ουσ')) m += " nom. nominativo";
-                    if (word.endsWith('ον') || word.endsWith('ην') || word.endsWith('αν') || word.endsWith('ασ') || word.endsWith('ουσ')) m += " acus. acusativo";
-                    if (word.endsWith('ου') || word.endsWith('ησ') || word.endsWith('ων') || word.endsWith('εωσ')) m += " gen. genitivo";
-                    if (word.endsWith('ω') || word.endsWith('ῳ') || word.endsWith('η') || word.endsWith('ῃ') || word.endsWith('οισ') || word.endsWith('αισ') || word.endsWith('σι') || word.endsWith('σιν') || word.endsWith('τι') || word.endsWith('ει')) m += " dat. dativo";
+                // FALLBACK SOLO si no existe en la DB
+                if (!entry) {
+                    if (word.endsWith('ω') || word.endsWith('ει') || word.endsWith('ουσι') || word.endsWith('ονται') || word.endsWith('εται') || word.endsWith('ετο') || word.endsWith('ντο') || word.endsWith('ομεν') || word.endsWith('εθα') || word.endsWith('τε') || word.endsWith('ειν') || word.endsWith('σθαι') || word.endsWith('ναι') || word.endsWith('σα') || word.endsWith('εν') || word.endsWith('ον') || word.endsWith('σαν')) m += " verbo";
+                    if (word.endsWith('ων') || word.endsWith('οντεσ') || word.endsWith('οντασ') || word.endsWith('μενοσ') || word.endsWith('μενοι') || word.endsWith('ουσα') || word.endsWith('σασ') || word.endsWith('σαντεσ')) m += " verbo participio";
+                    
+                    // Asegurar que no se sobreescriba un verbo con sufijos nominales ambiguos
+                    if (!m.includes('verbo')) {
+                        if (word.endsWith('οσ') || word.endsWith('η') || word.endsWith('α') || word.endsWith('οι') || word.endsWith('αι') || word.endsWith('εσ') || word.endsWith('ουσ')) m += " nom. nominativo";
+                        if (word.endsWith('ον') || word.endsWith('ην') || word.endsWith('αν') || word.endsWith('ασ') || word.endsWith('ουσ')) m += " acus. acusativo";
+                        if (word.endsWith('ου') || word.endsWith('ησ') || word.endsWith('ων') || word.endsWith('εωσ')) m += " gen. genitivo";
+                        if (word.endsWith('ω') || word.endsWith('ῳ') || word.endsWith('η') || word.endsWith('ῃ') || word.endsWith('οισ') || word.endsWith('αισ') || word.endsWith('σι')) m += " dat. dativo";
+                    }
                 }
 
                 let match = false;
-                if (filterType === 'Nom.' && (m.includes('nom.') || m.includes('nominativo'))) match = true;
-                if (filterType === 'Acus.' && (m.includes('acus.') || m.includes('acusativo'))) match = true;
-                if (filterType === 'Gen.' && (m.includes('gen.') || m.includes('genitivo'))) match = true;
-                if (filterType === 'Dat.' && (m.includes('dat.') || m.includes('dativo'))) match = true;
-                if (filterType === 'Verbo' && (m.includes('verbo') || m.includes('participio') || m.includes('infinitivo') || m.includes('imperativo'))) match = true;
+                if (filterType === 'Nom.' && (m.includes('nom.') || m.includes('nominativo') || m.includes('nom '))) match = true;
+                if (filterType === 'Acus.' && (m.includes('acus.') || m.includes('acusativo') || m.includes('acus '))) match = true;
+                if (filterType === 'Gen.' && (m.includes('gen.') || m.includes('genitivo') || m.includes('gen '))) match = true;
+                if (filterType === 'Dat.' && (m.includes('dat.') || m.includes('dativo') || m.includes('dat '))) match = true;
+                // Excluir participios ambiguos si se busca "Sujeto/Nom", pero incluirlos como "Verbos" si se busca "Verbo"
+                if (filterType === 'Verbo' && (m.includes('verbo') || m.includes('participio') || m.includes('infinitivo') || m.includes('imperativo') || m.includes('pres.') || m.includes('aoristo') || m.includes('futuro') || m.includes('imperfecto'))) match = true;
 
                 if (match) {
                     if (filterType === 'Nom.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-blue-500', 'bg-blue-500/30');
@@ -1701,33 +1718,69 @@
 
         // MOTOR PREMIUM: BISTURÍ FILOLÓGICO
         function diseccionarPalabra(originalWord, morfologia) {
-            if (morfologia.includes('Invariable') || morfologia.includes('Prep') || morfologia.includes('Conj') || morfologia.includes('Adv')) {
+            // Ignorar invariables para no partirlas
+            if (morfologia.includes('Invariable') || morfologia.includes('Prep') || morfologia.includes('Conj') || morfologia.includes('Adv') || morfologia.includes('Partícula')) {
                 return `<span class="text-slate-400 font-bold">${originalWord}</span>`;
             }
-            let wordNorm = originalWord.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+            
+            let wordNorm = originalWord.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/ς/g, 'σ');
             let prefixIdx = 0;
             let suffixIdx = originalWord.length;
 
-            if (morfologia.includes('Imperfecto') || morfologia.includes('Aoristo')) {
-                if (wordNorm.startsWith('ε') || wordNorm.startsWith('η')) prefixIdx = 1;
-            }
-
-            const suffixes = ['ομεθα', 'εσθαι', 'οντο', 'ουσι', 'ουσιν', 'ονται', 'ουσα', 'ασθαι', 'οντεσ', 'αμεν', 'αντο', 'ησαν', 'εσθε', 'ομεν', 'ομαι', 'εται', 'ατο', 'ων', 'οισ', 'αισ', 'ουσ', 'ασ', 'ησ', 'ου', 'ον', 'οσ', 'ει', 'εισ', 'αι', 'οι', 'ω', 'α', 'η', 'ν', 'σ'];
-            for (let suf of suffixes) {
-                if (wordNorm.endsWith(suf)) {
-                    suffixIdx = originalWord.length - suf.length;
-                    break;
+            // 1. Detectar preverbios comunes en verbos compuestos
+            const preverbios = ['προσ', 'απο', 'επι', 'κατα', 'δια', 'μετα', 'ανα', 'παρα', 'υπο', 'περι', 'συν', 'εξ', 'εκ', 'εισ', 'δι', 'απ', 'εφ', 'κατ', 'παρ', 'αν'];
+            let hasPreverb = false;
+            
+            if (morfologia.toLowerCase().includes('verbo') || morfologia.toLowerCase().includes('participio') || morfologia.toLowerCase().includes('infinitivo')) {
+                for(let prev of preverbios) {
+                    if(wordNorm.startsWith(prev) && wordNorm.length > prev.length + 2) {
+                        prefixIdx = prev.length;
+                        hasPreverb = true;
+                        break;
+                    }
                 }
             }
 
+            // 2. Aumento silábico (Solo indicativos en pasado)
+            const isPastTense = (morfologia.includes('Imperfecto') || morfologia.includes('Aoristo') || morfologia.includes('Aor.'));
+            const isNonIndicative = (morfologia.includes('Participio') || morfologia.includes('Infinitivo') || morfologia.includes('Imperativo') || morfologia.includes('Subjuntivo'));
+            
+            if (isPastTense && !isNonIndicative) {
+                if (!hasPreverb && (wordNorm.startsWith('ε') || wordNorm.startsWith('η'))) {
+                    prefixIdx = 1;
+                } else if (hasPreverb && (wordNorm.substring(prefixIdx).startsWith('ε') || wordNorm.substring(prefixIdx).startsWith('η'))) {
+                    prefixIdx += 1; // Preverbio + Aumento (ej. επ-αν-ηλθον -> επ-αν-η-λθον)
+                }
+            }
+
+            // 3. Sufijos ordenados de MAYOR a MENOR longitud para evitar cortes prematuros
+            const suffixes = [
+                'ομεσθα', 'σονται', 'σοντεσ', 'σαντεσ', 'σοντοσ', 'σαντοσ', 'σουσιν', 'σομεθα', 'σαμεθα', 
+                'οντων', 'ουσιν', 'εσθαι', 'ονται', 'ασθαι', 'οντεσ', 'αντο', 'ησαν', 'εσθε', 'ομεν', 'ομαι', 
+                'εται', 'ετο', 'ντο', 'ουσα', 'ομεθα', 'αμεν', 'ουσι', 'ωσιν', 'ωμεν', 'ασιν', 
+                'οισ', 'αισ', 'ουσ', 'ασ', 'ησ', 'ου', 'ον', 'οσ', 'ει', 'εισ', 'αι', 'οι', 'ω', 'α', 'η', 'ν', 'σ', 'ι'
+            ];
+
+            for (let suf of suffixes) {
+                if (wordNorm.endsWith(suf)) {
+                    // Evitar que la desinencia se coma toda la raíz
+                    if (originalWord.length - suf.length > prefixIdx) {
+                        suffixIdx = originalWord.length - suf.length;
+                        break;
+                    }
+                }
+            }
+
+            // Ensamblaje Visual
             if (suffixIdx <= prefixIdx) return `<span class="text-cyan-400 font-bold">${originalWord}</span>`;
+            
             let pref = originalWord.substring(0, prefixIdx);
             let root = originalWord.substring(prefixIdx, suffixIdx);
             let suff = originalWord.substring(suffixIdx);
             let html = '';
             
             if (pref) {
-                html += `<span class="text-purple-400 border-b-4 border-purple-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${pref}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-purple-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap font-sans font-black shadow-lg uppercase tracking-widest z-50">Aumento</span></span> <span class="text-slate-600 font-black mx-1 opacity-50">+</span> `;
+                html += `<span class="text-purple-400 border-b-4 border-purple-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${pref}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-purple-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap font-sans font-black shadow-lg uppercase tracking-widest z-50">Aumento/Prev.</span></span> <span class="text-slate-600 font-black mx-1 opacity-50">+</span> `;
             }
             if (root) {
                 html += `<span class="text-cyan-400 border-b-4 border-cyan-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${root}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-cyan-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap font-sans font-black shadow-lg uppercase tracking-widest z-50">Raíz</span></span>`;
