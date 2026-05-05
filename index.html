@@ -443,12 +443,14 @@
                 </button>
             </div>
             <!-- PREMIUM 1: VISIÓN DE LINCEO (Filtros de Rayos X) -->
-            <div id="xray-filters" class="flex flex-wrap items-center justify-center md:justify-start gap-3 mt-4 mb-2 bg-slate-900/50 p-4 rounded-xl border border-slate-700 shadow-inner">
+           <div id="xray-filters" class="flex flex-wrap items-center justify-center md:justify-start gap-3 mt-4 mb-2 bg-slate-900/50 p-4 rounded-xl border border-slate-700 shadow-inner">
                 <span class="text-cyan-400 font-cinzel font-bold mr-2 flex items-center gap-2">
                     <i data-lucide="scan-eye" class="w-5 h-5"></i> Visión de Linceo:
                 </span>
                 <button onclick="applyXRay('Nom.')" class="px-4 py-2 bg-blue-900/50 text-blue-300 text-xs font-bold rounded-lg border border-blue-800 hover:bg-blue-800 transition shadow">Sujetos (Nom)</button>
                 <button onclick="applyXRay('Acus.')" class="px-4 py-2 bg-emerald-900/50 text-emerald-300 text-xs font-bold rounded-lg border border-emerald-800 hover:bg-emerald-800 transition shadow">O. Directos (Acus)</button>
+                <button onclick="applyXRay('Gen.')" class="px-4 py-2 bg-purple-900/50 text-purple-300 text-xs font-bold rounded-lg border border-purple-800 hover:bg-purple-800 transition shadow">Genitivos</button>
+                <button onclick="applyXRay('Dat.')" class="px-4 py-2 bg-amber-900/50 text-amber-300 text-xs font-bold rounded-lg border border-amber-800 hover:bg-amber-800 transition shadow">Dativos</button>
                 <button onclick="applyXRay('Verbo')" class="px-4 py-2 bg-red-900/50 text-red-300 text-xs font-bold rounded-lg border border-red-800 hover:bg-red-800 transition shadow">Verbos</button>
                 <button onclick="applyXRay('clear')" class="px-4 py-2 bg-slate-800 text-slate-400 text-xs font-bold rounded-lg hover:bg-slate-700 transition shadow border border-slate-600">Limpiar Lente</button>
             </div>
@@ -1611,10 +1613,10 @@
             showToast("Habéis entrado en el Ábaton.", "footprints");
         }
 // LÓGICA DE LA VISIÓN DE LINCEO (ESCANER SINTÁCTICO)
-        function applyXRay(filterType) {
-            // 1. Limpiar filtros previos
+       function applyXRay(filterType) {
+            // 1. Limpiar filtros previos (Ahora incluye purple y amber)
             document.querySelectorAll('.word-token').forEach(t => {
-                t.classList.remove('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-blue-500', 'ring-emerald-500', 'ring-red-500', 'bg-blue-500/30', 'bg-emerald-500/30', 'bg-red-500/30');
+                t.classList.remove('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-blue-500', 'ring-emerald-500', 'ring-purple-500', 'ring-amber-500', 'ring-red-500', 'bg-blue-500/30', 'bg-emerald-500/30', 'bg-purple-500/30', 'bg-amber-500/30', 'bg-red-500/30');
             });
             
             if (filterType === 'clear') {
@@ -1632,6 +1634,8 @@
                 if (entry && entry.m.includes(filterType)) {
                     if (filterType === 'Nom.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-blue-500', 'bg-blue-500/30');
                     if (filterType === 'Acus.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-emerald-500', 'bg-emerald-500/30');
+                    if (filterType === 'Gen.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-purple-500', 'bg-purple-500/30');
+                    if (filterType === 'Dat.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-amber-500', 'bg-amber-500/30');
                     if (filterType === 'Verbo') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-red-500', 'bg-red-500/30');
                 }
             });
