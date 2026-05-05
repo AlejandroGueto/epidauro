@@ -1716,14 +1716,13 @@
             const b = document.getElementById('btn-' + id.split('-')[1]);
             if (b) b.classList.add('active', 'text-cyan-400');
             
-            // --- NUEVO: Mostrar/Ocultar Visión de Linceo automáticamente ---
+            // Ocultamos la "Visión de Linceo" si no estamos en un texto griego
             const filtrosLinceo = document.getElementById('xray-filters');
             if (id === 'tab-mapa' || id === 'tab-cultura' || id === 'tab-eval') {
                 filtrosLinceo.classList.add('hidden');
             } else {
                 filtrosLinceo.classList.remove('hidden');
             }
-            // ---------------------------------------------------------------
 
             if (id === 'tab-mapa') {
                 showToast("Habéis desplegado el Mapa de la Hélade.", "map");
@@ -1936,20 +1935,18 @@
             const current = document.getElementById(currId);
             const next = document.getElementById(nextId);
             
-            // --- NUEVO: Comportamiento de las pruebas ---
-            // 1. La prueba actual se oscurece y se bloquea
+            // Apagamos y bloqueamos la prueba que acabas de superar
             current.classList.add('opacity-40', 'pointer-events-none');
             current.classList.replace('border-cyan-500', 'border-slate-900');
             
-            // 2. La prueba siguiente pierde el 'hidden' para aparecer en pantalla
+            // Le quitamos el 'hidden' a la siguiente prueba para que aparezca
             next.classList.remove('hidden');
             next.classList.add('unlocked-glow', 'ring-4', 'ring-emerald-500/30');
             
-            // 3. Hacemos scroll suave para que el jugador la vea
+            // Hacemos que la pantalla baje suavemente hacia la nueva prueba
             setTimeout(() => {
                 next.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }, 100);
-            // --------------------------------------------
             
             const num = nextId.replace('prueba', '');
             const dot = document.getElementById('step-' + num);
@@ -1963,7 +1960,6 @@
             }
             showToast(achievementMsg, "check-circle");
         }
-
         function failPrueba(id) {
             mistakes++;
             const err = document.getElementById(id);
