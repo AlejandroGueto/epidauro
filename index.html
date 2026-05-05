@@ -1716,13 +1716,14 @@
             const b = document.getElementById('btn-' + id.split('-')[1]);
             if (b) b.classList.add('active', 'text-cyan-400');
             
-            // Ocultamos la "Visión de Linceo" si no estamos en un texto griego
+            // --- MAGIA UX: Oculta los filtros si no estás en un texto ---
             const filtrosLinceo = document.getElementById('xray-filters');
             if (id === 'tab-mapa' || id === 'tab-cultura' || id === 'tab-eval') {
                 filtrosLinceo.classList.add('hidden');
             } else {
                 filtrosLinceo.classList.remove('hidden');
             }
+            // -----------------------------------------------------------
 
             if (id === 'tab-mapa') {
                 showToast("Habéis desplegado el Mapa de la Hélade.", "map");
@@ -1931,19 +1932,19 @@
             lucide.createIcons();
         }
 
-        function successPrueba(currId, nextId, achievementMsg) {
+       function successPrueba(currId, nextId, achievementMsg) {
             const current = document.getElementById(currId);
             const next = document.getElementById(nextId);
             
-            // Apagamos y bloqueamos la prueba que acabas de superar
-            current.classList.add('opacity-40', 'pointer-events-none');
+            // 1. Oscurece y bloquea la prueba que el jugador acaba de superar
+            current.classList.add('opacity-40', 'pointer-events-none', 'grayscale');
             current.classList.replace('border-cyan-500', 'border-slate-900');
             
-            // Le quitamos el 'hidden' a la siguiente prueba para que aparezca
+            // 2. Muestra la nueva prueba quitándole la clase 'hidden'
             next.classList.remove('hidden');
             next.classList.add('unlocked-glow', 'ring-4', 'ring-emerald-500/30');
             
-            // Hacemos que la pantalla baje suavemente hacia la nueva prueba
+            // 3. Hace que la pantalla baje automáticamente a la nueva prueba
             setTimeout(() => {
                 next.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }, 100);
