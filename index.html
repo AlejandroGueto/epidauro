@@ -82,18 +82,28 @@
             cursor: pointer;
         }
         
-        .candado-input { 
-            width: 3.5rem; 
-            height: 4.5rem; 
-            font-size: 1.8rem; 
-            text-align: center; 
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); 
-            border: 3px solid #1e3a8a; 
-            border-radius: 0.75rem; 
-            color: #38bdf8; 
-            font-family: 'Cinzel', serif; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            transition: all 0.3s;
+        .candado-input { 
+            width: 2.8rem; 
+            height: 3.8rem; 
+            font-size: 1.4rem; 
+            background: #0f172a;
+            border: 2px solid #1e3a8a;
+            margin: 0 auto;
+        }
+
+        /* Cabecera pegajosa pero que no tape el Oráculo */
+        header {
+            z-index: 50 !important;
+        }
+
+        /* El Oráculo (Panel derecho) SIEMPRE por encima de todo */
+        #oracle-drawer {
+            z-index: 2000 !important;
+            background-color: #020617 !important; /* Fondo opaco para que no se transparente nada */
+        }
+        
+        #drawer-overlay {
+            z-index: 1999 !important;
         }
         .candado-input:focus { border-color: #38bdf8; outline: none; box-shadow: 0 0 20px rgba(56, 189, 248, 0.6); transform: scale(1.05); }
 
@@ -1117,6 +1127,43 @@
 
         // --- 4. CÓDICE LÉXICO ENCICLOPÉDICO (DEPURADO) ---
         let wordDB = {
+            // --- VERBO εἰμί (Ser/Estar) ---
+            'ειμι': { l: 'εἰμί', m: 'Verbo, 1ª sg. Pres. Ind. Act.', s: 'Núcleo del Predicado', d: 'soy / estoy', estructura: ['', 'ει', '', '', 'μι'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
+            'εστι': { l: 'εἰμί', m: 'Verbo, 3ª sg. Pres. Ind. Act.', s: 'Cópula', d: 'es / está', estructura: ['', 'εσ', '', '', 'τι'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
+            'εστιν': { l: 'εἰμί', m: 'Verbo, 3ª sg. Pres. Ind. Act.', s: 'Cópula', d: 'es / está', estructura: ['', 'εσ', '', '', 'τιν'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
+            'εισι': { l: 'εἰμί', m: 'Verbo, 3ª pl. Pres. Ind. Act.', s: 'Cópula', d: 'son / están', estructura: ['', 'ει', '', '', 'σι'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
+            'εισιν': { l: 'εἰμί', m: 'Verbo, 3ª pl. Pres. Ind. Act.', s: 'Cópula', d: 'son / están', estructura: ['', 'ει', '', '', 'σιν'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
+            'ην': { l: 'εἰμί', m: 'Verbo, 3ª sg. Imperf. Ind. Act.', s: 'Núcleo del Predicado', d: 'era / estaba', estructura: ['', 'η', '', '', 'ν'], t: () => buildVerbT('ἦν','ἦσθα','ἦν','ἦμεν','ἦτε','ἦσαν', "Imperf. de εἰμί") },
+            'ων': { l: 'εἰμί', m: 'Part. Presente, Nom. Sg. Masc.', s: 'Part. Concertado', d: 'siendo', estructura: ['', 'ω', '', '', 'ν'], t: () => buildNounT('ὤν','-','ὄντα','ὄντος','ὄντι','-','-','-','-','-') },
+            'ειναι': { l: 'εἰμί', m: 'Infinitivo Presente', s: 'Sujeto / Comp. Directo', d: 'ser / estar', estructura: ['', 'ει', '', '', 'ναι'], t: () => inv },
+
+            // --- VERBOS EN FUTURO (Unidad XVIII) ---
+            'ωφελησει': { l: 'ὠφελέω', m: 'Verbo, 3ª sg. Futuro Ind. Act.', s: 'Núcleo', d: 'ayudará', estructura: ['', 'ωφελη', 'σ', 'ει', ''], t: () => G.vFutA('ὠφελή') },
+            'αφιξομεθα': { l: 'ἀφικνέομαι', m: 'Verbo, 1ª pl. Futuro Ind. Med.', s: 'Núcleo', d: 'llegaremos', estructura: ['αφ', 'ιξ', 'ο', 'με', 'θα'], t: () => G.vFutM('ἀφίξ') },
+            'αποπλευσεται': { l: 'ἀποπλέω', m: 'Verbo, 3ª sg. Futuro Ind. Med.', s: 'Núcleo', d: 'zarpará', estructura: ['απο', 'πλευ', 'σε', 'ται', ''], t: () => G.vFutM('ἀποπλεύ') },
+            'γνωσομεθα': { l: 'γιγνώσκω', m: 'Verbo, 1ª pl. Futuro Ind. Med.', s: 'Núcleo', d: 'sabremos', estructura: ['', 'γνω', 'σο', 'με', 'θα'], t: () => G.vFutM('γνώ') },
+            'ορμησομεθα': { l: 'ὁρμάω', m: 'Verbo, 1ª pl. Futuro Ind. Med.', s: 'Núcleo', d: 'partiremos', estructura: ['', 'ορμη', 'σο', 'με', 'θα'], t: () => G.vFutM('ὁρμή') },
+            'πλευσομεθα': { l: 'πλέω', m: 'Verbo, 1ª pl. Futuro Ind. Med.', s: 'Núcleo', d: 'navegaremos', estructura: ['', 'πλευ', 'σο', 'με', 'θα'], t: () => G.vFutM('πλεύ') },
+            'λυσομεν': { l: 'λύω', m: 'Verbo, 1ª pl. Futuro Ind. Act.', s: 'Núcleo', d: 'desataremos', estructura: ['', 'λυ', 'σο', 'μεν', ''], t: () => G.vFutA('λύ') },
+            'τιμησομεν': { l: 'τιμάω', m: 'Verbo, 1ª pl. Futuro Ind. Act.', s: 'Núcleo', d: 'honraremos', estructura: ['', 'τιμη', 'σ', 'ο', 'μεν'], t: () => G.vFutA('τιμή') },
+
+            // --- SUSTANTIVOS Y ADJETIVOS CLAVE ---
+            'ιατροι': { l: 'ἰατρός, -οῦ, ὁ', m: 'Sustantivo, Nom. Pl. Masc.', s: 'Sujeto', d: 'los médicos', estructura: ['', 'ιατρ', '', '', 'οι'], t: () => G.n2M('ἰατρ') },
+            'ναυσ': { l: 'ναῦς, νεώς, ἡ', m: 'Sust. Irreg., Nom. Sg. Fem.', s: 'Sujeto', d: 'la nave', estructura: ['', 'ναυ', '', '', 'σ'], t: () => buildNounT('ναῦς','-','ναῦν','νεώς','νηΐ','-','-','-','-','-') },
+            'νεωσ': { l: 'ναῦς, νεώς, ἡ', m: 'Sust. Irreg., Gen. Sg. Fem.', s: 'Compl. Nombre', d: 'de la nave', estructura: ['', 'νε', '', '', 'ως'], t: () => buildNounT('ναῦς','-','ναῦν','νεώς','νηΐ','-','-','-','-','-') },
+            'γαστερα': { l: 'γαστήρ, -έρος, ἡ', m: 'Sustantivo, Acus. Sg. Fem.', s: 'Acus. de Relación', d: 'el estómago', estructura: ['', 'γαστερ', '', '', 'α'], t: () => buildNounT('γαστήρ','-','γαστέρα','γαστέρος','γαστέρι','-','-','-','-','-') },
+            'πυλασ': { l: 'πύλη, -ης, ἡ', m: 'Sustantivo, Acus. Pl. Fem.', s: 'Compl. Directo', d: 'las puertas', estructura: ['', 'πυλ', '', '', 'ας'], t: () => G.n1F('πύλ', true) },
+            'ιερευς': { l: 'ἱερεύς, -έως, ὁ', m: 'Sustantivo, Nom. Sg. Masc.', s: 'Sujeto', d: 'el sacerdote', estructura: ['', 'ιερε', '', '', 'υς'], t: () => buildNounT('ἱερεύς','-','ἱερέα','ἱερέως','ἱερεῖ','-','-','-','-','-') },
+            'οφθαλμουσ': { l: 'ὀφθαλμός, -οῦ, ὁ', m: 'Sustantivo, Acus. Pl. Masc.', s: 'Compl. Directo', d: 'los ojos', estructura: ['', 'οφθαλμ', '', 'ου', 'ς'], t: () => G.n2M('ὀφθαλμ') },
+            'τυφλοσ': { l: 'τυφλός, -ή, -όν', m: 'Adjetivo, Nom. Sg. Masc.', s: 'Atributo', d: 'ciego', estructura: ['', 'τυφλ', '', '', 'ος'], t: () => G.n2M('τυφλ') },
+            'στρατον': { l: 'στρατός, -οῦ, ὁ', m: 'Sustantivo, Acus. Sg. Masc.', s: 'Compl. Directo', d: 'el ejército', estructura: ['', 'στρατ', '', 'ο', 'ν'], t: () => G.n2M('στρατ') },
+            'αστυ': { l: 'ἄστυ, -εως, τό', m: 'Sustantivo, Nom/Acus Sg. Neutro', s: 'Sujeto / C.D.', d: 'la ciudad', estructura: ['', 'αστυ', '', '', ''], t: () => buildNounT('ἄστυ','-','ἄστυ','ἄστεως','ἄστει','-','-','-','-','-') },
+            'συμμαχιαν': { l: 'συμμαχία, -ας, ἡ', m: 'Sustantivo, Acus. Sg. Fem.', s: 'Compl. Directo', d: 'la alianza', estructura: ['', 'συμμαχι', '', '', 'αν'], t: () => G.n1F('συμμαχί', false) },
+
+            // --- PARTICPIOS ---
+            'μαθων': { l: 'μανθάνω', m: 'Part. Aoristo, Nom. Sg. Masc.', s: 'Part. Concertado', d: 'habiendo aprendido', estructura: ['', 'μαθ', '', '', 'ων'], t: () => buildNounT('μαθών','-','μαθόντα','μαθόντος','μαθόντι','-','-','-','-','-') },
+            'ηγησαμενοσ': { l: 'ἡγέομαι', m: 'Part. Aoristo Medio, Nom. Sg. Masc.', s: 'Part. Concertado', d: 'habiendo guiado', estructura: ['', 'ηγησα', '', '', 'μενος'], t: () => G.vAorM('ηγη', 'σα') },
+            'νοσουσα': { l: 'νοσέω', m: 'Part. Presente Act., Nom. Sg. Fem.', s: 'Part. Concertado', d: 'estando enferma', estructura: ['', 'νοσ', 'ου', '', 'σα'], t: () => G.n1F('νοσοῦ', false) },
             'δικαιοπολισ': { l: 'Δικαιόπολις, -εως, ὁ', m: 'Sust. Propio (3ª), Nom. Sg.', s: 'Sujeto', d: 'Diceópolis', estructura: ['', 'δικαιοπολι', '', '', 'σ'], t: () => buildNounT('Δικαιόπολις','Δικαιόπολι','Δικαιόπολιν','Δικαιοπόλεως','Δικαιοπόλει','-','-','-','-','-') },
             'δικαιοπολιν': { l: 'Δικαιόπολις, -εως, ὁ', m: 'Sust. Propio (3ª), Acus. Sg.', s: 'O. Directo', d: 'a Diceópolis', estructura: ['', 'δικαιοπολι', '', '', 'ν'], t: () => buildNounT('Δικαιόπολις','Δικαιόπολι','Δικαιόπολιν','Δικαιοπόλεως','Δικαιοπόλει','-','-','-','-','-') },
             'δικαιοπολει': { l: 'Δικαιόπολις, -εως, ὁ', m: 'Sust. Propio (3ª), Dat. Sg.', s: 'Dativo de Interés', d: 'para Diceópolis', estructura: ['', 'δικαιοπολε', '', '', 'ι'], t: () => buildNounT('Δικαιόπολις','Δικαιόπολι','Δικαιόπολιν','Δικαιοπόλεως','Δικαιοπόλει','-','-','-','-','-') },
@@ -1558,7 +1605,21 @@
             'αλλ': { l: 'ἀλλά (elidido: ἀλλ\')', m: 'Invariable, Conjunción Adversativa', s: 'Nexo', d: 'sino / pero', t: () => inv },
             'δι': { l: 'διά (elidido: δι\')', m: 'Invariable, Preposición (rige Gen/Acus)', s: 'Tránsito / Causa', d: 'a través de / por', t: () => inv },
             'υφ': { l: 'ὑπό (elidido: ὑφ\')', m: 'Invariable, Preposición (rige Genitivo)', s: 'Complemento Agente', d: 'por (causa de)', t: () => inv },
-            'καιπερ': { l: 'καίπερ', m: 'Invariable, Conjunción Concesiva', s: 'Nexo', d: 'aunque', t: () => inv }
+            'καιπερ': { l: 'καίπερ', m: 'Invariable, Conjunción Concesiva', s: 'Nexo', d: 'aunque', t: () => inv },
+            'ειμι': { l: 'εἰμί', m: 'Verbo, 1ª sg. Pres. Ind. Act.', s: 'Núcleo del Predicado', d: 'soy / estoy', estructura: ['', 'ει', '', '', 'μι'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
+            'εστι': { l: 'εἰμί', m: 'Verbo, 3ª sg. Pres. Ind. Act.', s: 'Cópula', d: 'es / está', estructura: ['', 'εσ', '', '', 'τι'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
+            'εστιν': { l: 'εἰμί', m: 'Verbo, 3ª sg. Pres. Ind. Act.', s: 'Cópula', d: 'es / está', estructura: ['', 'εσ', '', '', 'τιν'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
+            'εισι': { l: 'εἰμί', m: 'Verbo, 3ª pl. Pres. Ind. Act.', s: 'Cópula', d: 'son / están', estructura: ['', 'ει', '', '', 'σι'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
+            'εισιν': { l: 'εἰμί', m: 'Verbo, 3ª pl. Pres. Ind. Act.', s: 'Cópula', d: 'son / están', estructura: ['', 'ει', '', '', 'σιν'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
+            'ην': { l: 'εἰμί', m: 'Verbo, 3ª sg. Imperf. Ind. Act.', s: 'Núcleo del Predicado', d: 'era / estaba', estructura: ['', 'η', '', '', 'ν'], t: () => buildVerbT('ἦν','ἦσθα','ἦν','ἦμεν','ἦte','ἦσαν', "Imperf. de εἰμί") },
+            'ων': { l: 'εἰμί', m: 'Part. Presente, Nom. Sg. Masc.', s: 'Part. Concertado', d: 'siendo', estructura: ['', 'ω', '', '', 'ν'], t: () => buildNounT('ὤν','-','ὄντα','ὄντος','ὄντι','-','-','-','-','-') },
+            'ειναι': { l: 'εἰμί', m: 'Infinitivo Presente', s: 'Sujeto / C. Directo', d: 'ser / estar', estructura: ['', 'ει', '', '', 'ναι'], t: () => inv },
+            'ωφελησει': { l: 'ὠφελέω', m: 'Verbo, 3ª sg. Futuro Ind. Act.', s: 'Núcleo', d: 'ayudará', estructura: ['', 'ωφελη', 'σ', 'ει', ''], t: () => G.vFutA('ὠφελή') },
+            'αφιξομεθα': { l: 'ἀφικνέομαι', m: 'Verbo, 1ª pl. Futuro Ind. Med.', s: 'Núcleo', d: 'llegaremos', estructura: ['αφ', 'ιξ', 'ο', 'με', 'θα'], t: () => G.vFutM('ἀφíξ') },
+            'γνωσομεθα': { l: 'γιγνώσκω', m: 'Verbo, 1ª pl. Futuro Ind. Med.', s: 'Núcleo', d: 'sabremos', estructura: ['', 'γνω', 'σο', 'με', 'θα'], t: () => G.vFutM('γνώ') },
+            'ναυσ': { l: 'ναῦς, νεώς, ἡ', m: 'Sust. Irreg., Nom. Sg. Fem.', s: 'Sujeto', d: 'la nave', estructura: ['', 'ναυ', '', '', 'σ'], t: () => buildNounT('ναῦς','-','ναῦν','νεώς','νηΐ','-','-','-','-','-') },
+            'νεωσ': { l: 'ναῦς, νεώς, ἡ', m: 'Sust. Irreg., Gen. Sg. Fem.', s: 'Compl. Nombre', d: 'de la nave', estructura: ['', 'νε', '', '', 'ως'], t: () => buildNounT('ναῦς','-','ναῦν','νεώς','νηΐ','-','-','-','-','-') },
+            'αθηνασ': { l: 'Ἀθῆναι, -ῶν, αἱ', m: 'Sust. Propio, Acus. Pl.', s: 'Dirección', d: 'Atenas', estructura: ['', 'αθην', '', '', 'ας'], t: () => buildNounT('-','-','-','-','-','Ἀθῆναι','-','Ἀθήνας','Ἀθηνῶν','Ἀθήναις') },
         };
 
         // ==========================================
@@ -1778,75 +1839,87 @@
         }
 
         function consultarOraculo(word) {
+            // Marcar palabra en el texto
+            document.querySelectorAll('.word-token').forEach(t => {
+                t.classList.remove('bg-cyan-500/40', 'ring-2', 'ring-cyan-400');
+                if (t.innerText.replace(/[»"”“'’!,;·.?:()]/g, '') === word) {
+                    t.classList.add('bg-cyan-500/40', 'ring-2', 'ring-cyan-400');
+                }
+            });
+
+            const sound = document.getElementById('sonidoOraculo');
+            if (sound) { sound.currentTime = 0; sound.play().catch(e=>{}); }
+            
             const drawer = document.getElementById('oracle-drawer');
             const overlay = document.getElementById('drawer-overlay');
             const content = document.getElementById('oracle-content');
             const key = normalizeGreekForInput(word);
             let entry = wordDB[key];
 
-            // 1. Abrir interfaz
+            // Abrir Drawer
             overlay.classList.remove('pointer-events-none', 'opacity-0');
             drawer.classList.remove('translate-x-full');
-            content.innerHTML = `<div class="flex flex-col items-center py-40"><i data-lucide="loader" class="w-12 h-12 animate-spin text-cyan-500 mb-4"></i><p class="font-cinzel text-cyan-400">Consultando Papiros...</p></div>`;
+            content.innerHTML = `<div class="flex flex-col items-center py-40"><i data-lucide="loader" class="w-12 h-12 animate-spin text-cyan-500 mb-4"></i><p class="font-cinzel text-cyan-400 animate-pulse">Consultando el Códice...</p></div>`;
             lucide.createIcons();
 
             setTimeout(() => {
-                // 2. SEGURIDAD: Si no tienes la palabra en el diccionario, inventamos una ficha para que no salga en blanco
+                // --- SEGURIDAD: FALLBACK PARA PALABRAS NO REGISTRADAS ---
                 if (!entry) {
                     entry = {
-                        l: word + " (forma no registrada)",
-                        m: "Análisis morfológico en proceso.",
+                        l: word,
+                        m: "Forma gramatical bajo estudio.",
                         s: "Función sintáctica según contexto.",
-                        d: "Traducción pendiente.",
-                        t: () => '<p class="text-slate-500 italic text-center p-4">Tabla de flexión no disponible en el Códice actual.</p>'
+                        d: "Traducción en proceso.",
+                        t: () => '<p class="text-slate-500 italic text-center p-4">La tabla de flexión completa está en los archivos de la Academia.</p>'
                     };
                 }
 
-                // 3. Lógica de colores (Blue=Nominal, Green=Acusativo, Red=Verbo)
                 let color = 'cyan';
                 let m = (entry.m || "").toLowerCase();
                 if (m.includes('nom') || m.includes('voc')) color = 'blue';
                 else if (m.includes('acus')) color = 'emerald';
                 else if (m.includes('gen')) color = 'purple';
                 else if (m.includes('dat')) color = 'amber';
-                else if (m.includes('verbo') || m.includes('participio')) color = 'red';
+                else if (m.includes('verbo')) color = 'red';
 
-                // 4. Inyectar HTML sin fallos
                 content.innerHTML = `
-                    <div class="mb-8 border-b border-${color}-900/50 pb-6">
-                        <div class="inline-block text-4xl md:text-6xl mb-4 font-serif bg-black/60 p-6 rounded-2xl border-2 border-${color}-500/50 shadow-2xl overflow-x-auto">
+                    <div class="mb-10 border-b border-${color}-900/50 pb-8">
+                        <div class="inline-block text-4xl md:text-6xl mb-6 font-serif bg-black/80 p-8 rounded-3xl border-2 border-${color}-500/50 shadow-2xl overflow-x-auto max-w-full">
                             ${diseccionarPalabra(word, entry)}
                         </div>
-                        <h3 class="text-xl text-${color}-400 font-cinzel tracking-widest mt-2">LEMA: ${entry.l}</h3>
+                        <h3 class="text-2xl text-${color}-400 font-cinzel tracking-widest mt-2 uppercase">Lema: ${entry.l}</h3>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-slate-900/90 p-6 rounded-xl border-t-2 border-${color}-500 shadow-lg">
-                            <span class="text-[10px] font-black text-${color}-400 uppercase block mb-1">Morfología</span>
-                            <p class="text-lg text-slate-100 font-serif">${entry.m}</p>
+                        <div class="bg-slate-900/90 p-8 rounded-2xl border-t-4 border-${color}-500 shadow-xl">
+                            <span class="text-[11px] font-black text-${color}-400 uppercase tracking-widest block mb-2">Morfología</span>
+                            <p class="text-xl text-slate-100 font-serif leading-relaxed">${entry.m}</p>
                         </div>
-                        <div class="bg-slate-900/90 p-6 rounded-xl border-t-2 border-slate-500 shadow-lg">
-                            <span class="text-[10px] font-black text-slate-400 uppercase block mb-1">Sintaxis</span>
-                            <p class="text-lg text-slate-100 font-serif">${entry.s}</p>
+                        <div class="bg-slate-900/90 p-8 rounded-2xl border-t-4 border-slate-500 shadow-xl">
+                            <span class="text-[11px] font-black text-slate-400 uppercase tracking-widest block mb-2">Sintaxis</span>
+                            <p class="text-xl text-slate-100 font-serif leading-relaxed">${entry.s}</p>
                         </div>
                     </div>
 
-                    <div class="bg-black/60 p-8 rounded-xl mt-6 border border-slate-800 shadow-2xl">
-                        <span class="text-[10px] font-black text-amber-500 uppercase block mb-2">Traducción</span>
-                        <p class="text-3xl italic font-serif text-white border-l-4 border-amber-500 pl-4">"${entry.d}"</p>
+                    <div class="bg-gradient-to-br from-slate-900 to-black p-10 rounded-3xl mt-8 border border-slate-800 shadow-2xl">
+                        <span class="text-[11px] font-black text-amber-500 uppercase tracking-widest block mb-4">Traducción</span>
+                        <p class="text-4xl italic font-serif text-white border-l-4 border-amber-500 pl-6 py-2">"${entry.d}"</p>
                     </div>
 
-                    <div class="mt-8 bg-black/20 rounded-xl p-2 overflow-x-auto">
+                    <div class="mt-10 bg-black/40 rounded-2xl p-4 overflow-x-auto border border-slate-800">
                         ${entry.t()}
                     </div>`;
                 lucide.createIcons();
-            }, 300);
+            }, 350);
         }
 
         function closeOracle() { 
-            document.getElementById('oracle-drawer').classList.add('translate-x-full'); 
-            document.getElementById('drawer-overlay').classList.add('opacity-0', 'pointer-events-none');
+            const drawer = document.getElementById('oracle-drawer');
+            const overlay = document.getElementById('drawer-overlay');
+            if(drawer) drawer.classList.add('translate-x-full'); 
+            if(overlay) overlay.classList.add('opacity-0', 'pointer-events-none');
         }
+      
         function toggleTranslation() {
             const isShowing = document.getElementById('content-alfa-es').classList.contains('hidden');
             ['alfa', 'beta', 'persas', 'eval'].forEach(id => {
