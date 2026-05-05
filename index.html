@@ -442,6 +442,16 @@
                     <i data-lucide="languages" class="w-5 h-5"></i> TRADUCCIÓN
                 </button>
             </div>
+            <!-- PREMIUM 1: VISIÓN DE LINCEO (Filtros de Rayos X) -->
+            <div id="xray-filters" class="flex flex-wrap items-center justify-center md:justify-start gap-3 mt-4 mb-2 bg-slate-900/50 p-4 rounded-xl border border-slate-700 shadow-inner">
+                <span class="text-cyan-400 font-cinzel font-bold mr-2 flex items-center gap-2">
+                    <i data-lucide="scan-eye" class="w-5 h-5"></i> Visión de Linceo:
+                </span>
+                <button onclick="applyXRay('Nom.')" class="px-4 py-2 bg-blue-900/50 text-blue-300 text-xs font-bold rounded-lg border border-blue-800 hover:bg-blue-800 transition shadow">Sujetos (Nom)</button>
+                <button onclick="applyXRay('Acus.')" class="px-4 py-2 bg-emerald-900/50 text-emerald-300 text-xs font-bold rounded-lg border border-emerald-800 hover:bg-emerald-800 transition shadow">O. Directos (Acus)</button>
+                <button onclick="applyXRay('Verbo')" class="px-4 py-2 bg-red-900/50 text-red-300 text-xs font-bold rounded-lg border border-red-800 hover:bg-red-800 transition shadow">Verbos</button>
+                <button onclick="applyXRay('clear')" class="px-4 py-2 bg-slate-800 text-slate-400 text-xs font-bold rounded-lg hover:bg-slate-700 transition shadow border border-slate-600">Limpiar Lente</button>
+            </div>
 
             <!-- Área de Contenido (Pergamino) -->
             <div class="pergamino p-10 md:p-16 rounded-b-2xl relative shadow-[0_30px_60px_rgba(0,0,0,0.9)] min-h-[850px] max-h-[85vh] overflow-y-auto custom-scrollbar">
@@ -1604,7 +1614,32 @@
             
             showToast("Habéis entrado en el Ábaton.", "footprints");
         }
+// LÓGICA DE LA VISIÓN DE LINCEO (ESCANER SINTÁCTICO)
+        function applyXRay(filterType) {
+            // 1. Limpiar filtros previos
+            document.querySelectorAll('.word-token').forEach(t => {
+                t.classList.remove('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-blue-500', 'ring-emerald-500', 'ring-red-500', 'bg-blue-500/30', 'bg-emerald-500/30', 'bg-red-500/30');
+            });
+            
+            if (filterType === 'clear') {
+                showToast("Lente purificada.", "eraser");
+                return;
+            }
 
+            showToast(`Filtro de los Dioses activado: Buscando ${filterType}`, 'scan-eye');
+
+            // 2. Aplicar filtro escaneando el Códice
+            document.querySelectorAll('.word-token').forEach(t => {
+                const word = normalizeGreekForInput(t.innerText.replace(/[»"',;·.!?:)]/g, ''));
+                const entry = wordDB[word];
+                
+                if (entry && entry.m.includes(filterType)) {
+                    if (filterType === 'Nom.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-blue-500', 'bg-blue-500/30');
+                    if (filterType === 'Acus.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-emerald-500', 'bg-emerald-500/30');
+                    if (filterType === 'Verbo') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-red-500', 'bg-red-500/30');
+                }
+            });
+        }
         function startTimer() {
             timerInterval = setInterval(() => {
                 timeRemaining--;
@@ -1808,7 +1843,39 @@
                     }
                 });
                // PREMIUM: Radar Gramatical (Colorear la palabra en el texto original)
-
+// --- PREMIUM 2: MÓDULO ETIMOLÓGICO (Ecos de la Hélade) ---
+                const etimologias = {
+                    'θεοσ': 'Teología, Ateísmo, Panteón, Apoteosis.',
+                    'χρονοσ': 'Cronómetro, Cronología, Sincronizar, Anacronismo.',
+                    'ψυχη': 'Psicología, Psiquiatra, Psicópata.',
+                    'οφθαλμοσ': 'Oftalmólogo.',
+                    'γαστηρ': 'Gastroenteritis, Gastronomía, Gástrico.',
+                    'πολεμοσ': 'Polémica.',
+                    'ανηρ': 'Androide, Andrología, Alejandro, Poliandria.',
+                    'γυνη': 'Ginecólogo, Misógino, Andrógino.',
+                    'ιατροσ': 'Pediatra, Psiquiatra, Foniatra.',
+                    'υπνοσ': 'Hipnosis, Hipnótico.',
+                    'ναυσ': 'Náutico, Nausea, Astronauta, Cibernética.',
+                    'μονοσ': 'Monólogo, Monopolio, Monje, Monótono.',
+                    'λιμην': 'Limnología.',
+                    'αστυ': 'Astucia.',
+                    'πατηρ': 'Patriarca, Patrimonio, Patronímico.',
+                    'αγγελοσ': 'Ángel, Arcángel, Evangelio.'
+                };
+                
+                let etimHTML = '';
+                // Intentamos buscar la raíz (cogiendo la primera palabra del Lema)
+                let rootKey = entry.l.split(',')[0].normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/ς/g, 'σ');
+                
+                if(etimologias[rootKey] || etimologias[key]) {
+                    let etimText = etimologias[rootKey] || etimologias[key];
+                    etimHTML = `<div class="bg-indigo-950/50 p-6 rounded-2xl border-l-4 border-indigo-500 mt-6 shadow-inner relative overflow-hidden">
+                                    <div class="absolute right-0 top-0 opacity-10 text-indigo-500"><i data-lucide="quote" class="w-24 h-24"></i></div>
+                                    <p class="text-indigo-300 text-xs font-black uppercase tracking-widest mb-2 flex items-center gap-2"><i data-lucide="link" class="w-4 h-4"></i> Ecos de la Hélade (Etimología)</p>
+                                    <p class="text-indigo-100 font-serif text-xl relative z-10">${etimText}</p>
+                                </div>`;
+                }
+                // --------------------------------------------------------
                 content.innerHTML = `
                     <div class="mb-12 border-b-2 border-${colorTema}-900 pb-8 flex justify-between items-start">
                         <div>
@@ -1842,6 +1909,7 @@
                         <span class="lang-tag bg-amber-900 text-amber-100 mb-6 inline-block">Traducción de Contexto</span>
                         <p class="text-4xl italic font-serif text-white border-l-4 border-amber-500 pl-6 py-2">"${entry.d}"</p>
                     </div>
+                    ${etimHTML}
                     <div class="mt-12 bg-slate-950/50 p-6 rounded-2xl border border-slate-800">
                         ${entry.t()}
                     </div>`;
