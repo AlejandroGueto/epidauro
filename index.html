@@ -1363,6 +1363,32 @@
             'οικαδε': { l: 'οἴκαδε', m: 'Adverbio de lugar', s: 'CC de Dirección', d: 'a casa, hacia casa', t: () => inv },
             'πολυ': { l: 'πολύς', m: 'Adjetivo/Adverbio, Neutro Sg.', s: 'CC de Cantidad', d: 'mucho', t: () => inv },
             'σπανιως': { l: 'σπανίως', m: 'Adverbio', s: 'CC de Modo', d: 'raramente, escasamente', t: () => inv }
+            /* Sustantivos y Adjetivos */
+            'θεοσ': { l: 'θεός, -οῦ, ὁ', m: 'Sustantivo (2ª decl), Nom. Sg.', s: 'Sujeto', d: 'el dios', t: () => G.n2M('θε') },
+            'θεοισ': { l: 'θεός, -οῦ, ὁ', m: 'Sustantivo (2ª decl), Dativo Pl.', s: 'C. Compañía / Régimen', d: 'a/con los dioses', t: () => G.n2M('θε') },
+            'ναυκληροσ': { l: 'ναύκληρος, -ου, ὁ', m: 'Sustantivo (2ª decl), Nom. Sg.', s: 'Sujeto', d: 'el capitán del barco', t: () => G.n2M('ναύκληρ') },
+            'δεσποτην': { l: 'δεσπότης, -ου, ὁ', m: 'Sustantivo (1ª decl Masc), Acusativo Sg.', s: 'Objeto Directo / Dirección', d: 'al amo, al señor', t: () => G.n1M('δεσπότ') },
+            'καθαροσ': { l: 'καθαρός, -ά, -όν', m: 'Adjetivo, Nom. Sg. Masc.', s: 'Atributo', d: 'puro, limpio', t: () => G.n2M('καθαρ') },
+            'βωμον': { l: 'βωμός, -οῦ, ὁ', m: 'Sustantivo (2ª decl), Acusativo Sg.', s: 'Dirección (con πρὸς)', d: 'el altar', t: () => G.n2M('βωμ') },
+            'χειρασ': { l: 'χείρ, χειρός, ἡ', m: 'Sustantivo (3ª decl), Acusativo Pl.', s: 'Objeto Directo', d: 'las manos', t: () => buildNounT('χείρ','-','χεῖρα','χειρός','χειρί','χεῖρες','-','χεῖρας','χειρῶν','χερσί') },
+            'σπονδην': { l: 'σπονδή, -ῆς, ἡ', m: 'Sustantivo (1ª decl), Acusativo Sg.', s: 'Objeto Directo', d: 'la libación / ofrenda', t: () => G.n1F('σπονδ', true) },
+            'φιαλην': { l: 'φιάλη, -ης, ἡ', m: 'Sustantivo (1ª decl), Acusativo Sg.', s: 'Objeto Directo', d: 'la copa, la patera', t: () => G.n1F('φιάλ', true) },
+            'ουρανον': { l: 'οὐρανός, -οῦ, ὁ', m: 'Sustantivo (2ª decl), Acusativo Sg.', s: 'Dirección (con πρὸς)', d: 'el cielo', t: () => G.n2M('οὐραν') },
+            'ικετησ': { l: 'ἱκέτης, -ου, ὁ', m: 'Sustantivo (1ª decl Masc), Nom. Sg.', s: 'Predicativo / Atributo', d: 'suplicante', t: () => G.n1M('ἱκέτ') },
+            'χρονον': { l: 'χρόνος, -ου, ὁ', m: 'Sustantivo (2ª decl), Acusativo Sg.', s: 'Acusativo de extensión temporal', d: 'el tiempo', t: () => G.n2M('χρόν') },
+            'μονοσ': { l: 'μόνος, -η, -ον', m: 'Adjetivo, Nom. Sg. Masc.', s: 'Predicativo', d: 'solo', t: () => G.n2M('μόν') },
+            'βασιλευσ': { l: 'βασιλεύς, -έως, ὁ', m: 'Sustantivo (3ª decl), Nom. Sg.', s: 'Sujeto', d: 'el rey', t: () => buildNounT('βασιλεύς','βασιλεῦ','βασιλέα','βασιλέως','βασιλεῖ','βασιλεῖς','-','βασιλέας','βασιλέων','βασιλεῦσι') },
+            'στρατηγοσ': { l: 'στρατηγός, -οῦ, ὁ', m: 'Sustantivo (2ª decl), Nom. Sg.', s: 'Sujeto', d: 'el general', t: () => G.n2M('στρατηγ') },
+            'βοηθειαν': { l: 'βοήθεια, -ας, ἡ', m: 'Sustantivo (1ª decl), Acusativo Sg.', s: 'Objeto Directo', d: 'la ayuda', t: () => G.n1F('βοήθει', false) },
+            'μαχη': { l: 'μάχη, -ης, ἡ', m: 'Sustantivo (1ª decl), Dativo Sg.', s: 'Lugar en donde (con ἐν)', d: 'la batalla', t: () => G.n1F('μάχ', true) },
+            
+            /* Verbos */
+            'λεγουσι': { l: 'λέγω', m: 'Verbo, 3ª Plural, Presente Ind. Activo', s: 'Núcleo del Predicado', d: 'dicen', t: () => G.vPresA('λέγ') },
+            'ακουω': { l: 'ἀκούω', m: 'Verbo, 1ª Sg., Presente Ind. Activo', s: 'Núcleo del Predicado', d: 'escucho, oigo', t: () => G.vPresA('ἀκού') },
+            'εισβησαν': { l: 'εἰσβαίνω', m: 'Verbo Compuesto, 3ª Plural, Aoristo Radical Activo', s: 'Núcleo del Predicado', d: 'embarcaron', t: () => buildVerbT('εἰσέβην','-ης','-η','-ημεν','-ητε','εἰσέβησαν','Aoristo Radical Act.') },
+            'αποδουναι': { l: 'ἀποδίδωμι', m: 'Verbo (Atemático), Infinitivo Aoristo Activo', s: 'O. Directo (complemento de ἐθέλει)', d: 'devolver', t: () => inv },
+            'εδεξαντο': { l: 'δέχομαι', m: 'Verbo Deponente, 3ª Plural, Aoristo Indicativo', s: 'Núcleo del Predicado', d: 'recibieron, aceptaron', t: () => buildVerbT('ἐδεξάμην','ἐδέξω','ἐδέξατο','ἐδεξάμεθα','ἐδέξασθε','ἐδέξαντο','Aoristo Ind. Medio') },
+            'απεπεμψαν': { l: 'ἀποπέμπω', m: 'Verbo Compuesto, 3ª Plural, Aoristo Indicativo', s: 'Núcleo del Predicado', d: 'enviaron de vuelta, despidieron', t: () => buildVerbT('ἀπέπεμψα','-ας','-ε(ν)','-αμεν','-ατε','ἀπέπεμψαν','Aoristo Ind. Activo') },
         };
 
         // ==========================================
