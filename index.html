@@ -1442,6 +1442,20 @@
             showToast("Respuesta incorrecta. Los dioses fruncen el ceño.", "x-circle");
         }
 
+        function pedirPista(mensaje) {
+    if (timeRemaining > 180) {
+        timeRemaining -= 180; // Resta 3 minutos (180 segundos)
+        showToast("Los dioses te susurran: " + mensaje, "help-circle");
+        
+        // Animación de penalización de tiempo
+        const timerCont = document.getElementById('timerContainer');
+        timerCont.classList.add('border-red-500', 'text-red-500');
+        setTimeout(() => timerCont.classList.remove('border-red-500', 'text-red-500'), 1000);
+    } else {
+        showToast("No tienes tiempo suficiente para consultar a los dioses.", "alert-circle");
+    }
+}
+
         function checkPrueba1() {
             const q1 = document.getElementById('p1-q1').value;
             const q2 = document.getElementById('p1-q2').value;
@@ -1483,50 +1497,35 @@
         }
 
         function victory() {
-            clearInterval(timerInterval);
-            document.getElementById('gameStage').classList.add('hidden-stage');
-            document.getElementById('gameHeader').classList.add('hidden-stage');
-            document.getElementById('victoryStage').classList.remove('hidden-stage');
-            
-            document.getElementById('finalTeamName').innerText = teamName;
-            document.getElementById('finalTime').innerText = document.getElementById('timerDisplay').innerText;
-            document.getElementById('finalMistakes').innerText = mistakes;
-            
-            // Cálculo de Score
-            const finalScoreVal = Math.max(0, BASE_SCORE - (90*60 - timeRemaining)*5 - (mistakes * 500));
-            
-            let currentDisplayScore = 0;
-            const scoreElement = document.getElementById('finalScore');
-            // Animación de conteo de puntos
-            const countInterval = setInterval(() => {
-                currentDisplayScore += 353;
-                if(currentDisplayScore >= finalScoreVal) {
-                    currentDisplayScore = finalScoreVal;
-                    clearInterval(countInterval);
-                }
-                scoreElement.innerText = currentDisplayScore.toLocaleString() + " PTS";
-            }, 20);
-            
-            initFire();
-            // ... (código anterior de la función victory)
-            let currentDisplayScore = 0;
-            const scoreElement = document.getElementById('finalScore');
-            // Animación de conteo de puntos
-            const countInterval = setInterval(() => {
-                currentDisplayScore += 353;
-                if(currentDisplayScore >= finalScoreVal) {
-                    currentDisplayScore = finalScoreVal;
-                    clearInterval(countInterval);
-                }
-                scoreElement.innerText = currentDisplayScore.toLocaleString() + " PTS";
-            }, 20);
-            
-            initFire();
-            lluviaDracmas(); // <-- ¡ESTA ES LA LÍNEA NUEVA!
-            showToast("¡ATENAS HA SIDO SALVADA!", "flame");
+    clearInterval(timerInterval);
+    document.getElementById('gameStage').classList.add('hidden-stage');
+    document.getElementById('gameHeader').classList.add('hidden-stage');
+    document.getElementById('victoryStage').classList.remove('hidden-stage');
+    
+    document.getElementById('finalTeamName').innerText = teamName;
+    document.getElementById('finalTime').innerText = document.getElementById('timerDisplay').innerText;
+    document.getElementById('finalMistakes').innerText = mistakes;
+    
+    // Cálculo de Score
+    const finalScoreVal = Math.max(0, BASE_SCORE - (90*60 - timeRemaining)*5 - (mistakes * 500));
+    
+    let currentDisplayScore = 0;
+    const scoreElement = document.getElementById('finalScore');
+    
+    // Animación de conteo de puntos
+    const countInterval = setInterval(() => {
+        currentDisplayScore += 353;
+        if(currentDisplayScore >= finalScoreVal) {
+            currentDisplayScore = finalScoreVal;
+            clearInterval(countInterval);
         }
-            showToast("¡ATENAS HA SIDO SALVADA!", "flame");
-        }
+        scoreElement.innerText = currentDisplayScore.toLocaleString() + " PTS";
+    }, 20);
+    
+    initFire();
+    lluviaDracmas();
+    showToast("¡ATENAS HA SIDO SALVADA!", "flame");
+}
 
         function gameOver() {
             clearInterval(timerInterval);
