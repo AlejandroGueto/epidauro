@@ -1095,7 +1095,7 @@
                     <tr class="hover:bg-blue-900/40 transition-colors"><td class="p-4 font-bold text-blue-400 text-center uppercase text-xs tracking-widest bg-black/20 border-r border-blue-900/50">3ª Pl (Autoi)</td><td class="p-4 text-slate-300 text-center">${p6}</td></tr>
                 </tbody></table></div>`;
         }
-      
+       
         const inv = '<div class="mt-8 p-6 border-l-4 border-slate-500 bg-slate-900/80 rounded-r-xl shadow-md flex items-center gap-4"><i data-lucide="lock" class="w-8 h-8 text-slate-400"></i><div><p class="text-sm uppercase tracking-widest font-bold text-slate-300">Naturaleza Invariable</p><p class="text-base font-serif text-slate-400 mt-1">Esta palabra es una partícula, conjunción, preposición o adverbio. No se declina ni se conjuga en la oración.</p></div></div>';
 
         const G = {
@@ -1542,331 +1542,643 @@
             'εκελευσεν': { l: 'κελεύω', m: 'Verbo, 3ª Sg. Aoristo Indicativo Activo', s: 'Núcleo', d: 'ordenó', t: () => buildVerbT('ἐκέλευσα','-ας','ἐκέλευσε(ν)','-αμεν','-ατε','-αν','Aoristo Activo') },
             'εκοψεν': { l: 'κόπτω', m: 'Verbo, 3ª Sg. Aoristo Indicativo Activo', s: 'Núcleo', d: 'golpeó / llamó a la puerta', t: () => buildVerbT('ἔκοψα','-ας','ἔκοψε(ν)','-αμεν','-ατε','-αν','Aoristo Activo') },
             'ηγησαμενοσ': { l: 'ἡγέομαι', m: 'Verbo, Participio Aoristo Medio, Nom. Sg. Masc.', s: 'Participio Concertado', d: 'habiendo guiado', t: () => G.n2M('ἡγησάμεν') },
-            'εισεβησαν': { l: 'εἰσβαίνω', m: 'Verbo, 3ª Plural Aoristo Radical Activo', s: 'Núcleo', d: 'embarcaron', t: () => buildVerbT('εἰσέβην','εἰσέβης','εἰσέβη','εἰσέβημεν','εἰσέβητε','εἰσέβησαν','Aoristo Radical') },
-            'εισβητε': { l: 'εἰσβαίνω', m: 'Verbo, 2ª Plural Imperativo Aoristo', s: 'Orden', d: '¡embarcad!', t: () => inv },
+            'εισεβησαν': { l: 'εἰσβαίνω', m: 'Verbo, 3ª Plural Aoristo Radical Activo', s: 'Núcleo', d: 'embarcaron', t: () => buildVerbT('εἰσέβην','εἰσέβης','εἰσέβη','εἰσέβημεν','εἰσέβητε','εἰσέβησαν','Aoristo Radical') },
+            'εισβητε': { l: 'εἰσβαίνω', m: 'Verbo, 2ª Plural Imperativo Aoristo', s: 'Orden', d: '¡embarcad!', t: () => inv },
 
-            // --- PARTICULAS EXCLAMATIVAS Y ELISIONES ---
-            'ω': { l: 'ὦ', m: 'Invariable, Partícula Exclamativa', s: 'Acompaña al Vocativo', d: '¡oh!', t: () => inv },
-            'μ': { l: 'ἐγώ (elidido: μ\')', m: 'Invariable / Pron. Personal, 1ª Acus. Sg.', s: 'Objeto Directo', d: 'me / a mí', t: () => inv },
-            'δ': { l: 'δέ (elidido: δ\')', m: 'Invariable, Partícula / Conjunción', s: 'Nexo', d: 'pero / y', t: () => inv },
-            'αλλ': { l: 'ἀλλά (elidido: ἀλλ\')', m: 'Invariable, Conjunción Adversativa', s: 'Nexo', d: 'sino / pero', t: () => inv },
-            'δι': { l: 'διά (elidido: δι\')', m: 'Invariable, Preposición (rige Gen/Acus)', s: 'Tránsito / Causa', d: 'a través de / por', t: () => inv },
-            'υφ': { l: 'ὑπό (elidido: ὑφ\')', m: 'Invariable, Preposición (rige Genitivo)', s: 'Complemento Agente', d: 'por (causa de)', t: () => inv },
-            'καιπερ': { l: 'καίπερ', m: 'Invariable, Conjunción Concesiva', s: 'Nexo', d: 'aunque', t: () => inv }
-        };
+            // --- PARTICULAS EXCLAMATIVAS Y ELISIONES ---
+            'ω': { l: 'ὦ', m: 'Invariable, Partícula Exclamativa', s: 'Acompaña al Vocativo', d: '¡oh!', t: () => inv },
+            'μ': { l: 'ἐγώ (elidido: μ\')', m: 'Invariable / Pron. Personal, 1ª Acus. Sg.', s: 'Objeto Directo', d: 'me / a mí', t: () => inv },
+            'δ': { l: 'δέ (elidido: δ\')', m: 'Invariable, Partícula / Conjunción', s: 'Nexo', d: 'pero / y', t: () => inv },
+            'αλλ': { l: 'ἀλλά (elidido: ἀλλ\')', m: 'Invariable, Conjunción Adversativa', s: 'Nexo', d: 'sino / pero', t: () => inv },
+            'δι': { l: 'διά (elidido: δι\')', m: 'Invariable, Preposición (rige Gen/Acus)', s: 'Tránsito / Causa', d: 'a través de / por', t: () => inv },
+            'υφ': { l: 'ὑπό (elidido: ὑφ\')', m: 'Invariable, Preposición (rige Genitivo)', s: 'Complemento Agente', d: 'por (causa de)', t: () => inv },
+            'καιπερ': { l: 'καίπερ', m: 'Invariable, Conjunción Concesiva', s: 'Nexo', d: 'aunque', t: () => inv }
+        };
 
-        // ==========================================
-        // 5. LÓGICA DE CONTROL DE AUDIO
-        // ==========================================
-        let isAudioPlaying = false;
-        function toggleAudio() {
-            const audio = document.getElementById('musicaFondo');
-            const icon = document.getElementById('icon-audio');
-            if (isAudioPlaying) {
-                audio.pause();
-                icon.setAttribute('data-lucide', 'volume-x');
-                icon.classList.replace('text-cyan-400', 'text-slate-500');
-            } else {
-                audio.volume = 0.4;
-                audio.play();
-                icon.setAttribute('data-lucide', 'volume-2');
-                icon.classList.replace('text-slate-500', 'text-cyan-400');
-            }
-            isAudioPlaying = !isAudioPlaying;
-            lucide.createIcons();
-        }
+        // ==========================================
+        // 5. LÓGICA DE CONTROL DE AUDIO
+        // ==========================================
+        let isAudioPlaying = false;
+        function toggleAudio() {
+            const audio = document.getElementById('musicaFondo');
+            const icon = document.getElementById('icon-audio');
+            if (isAudioPlaying) {
+                audio.pause();
+                icon.setAttribute('data-lucide', 'volume-x');
+                icon.classList.replace('text-cyan-400', 'text-slate-500');
+            } else {
+                audio.volume = 0.4;
+                audio.play();
+                icon.setAttribute('data-lucide', 'volume-2');
+                icon.classList.replace('text-slate-500', 'text-cyan-400');
+            }
+            isAudioPlaying = !isAudioPlaying;
+            lucide.createIcons();
+        }
 
-        let achievements = new Set();
-        function showToast(message, iconName = 'bell') {
-            if(achievements.has(message)) return;
-            achievements.add(message);
-            const container = document.getElementById('toast-container');
-            const toast = document.createElement('div');
-            toast.className = 'toast flex items-center bg-slate-900 border-l-4 border-cyan-400 text-white p-4 rounded shadow-lg transition-transform duration-500 transform translate-x-full mb-3 font-serif';
-            toast.innerHTML = `<i data-lucide="${iconName}" class="w-6 h-6 text-cyan-400 mr-3"></i> <span class="text-sm font-bold tracking-wider">${message}</span>`;
-            container.appendChild(toast);
-            lucide.createIcons();
-            setTimeout(() => { toast.style.transform = 'translateX(0)'; }, 50);
-            setTimeout(() => {
-                toast.style.transform = 'translateX(150%)';
-                setTimeout(() => toast.remove(), 500);
-            }, 4000);
-        }
+        let achievements = new Set();
+        function showToast(message, iconName = 'bell') {
+            if(achievements.has(message)) return;
+            achievements.add(message);
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'toast flex items-center bg-slate-900 border-l-4 border-cyan-400 text-white p-4 rounded shadow-lg transition-transform duration-500 transform translate-x-full mb-3 font-serif';
+            toast.innerHTML = `<i data-lucide="${iconName}" class="w-6 h-6 text-cyan-400 mr-3"></i> <span class="text-sm font-bold tracking-wider">${message}</span>`;
+            container.appendChild(toast);
+            lucide.createIcons();
+            setTimeout(() => { toast.style.transform = 'translateX(0)'; }, 50);
+            setTimeout(() => {
+                toast.style.transform = 'translateX(150%)';
+                setTimeout(() => toast.remove(), 500);
+            }, 4000);
+        }
 
-        // ==========================================
-        // 6. LÓGICA DE CONTROL DEL JUEGO
-        // ==========================================
-        let timeRemaining = 90 * 60;
-        let timerInterval = null;
-        let teamName = "";
-        let mistakes = 0;
-        const BASE_SCORE = 30000;
+        // ==========================================
+        // 6. LÓGICA DE CONTROL DEL JUEGO
+        // ==========================================
+        let timeRemaining = 90 * 60;
+        let timerInterval = null;
+        let teamName = "";
+        let mistakes = 0;
+        const BASE_SCORE = 30000;
 
-       function normalizeGreekForInput(str) {
-            if (!str) return "";
-            // Eliminamos diacríticos, apóstrofos rectos/rizados, comillas de todo tipo y signos de puntuación.
-            return str.normalize("NFD")
-                      .replace(/[\u0300-\u036f\u0345]/g, "") // Quita acentos, espíritus y iota suscrita
-                      .replace(/[»"”“'’«<>\[\],;·.!?:()]/g, "") // Quita toda puntuación y apóstrofos
-                      .toLowerCase()
-                      .trim()
-                      .replace(/ς/g, 'σ'); // Unifica la sigma final
-        }
+        function normalizeGreekForInput(str) {
+            if (!str) return "";
+            return str.normalize("NFD")
+                      .replace(/[\u0300-\u036f\u0345]/g, "") 
+                      .replace(/[»"”“'’«<>\[\],;·.!?:()]/g, "") 
+                      .toLowerCase()
+                      .trim()
+                      .replace(/ς/g, 'σ');
+        }
 
-        function startGame() {
-            const input = document.getElementById('teamName');
-            if (!input.value.trim()) {
-                document.getElementById('name-error').classList.remove('hidden');
-                return;
-            }
-            teamName = input.value;
-            document.getElementById('introStage').classList.add('hidden-stage');
-            document.getElementById('gameHeader').classList.remove('hidden-stage');
-            document.getElementById('gameStage').classList.remove('hidden-stage');
-            initTexts(); 
-            startTimer(); 
-            lucide.createIcons(); 
-            
-            const musica = document.getElementById('musicaFondo');
-            musica.volume = 0.4;
-            musica.play().then(() => {
-                isAudioPlaying = true;
-                document.getElementById('icon-audio').setAttribute('data-lucide', 'volume-2');
-                lucide.createIcons();
-            }).catch(e => console.log("Navegador bloqueó el autoplay. Requiere click manual en el header."));
-            showToast("Habéis entrado en el Ábaton.", "footprints");
-        }
+        function startGame() {
+            const input = document.getElementById('teamName');
+            if (!input.value.trim()) {
+                document.getElementById('name-error').classList.remove('hidden');
+                return;
+            }
+            teamName = input.value;
+            document.getElementById('introStage').classList.add('hidden-stage');
+            document.getElementById('gameHeader').classList.remove('hidden-stage');
+            document.getElementById('gameStage').classList.remove('hidden-stage');
+            initTexts(); 
+            startTimer(); 
+            lucide.createIcons(); 
+            
+            const musica = document.getElementById('musicaFondo');
+            musica.volume = 0.4;
+            musica.play().then(() => {
+                isAudioPlaying = true;
+                document.getElementById('icon-audio').setAttribute('data-lucide', 'volume-2');
+                lucide.createIcons();
+            }).catch(e => console.log("Navegador bloqueó el autoplay. Requiere click manual en el header."));
+            showToast("Habéis entrado en el Ábaton.", "footprints");
+        }
 
-        // LÓGICA DE LA VISIÓN DE LINCEO (ESCANER SINTÁCTICO HÍBRIDO)
-        function applyXRay(filterType) {
-            document.querySelectorAll('.word-token').forEach(t => {
-                // Como el normalizador ya limpia apóstrofos, solo pasamos el innerText
-                const word = normalizeGreekForInput(t.innerText); 
-                const entry = wordDB[word];
-                
-                // Validación segura: si entry.m existe, lo lee; si no, queda vacío para usar el Fallback
-                let m = (entry && entry.m) ? entry.m.toLowerCase() : "";
-                
-                // FALLBACK SOLO si no existe en la DB
-                if (!entry) {
-                    if (word.endsWith('ω') || word.endsWith('ει') || word.endsWith('ουσι') || word.endsWith('ονται') || word.endsWith('εται') || word.endsWith('ετο') || word.endsWith('ντο') || word.endsWith('ομεν') || word.endsWith('εθα') || word.endsWith('τε') || word.endsWith('ειν') || word.endsWith('σθαι') || word.endsWith('ναι') || word.endsWith('σα') || word.endsWith('εν') || word.endsWith('ον') || word.endsWith('σαν')) m += " verbo";
-                    if (word.endsWith('ων') || word.endsWith('οντεσ') || word.endsWith('οντασ') || word.endsWith('μενοσ') || word.endsWith('μενοι') || word.endsWith('ουσα') || word.endsWith('σασ') || word.endsWith('σαντεσ')) m += " verbo participio";
-                    
-                    // Asegurar que no se sobreescriba un verbo con sufijos nominales ambiguos
-                    if (!m.includes('verbo')) {
-                        if (word.endsWith('οσ') || word.endsWith('η') || word.endsWith('α') || word.endsWith('οι') || word.endsWith('αι') || word.endsWith('εσ') || word.endsWith('ουσ')) m += " nom. nominativo";
-                        if (word.endsWith('ον') || word.endsWith('ην') || word.endsWith('αν') || word.endsWith('ασ') || word.endsWith('ουσ')) m += " acus. acusativo";
-                        if (word.endsWith('ου') || word.endsWith('ησ') || word.endsWith('ων') || word.endsWith('εωσ')) m += " gen. genitivo";
-                        if (word.endsWith('ω') || word.endsWith('ῳ') || word.endsWith('η') || word.endsWith('ῃ') || word.endsWith('οισ') || word.endsWith('αισ') || word.endsWith('σι')) m += " dat. dativo";
-                    }
-                }
+        function applyXRay(filterType) {
+            document.querySelectorAll('.word-token').forEach(t => {
+                const word = normalizeGreekForInput(t.innerText); 
+                const entry = wordDB[word];
+                let m = (entry && entry.m) ? entry.m.toLowerCase() : "";
+                
+                if (!entry) {
+                    if (word.endsWith('ω') || word.endsWith('ει') || word.endsWith('ουσι') || word.endsWith('ονται') || word.endsWith('εται') || word.endsWith('ετο') || word.endsWith('ντο') || word.endsWith('ομεν') || word.endsWith('εθα') || word.endsWith('τε') || word.endsWith('ειν') || word.endsWith('σθαι') || word.endsWith('ναι') || word.endsWith('σα') || word.endsWith('εν') || word.endsWith('ον') || word.endsWith('σαν')) m += " verbo";
+                    if (word.endsWith('ων') || word.endsWith('οντεσ') || word.endsWith('οντασ') || word.endsWith('μενοσ') || word.endsWith('μενοι') || word.endsWith('ουσα') || word.endsWith('σασ') || word.endsWith('σαντεσ')) m += " verbo participio";
+                    
+                    if (!m.includes('verbo')) {
+                        if (word.endsWith('οσ') || word.endsWith('η') || word.endsWith('α') || word.endsWith('οι') || word.endsWith('αι') || word.endsWith('εσ') || word.endsWith('ουσ')) m += " nom. nominativo";
+                        if (word.endsWith('ον') || word.endsWith('ην') || word.endsWith('αν') || word.endsWith('ασ') || word.endsWith('ουσ')) m += " acus. acusativo";
+                        if (word.endsWith('ου') || word.endsWith('ησ') || word.endsWith('ων') || word.endsWith('εωσ')) m += " gen. genitivo";
+                        if (word.endsWith('ω') || word.endsWith('ῳ') || word.endsWith('η') || word.endsWith('ῃ') || word.endsWith('οισ') || word.endsWith('αισ') || word.endsWith('σι')) m += " dat. dativo";
+                    }
+                }
 
-                let match = false;
-                if (filterType === 'Nom.' && (m.includes('nom.') || m.includes('nominativo') || m.includes('nom '))) match = true;
-                if (filterType === 'Acus.' && (m.includes('acus.') || m.includes('acusativo') || m.includes('acus '))) match = true;
-                if (filterType === 'Gen.' && (m.includes('gen.') || m.includes('genitivo') || m.includes('gen '))) match = true;
-                if (filterType === 'Dat.' && (m.includes('dat.') || m.includes('dativo') || m.includes('dat '))) match = true;
-                // Excluir participios ambiguos si se busca "Sujeto/Nom", pero incluirlos como "Verbos" si se busca "Verbo"
-                if (filterType === 'Verbo' && (m.includes('verbo') || m.includes('participio') || m.includes('infinitivo') || m.includes('imperativo') || m.includes('pres.') || m.includes('aoristo') || m.includes('futuro') || m.includes('imperfecto'))) match = true;
+                let match = false;
+                if (filterType === 'Nom.' && (m.includes('nom.') || m.includes('nominativo') || m.includes('nom '))) match = true;
+                if (filterType === 'Acus.' && (m.includes('acus.') || m.includes('acusativo') || m.includes('acus '))) match = true;
+                if (filterType === 'Gen.' && (m.includes('gen.') || m.includes('genitivo') || m.includes('gen '))) match = true;
+                if (filterType === 'Dat.' && (m.includes('dat.') || m.includes('dativo') || m.includes('dat '))) match = true;
+                if (filterType === 'Verbo' && (m.includes('verbo') || m.includes('participio') || m.includes('infinitivo') || m.includes('imperativo') || m.includes('pres.') || m.includes('aoristo') || m.includes('futuro') || m.includes('imperfecto'))) match = true;
 
-                if (match) {
-                    if (filterType === 'Nom.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-blue-500', 'bg-blue-500/30');
-                    if (filterType === 'Acus.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-emerald-500', 'bg-emerald-500/30');
-                    if (filterType === 'Gen.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-purple-500', 'bg-purple-500/30');
-                    if (filterType === 'Dat.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-amber-500', 'bg-amber-500/30');
-                    if (filterType === 'Verbo') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-red-500', 'bg-red-500/30');
-                }
-            });
-        }
+                if (match) {
+                    if (filterType === 'Nom.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-blue-500', 'bg-blue-500/30');
+                    if (filterType === 'Acus.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-emerald-500', 'bg-emerald-500/30');
+                    if (filterType === 'Gen.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-purple-500', 'bg-purple-500/30');
+                    if (filterType === 'Dat.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-amber-500', 'bg-amber-500/30');
+                    if (filterType === 'Verbo') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-red-500', 'bg-red-500/30');
+                }
+            });
+        }
 
-        function startTimer() {
-            timerInterval = setInterval(() => {
-                timeRemaining--;
-                const m = Math.floor(timeRemaining / 60);
-                const s = timeRemaining % 60;
-                document.getElementById('timerDisplay').innerText = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-                
-                if(timeRemaining === 1800) showToast("Quedan 30 minutos. Mardonio se acerca.", "alert-triangle");
-                
-                if (timeRemaining === 300) {
-                    showToast("¡CRONOS DESPIERTA! 5 minutos restantes.", "skull");
-                    document.getElementById('timerContainer').classList.add('time-critical', 'text-red-500');
-                    document.getElementById('timerContainer').classList.remove('text-cyan-300', 'border-cyan-500/50');
-                    document.body.style.animation = "cronosWrath 2s infinite";
-                }
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                const m = Math.floor(timeRemaining / 60);
+                const s = timeRemaining % 60;
+                document.getElementById('timerDisplay').innerText = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+                
+                if(timeRemaining === 1800) showToast("Quedan 30 minutos. Mardonio se acerca.", "alert-triangle");
+                
+                if (timeRemaining === 300) {
+                    showToast("¡CRONOS DESPIERTA! 5 minutos restantes.", "skull");
+                    document.getElementById('timerContainer').classList.add('time-critical', 'text-red-500');
+                    document.getElementById('timerContainer').classList.remove('text-cyan-300', 'border-cyan-500/50');
+                    document.body.style.animation = "cronosWrath 2s infinite";
+                }
 
-                if (timeRemaining <= 0) {
-                    clearInterval(timerInterval);
-                    gameOver();
-                }
-            }, 1000);
-        } 
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    gameOver();
+                }
+            }, 1000);
+        } 
 
-        function formatTime(s) {
-            const m = Math.floor(s / 60);
-            const sec = s % 60;
-            return `${m.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
-        }
+        function formatTime(s) {
+            const m = Math.floor(s / 60);
+            const sec = s % 60;
+            return `${m.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+        }
 
-        let mapInitialized = false;
+        let mapInitialized = false;
 
-        function switchTab(id) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            const tab = document.getElementById(id);
-            if (tab) tab.classList.remove('hidden');
-            
-            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active', 'text-cyan-400'));
-            const b = document.getElementById('btn-' + id.split('-')[1]);
-            if (b) b.classList.add('active', 'text-cyan-400');
-            
-            // --- MAGIA UX: Oculta los filtros si no estás en un texto ---
-            const filtrosLinceo = document.getElementById('xray-filters');
-            if (id === 'tab-mapa' || id === 'tab-cultura' || id === 'tab-eval') {
-                filtrosLinceo.classList.add('hidden');
-            } else {
-                filtrosLinceo.classList.remove('hidden');
-            }
+        function switchTab(id) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            const tab = document.getElementById(id);
+            if (tab) tab.classList.remove('hidden');
+            
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active', 'text-cyan-400'));
+            const b = document.getElementById('btn-' + id.split('-')[1]);
+            if (b) b.classList.add('active', 'text-cyan-400');
+            
+            const filtrosLinceo = document.getElementById('xray-filters');
+            if (id === 'tab-mapa' || id === 'tab-cultura' || id === 'tab-eval') {
+                filtrosLinceo.classList.add('hidden');
+            } else {
+                filtrosLinceo.classList.remove('hidden');
+            }
 
-            // NUEVA LÓGICA DEL MAPA (Soluciona el bug visual)
-            if (id === 'tab-mapa') {
-                showToast("Habéis desplegado el Mapa de la Hélade.", "map");
-                if (!mapInitialized) {
-                    // Inicializamos el mapa SOLO cuando la pestaña ya es visible
-                    setTimeout(() => initRealMap(), 100); 
-                    mapInitialized = true;
-                }
-            }
-            if (id === 'tab-cultura') showToast("Consultando los saberes antiguos...", "book-open");
-            lucide.createIcons();
-        }
+            if (id === 'tab-mapa') {
+                showToast("Habéis desplegado el Mapa de la Hélade.", "map");
+                if (!mapInitialized) {
+                    setTimeout(() => initRealMap(), 100); 
+                    mapInitialized = true;
+                }
+            }
+            if (id === 'tab-cultura') showToast("Consultando los saberes antiguos...", "book-open");
+            lucide.createIcons();
+        }
 
-        let mapaGrecia = null;
-        function initRealMap() {
-            const mapContainer = document.getElementById('mapa-real');
-            if (!mapContainer) return; 
-            
-            // Forzamos una altura explícita para evitar que Leaflet lo colapse a 0px
-            mapContainer.style.height = "600px";
-            
-            mapaGrecia = L.map('mapa-real', { zoomControl: false }).setView([38.0500, 23.3000], 8);
-            L.control.zoom({ position: 'topright' }).addTo(mapaGrecia);
-            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 12 }).addTo(mapaGrecia);
+        function initTexts() {
+            ['alfa', 'beta', 'persas', 'eval'].forEach(id => {
+                const container = document.getElementById(`content-${id}-gr`);
+                const esContainer = document.getElementById(`content-${id}-es`);
+                if (esContainer && translations[id]) { esContainer.innerHTML = translations[id]; }
+                const rawText = texts[id];
+                const words = rawText ? rawText.split(/(\s+)/) : [];
+                if (container) {
+                    container.innerHTML = words.map(chunk => {
+                        if (!chunk.trim()) return chunk;
+                        const match = chunk.match(/^([«"”“'’(]*)(.*?)([»"”“'’!,;·.?:)]*)$/);
+                        if (match && match[2]) {
+                            return `${match[1]}<span class="word-token" onclick="consultarOraculo('${match[2]}')">${match[2]}</span>${match[3]}`;
+                        }
+                        return chunk;
+                    }).join('');
+                }
+            });
+        }
 
-            const tesalia = [39.4000, 22.4000];
-            const termopilas = [38.7966, 22.5350];
-            const beocia = [38.3233, 23.3194]; 
-            const atenas = [37.9838, 23.7275];
-            const salamina = [37.9600, 23.5000];
-            const epidauro = [37.5960, 23.0746];
-            const tooltipStyle = { permanent: true, direction: 'right', className: 'bg-transparent border-none text-white drop-shadow-[0_2px_4px_rgba(0,0,0,1)] font-cinzel text-lg font-black tracking-widest' };
+        function diseccionarPalabra(originalWord, entry) {
+            if (!entry || !entry.m) return `<span class="text-cyan-400 font-bold">${originalWord}</span>`;
+            if (entry.m.includes('Invariable') || entry.m.includes('Prep') || entry.m.includes('Conj') || entry.m.includes('Adv') || entry.m.includes('Partícula')) {
+                return `<span class="text-slate-400 font-bold">${originalWord}</span>`;
+            }
 
-            L.circleMarker(tesalia, { color: '#dc2626', radius: 6, fillOpacity: 0.8 }).addTo(mapaGrecia).bindTooltip("Tesalia (Mardonio)", tooltipStyle);
-            L.circleMarker(beocia, { color: '#dc2626', radius: 6, fillOpacity: 0.8 }).addTo(mapaGrecia).bindTooltip("Beocia", tooltipStyle);
-            L.circleMarker(atenas, { color: '#0ea5e9', radius: 8, fillOpacity: 0.9, weight: 3 }).addTo(mapaGrecia).bindTooltip("Atenas (Saqueada)", tooltipStyle);
-            L.circleMarker(salamina, { color: '#0ea5e9', radius: 6, fillOpacity: 0.9 }).addTo(mapaGrecia).bindTooltip("Salamina", tooltipStyle);
-            L.circleMarker(epidauro, { color: '#22c55e', radius: 10, fillOpacity: 1, weight: 4 }).addTo(mapaGrecia).bindTooltip("SANTUARIO DE EPIDAURO", { ...tooltipStyle, className: 'bg-black/60 p-2 border border-green-500 rounded text-green-400 drop-shadow-2xl font-cinzel text-xl font-black tracking-widest' });
+            if (entry.estructura && entry.estructura.length === 5) {
+                const [prev, raiz, tiempo, vocTem, desin] = entry.estructura;
+                let html = '';
+                
+                if (prev) html += `<span class="text-purple-400 border-b-4 border-purple-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${prev}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-purple-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg uppercase tracking-widest z-50">Preverbio/Aum.</span></span>`;
+                if (raiz) html += (html ? '<span class="text-slate-600 font-black mx-1 opacity-50">+</span>' : '') + `<span class="text-cyan-400 border-b-4 border-cyan-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${raiz}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-cyan-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg uppercase tracking-widest z-50">Raíz</span></span>`;
+                if (tiempo) html += (html ? '<span class="text-slate-600 font-black mx-1 opacity-50">+</span>' : '') + `<span class="text-pink-400 border-b-4 border-pink-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${tiempo}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-pink-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg uppercase tracking-widest z-50">Marca Temp/Modo</span></span>`;
+                if (vocTem) html += (html ? '<span class="text-slate-600 font-black mx-1 opacity-50">+</span>' : '') + `<span class="text-amber-400 border-b-4 border-amber-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${vocTem}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-amber-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg uppercase tracking-widest z-50">Vocal Temática</span></span>`;
+                if (desin) html += (html ? '<span class="text-slate-600 font-black mx-1 opacity-50">+</span>' : '') + `<span class="text-emerald-400 border-b-4 border-emerald-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${desin}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-emerald-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg uppercase tracking-widest z-50">Desinencia</span></span>`;
+                
+                return html;
+            }
 
-            L.polyline([tesalia, termopilas, beocia, atenas], { color: '#ef4444', weight: 4, dashArray: '10, 15', opacity: 0.8 }).addTo(mapaGrecia);
-            L.polyline([atenas, salamina], { color: '#0ea5e9', weight: 3, dashArray: '5, 10', opacity: 0.8 }).addTo(mapaGrecia);
-            L.polyline([atenas, [37.8, 23.5], epidauro], { color: '#22c55e', weight: 4, dashArray: '8, 12', opacity: 0.9 }).addTo(mapaGrecia);
-            
-            // Obligamos a Leaflet a recalcular su tamaño interno para que no corte los bordes
-            mapaGrecia.invalidateSize();
-        }
-      
-        function gameOver() {
-            clearInterval(timerInterval);
-            document.getElementById('gameStage').classList.add('hidden-stage');
-            document.getElementById('gameHeader').classList.add('hidden-stage');
-            document.getElementById('defeatStage').classList.remove('hidden-stage');
-        }
+            return `<span class="text-cyan-400 font-bold">${originalWord}</span>`;
+        }
 
-        function initFire() {
-            const canvas = document.getElementById('fireCanvas');
-            const ctx = canvas.getContext('2d');
-            canvas.width = canvas.offsetWidth; 
-            canvas.height = canvas.offsetHeight;
-            let particles = [];
-            
-            class Particle {
-                constructor() {
-                    this.x = canvas.width / 2 + (Math.random() * 100 - 50);
-                    this.y = canvas.height - 20;
-                    this.vx = Math.random() * 4 - 2;
-                    this.vy = Math.random() * -6 - 3;
-                    this.life = Math.random() * 100 + 50;
-                    this.size = Math.random() * 20 + 10;
-                    this.color = `rgba(255, ${Math.floor(Math.random() * 120 + 50)}, 0, `;
-                }
-                draw() {
-                    ctx.fillStyle = this.color + (this.life / 150) + ')';
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size * (this.life / 100), 0, Math.PI * 2);
-                    ctx.fill();
-                }
-            }
-            
-            function animate() {
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                if (particles.length < 350) {
-                    for(let i=0; i<5; i++) particles.push(new Particle());
-                }
-                particles.forEach((p, i) => {
-                    p.x += p.vx + (Math.random() * 2 - 1); 
-                    p.y += p.vy; 
-                    p.life -= 1.5;
-                    p.draw();
-                    if (p.life <= 0) particles.splice(i, 1);
-                });
-                requestAnimationFrame(animate);
-            }
-            animate();
-            window.addEventListener('resize', () => {
-                canvas.width = canvas.offsetWidth;
-                canvas.height = canvas.offsetHeight;
-            });
-        }
+        function consultarOraculo(word) {
+            document.querySelectorAll('.word-token').forEach(t => {
+                t.classList.remove('bg-cyan-500/40', 'ring-2', 'ring-cyan-400', 'rounded');
+                if (t.innerText.replace(/[»"”“'’!,;·.?:()]/g, '') === word) {
+                    t.classList.add('bg-cyan-500/40', 'ring-2', 'ring-cyan-400', 'rounded');
+                }
+            });
 
-        lucide.createIcons();
+            const sound = document.getElementById('sonidoOraculo');
+            if (sound) { sound.currentTime = 0; sound.volume = 0.5; sound.play().catch(e=>console.log(e)); }
+            
+            const drawer = document.getElementById('oracle-drawer');
+            const overlay = document.getElementById('drawer-overlay');
+            const content = document.getElementById('oracle-content');
+            const key = normalizeGreekForInput(word);
+            let entry = wordDB[key];
+            showToast("Buscando en los papiros...", "search");
 
-        const cursorAura = document.createElement('div');
-        cursorAura.style.cssText = "position:fixed; pointer-events:none; width:600px; height:600px; background:radial-gradient(circle, rgba(56,189,248,0.08) 0%, transparent 60%); border-radius:50%; z-index:1; transform:translate(-50%, -50%); transition: opacity 0.2s ease; mix-blend-mode: screen;";
-        document.body.appendChild(cursorAura);
+            if (!entry) {
+                let m = "Forma declinada o conjugada";
+                let s = "Sintaxis sujeta al contexto de la oración";
+                let d = "Forma derivada. Consultad la raíz en diccionarios externos.";
+                let t = () => '<p class="mt-6 p-5 border-l-4 border-cyan-700 bg-cyan-900/30 text-sm italic text-cyan-200 shadow-md">Morfología deducida automáticamente por el Oráculo. Raíz léxica estimada.</p>';
+                
+                if (key.endsWith('ουσι') || key.endsWith('ουσιν')) { m = 'Verbo, 3ª pers. Plural, Presente Ind. Activo'; s = 'Núcleo del Predicado'; t = () => G.vPresA(key.replace(/ουσιν?$/, '')); }
+                else if (key.endsWith('οντες')) { m = 'Participio Presente Activo, Nom Plural Masc.'; s = 'Participio Concertado'; t = () => buildNounT(key.replace(/οντες$/,'ων'),'-',key.replace(/οντες$/,'οντα'),key.replace(/οντες$/,'οντος'),key.replace(/οντες$/,'οντι'),key,'-',key.replace(/οντες$/,'οντας'),key.replace(/οντες$/,'οντων'),key.replace(/οντες$/,'ουσι')); }
+                else if (key.endsWith('μεν')) { m = 'Verbo, 1ª pers. Plural'; s = 'Núcleo del Predicado'; t = () => buildVerbT('-','-','-','forma en -μεν','-','-','Conjugación Plural');}
+                else if (key.endsWith('τε')) { m = 'Verbo, 2ª pers. Plural (o Partícula)'; s = 'Núcleo del Predicado'; }
+                else if (key.endsWith('ται')) { m = 'Verbo, 3ª pers. Singular, Voz Media/Pasiva'; s = 'Núcleo del Predicado'; }
+                else if (key.endsWith('νται')) { m = 'Verbo, 3ª pers. Plural, Voz Media/Pasiva'; s = 'Núcleo del Predicado'; }
+                else if (key.endsWith('ων')) { m = 'Sustantivo/Adjetivo Genitivo Plural o Participio Nom Sg Masc'; s = 'Complemento del Nombre / Concertado'; }
+                else if (key.endsWith('ος')) { m = 'Sustantivo (2ª/3ª decl), Nom. Sg. Masc o Gen. Sg.'; s = 'Sujeto / C. Nombre'; t = () => G.n2M(key.replace(/ος$/, '')); }
+                else if (key.endsWith('ον')) { m = 'Sust/Adj, Acusativo Sg. Masc / Nom-Acus Sg. Neutro'; s = 'Objeto Directo / Sujeto'; t = () => G.n2N(key.replace(/ον$/, '')); }
+                else if (key.endsWith('ους')) { m = 'Sustantivo (2ª decl), Acusativo Plural Masc'; s = 'Objeto Directo'; t = () => G.n2M(key.replace(/ους$/, '')); }
+                else if (key.endsWith('ας')) { m = 'Sust/Adj (1ª decl), Acusativo Plural Fem / Gen. Sg.'; s = 'Objeto Directo / C. Nombre'; t = () => G.n1F(key.replace(/ας$/, ''), false); }
+                else if (key.endsWith('ης')) { m = 'Sustantivo (1ª decl), Gen. Sg. Fem / Nom. Sg. Masc'; s = 'C. Nombre / Sujeto'; t = () => G.n1F(key.replace(/ης$/, ''), true); }
+                else if (key.endsWith('οις')) { m = 'Sust/Adj (2ª decl), Dativo Plural Masc/Neutro'; s = 'C. Indirecto / CC Lugar'; t = () => G.n2M(key.replace(/οις$/, '')); }
+                else if (key.endsWith('αις')) { m = 'Sust/Adj (1ª decl), Dativo Plural Fem'; s = 'C. Indirecto / CC Lugar'; t = () => G.n1F(key.replace(/αις$/, ''), false); }
+                else if (key.endsWith('ω') || key.endsWith('ῳ')) { m = 'Sust/Adj Dativo Sg. Masc/Neutro o Verbo 1ª Sg. Pres.'; s = 'C. Indirecto / Núcleo'; t = () => G.n2M(key.replace(/ω$/, '').replace(/ῳ$/, '')); }
+                else if (key.endsWith('η') || key.endsWith('ῃ')) { m = 'Sust/Adj (1ª decl), Nom/Dat Sg. Fem'; s = 'Sujeto / C. Indirecto'; t = () => G.n1F(key.replace(/η$/, '').replace(/ῃ$/, ''), true); }
+                else if (key.endsWith('α') || key.endsWith('ᾳ')) { m = 'Sust/Adj (1ª decl) Nom/Dat Sg. Fem o Neutro Pl.'; s = 'Sujeto / Objeto Directo'; t = () => G.n1F(key.replace(/α$/, '').replace(/ᾳ$/, ''), false); }
+                else if (key.endsWith('ει')) { m = 'Verbo 3ª Sg. Pres. Act. o Sustantivo Dat Sg. (3ª decl)'; s = 'Núcleo / C. Indirecto'; }
+                else if (key.endsWith('ομενος')) { m = 'Participio Presente Medio, Nom. Sg. Masc'; s = 'Participio Concertado'; t = () => buildNounT(key,'-','-ον','-ου','-ῳ','-οι','-','-ους','-ων','-οις'); }
+                entry = { l: word + " (Raíz estimada)", m: m, s: s, d: d, t: t };
+            }
+            
+            if(overlay) {
+                overlay.classList.remove('pointer-events-none');
+                overlay.classList.remove('opacity-0');
+            }
+            drawer.classList.remove('translate-x-full');
+            
+            content.innerHTML = `<div class="flex flex-col items-center justify-center py-40 space-y-6"><i data-lucide="compass" class="w-16 h-16 text-cyan-500 animate-spin-slow"></i><p class="animate-pulse font-cinzel text-cyan-400 text-2xl uppercase tracking-[0.2em]">Consultando los papiros...</p></div>`;
+            lucide.createIcons();
 
-        const mysticBg = document.querySelector('.mystic-bg');
-        document.addEventListener('mousemove', (e) => {
-            cursorAura.style.left = e.clientX + 'px';
-            cursorAura.style.top = e.clientY + 'px';
-            if(mysticBg) {
-                const xAxis = (window.innerWidth / 2 - e.pageX) / 40;
-                const yAxis = (window.innerHeight / 2 - e.pageY) / 40;
-                mysticBg.style.transform = `translate(${xAxis}px, ${yAxis}px)`;
-            }
-        });
+            setTimeout(() => {
+                let colorTema = 'cyan';
+                let em = (entry && entry.m) ? entry.m.toLowerCase() : "";
+                
+                if (em.includes('nom.') || em.includes('nominativo') || word.endsWith('οσ') || word.endsWith('η') || word.endsWith('α') || word.endsWith('οι') || word.endsWith('αι')) colorTema = 'blue';
+                if (em.includes('acus.') || em.includes('acusativo') || word.endsWith('ον') || word.endsWith('ην') || word.endsWith('αν') || word.endsWith('ουσ') || word.endsWith('ασ')) colorTema = 'emerald';
+                if (em.includes('gen.') || em.includes('genitivo') || word.endsWith('ου') || word.endsWith('ησ') || word.endsWith('ων') || word.endsWith('εωσ')) colorTema = 'purple';
+                if (em.includes('dat.') || em.includes('dativo') || word.endsWith('ω') || word.endsWith('ῳ') || word.endsWith('η') || word.endsWith('ῃ') || word.endsWith('οισ') || word.endsWith('αισ') || word.endsWith('σι')) colorTema = 'amber';
+                if (em.includes('verbo') || em.includes('participio') || word.endsWith('ει') || word.endsWith('ουσι') || word.endsWith('ονται') || word.endsWith('εται')) colorTema = 'red';
+                
+                const tokens = document.querySelectorAll('.word-token');
+                tokens.forEach(t => {
+                    if (t.innerText.replace(/[»"',;·.!?:()]/g, '') === word) {
+                        t.classList.remove('analyzed-verb', 'analyzed-nom', 'analyzed-acus', 'analyzed-gen', 'analyzed-dat', 'analyzed-inv');
+                        if (colorTema === 'red') t.classList.add('analyzed-verb');
+                        else if (colorTema === 'blue') t.classList.add('analyzed-nom');
+                        else if (colorTema === 'emerald') t.classList.add('analyzed-acus');
+                        else if (colorTema === 'purple') t.classList.add('analyzed-gen');
+                        else if (colorTema === 'amber') t.classList.add('analyzed-dat');
+                        else t.classList.add('analyzed-inv');
+                    }
+                });
 
-       function lluviaDracmas() {
-            const iconos = ['🪙', '✨', '⚡'];
-            const container = document.body;
-            for(let i = 0; i < 80; i++) {
-                setTimeout(() => {
-                    requestAnimationFrame(() => {
-                        let coin = document.createElement('div');
-                        coin.innerText = iconos[Math.floor(Math.random() * iconos.length)];
-                        coin.className = 'dracma';
-                        coin.style.left = Math.random() * 100 + 'vw';
-                        coin.style.fontSize = (Math.random() * 20 + 15) + 'px';
-                        coin.style.animation = `dracmaFall ${Math.random() * 3 + 2}s linear forwards`;
-                        container.appendChild(coin);
-                        
-                        // Reciclaje de memoria limpio
-                        coin.addEventListener('animationend', () => {
-                            coin.remove();
-                        });
-                    });
-                }, Math.random() * 2500);
-            }
-        }
-    </script>
+                const etimologias = {
+                    'θεοσ': 'Teología, Ateísmo, Panteón, Apoteosis.',
+                    'χρονοσ': 'Cronómetro, Cronología, Sincronizar, Anacronismo.',
+                    'ψυχη': 'Psicología, Psiquiatra, Psicópata.',
+                    'οφθαλμοσ': 'Oftalmólogo.',
+                    'γαστηρ': 'Gastroenteritis, Gastronomía, Gástrico.',
+                    'πολεμοσ': 'Polémica.',
+                    'ανηρ': 'Androide, Andrología, Alejandro, Poliandria.',
+                    'γυνη': 'Ginecólogo, Misógino, Andrógino.',
+                    'ιατροσ': 'Pediatra, Psiquiatra, Foniatra.',
+                    'υπνοσ': 'Hipnosis, Hipnótico.',
+                    'ναυσ': 'Náutico, Nausea, Astronauta, Cibernética.',
+                    'μονοσ': 'Monólogo, Monopolio, Monje, Monótono.',
+                    'λιμην': 'Limnología.',
+                    'αστυ': 'Astucia.',
+                    'πατηρ': 'Patriarca, Patrimonio, Patronímico.',
+                    'αγγελοσ': 'Ángel, Arcángel, Evangelio.'
+                };
+                
+                let etimHTML = '';
+                let rootKey = entry.l.split(',')[0].normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/ς/g, 'σ');
+                
+                if(etimologias[rootKey] || etimologias[key]) {
+                    let etimText = etimologias[rootKey] || etimologias[key];
+                    etimHTML = `<div class="bg-indigo-950/50 p-6 rounded-2xl border-l-4 border-indigo-500 mt-6 shadow-inner relative overflow-hidden">
+                                    <div class="absolute right-0 top-0 opacity-10 text-indigo-500"><i data-lucide="quote" class="w-24 h-24"></i></div>
+                                    <p class="text-indigo-300 text-xs font-black uppercase tracking-widest mb-2 flex items-center gap-2"><i data-lucide="link" class="w-4 h-4"></i> Ecos de la Hélade (Etimología)</p>
+                                    <p class="text-indigo-100 font-serif text-xl relative z-10">${etimText}</p>
+                                </div>`;
+                }
+                
+                content.innerHTML = `
+                    <div class="mb-12 border-b-2 border-${colorTema}-900 pb-8 flex justify-between items-start">
+                        <div>
+                            <div class="flex items-center justify-start text-5xl md:text-7xl mb-6 font-serif tracking-widest bg-black/40 p-8 rounded-3xl border-2 border-slate-800 w-max shadow-[inset_0_0_30px_rgba(0,0,0,1)]">
+                                ${diseccionarPalabra(word, entry)}
+                            </div>
+                            <p class="text-3xl text-${colorTema}-400 font-cinzel italic lowercase tracking-wider flex items-center gap-3">
+                                <i data-lucide="microscope" class="w-6 h-6"></i> Lema: ${entry.l}
+                            </p>
+                        </div>
+                        <div class="bg-${colorTema}-950/50 p-4 rounded-xl border border-${colorTema}-800 text-right shadow-inner hidden md:block">
+                            <p class="text-xs text-${colorTema}-300 uppercase tracking-widest font-black mb-1">Análisis Forense</p>
+                            <p class="font-serif text-slate-200">Raíz deducida + Desinencias</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-slate-900 p-8 rounded-3xl border-t-4 border-${colorTema}-500 shadow-2xl hover:-translate-y-1 transition-transform">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="lang-tag bg-${colorTema}-900 text-${colorTema}-100">Morfología</span>
+                            </div>
+                            <p class="text-xl leading-relaxed text-slate-100 font-serif">${entry.m}</p>
+                        </div>
+                        <div class="bg-slate-900 p-8 rounded-3xl border-t-4 border-slate-600 shadow-2xl hover:-translate-y-1 transition-transform">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="lang-tag bg-slate-800 text-slate-300">Sintaxis</span>
+                            </div>
+                            <p class="text-xl leading-relaxed text-slate-100 font-serif">${entry.s}</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-slate-900 to-black p-10 rounded-3xl mt-8 border border-slate-800 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+                        <span class="lang-tag bg-amber-900 text-amber-100 mb-6 inline-block">Traducción de Contexto</span>
+                        <p class="text-4xl italic font-serif text-white border-l-4 border-amber-500 pl-6 py-2">"${entry.d}"</p>
+                    </div>
+                    ${etimHTML}
+                    <div class="mt-12 bg-slate-950/50 p-6 rounded-2xl border border-slate-800">
+                        ${entry.t()}
+                    </div>`;
+                lucide.createIcons();
+            }, 600);
+        }
+
+        function closeOracle() { 
+            const drawer = document.getElementById('oracle-drawer');
+            const overlay = document.getElementById('drawer-overlay');
+            if(drawer) drawer.classList.add('translate-x-full'); 
+            if(overlay) {
+                overlay.classList.add('opacity-0');
+                overlay.classList.add('pointer-events-none');
+            }
+        }
+
+        function toggleTranslation() {
+            const isShowing = document.getElementById('content-alfa-es').classList.contains('hidden');
+            ['alfa', 'beta', 'persas', 'eval'].forEach(id => {
+                document.getElementById(`content-${id}-es`).classList.toggle('hidden', !isShowing);
+            });
+            document.getElementById('btn-translate').innerHTML = isShowing ? '<i data-lucide="eye-off" class="w-5 h-5"></i> OCULTAR ESPAÑOL' : '<i data-lucide="languages" class="w-5 h-5"></i> MOSTRAR ESPAÑOL';
+            if (isShowing) showToast("Traducciones reveladas.", "eye");
+            lucide.createIcons();
+        }
+
+        function successPrueba(currId, nextId, achievementMsg) {
+            const current = document.getElementById(currId);
+            const next = document.getElementById(nextId);
+            
+            current.classList.add('opacity-40', 'pointer-events-none', 'grayscale');
+            current.classList.replace('border-cyan-500', 'border-slate-900');
+            
+            next.classList.remove('hidden');
+            next.classList.add('unlocked-glow', 'ring-4', 'ring-emerald-500/30');
+            
+            setTimeout(() => {
+                next.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+            
+            const num = nextId.replace('prueba', '');
+            const dot = document.getElementById('step-' + num);
+            if(dot) {
+                dot.classList.remove('bg-slate-800', 'bg-slate-900', 'border-transparent', 'border-slate-700');
+                dot.classList.add('bg-cyan-400', 'border-2', 'border-cyan-200', 'shadow-[0_0_10px_#38bdf8]');
+                if (num === '6') {
+                    const icon = document.getElementById('icon-flame');
+                    if(icon) { icon.classList.remove('text-slate-600'); icon.classList.add('text-orange-500', 'animate-pulse'); }
+                }
+            }
+            showToast(achievementMsg, "check-circle");
+        }
+
+        function failPrueba(id) {
+            mistakes++;
+            const err = document.getElementById(id);
+            err.classList.remove('hidden');
+            setTimeout(() => err.classList.add('hidden'), 4000);
+            const card = err.closest('div[id^="prueba"]');
+            card.classList.add('error-shake');
+            setTimeout(() => card.classList.remove('error-shake'), 600);
+            showToast("Respuesta incorrecta. Los dioses fruncen el ceño.", "x-circle");
+        }
+
+        function pedirPista(mensaje) {
+            if (timeRemaining > 180) {
+                timeRemaining -= 180; 
+                showToast("Los dioses te susurran: " + mensaje, "help-circle");
+                const timerCont = document.getElementById('timerContainer');
+                timerCont.classList.add('border-red-500', 'text-red-500');
+                setTimeout(() => timerCont.classList.remove('border-red-500', 'text-red-500'), 1000);
+            } else {
+                showToast("No tienes tiempo suficiente para consultar a los dioses.", "alert-circle");
+            }
+        }
+
+        function checkPrueba1() {
+            if (document.getElementById('p1-q1').value.trim() === 'ζητησων' && document.getElementById('p1-q2').value === 'αφιξομεθα' && document.getElementById('p1-q3').value === 'επιφανηναι') successPrueba('prueba1', 'prueba2', "Prueba I Superada: Dominas el Futuro.");
+            else failPrueba('p1-error');
+        }
+
+        function checkPrueba2() {
+            if (document.getElementById('p2-q1').value.trim() === 'b' && document.getElementById('p2-q2').value === 'b') successPrueba('prueba2', 'prueba3', "Prueba II Superada: Sintaxis Divina.");
+            else failPrueba('p2-error');
+        }
+
+        function checkPrueba3() {
+            if (document.getElementById('p3-q1').value.trim() === 'b' && document.getElementById('p3-q2').value === 'b') successPrueba('prueba3', 'prueba4', "Prueba III Superada: Eres un Sabio.");
+            else failPrueba('p3-error'); 
+        }
+
+        function checkPrueba4() {
+            if (document.getElementById('p4-q1').value.trim() === 'b' && document.getElementById('p4-q2').value === 'c') successPrueba('prueba4', 'prueba5', "Prueba IV Superada: La Historia te avala.");
+            else failPrueba('p4-error');
+        }
+
+        function checkPrueba5() {
+            if (document.getElementById('p5-q1').value.trim() === 'a' && document.getElementById('p5-q2').value === 'b') successPrueba('prueba5', 'prueba6', "Prueba V Superada: Hermenéutica Perfecta.");
+            else failPrueba('p5-error');
+        }
+
+        function checkPrueba6() {
+            const code = [
+                document.getElementById('lock1').value, document.getElementById('lock2').value,
+                document.getElementById('lock3').value, document.getElementById('lock4').value,
+                document.getElementById('lock5').value, document.getElementById('lock6').value
+            ].join('');
+            if (code === '134231') victory();
+            else failPrueba('p6-error');
+        }
+
+        function victory() {
+            clearInterval(timerInterval);
+            document.getElementById('gameStage').classList.add('hidden-stage');
+            document.getElementById('gameHeader').classList.add('hidden-stage');
+            document.getElementById('victoryStage').classList.remove('hidden-stage');
+            
+            document.getElementById('finalTeamName').innerText = teamName;
+            document.getElementById('finalTime').innerText = document.getElementById('timerDisplay').innerText;
+            document.getElementById('finalMistakes').innerText = mistakes;
+            
+            const finalScoreVal = Math.max(0, BASE_SCORE - (90*60 - timeRemaining)*5 - (mistakes * 500));
+            
+            let currentDisplayScore = 0;
+            const scoreElement = document.getElementById('finalScore');
+            const countInterval = setInterval(() => {
+                currentDisplayScore += 353;
+                if(currentDisplayScore >= finalScoreVal) {
+                    currentDisplayScore = finalScoreVal;
+                    clearInterval(countInterval);
+                }
+                scoreElement.innerText = currentDisplayScore.toLocaleString() + " PTS";
+            }, 20);
+            
+            initFire();
+            lluviaDracmas();
+            showToast("¡ATENAS HA SIDO SALVADA!", "flame");
+        }
+
+        let mapaGrecia = null;
+        function initRealMap() {
+            const mapContainer = document.getElementById('mapa-real');
+            if (!mapContainer) return; 
+            
+            mapContainer.style.height = "600px";
+            
+            mapaGrecia = L.map('mapa-real', { zoomControl: false }).setView([38.0500, 23.3000], 8);
+            L.control.zoom({ position: 'topright' }).addTo(mapaGrecia);
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 12 }).addTo(mapaGrecia);
+
+            const tesalia = [39.4000, 22.4000];
+            const termopilas = [38.7966, 22.5350];
+            const beocia = [38.3233, 23.3194]; 
+            const atenas = [37.9838, 23.7275];
+            const salamina = [37.9600, 23.5000];
+            const epidauro = [37.5960, 23.0746];
+            const tooltipStyle = { permanent: true, direction: 'right', className: 'bg-transparent border-none text-white drop-shadow-[0_2px_4px_rgba(0,0,0,1)] font-cinzel text-lg font-black tracking-widest' };
+
+            L.circleMarker(tesalia, { color: '#dc2626', radius: 6, fillOpacity: 0.8 }).addTo(mapaGrecia).bindTooltip("Tesalia (Mardonio)", tooltipStyle);
+            L.circleMarker(beocia, { color: '#dc2626', radius: 6, fillOpacity: 0.8 }).addTo(mapaGrecia).bindTooltip("Beocia", tooltipStyle);
+            L.circleMarker(atenas, { color: '#0ea5e9', radius: 8, fillOpacity: 0.9, weight: 3 }).addTo(mapaGrecia).bindTooltip("Atenas (Saqueada)", tooltipStyle);
+            L.circleMarker(salamina, { color: '#0ea5e9', radius: 6, fillOpacity: 0.9 }).addTo(mapaGrecia).bindTooltip("Salamina", tooltipStyle);
+            L.circleMarker(epidauro, { color: '#22c55e', radius: 10, fillOpacity: 1, weight: 4 }).addTo(mapaGrecia).bindTooltip("SANTUARIO DE EPIDAURO", { ...tooltipStyle, className: 'bg-black/60 p-2 border border-green-500 rounded text-green-400 drop-shadow-2xl font-cinzel text-xl font-black tracking-widest' });
+
+            L.polyline([tesalia, termopilas, beocia, atenas], { color: '#ef4444', weight: 4, dashArray: '10, 15', opacity: 0.8 }).addTo(mapaGrecia);
+            L.polyline([atenas, salamina], { color: '#0ea5e9', weight: 3, dashArray: '5, 10', opacity: 0.8 }).addTo(mapaGrecia);
+            L.polyline([atenas, [37.8, 23.5], epidauro], { color: '#22c55e', weight: 4, dashArray: '8, 12', opacity: 0.9 }).addTo(mapaGrecia);
+            
+            mapaGrecia.invalidateSize();
+        }
+
+        function gameOver() {
+            clearInterval(timerInterval);
+            document.getElementById('gameStage').classList.add('hidden-stage');
+            document.getElementById('gameHeader').classList.add('hidden-stage');
+            document.getElementById('defeatStage').classList.remove('hidden-stage');
+        }
+
+        function initFire() {
+            const canvas = document.getElementById('fireCanvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth; 
+            canvas.height = canvas.offsetHeight;
+            let particles = [];
+            
+            class Particle {
+                constructor() {
+                    this.x = canvas.width / 2 + (Math.random() * 100 - 50);
+                    this.y = canvas.height - 20;
+                    this.vx = Math.random() * 4 - 2;
+                    this.vy = Math.random() * -6 - 3;
+                    this.life = Math.random() * 100 + 50;
+                    this.size = Math.random() * 20 + 10;
+                    this.color = `rgba(255, ${Math.floor(Math.random() * 120 + 50)}, 0, `;
+                }
+                draw() {
+                    ctx.fillStyle = this.color + (this.life / 150) + ')';
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size * (this.life / 100), 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+            
+            function animate() {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                if (particles.length < 350) {
+                    for(let i=0; i<5; i++) particles.push(new Particle());
+                }
+                particles.forEach((p, i) => {
+                    p.x += p.vx + (Math.random() * 2 - 1); 
+                    p.y += p.vy; 
+                    p.life -= 1.5;
+                    p.draw();
+                    if (p.life <= 0) particles.splice(i, 1);
+                });
+                requestAnimationFrame(animate);
+            }
+            animate();
+            window.addEventListener('resize', () => {
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+            });
+        }
+
+        lucide.createIcons();
+
+        const cursorAura = document.createElement('div');
+        cursorAura.style.cssText = "position:fixed; pointer-events:none; width:600px; height:600px; background:radial-gradient(circle, rgba(56,189,248,0.08) 0%, transparent 60%); border-radius:50%; z-index:1; transform:translate(-50%, -50%); transition: opacity 0.2s ease; mix-blend-mode: screen;";
+        document.body.appendChild(cursorAura);
+
+        const mysticBg = document.querySelector('.mystic-bg');
+        document.addEventListener('mousemove', (e) => {
+            cursorAura.style.left = e.clientX + 'px';
+            cursorAura.style.top = e.clientY + 'px';
+            if(mysticBg) {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 40;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 40;
+                mysticBg.style.transform = `translate(${xAxis}px, ${yAxis}px)`;
+            }
+        });
+
+        function lluviaDracmas() {
+            const iconos = ['🪙', '✨', '⚡'];
+            const container = document.body;
+            for(let i = 0; i < 80; i++) {
+                setTimeout(() => {
+                    requestAnimationFrame(() => {
+                        let coin = document.createElement('div');
+                        coin.innerText = iconos[Math.floor(Math.random() * iconos.length)];
+                        coin.className = 'dracma';
+                        coin.style.left = Math.random() * 100 + 'vw';
+                        coin.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                        coin.style.animation = `dracmaFall ${Math.random() * 3 + 2}s linear forwards`;
+                        container.appendChild(coin);
+                        
+                        // Reciclaje de memoria limpio
+                        coin.addEventListener('animationend', () => {
+                            coin.remove();
+                        });
+                    });
+                }, Math.random() * 2500);
+            }
+        }
+    </script>
 </body>
 </html>
