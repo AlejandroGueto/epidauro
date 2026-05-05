@@ -1369,7 +1369,7 @@
             'ωφελησει': { l: 'ὠφελέω', m: '3ª Sg. Futuro Ind. Activo', s: 'Núcleo', d: 'ayudará', t: () => G.vFutA('ὠφελή') },
             'ηγησατο': { l: 'ἡγέομαι', m: '3ª Sg. Aoristo Ind. Medio', s: 'Núcleo', d: 'guio / lideró', t: () => G.vAorM('ἡγή','') },
             'εψεσθε': { l: 'ἕπομαι', m: 'Verbo, 2ª Pl. Futuro Ind. Medio', s: 'Núcleo', d: 'seguiréis', t: () => buildVerbT('ἕψομαι','ἕψῃ','ἕψεται','ἑψόμεθα','ἕψεσθε','ἕψονται','Futuro Medio') },
-'εψομαι': { l: 'ἕπομαι', m: 'Verbo, 1ª Sg. Futuro Ind. Medio', s: 'Núcleo', d: 'seguiré', t: () => buildVerbT('ἕψομαι','ἕψῃ','ἕψεται','ἑψόμεθα','ἕψεσθε','ἕψονται','Futuro Medio') },
+            'εψομαι': { l: 'ἕπομαι', m: 'Verbo, 1ª Sg. Futuro Ind. Medio', s: 'Núcleo', d: 'seguiré', t: () => buildVerbT('ἕψομαι','ἕψῃ','ἕψεται','ἑψόμεθα','ἕψεσθε','ἕψονται','Futuro Medio') },
             'ηυρον': { l: 'εὑρίσκω', m: '3ª Pl. Aoristo Radical Act.', s: 'Núcleo', d: 'encontraron', t: () => buildVerbT('ηὗρον','-ες','-ε','-ομεν','-ετε','ηὗρον','Aoristo Radical') },
             'εμεινεν': { l: 'μένω', m: '3ª Sg. Aoristo Ind. Activo', s: 'Núcleo', d: 'permaneció', t: () => buildVerbT('ἔμεινα','-ας','-ε','-αμεν','-ατε','-αν','Aoristo Activo') },
             'εμενον': { l: 'μένω', m: 'Verbo, 3ª Plural Imperfecto Activo', s: 'Núcleo', d: 'permanecían', t: () => G.vImpfA('ἔμεν', '') },
@@ -1540,10 +1540,16 @@
             'επου': { l: 'ἕπομαι', m: 'Verbo, 2ª Singular Imperativo Medio', s: 'Orden', d: '¡sigue!', t: () => inv },
             'λαβε': { l: 'λαμβάνω', m: 'Verbo, 2ª Singular Imperativo Aoristo Radical', s: 'Orden', d: '¡toma!', t: () => inv },
             'ακου': { l: 'ἀκέομαι', m: 'Verbo, 2ª Singular Imperativo Aoristo Medio', s: 'Orden', d: '¡sana / cura!', t: () => inv },
-            'φοβου': { l: 'φοβέομαι', m: 'Verbo, 2ª Singular Imperativo Medio', s: 'Orden Negativa (con μή)', d: '¡no temas!', t: () => inv }
+            'φοβου': { l: 'φοβέομαι', m: 'Verbo, 2ª Singular Imperativo Medio', s: 'Orden Negativa (con μή)', d: '¡no temas!', t: () => inv },
             'χρη': { l: 'χρή', m: 'Verbo Impersonal', s: 'Núcleo', d: 'es necesario', t: () => inv },
             'δει': { l: 'δεῖ', m: 'Verbo Impersonal', s: 'Núcleo (rige Acus. + Infinitivo)', d: 'es necesario / hace falta', t: () => inv },
-            'οσια': { l: 'ὅσιος, -α, -ον', m: 'Adjetivo, Acus. Pl. Neutro', s: 'O. Directo', d: 'cosas santas', t: () => inv }
+            'οσια': { l: 'ὅσιος, -α, -ον', m: 'Adjetivo, Acus. Pl. Neutro', s: 'O. Directo', d: 'cosas santas', t: () => inv },
+            'εμενεν': { l: 'μένω', m: 'Verbo, 3ª Sg. Imperfecto Activo', s: 'Núcleo', d: 'permanecía', t: () => G.vImpfA('ἔ', 'μεν') },
+            'εκελευσεν': { l: 'κελεύω', m: 'Verbo, 3ª Sg. Aoristo Indicativo Activo', s: 'Núcleo', d: 'ordenó', t: () => buildVerbT('ἐκέλευσα','-ας','ἐκέλευσε(ν)','-αμεν','-ατε','-αν','Aoristo Activo') },
+            'εκοψεν': { l: 'κόπτω', m: 'Verbo, 3ª Sg. Aoristo Indicativo Activo', s: 'Núcleo', d: 'golpeó / llamó a la puerta', t: () => buildVerbT('ἔκοψα','-ας','ἔκοψε(ν)','-αμεν','-ατε','-αν','Aoristo Activo') },
+            'ηγησαμενοσ': { l: 'ἡγέομαι', m: 'Verbo, Participio Aoristo Medio, Nom. Sg. Masc.', s: 'Participio Concertado', d: 'habiendo guiado', t: () => G.n2M('ἡγησάμεν') },
+            'εισεβησαν': { l: 'εἰσβαίνω', m: 'Verbo, 3ª Plural Aoristo Radical Activo', s: 'Núcleo', d: 'embarcaron', t: () => buildVerbT('εἰσέβην','εἰσέβης','εἰσέβη','εἰσέβημεν','εἰσέβητε','εἰσέβησαν','Aoristo Radical') },
+            'εισβητε': { l: 'εἰσβαίνω', m: 'Verbo, 2ª Plural Imperativo Aoristo', s: 'Orden', d: '¡embarcad!', t: () => inv },
         };
 
         // ==========================================
@@ -2170,18 +2176,25 @@ document.querySelectorAll('.word-token').forEach(t => {
             }
         });
 
-        function lluviaDracmas() {
+       function lluviaDracmas() {
             const iconos = ['🪙', '✨', '⚡'];
+            const container = document.body;
             for(let i = 0; i < 80; i++) {
                 setTimeout(() => {
-                    let coin = document.createElement('div');
-                    coin.innerText = iconos[Math.floor(Math.random() * iconos.length)];
-                    coin.className = 'dracma';
-                    coin.style.left = Math.random() * 100 + 'vw';
-                    coin.style.fontSize = (Math.random() * 20 + 15) + 'px';
-                    coin.style.animation = `dracmaFall ${Math.random() * 3 + 2}s linear forwards`;
-                    document.body.appendChild(coin);
-                    setTimeout(() => coin.remove(), 5000);
+                    requestAnimationFrame(() => {
+                        let coin = document.createElement('div');
+                        coin.innerText = iconos[Math.floor(Math.random() * iconos.length)];
+                        coin.className = 'dracma';
+                        coin.style.left = Math.random() * 100 + 'vw';
+                        coin.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                        coin.style.animation = `dracmaFall ${Math.random() * 3 + 2}s linear forwards`;
+                        container.appendChild(coin);
+                        
+                        // Reciclaje de memoria limpio
+                        coin.addEventListener('animationend', () => {
+                            coin.remove();
+                        });
+                    });
                 }, Math.random() * 2500);
             }
         }
