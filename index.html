@@ -243,13 +243,22 @@
             0% { transform: translateY(-50px) rotateY(0deg) scale(1); opacity: 1; }
             100% { transform: translateY(100vh) rotateY(720deg) scale(1.5); opacity: 0; }
         }
-        .dracma {
+       .dracma {
             position: fixed;
             top: -50px;
             z-index: 9999;
             pointer-events: none;
             filter: drop-shadow(0 0 15px rgba(212, 175, 55, 1));
         }
+
+        /* --- PREMIUM: Radar Morfosintáctico --- */
+        .analyzed-verb { color: #f87171 !important; text-shadow: 0 0 8px rgba(248,113,113,0.4); border-bottom-color: #f87171 !important; }
+        .analyzed-nom { color: #60a5fa !important; text-shadow: 0 0 8px rgba(96,165,250,0.4); border-bottom-color: #60a5fa !important; }
+        .analyzed-acus { color: #34d399 !important; text-shadow: 0 0 8px rgba(52,211,153,0.4); border-bottom-color: #34d399 !important; }
+        .analyzed-gen { color: #c084fc !important; text-shadow: 0 0 8px rgba(192,132,252,0.4); border-bottom-color: #c084fc !important; }
+        .analyzed-dat { color: #fbbf24 !important; text-shadow: 0 0 8px rgba(251,191,36,0.4); border-bottom-color: #fbbf24 !important; }
+        .analyzed-inv { color: #94a3b8 !important; border-bottom-style: dotted !important; }
+
     </style>
 </head>
 <body class="flex flex-col items-center p-4 md:p-8 lg:p-12 relative overflow-y-auto">
@@ -1613,6 +1622,19 @@
                 if (entry.m.includes('Genitivo') || entry.m.includes('Gen.')) colorTema = 'purple';
                 if (entry.m.includes('Dativo') || entry.m.includes('Dat.')) colorTema = 'amber';
                 if (entry.m.includes('Futuro') || entry.m.includes('Aoristo')) colorTema = 'red';
+               const tokens = document.querySelectorAll('.word-token');
+                tokens.forEach(t => {
+                    // Limpiar signos de puntuación para comparar
+                    if (t.innerText.replace(/[»"',;·.!?:)]/g, '') === word) {
+                        t.classList.remove('analyzed-verb', 'analyzed-nom', 'analyzed-acus', 'analyzed-gen', 'analyzed-dat', 'analyzed-inv');
+                        if (colorTema === 'red') t.classList.add('analyzed-verb');
+                        else if (colorTema === 'blue') t.classList.add('analyzed-nom');
+                        else if (colorTema === 'emerald') t.classList.add('analyzed-acus');
+                        else if (colorTema === 'purple') t.classList.add('analyzed-gen');
+                        else if (colorTema === 'amber') t.classList.add('analyzed-dat');
+                        else t.classList.add('analyzed-inv');
+                    }
+                });
 
                 content.innerHTML = `
                     <div class="mb-12 border-b-2 border-${colorTema}-900 pb-8 flex justify-between items-start">
