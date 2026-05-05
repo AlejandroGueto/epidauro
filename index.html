@@ -1426,8 +1426,52 @@
             'αποδουναι': { l: 'ἀποδίδωμι', m: 'Verbo (Atemático), Infinitivo Aoristo Activo', s: 'O. Directo (complemento de ἐθέλει)', d: 'devolver', t: () => inv },
             'εδεξαντο': { l: 'δέχομαι', m: 'Verbo Deponente, 3ª Plural, Aoristo Indicativo', s: 'Núcleo del Predicado', d: 'recibieron, aceptaron', t: () => buildVerbT('ἐδεξάμην','ἐδέξω','ἐδέξατο','ἐδεξάμεθα','ἐδέξασθε','ἐδέξαντο','Aoristo Ind. Medio') },
             'απεπεμψαν': { l: 'ἀποπέμπω', m: 'Verbo Compuesto, 3ª Plural, Aoristo Indicativo', s: 'Núcleo del Predicado', d: 'enviaron de vuelta, despidieron', t: () => buildVerbT('ἀπέπεμψα','-ας','-ε(ν)','-αμεν','-ατε','ἀπέπεμψαν','Aoristo Ind. Activo') },
+            /* Sustantivos y Adjetivos */
+            'παιδα': { l: 'παῖς, παιδός, ὁ/ἡ', m: 'Sustantivo (3ª decl), Acusativo Sg.', s: 'Objeto Directo', d: 'al niño / al hijo', t: () => buildNounT('παῖς','παῖ','παῖδα','παιδός','παιδί','παῖδες','-','παῖδας','παίδων','παισί') },
+            'ετοιμα': { l: 'ἕτοιμος, -η, -ον', m: 'Adjetivo, Nom/Acus Plural Neutro', s: 'Atributo', d: 'preparadas / listas', t: () => G.n2N('ἑτοίμ') },
+            'νομον': { l: 'νόμος, -ου, ὁ', m: 'Sustantivo (2ª decl), Acusativo Sg.', s: 'Régimen (con κατὰ)', d: 'la ley / la costumbre', t: () => G.n2M('νόμ') },
+            'σωτερ': { l: 'σωτήρ, -ῆρος, ὁ', m: 'Sustantivo (3ª decl), Vocativo Sg.', s: 'Invocación', d: '¡oh salvador!', t: () => buildNounT('σωτήρ','σῶτερ','σωτῆρα','σωτῆρος','σωτῆρι','σωτῆρες','-','σωτῆρας','σωτήρων','σωτῆρσι') },
+            'αβατον': { l: 'ἄβατον, -ου, τό', m: 'Sustantivo (2ª decl), Acusativo Sg.', s: 'Dirección (con εἰς)', d: 'el ábaton (santuario interior)', t: () => G.n2N('ἀβάτ') },
+            'αβατω': { l: 'ἄβατον, -ου, τό', m: 'Sustantivo (2ª decl), Dativo Sg.', s: 'Lugar en donde (con ἐν)', d: 'el ábaton (santuario interior)', t: () => G.n2N('ἀβάτ') },
+            'ουδεισ': { l: 'οὐδείς, οὐδεμία, οὐδέν', m: 'Pronombre/Adjetivo, Nom. Sg. Masc.', s: 'Sujeto', d: 'ninguno / nadie', t: () => buildNounT('οὐδείς','-','οὐδένα','οὐδενός','οὐδενί','-','-','-','-','-') },
+            'πλειστοι': { l: 'πλεῖστος, -η, -ον', m: 'Adjetivo Superlativo, Nom. Pl. Masc.', s: 'Sujeto', d: 'la mayoría / los más', t: () => G.n2M('πλεῖστ') },
+            'επιτηδειουσ': { l: 'ἐπιτήδειος, -α, -ον', m: 'Adjetivo, Acusativo Plural Masc.', s: 'Atributo del O. Directo', d: 'convenientes / apropiadas', t: () => G.n2M('ἐπιτηδεί') },
+            'ταδε': { l: 'ὅδε, ἥδε, τόδε', m: 'Pronombre Demostrativo, Acus. Pl. Neutro', s: 'Objeto Directo', d: 'estas cosas / lo siguiente', t: () => inv },
+            
+            /* Verbos y Participios - Texto Beta (El Milagro) */
+            'εκαμνεν': { l: 'κάμνω', m: 'Verbo, 3ª Sg., Imperfecto Ind. Activo', s: 'Núcleo del Predicado', d: 'estaba enferma / sufría', t: () => G.vImpfA('ἔ','καμν') },
+            'ωρμησαν': { l: 'ὁρμάω', m: 'Verbo, 3ª Plural, Aoristo Ind. Activo', s: 'Núcleo del Predicado', d: 'se pusieron en marcha', t: () => buildVerbT('ὥρμησα','-ας','ὥρμησε(ν)','-αμεν','-ατε','ὥρμησαν','Aoristo Activo') },
+            'κοψω': { l: 'κόπτω', m: 'Verbo, 1ª Sg., Futuro Ind. Activo (o Subj. Aoristo)', s: 'Núcleo del Predicado', d: 'llamaré / golpearé', t: () => G.vFutA('κόψ') },
+            'κοψον': { l: 'κόπτω', m: 'Verbo, 2ª Sg., Imperativo Aoristo Activo', s: 'Orden', d: '¡llama! / ¡golpea!', t: () => inv },
+            'εκοψεν': { l: 'κόπτω', m: 'Verbo, 3ª Sg., Aoristo Ind. Activo', s: 'Núcleo del Predicado', d: 'llamó / golpeó', t: () => buildVerbT('ἔκοψα','-ας','ἔκοψε(ν)','-αμεν','-ατε','-αν','Aoristo Activo') },
+            'ακεισθαι': { l: 'ἀκέομαι', m: 'Verbo Deponente, Infinitivo Presente/Aoristo Medio', s: 'O. Directo de ἐθέλῃ', d: 'sanar / curar', t: () => inv },
+            'ακου': { l: 'ἀκέομαι', m: 'Verbo Deponente, 2ª Sg., Imperativo Aoristo', s: 'Orden / Plegaria', d: '¡sana! / ¡cura!', t: () => inv },
+            'γεγονεν': { l: 'γίγνομαι', m: 'Verbo, 3ª Sg., Perfecto Indicativo Activo', s: 'Núcleo del Predicado', d: 'se ha vuelto / ha llegado a ser', t: () => buildVerbT('γέγονα','-ας','γέγονε(ν)','γεγόναμεν','-ατε','γεγόνασι','Perfecto Indicativo') },
+            'μεινατε': { l: 'μένω', m: 'Verbo, 2ª Plural, Imperativo Aoristo Activo', s: 'Orden', d: '¡esperad! / ¡quedaos!', t: () => inv },
+            'δεξασθαι': { l: 'δέχομαι', m: 'Verbo Deponente, Infinitivo Aoristo Medio', s: 'O. Directo de ἐθέλει', d: 'recibir', t: () => inv },
+            'δεξεται': { l: 'δέχομαι', m: 'Verbo Deponente, 3ª Sg., Futuro Indicativo', s: 'Núcleo del Predicado', d: 'recibirá', t: () => G.vFutM('δέξ') },
+            'βλεψασ': { l: 'βλέπω', m: 'Participio Aoristo Activo, Nom. Sg. Masc.', s: 'Participio Concertado', d: 'habiendo mirado', t: () => buildNounT('βλέψας','-','-αντα','-αντος','-αντι','-αντες','-','-αντας','-αντων','-ασι') },
+            'θαρρει': { l: 'θαρρέω', m: 'Verbo Contracto, 2ª Sg., Imperativo Presente', s: 'Orden / Consuelo', d: '¡ten valor! / ¡anímate!', t: () => inv },
+            'εκαθηρατο': { l: 'καθαίρω', m: 'Verbo, 3ª Sg., Aoristo Ind. Medio', s: 'Núcleo del Predicado', d: 'se purificó', t: () => buildVerbT('ἐκαθηράμην','-ω','ἐκαθήρατο','-άμεθα','-ασθε','-αντο','Aoristo Medio') },
+            'επου': { l: 'ἕπομαι', m: 'Verbo Deponente, 2ª Sg., Imperativo Presente', s: 'Orden', d: '¡sígueme!', t: () => inv },
+            'κατεκειτο': { l: 'κατάκειμαι', m: 'Verbo Deponente, 3ª Sg., Imperfecto', s: 'Núcleo del Predicado', d: 'estaba acostado / yacía', t: () => buildVerbT('κατεκείμην','-σο','κατέκειτο','-μεθα','-σθε','-ντο','Imperfecto Medio/Pasivo') },
+            
+            /* Verbos y Participios - Texto Persas (Guerra) */
+            'αρχομενω': { l: 'ἄρχω', m: 'Participio Presente Medio/Pasivo, Dativo Sg.', s: 'Dativo Absoluto (con ἦρι)', d: 'comenzando', t: () => buildNounT('ἀρχόμενος','-','-ον','-ου','ἀρχομένῳ','-','-','-','-','-') },
+            'αντειχεν': { l: 'ἀντέχω', m: 'Verbo Compuesto, 3ª Sg., Imperfecto Activo', s: 'Núcleo del Predicado', d: 'resistía / se oponía', t: () => G.vImpfA('ἀντ','εῖχ') },
+            'εμαθεν': { l: 'μανθάνω', m: 'Verbo, 3ª Sg., Aoristo Radical Activo', s: 'Núcleo del Predicado', d: 'aprendió / se enteró', t: () => buildVerbT('ἔμαθον','-ες','ἔμαθε(ν)','-ομεν','-ετε','-ον','Aoristo Radical') },
+            'αποδωσει': { l: 'ἀποδίδωμι', m: 'Verbo (Atemático), 3ª Sg., Futuro Activo', s: 'Núcleo del Predicado', d: 'devolverá', t: () => G.vFutA('ἀποδώσ') },
+            'μεμψομενοι': { l: 'μέμφομαι', m: 'Participio Futuro Medio, Nom. Pl. Masc.', s: 'Participio de Finalidad (con ὡς)', d: 'para quejarse', t: () => buildNounT('μεμψόμενος','-','-ον','-ου','-ῳ','μεμψόμενοι','-','-ους','-ων','-οις') },
+            'αδικουμενοι': { l: 'ἀδικέω', m: 'Participio Presente Pasivo, Nom. Pl. Masc.', s: 'Participio Concesivo (con καίπερ)', d: 'siendo agraviados / perjudicados', t: () => buildNounT('ἀδικούμενος','-','-ον','-ου','-ῳ','ἀδικούμενοι','-','-ους','-ων','-οις') },
+            
+            /* Adverbios y Conjunciones extra */
+            'ευμενωσ': { l: 'εὐμενῶς', m: 'Adverbio', s: 'CC Modo', d: 'benévolamente / con amabilidad', t: () => inv },
+            'ωδε': { l: 'ὧδε', m: 'Adverbio de Modo', s: 'CC Modo', d: 'así / de esta manera', t: () => inv },
+            'εωσ': { l: 'ἕως', m: 'Conjunción Temporal', s: 'Nexo', d: 'mientras / hasta que', t: () => inv },
+            'καιπερ': { l: 'καίπερ', m: 'Conjunción Concesiva', s: 'Nexo (siempre va con participio)', d: 'aunque / a pesar de', t: () => inv },
+            'ταχιστα': { l: 'τάχιστα', m: 'Adverbio (Superlativo de ταχέως)', s: 'CC Modo (con ὡς = lo más X posible)', d: 'lo más rápido posible', t: () => inv }
         };
-
+        
         // ==========================================
         // 5. LÓGICA DE CONTROL
         // ==========================================
