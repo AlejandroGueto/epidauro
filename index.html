@@ -324,16 +324,53 @@
         </div>
         
         <div class="bg-slate-900/80 p-12 rounded-3xl border-2 border-cyan-900 shadow-2xl backdrop-blur-xl w-full relative overflow-hidden">
-           <div class="w-full rounded-3xl border-4 border-cyan-900/50 overflow-hidden shadow-[0_0_50px_rgba(6,182,212,0.4)] relative flex items-center justify-center bg-black mb-8">
-    
-    <img src="https://images.unsplash.com/photo-1544260233-0498b89d4fb9?auto=format&fit=crop&q=80&w=1200" alt="Santuario Sagrado" class="w-full h-[350px] md:h-[450px] object-cover opacity-80 transition-opacity hover:opacity-100 duration-500">
-    
-    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-cyan-900/30 pointer-events-none"></div>
-    
-    <div class="absolute bottom-8 w-full text-center z-10">
-        <p class="text-cyan-200 font-cinzel tracking-[0.3em] uppercase text-sm md:text-base font-black drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">Santuario Sagrado de Asclepio</p>
-    </div>
-</div>
+          <div class="w-full rounded-3xl border-4 border-cyan-900/50 overflow-hidden shadow-[0_0_50px_rgba(6,182,212,0.4)] relative flex items-center justify-center bg-gradient-to-b from-slate-900 to-black mb-8 h-[350px] md:h-[450px] group">
+
+               <div class="absolute inset-0 bg-cyan-500/10 opacity-40 group-hover:opacity-80 transition-opacity duration-1000 blur-3xl pointer-events-none"></div>
+              
+               <svg viewBox="0 0 800 400" class="w-full h-full relative z-10 drop-shadow-[0_0_15px_rgba(56,189,248,0.3)]">
+                
+                   <path d="M100,350 L700,350 L720,380 L80,380 Z" fill="#0f172a" stroke="#1e3a8a" stroke-width="2"/>
+                   <path d="M120,320 L680,320 L700,350 L100,350 Z" fill="#020617" stroke="#1e3a8a" stroke-width="2"/>
+
+                   <!-- Columnas Dóricas -->
+                   <rect x="180" y="150" width="35" height="170" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+                   <rect x="280" y="150" width="35" height="170" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+                   <rect x="382" y="150" width="35" height="170" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+                   <rect x="485" y="150" width="35" height="170" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+                   <rect x="585" y="150" width="35" height="170" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+
+                   <path d="M130,150 L670,150 L400,40 Z" fill="#020617" stroke="#38bdf8" stroke-width="3"/>
+                   <path d="M160,140 L640,140 L400,60 Z" fill="#0f172a" stroke="#0ea5e9" stroke-width="1"/>
+
+                   <circle cx="400" cy="110" r="12" fill="#000" stroke="#38bdf8" stroke-width="2"/>
+                   <circle cx="400" cy="110" r="4" fill="#38bdf8">
+                       <animate attributeName="r" values="2;6;2" dur="3s" repeatCount="indefinite" />
+                       <animate attributeName="opacity" values="0.4;1;0.4" dur="3s" repeatCount="indefinite" />
+                   </circle>
+                   
+                   <circle cx="230" cy="250" r="2" fill="#fff">
+                       <animate attributeName="cy" values="250;130;250" dur="4s" repeatCount="indefinite"/>
+                       <animate attributeName="opacity" values="0;0.8;0" dur="4s" repeatCount="indefinite"/>
+                   </circle>
+                   <circle cx="330" cy="300" r="3" fill="#38bdf8">
+                       <animate attributeName="cy" values="300;100;300" dur="6s" repeatCount="indefinite"/>
+                       <animate attributeName="opacity" values="0;1;0" dur="6s" repeatCount="indefinite"/>
+                   </circle>
+                   <circle cx="440" cy="280" r="2" fill="#fff">
+                       <animate attributeName="cy" values="280;150;280" dur="3.5s" repeatCount="indefinite"/>
+                       <animate attributeName="opacity" values="0;0.9;0" dur="3.5s" repeatCount="indefinite"/>
+                   </circle>
+                   <circle cx="530" cy="230" r="3" fill="#38bdf8">
+                       <animate attributeName="cy" values="230;90;230" dur="5s" repeatCount="indefinite"/>
+                       <animate attributeName="opacity" values="0;0.7;0" dur="5s" repeatCount="indefinite"/>
+                   </circle>
+               </svg>
+              
+               <div class="absolute bottom-8 w-full text-center z-20 pointer-events-none">
+                   <p class="text-cyan-200 font-cinzel tracking-[0.3em] uppercase text-sm md:text-base font-black drop-shadow-[0_4px_6px_rgba(0,0,0,1)] bg-black/40 inline-block px-6 py-2 rounded-full border border-cyan-900/50 backdrop-blur-sm">El Propileo de Epidauro</p>
+               </div>
+           </div>
             <div class="absolute -top-24 -left-24 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl"></div>
             
 
