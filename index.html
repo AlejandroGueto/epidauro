@@ -686,6 +686,13 @@
         <div><strong class="text-emerald-800">αὔριον:</strong> Mañana.</div>
         <div><strong class="text-emerald-800">τήμερον:</strong> Hoy.</div>
         <div><strong class="text-emerald-800">ὀψέ:</strong> Tarde.</div>
+        // --- ELISIONES Y PARTÍCULAS CRÍTICAS ---
+            'μ': { l: 'ἐγώ (elidido: μ\')', m: 'Verbo / Invariable / Pron. Personal, 1ª Acus. Sg.', s: 'Objeto Directo', d: 'me / a mí', t: () => inv },
+            'δ': { l: 'δέ (elidido: δ\')', m: 'Invariable, Partícula / Conjunción', s: 'Nexo', d: 'pero / y', t: () => inv },
+            'αλλ': { l: 'ἀλλά (elidido: ἀλλ\')', m: 'Invariable, Conjunción Adversativa', s: 'Nexo', d: 'sino / pero', t: () => inv },
+            'δι': { l: 'διά (elidido: δι\')', m: 'Invariable, Preposición (rige Gen/Acus)', s: 'Tránsito / Causa', d: 'a través de / por', t: () => inv },
+            'υφ': { l: 'ὑπό (elidido: ὑφ\')', m: 'Invariable, Preposición (rige Genitivo)', s: 'Complemento Agente', d: 'por (causa de)', t: () => inv },
+            'καιπερ': { l: 'καίπερ', m: 'Invariable, Conjunción Concesiva', s: 'Nexo', d: 'aunque', t: () => inv },
     </div>
 </div>
 
@@ -1586,9 +1593,15 @@
         let mistakes = 0;
         const BASE_SCORE = 30000;
 
-        function normalizeGreekForInput(str) {
+       function normalizeGreekForInput(str) {
             if (!str) return "";
-            return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[\u0345]/g, "").toLowerCase().trim().replace(/ς/g, 'σ');
+            // Eliminamos diacríticos, apóstrofos rectos/rizados, comillas de todo tipo y signos de puntuación.
+            return str.normalize("NFD")
+                      .replace(/[\u0300-\u036f\u0345]/g, "") // Quita acentos, espíritus y iota suscrita
+                      .replace(/[»"”“'’«<>\[\],;·.!?:()]/g, "") // Quita toda puntuación y apóstrofos
+                      .toLowerCase()
+                      .trim()
+                      .replace(/ς/g, 'σ'); // Unifica la sigma final
         }
 
         function startGame() {
@@ -1618,11 +1631,12 @@
         // LÓGICA DE LA VISIÓN DE LINCEO (ESCANER SINTÁCTICO HÍBRIDO)
         function applyXRay(filterType) {
 document.querySelectorAll('.word-token').forEach(t => {
-                const word = normalizeGreekForInput(t.innerText.replace(/[»"',;·.!?:)]/g, ''));
+                // Como el normalizador ya limpia apóstrofos, solo pasamos el innerText
+                const word = normalizeGreekForInput(t.innerText); 
                 const entry = wordDB[word];
                 
-                // Si la palabra está en la DB, respetamos su análisis ESTRICTAMENTE
-                let m = entry ? entry.m.toLowerCase() : "";
+                // Validación segura: si entry.m existe, lo lee; si no, queda vacío para usar el Fallback
+                let m = (entry && entry.m) ? entry.m.toLowerCase() : "";
                 
                 // FALLBACK SOLO si no existe en la DB
                 if (!entry) {
@@ -1713,8 +1727,10 @@ document.querySelectorAll('.word-token').forEach(t => {
                 if (container) {
                     container.innerHTML = words.map(chunk => {
                         if (!chunk.trim()) return chunk;
-                        const match = chunk.match(/^([«"'(]*)(.*?)([»"',;·.!?:)]*)$/);
+                        // Regex mejorada: aísla los signos al inicio y al final, dejando intactas las letras.
+                        const match = chunk.match(/^([«"”“'’(]*)(.*?)([»"”“'’!,;·.?:)]*)$/);
                         if (match && match[2]) {
+                            // Ahora pasamos match[2] directo. Si es "δ'", el Oráculo lo recibirá limpio.
                             return `${match[1]}<span class="word-token" onclick="consultarOraculo('${match[2]}')">${match[2]}</span>${match[3]}`;
                         }
                         return chunk;
@@ -1841,7 +1857,8 @@ document.querySelectorAll('.word-token').forEach(t => {
 
             setTimeout(() => {
                 let colorTema = 'cyan';
-                let em = entry.m.toLowerCase();
+                // Validación segura para evitar crasheos si falta la morfología en la BD
+                let em = (entry && entry.m) ? entry.m.toLowerCase() : "";
                 
                 // Fallback local visual
                 if (em.includes('nom.') || em.includes('nominativo') || word.endsWith('οσ') || word.endsWith('η') || word.endsWith('α') || word.endsWith('οι') || word.endsWith('αι')) colorTema = 'blue';
