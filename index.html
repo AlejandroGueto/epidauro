@@ -744,7 +744,7 @@
             </div>
 
             <!-- PRUEBA II -->
-            <div id="prueba2" class="bg-slate-950/95 border-2 border-blue-900 p-10 rounded-3xl opacity-40 pointer-events-none transition-all duration-1000">
+            <div id="prueba2" class="hidden bg-slate-950/95 border-2 border-blue-900 p-10 rounded-3xl transition-all duration-1000">
                 <h3 class="text-3xl text-blue-400 mb-8 flex items-center gap-5 font-cinzel font-black uppercase tracking-wider">
                     <span class="bg-blue-900 text-blue-100 px-5 py-2 rounded-xl border-2 border-blue-400 shadow-md">II</span> Sintaxis de la Sanación
                 </h3>
@@ -775,7 +775,7 @@
             </div>
 
             <!-- PRUEBA III -->
-            <div id="prueba3" class="bg-slate-950/95 border-2 border-amber-900 p-10 rounded-3xl opacity-40 pointer-events-none transition-all duration-1000">
+           <div id="prueba3" class="hidden bg-slate-950/95 border-2 border-amber-900 p-10 rounded-3xl transition-all duration-1000">
                 <h3 class="text-3xl text-amber-500 mb-8 flex items-center gap-5 font-cinzel font-black uppercase tracking-wider">
                     <span class="bg-amber-900 text-amber-100 px-5 py-2 rounded-xl border-2 border-amber-400 shadow-md">III</span> Saberes de la Physis
                 </h3>
@@ -806,7 +806,7 @@
             </div>
 
             <!-- PRUEBA IV -->
-            <div id="prueba4" class="bg-slate-950/95 border-2 border-purple-900 p-10 rounded-3xl opacity-40 pointer-events-none transition-all duration-1000">
+            <div id="prueba4" class="hidden bg-slate-950/95 border-2 border-purple-900 p-10 rounded-3xl transition-all duration-1000">
                 <h3 class="text-3xl text-purple-400 mb-8 flex items-center gap-5 font-cinzel font-black uppercase tracking-wider">
                     <span class="bg-purple-900 text-purple-100 px-5 py-2 rounded-xl border-2 border-purple-400 shadow-md">IV</span> Las Sombras Persas
                 </h3>
@@ -837,7 +837,7 @@
             </div>
 
             <!-- PRUEBA V -->
-            <div id="prueba5" class="bg-slate-950/95 border-2 border-pink-900 p-10 rounded-3xl opacity-40 pointer-events-none transition-all duration-1000">
+           <div id="prueba5" class="hidden bg-slate-950/95 border-2 border-pink-900 p-10 rounded-3xl transition-all duration-1000">
                 <h3 class="text-3xl text-pink-400 mb-8 flex items-center gap-5 font-cinzel font-black uppercase tracking-wider">
                     <span class="bg-pink-900 text-pink-100 px-5 py-2 rounded-xl border-2 border-pink-400 shadow-md">V</span> Hermenéutica Superior
                 </h3>
@@ -868,7 +868,7 @@
             </div>
 
             <!-- PRUEBA VI -->
-            <div id="prueba6" class="bg-black/95 border-4 border-emerald-500 p-12 rounded-3xl shadow-[0_0_80px_rgba(16,185,129,0.3)] opacity-40 pointer-events-none transition-all duration-1000 relative overflow-hidden">
+           <div id="prueba6" class="hidden bg-black/95 border-4 border-emerald-500 p-12 rounded-3xl shadow-[0_0_80px_rgba(16,185,129,0.3)] transition-all duration-1000 relative overflow-hidden">
                 <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl"></div>
                 <h3 class="text-4xl text-emerald-400 mb-8 flex items-center gap-6 font-cinzel font-black uppercase tracking-tighter">
                     <span class="bg-emerald-900 text-emerald-100 px-6 py-4 rounded-2xl border-4 border-emerald-400 shadow-lg">VI</span> CÓDIGO DE LA HÉLADE
@@ -1124,7 +1124,7 @@
             'φιλιπποσ': { l: 'Φίλιππος, -ου, ὁ', m: 'Sust. Propio (2ª), Nom. Sg.', s: 'Sujeto', d: 'Filipo', t: () => G.n2M('Φίλιππ') },
             'φιλιππω': { l: 'Φίλιππος, -ου, ὁ', m: 'Sust. Propio (2ª), Dat. Sg.', s: 'C. Compañía', d: 'a Filipo', t: () => G.n2M('Φίλιππ') },
             'φιλιππον': { l: 'Φίλιππος, -ου, ὁ', m: 'Sust. Propio (2ª), Acus. Sg.', s: 'O. Directo', d: 'a Filipo', t: () => G.n2M('Φίλιππ') },
-            ''ασκληπιον': { l: 'Ἀσκλήπιος, -ου, ὁ', m: 'Sust. Propio (2ª), Acus. Sg.', s: 'Dirección', d: 'Asclepio', estructura: ['', 'ασκληπι', '', 'ο', 'ν'], t: () => buildNounT('Ἀσκλήπιος','Ἀσκλήπιε','Ἀσκλήπιον','Ἀσκληπίου','Ἀσκληπίῳ','-','-','-','-','-') },
+            'ασκληπιον': { l: 'Ἀσκλήπιος, -ου, ὁ', m: 'Sust. Propio (2ª), Acus. Sg.', s: 'Dirección', d: 'Asclepio', estructura: ['', 'ασκληπι', '', 'ο', 'ν'], t: () => buildNounT('Ἀσκλήπιος','Ἀσκλήπιε','Ἀσκλήπιον','Ἀσκληπίου','Ἀσκληπίῳ','-','-','-','-','-') },
             'ασκληπιε': { l: 'Ἀσκλήπιος, -ου, ὁ', m: 'Sust. Propio (2ª), Voc. Sg.', s: 'Invocación', d: '¡Oh Asclepio!', estructura: ['', 'ασκληπι', '', '', 'ε'], t: () => buildNounT('Ἀσκλήπιος','Ἀσκλήπιε','Ἀσκλήπιον','Ἀσκληπίου','Ἀσκληπίῳ','-','-','-','-','-') },
             'μαρδονιοσ': { l: 'Μαρδόνιος, -ου, ὁ', m: 'Sust. Propio (2ª), Nom. Sg.', s: 'Sujeto', d: 'Mardonio', estructura: ['', 'μαρδονι', '', 'ο', 'σ'], t: () => G.n2M('Μαρδόνι') },
             'επιδαυρον': { l: 'Ἐπίδαυρος, -ου, ἡ', m: 'Sust. Propio (2ª), Acus. Sg. Fem.', s: 'Dirección', d: 'Epidauro', estructura: ['', 'επιδαυρ', '', 'ο', 'ν'], t: () => buildNounT('Ἐπίδαυρος','-','Ἐπίδαυρον','Ἐπιδαύρου','Ἐπιδαύρῳ','-','-','-','-','-') },
@@ -1716,6 +1716,15 @@
             const b = document.getElementById('btn-' + id.split('-')[1]);
             if (b) b.classList.add('active', 'text-cyan-400');
             
+            // --- NUEVO: Mostrar/Ocultar Visión de Linceo automáticamente ---
+            const filtrosLinceo = document.getElementById('xray-filters');
+            if (id === 'tab-mapa' || id === 'tab-cultura' || id === 'tab-eval') {
+                filtrosLinceo.classList.add('hidden');
+            } else {
+                filtrosLinceo.classList.remove('hidden');
+            }
+            // ---------------------------------------------------------------
+
             if (id === 'tab-mapa') {
                 showToast("Habéis desplegado el Mapa de la Hélade.", "map");
                 initRealMap();
@@ -1926,11 +1935,21 @@
         function successPrueba(currId, nextId, achievementMsg) {
             const current = document.getElementById(currId);
             const next = document.getElementById(nextId);
+            
+            // --- NUEVO: Comportamiento de las pruebas ---
+            // 1. La prueba actual se oscurece y se bloquea
             current.classList.add('opacity-40', 'pointer-events-none');
             current.classList.replace('border-cyan-500', 'border-slate-900');
-            next.classList.remove('opacity-40', 'pointer-events-none');
+            
+            // 2. La prueba siguiente pierde el 'hidden' para aparecer en pantalla
+            next.classList.remove('hidden');
             next.classList.add('unlocked-glow', 'ring-4', 'ring-emerald-500/30');
-            next.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // 3. Hacemos scroll suave para que el jugador la vea
+            setTimeout(() => {
+                next.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+            // --------------------------------------------
             
             const num = nextId.replace('prueba', '');
             const dot = document.getElementById('step-' + num);
