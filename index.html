@@ -280,7 +280,7 @@
     <!-- =========================================
          CABECERA SUPERIOR
          ========================================= -->
-   <header class="w-full max-w-[1400px] flex flex-col md:flex-row justify-between items-center border-b border-cyan-900/50 pb-4 pt-4 mb-8 hidden-stage sticky top-0 z-50 bg-[#020617]/90 backdrop-blur-md rounded-b-2xl px-6 transition-all duration-300 gap-6 md:gap-0 shadow-[0_10px_30px_rgba(2,6,23,0.8)]" id="gameHeader">
+  <header class="w-full max-w-[1400px] flex flex-col md:flex-row justify-between items-center border-b border-cyan-900/50 pb-2 pt-2 mb-4 hidden-stage sticky top-0 z-50 bg-[#020617]/95 backdrop-blur-md px-6 shadow-xl" id="gameHeader">
         <div class="flex flex-col text-center md:text-left">
             <div class="text-3xl md:text-4xl font-cinzel text-cyan-400 tracking-[0.15em] flex items-center justify-center md:justify-start gap-4 font-black drop-shadow-md">
                 <i data-lucide="landmark" class="w-10 h-10"></i> EPIDAUROS
@@ -1324,12 +1324,12 @@
             'ορμωμενοσ': { l: 'ὁρμάω', m: 'Verbo, Participio Presente Medio/Pasivo, Nom. Sg. Masc.', s: 'Participio Concertado', d: 'poniéndose en marcha', t: () => G.n2M('ὁρμώμεν') },
             'ηγησομενοσ': { l: 'ἡγέομαι', m: 'Verbo, Participio Futuro Medio, Nom. Sg. Masc.', s: 'Participio de Finalidad', d: 'para guiar', t: () => G.n2M('ἡγησόμεν') },
             'δεξαμενοσ': { l: 'δέχομαι', m: 'Verbo, Participio Aoristo Medio, Nom. Sg. Masc.', s: 'Participio Concertado', d: 'habiendo recibido', t: () => G.n2M('δεξάμεν') },
-            'εστιν': { l: 'εἰμί', m: 'Verbo Copulativo/Irregular, 3ª Sg., Presente Ind.', s: 'Núcleo del Predicado', d: 'es / está', t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)','Presente Ind.') },
-            'εστι': { l: 'εἰμί', m: 'Verbo Copulativo/Irregular, 3ª Sg., Presente Ind.', s: 'Núcleo', d: 'es / está', t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)','Presente Ind.') },
-            'ην': { l: 'εἰμί', m: 'Verbo Copulativo/Irregular, 3ª Sg., Imperfecto Ind.', s: 'Núcleo', d: 'era / estaba', t: () => buildVerbT('ἦν','ἦσθα','ἦν','ἦμεν','ἦτε','ἦσαν','Imperfecto Ind.') },
-            'εισι': { l: 'εἰμί', m: 'Verbo Copulativo, 3ª Pl., Presente Ind.', s: 'Núcleo', d: 'son / están', t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)','Presente Ind.') },
-            'εισιν': { l: 'εἰμί', m: 'Verbo Copulativo, 3ª Pl., Presente Ind.', s: 'Núcleo', d: 'son / están', t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)','Presente Ind.') },
-            'ειμι': { l: 'εἰμί / εἶμι', m: 'Verbo, 1ª Sg. Presente Ind.', s: 'Núcleo', d: 'soy, estoy / iré', t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)','Presente Ind.') },
+            'ειμι': { l: 'εἰμί', m: 'Verbo, 1ª sg. Pres. Ind. Act.', s: 'Núcleo del Predicado', d: 'soy / estoy', estructura: ['', 'ει', '', '', 'μι'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
+            'εστι': { l: 'εἰμί', m: 'Verbo, 3ª sg. Pres. Ind. Act.', s: 'Cópula', d: 'es / está', estructura: ['', 'εσ', '', '', 'τι'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
+            'εστιν': { l: 'εἰμί', m: 'Verbo, 3ª sg. Pres. Ind. Act.', s: 'Cópula', d: 'es / está', estructura: ['', 'εσ', '', '', 'τιν'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
+            'εισι': { l: 'εἰμί', m: 'Verbo, 3ª pl. Pres. Ind. Act.', s: 'Cópula', d: 'son / están', estructura: ['', 'ει', '', '', 'σι'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
+            'εισιν': { l: 'εἰμί', m: 'Verbo, 3ª pl. Pres. Ind. Act.', s: 'Cópula', d: 'son / están', estructura: ['', 'ει', '', '', 'σιν'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
+            'ην': { l: 'εἰμί', m: 'Verbo, 3ª sg. Imperf. Ind. Act.', s: 'Núcleo del Predicado', d: 'era / estaba', estructura: ['', 'η', '', '', 'ν'], t: () => buildVerbT('ἦν','ἦσθα','ἦν','ἦμεν','ἦτε','ἦσαν', "Imperf. de εἰμί") },
             'παρειμι': { l: 'πάρειμι', m: 'Verbo, 1ª Sg. Presente Ind.', s: 'Núcleo', d: 'estoy presente', t: () => buildVerbT('πάρειμι','πάρει','πάρεστι(ν)','πάρεσμεν','πάρεστε','πάρεισι(ν)','Presente Ind.') },
             'παρεστε': { l: 'πάρειμι', m: 'Verbo, 2ª Plural Presente Ind.', s: 'Núcleo', d: 'estáis presentes', t: () => buildVerbT('πάρειμι','πάρει','πάρεστι(ν)','πάρεσμεν','πάρεστε','πάρεισι(ν)','Presente Ind.') },
             'παρεσται': { l: 'πάρειμι', m: 'Verbo, 3ª Sg. Futuro Medio', s: 'Núcleo', d: 'estará presente', t: () => buildVerbT('παρέσομαι','παρέσῃ','παρέσται','παρεσόμεθα','παρέσεσθε','παρέσονται','Futuro Medio') },
@@ -1784,73 +1784,68 @@
             const key = normalizeGreekForInput(word);
             let entry = wordDB[key];
 
-            // 1. Mostrar Interfaz Inmediatamente
+            // 1. Abrir interfaz
             overlay.classList.remove('pointer-events-none', 'opacity-0');
             drawer.classList.remove('translate-x-full');
-            content.innerHTML = `<div class="flex flex-col items-center py-40"><i data-lucide="loader" class="w-12 h-12 animate-spin text-cyan-500 mb-4"></i><p class="font-cinzel text-cyan-400 animate-pulse">Consultando Papiros...</p></div>`;
+            content.innerHTML = `<div class="flex flex-col items-center py-40"><i data-lucide="loader" class="w-12 h-12 animate-spin text-cyan-500 mb-4"></i><p class="font-cinzel text-cyan-400">Consultando Papiros...</p></div>`;
             lucide.createIcons();
 
             setTimeout(() => {
-                // 2. Seguridad: Si la palabra no está en la base de datos
+                // 2. SEGURIDAD: Si no tienes la palabra en el diccionario, inventamos una ficha para que no salga en blanco
                 if (!entry) {
                     entry = {
                         l: word + " (forma no registrada)",
-                        m: "Análisis morfológico automático pendiente.",
-                        s: "Función sintáctica según posición en la frase.",
-                        d: "Traducción en proceso.",
-                        t: () => '<p class="text-slate-500 italic text-center p-6 bg-black/20 rounded-xl">La tabla de flexión completa no está disponible para esta forma específica en el Códice actual.</p>'
+                        m: "Análisis morfológico en proceso.",
+                        s: "Función sintáctica según contexto.",
+                        d: "Traducción pendiente.",
+                        t: () => '<p class="text-slate-500 italic text-center p-4">Tabla de flexión no disponible en el Códice actual.</p>'
                     };
                 }
 
-                // 3. Lógica de Colores
+                // 3. Lógica de colores (Blue=Nominal, Green=Acusativo, Red=Verbo)
                 let color = 'cyan';
                 let m = (entry.m || "").toLowerCase();
                 if (m.includes('nom') || m.includes('voc')) color = 'blue';
                 else if (m.includes('acus')) color = 'emerald';
                 else if (m.includes('gen')) color = 'purple';
                 else if (m.includes('dat')) color = 'amber';
-                else if (m.includes('verbo')) color = 'red';
+                else if (m.includes('verbo') || m.includes('participio')) color = 'red';
 
-                // 4. Inyectar HTML Limpio
+                // 4. Inyectar HTML sin fallos
                 content.innerHTML = `
-                    <div class="mb-10 border-b border-${color}-900/50 pb-8 text-center md:text-left">
-                        <div class="inline-block text-4xl md:text-6xl mb-6 font-serif tracking-tighter bg-black/60 p-6 md:p-10 rounded-[2rem] border-2 border-${color}-500/50 shadow-[0_0_40px_rgba(0,0,0,0.5)]">
+                    <div class="mb-8 border-b border-${color}-900/50 pb-6">
+                        <div class="inline-block text-4xl md:text-6xl mb-4 font-serif bg-black/60 p-6 rounded-2xl border-2 border-${color}-500/50 shadow-2xl overflow-x-auto">
                             ${diseccionarPalabra(word, entry)}
                         </div>
-                        <h3 class="text-xl md:text-2xl text-${color}-400 font-cinzel tracking-widest mt-4">
-                            <i data-lucide="layers" class="inline w-5 h-5 mr-2"></i> LEMA: ${entry.l}
-                        </h3>
+                        <h3 class="text-xl text-${color}-400 font-cinzel tracking-widest mt-2">LEMA: ${entry.l}</h3>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-slate-900/90 p-6 rounded-2xl border-t-2 border-${color}-500 shadow-xl">
-                            <span class="text-[10px] font-black text-${color}-400 uppercase tracking-widest block mb-1">Morfología</span>
-                            <p class="text-lg text-slate-100 font-serif leading-relaxed">${entry.m}</p>
+                        <div class="bg-slate-900/90 p-6 rounded-xl border-t-2 border-${color}-500 shadow-lg">
+                            <span class="text-[10px] font-black text-${color}-400 uppercase block mb-1">Morfología</span>
+                            <p class="text-lg text-slate-100 font-serif">${entry.m}</p>
                         </div>
-                        <div class="bg-slate-900/90 p-6 rounded-2xl border-t-2 border-slate-500 shadow-xl">
-                            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-1">Sintaxis</span>
-                            <p class="text-lg text-slate-100 font-serif leading-relaxed">${entry.s}</p>
+                        <div class="bg-slate-900/90 p-6 rounded-xl border-t-2 border-slate-500 shadow-lg">
+                            <span class="text-[10px] font-black text-slate-400 uppercase block mb-1">Sintaxis</span>
+                            <p class="text-lg text-slate-100 font-serif">${entry.s}</p>
                         </div>
                     </div>
 
-                    <div class="bg-gradient-to-r from-slate-900 to-black p-8 rounded-2xl mt-6 border border-slate-800 shadow-2xl relative overflow-hidden">
-                        <div class="absolute right-4 top-4 opacity-5 text-white"><i data-lucide="languages" class="w-20 h-20"></i></div>
-                        <span class="text-[10px] font-black text-amber-500 uppercase tracking-widest block mb-3">Significado</span>
-                        <p class="text-3xl italic font-serif text-white border-l-4 border-amber-500 pl-6">"${entry.d}"</p>
+                    <div class="bg-black/60 p-8 rounded-xl mt-6 border border-slate-800 shadow-2xl">
+                        <span class="text-[10px] font-black text-amber-500 uppercase block mb-2">Traducción</span>
+                        <p class="text-3xl italic font-serif text-white border-l-4 border-amber-500 pl-4">"${entry.d}"</p>
                     </div>
 
-                    <div class="mt-8 bg-black/30 rounded-2xl border border-slate-800/50 p-2 overflow-x-auto custom-scrollbar">
+                    <div class="mt-8 bg-black/20 rounded-xl p-2 overflow-x-auto">
                         ${entry.t()}
                     </div>`;
                 lucide.createIcons();
-            }, 400);
+            }, 300);
         }
 
         function closeOracle() { 
-            const drawer = document.getElementById('oracle-drawer');
-            const overlay = document.getElementById('drawer-overlay');
-            if(drawer) drawer.classList.add('translate-x-full'); 
-            if(overlay) overlay.classList.add('opacity-0', 'pointer-events-none');
+            document.getElementById('oracle-drawer').classList.add('translate-x-full'); 
+            document.getElementById('drawer-overlay').classList.add('opacity-0', 'pointer-events-none');
         }
         function toggleTranslation() {
             const isShowing = document.getElementById('content-alfa-es').classList.contains('hidden');
