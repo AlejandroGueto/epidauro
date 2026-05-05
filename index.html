@@ -1000,7 +1000,7 @@
     <!-- =========================================
          SCRIPTS: LÓGICA FILOLÓGICA Y JUEGO
          ========================================= -->
-    <script>
+  <script>
         // --- 1. BASE DE DATOS DE TEXTOS GRIEGOS ÍNTEGROS ---
         const texts = {
             alfa: `«οἱ ἰατροὶ κελεύουσί με παρὰ τὸν Ἀσκλήπιον ἰέναι· ἴσως γὰρ ὠφελήσει με ὁ θεός.» ἐν δὲ τούτῳ ὁ Δικαιόπολις τῷ Φιλίππῳ ἡγούμενος ἐκ τῆς νεὼς ἐξέβη καί, «ἄγε δή, ὦ παῖ», ἔφη, «τί δεῖ ποιεῖν; ἆρα βούλῃ οἰνοπώλιον ζητῆσαι καὶ δεῖπνον ἑλέσθαι;» ὁ δέ, «μάλιστά γε, ὦ πάτερ. σὺ μὲν οὖν ἡγοῦ, ἐγὼ δ' ἕψομαι». οἰνοπώλιον οὖν εὑρόντες ἐγγὺς τοῦ λιμένος ἐκαθίζοντο οἶνόν τε πίνοντες καὶ τοῖς παροῦσι διαλεγόμενοι. τῶν δὲ παρόντων γυνή τις τὸν Δικαιόπολιν ἤρετο ποῖ πορεύεται καὶ μαθοῦσα ὅτι πρὸς τὴν Ἐπίδαυρον πορεύεται, «καὶ ἐγώ», ἔφη, «πρὸς τὴν Ἐπίδαυρον πορεύομαι. νοσῶ γὰρ τὴν γαστέρα καὶ οὐδὲν δύνανται ὠφελεῖν με οἱ ἰατροί· κελεύουσί μ' οὖν παρὰ τὸν Ἀσκλήπιον ἰέναι· ἴσως γὰρ ὠφελήσει με ὁ θεός. ἀλλ' εἰπέ μοι, πότε δὴ ἀποπλεύσεται ἡ ναῦς; πότερον τήμερον εἰς τὴν Ἐπίδαυρον ἀφιξόμεθα ἢ οὔ;» ὁ δὲ Δικαιόπολις, «οὐκ οἶδα ἔγωγε· λέγουσι δὲ ὅτι οὐ πολὺ ἀπέχει ἡ Ἐπίδαυρος. ἴσως οὖν ἀφιξόμεθα πρὸ τῆς νυκτὸς ἢ καὶ πρότερον. ἀλλ' ἄκουε δή· δι' ὀλίγου γὰρ γνωσόμεθα· τοῦ γὰρ ναυκλήρου ἀκούω ἡμᾶς καλοῦντος. ἆρ' οὐ ταχέως ἐπάνιμεν πρὸς τὴν ναῦν;» κάναστάντες οὖν πρὸς τὴν ναῦν ἔσπευδον. ὁ δὲ ναύκληρος ἰδὼν αὐτοὺς προσιόντας, βοήσας, «εἴσβητε ταχέως,» ἔφη, «εὐθὺς γὰρ ὁρμησόμεθα· δεῖ γὰρ πρὸ τῆς νυκτὸς εἰς τὴν Ἐπίδαυρον ἀφικέσθαι». ὁ δὲ Δικαιόπολις, «πότε δή,» ἔφη, «ἐκεῖσε ἀφιξόμεθα;» ὁ δὲ ναύκληρος, «οὐρίου γε ἀνέμου τυχόντες σὺν θεοῖς ταχέως πλευσόμεθα καὶ πρὸς ἑσπέραν παρεσόμεθα. ἀλλὰ σπεύδετε· εὐθὺς γὰρ λύσομεν τὴν ναῦν.» οἱ μὲν οὖν ταχέως εἰσέβησαν, οἱ δὲ ναῦται τὴν ναῦν λύσαντες καὶ πρὸς τὴν θάλατταν προερέσαντες τὰ ἱστία ἦραν. ἄνεμος δὲ οὔριος τὰ ἱστία ἔπλησεν ὥστε ἡ ναῦς ταχέως διὰ τῶν κυμάτων ἔτρεχεν.`,
@@ -1116,9 +1116,11 @@
 
         // --- 4. CÓDICE LÉXICO ENCICLOPÉDICO (DEPURADO) ---
         let wordDB = {
-            'δικαιοπολισ': { l: 'Δικαιόπολις, -εως, ὁ', m: 'Sust. Propio (3ª), Nom. Sg.', s: 'Sujeto', d: 'Diceópolis', t: () => buildNounT('Δικαιόπολις','Δικαιόπολι','Δικαιόπολιν','Δικαιοπόλεως','Δικαιοπόλει','-','-','-','-','-') },
-            'δικαιοπολιν': { l: 'Δικαιόπολις, -εως, ὁ', m: 'Sust. Propio (3ª), Acus. Sg.', s: 'O. Directo', d: 'a Diceópolis', t: () => buildNounT('Δικαιόπολις','Δικαιόπολι','Δικαιόπολιν','Δικαιοπόλεως','Δικαιοπόλει','-','-','-','-','-') },
-            'δικαιοπολει': { l: 'Δικαιόπολις, -εως, ὁ', m: 'Sust. Propio (3ª), Dat. Sg.', s: 'Dativo de Interés', d: 'para Diceópolis', t: () => buildNounT('Δικαιόπολις','Δικαιόπολι','Δικαιόπολιν','Δικαιοπόλεως','Δικαιοπόλει','-','-','-','-','-') },
+            'δικαιοπολισ': { l: 'Δικαιόπολις, -εως, ὁ', m: 'Sust. Propio (3ª), Nom. Sg.', s: 'Sujeto', d: 'Diceópolis', estructura: ['', 'δικαιοπολι', '', '', 'σ'], t: () => buildNounT('Δικαιόπολις','Δικαιόπολι','Δικαιόπολιν','Δικαιοπόλεως','Δικαιοπόλει','-','-','-','-','-') },
+            'δικαιοπολιν': { l: 'Δικαιόπολις, -εως, ὁ', m: 'Sust. Propio (3ª), Acus. Sg.', s: 'O. Directo', d: 'a Diceópolis', estructura: ['', 'δικαιοπολι', '', '', 'ν'], t: () => buildNounT('Δικαιόπολις','Δικαιόπολι','Δικαιόπολιν','Δικαιοπόλεως','Δικαιοπόλει','-','-','-','-','-') },
+            'δικαιοπολει': { l: 'Δικαιόπολις, -εως, ὁ', m: 'Sust. Propio (3ª), Dat. Sg.', s: 'Dativo de Interés', d: 'para Diceópolis', estructura: ['', 'δικαιοπολε', '', '', 'ι'], t: () => buildNounT('Δικαιόπολις','Δικαιόπολι','Δικαιόπολιν','Δικαιοπόλεως','Δικαιοπόλει','-','-','-','-','-') },
+            'εμενεν': { l: 'μένω', m: 'Verbo, 3ª Sg. Imperfecto Activo', s: 'Núcleo', d: 'permanecía', estructura: ['ε', 'μεν', '', 'ε', 'ν'], t: () => G.vImpfA('ἔ', 'μεν') },
+            'αφιξομεθα': { l: 'ἀφικνέομαι', m: '1ª Pl. Futuro Medio', s: 'Núcleo', d: 'llegaremos', estructura: ['αφ', 'ιξ', '', 'ο', 'μεθα'], t: () => G.vFutM('ἀφίξ') },
             'φιλιπποσ': { l: 'Φίλιππος, -ου, ὁ', m: 'Sust. Propio (2ª), Nom. Sg.', s: 'Sujeto', d: 'Filipo', t: () => G.n2M('Φίλιππ') },
             'φιλιππω': { l: 'Φίλιππος, -ου, ὁ', m: 'Sust. Propio (2ª), Dat. Sg.', s: 'C. Compañía', d: 'a Filipo', t: () => G.n2M('Φίλιππ') },
             'φιλιππον': { l: 'Φίλιππος, -ου, ὁ', m: 'Sust. Propio (2ª), Acus. Sg.', s: 'O. Directo', d: 'a Filipo', t: () => G.n2M('Φίλιππ') },
@@ -1498,7 +1500,7 @@
             'ηρεμα': { l: 'ἠρέμα', m: 'Adverbio', s: 'CC Modo', d: 'silenciosamente', t: () => inv },
             'σπανιωσ': { l: 'σπανίως', m: 'Adverbio', s: 'CC Modo / Tiempo', d: 'raramente', t: () => inv },
             'πανταχου': { l: 'πανταχοῦ', m: 'Adverbio', s: 'CC de Lugar', d: 'en todas partes', t: () => inv },
-           'ποιειν': { l: 'ποιέω', m: 'Verbo, Infinitivo Presente Activo', s: 'Sujeto', d: 'hacer', t: () => inv },
+            'ποιειν': { l: 'ποιέω', m: 'Verbo, Infinitivo Presente Activo', s: 'Sujeto', d: 'hacer', t: () => inv },
             'ζητησαι': { l: 'ζητέω', m: 'Verbo, Infinitivo Aoristo Activo', s: 'O. Directo', d: 'buscar', t: () => inv },
             'ελεσθαι': { l: 'αἱρέω', m: 'Verbo, Infinitivo Aoristo Radical Medio', s: 'O. Directo', d: 'tomar (la comida)', t: () => inv },
             'χαιρειν': { l: 'χαίρω', m: 'Verbo, Infinitivo Presente Activo', s: 'Objeto Directo / Fórm. de Saludo', d: 'alegrarse / saludar', t: () => inv },
@@ -1636,7 +1638,7 @@
 
         // LÓGICA DE LA VISIÓN DE LINCEO (ESCANER SINTÁCTICO HÍBRIDO)
         function applyXRay(filterType) {
-document.querySelectorAll('.word-token').forEach(t => {
+            document.querySelectorAll('.word-token').forEach(t => {
                 // Como el normalizador ya limpia apóstrofos, solo pasamos el innerText
                 const word = normalizeGreekForInput(t.innerText); 
                 const entry = wordDB[word];
@@ -1733,10 +1735,8 @@ document.querySelectorAll('.word-token').forEach(t => {
                 if (container) {
                     container.innerHTML = words.map(chunk => {
                         if (!chunk.trim()) return chunk;
-                        // Regex mejorada: aísla los signos al inicio y al final, dejando intactas las letras.
                         const match = chunk.match(/^([«"”“'’(]*)(.*?)([»"”“'’!,;·.?:)]*)$/);
                         if (match && match[2]) {
-                            // Ahora pasamos match[2] directo. Si es "δ'", el Oráculo lo recibirá limpio.
                             return `${match[1]}<span class="word-token" onclick="consultarOraculo('${match[2]}')">${match[2]}</span>${match[3]}`;
                         }
                         return chunk;
@@ -1745,83 +1745,30 @@ document.querySelectorAll('.word-token').forEach(t => {
             });
         }
 
-        // MOTOR PREMIUM: BISTURÍ FILOLÓGICO
-        function diseccionarPalabra(originalWord, morfologia) {
-            // Ignorar invariables para no partirlas
-            if (morfologia.includes('Invariable') || morfologia.includes('Prep') || morfologia.includes('Conj') || morfologia.includes('Adv') || morfologia.includes('Partícula')) {
+        // MOTOR PREMIUM: BISTURÍ FILOLÓGICO NUEVO
+        function diseccionarPalabra(originalWord, entry) {
+            if (!entry || !entry.m) return `<span class="text-cyan-400 font-bold">${originalWord}</span>`;
+            if (entry.m.includes('Invariable') || entry.m.includes('Prep') || entry.m.includes('Conj') || entry.m.includes('Adv') || entry.m.includes('Partícula')) {
                 return `<span class="text-slate-400 font-bold">${originalWord}</span>`;
             }
-            
-            let wordNorm = originalWord.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/ς/g, 'σ');
-            let prefixIdx = 0;
-            let suffixIdx = originalWord.length;
 
-            // 1. Detectar preverbios comunes en verbos compuestos
-            const preverbios = ['προσ', 'απο', 'επι', 'κατα', 'δια', 'μετα', 'ανα', 'παρα', 'υπο', 'περι', 'συν', 'εξ', 'εκ', 'εισ', 'δι', 'απ', 'εφ', 'κατ', 'παρ', 'αν'];
-            let hasPreverb = false;
-            
-            if (morfologia.toLowerCase().includes('verbo') || morfologia.toLowerCase().includes('participio') || morfologia.toLowerCase().includes('infinitivo')) {
-                for(let prev of preverbios) {
-                    if(wordNorm.startsWith(prev) && wordNorm.length > prev.length + 2) {
-                        prefixIdx = prev.length;
-                        hasPreverb = true;
-                        break;
-                    }
-                }
+            if (entry.estructura && entry.estructura.length === 5) {
+                const [prev, raiz, tiempo, vocTem, desin] = entry.estructura;
+                let html = '';
+                
+                if (prev) html += `<span class="text-purple-400 border-b-4 border-purple-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${prev}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-purple-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg uppercase tracking-widest z-50">Preverbio/Aum.</span></span>`;
+                if (raiz) html += (html ? '<span class="text-slate-600 font-black mx-1 opacity-50">+</span>' : '') + `<span class="text-cyan-400 border-b-4 border-cyan-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${raiz}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-cyan-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg uppercase tracking-widest z-50">Raíz</span></span>`;
+                if (tiempo) html += (html ? '<span class="text-slate-600 font-black mx-1 opacity-50">+</span>' : '') + `<span class="text-pink-400 border-b-4 border-pink-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${tiempo}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-pink-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg uppercase tracking-widest z-50">Marca Temp/Modo</span></span>`;
+                if (vocTem) html += (html ? '<span class="text-slate-600 font-black mx-1 opacity-50">+</span>' : '') + `<span class="text-amber-400 border-b-4 border-amber-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${vocTem}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-amber-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg uppercase tracking-widest z-50">Vocal Temática</span></span>`;
+                if (desin) html += (html ? '<span class="text-slate-600 font-black mx-1 opacity-50">+</span>' : '') + `<span class="text-emerald-400 border-b-4 border-emerald-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${desin}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-emerald-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg uppercase tracking-widest z-50">Desinencia</span></span>`;
+                
+                return html;
             }
 
-            // 2. Aumento silábico (Solo indicativos en pasado)
-            const isPastTense = (morfologia.includes('Imperfecto') || morfologia.includes('Aoristo') || morfologia.includes('Aor.'));
-            const isNonIndicative = (morfologia.includes('Participio') || morfologia.includes('Infinitivo') || morfologia.includes('Imperativo') || morfologia.includes('Subjuntivo'));
-            
-            if (isPastTense && !isNonIndicative) {
-                if (!hasPreverb && (wordNorm.startsWith('ε') || wordNorm.startsWith('η'))) {
-                    prefixIdx = 1;
-                } else if (hasPreverb && (wordNorm.substring(prefixIdx).startsWith('ε') || wordNorm.substring(prefixIdx).startsWith('η'))) {
-                    prefixIdx += 1; // Preverbio + Aumento (ej. επ-αν-ηλθον -> επ-αν-η-λθον)
-                }
-            }
-
-            // 3. Sufijos ordenados de MAYOR a MENOR longitud para evitar cortes prematuros
-            const suffixes = [
-                'ομεσθα', 'σονται', 'σοντεσ', 'σαντεσ', 'σοντοσ', 'σαντοσ', 'σουσιν', 'σομεθα', 'σαμεθα', 
-                'οντων', 'ουσιν', 'εσθαι', 'ονται', 'ασθαι', 'οντεσ', 'αντο', 'ησαν', 'εσθε', 'ομεν', 'ομαι', 
-                'εται', 'ετο', 'ντο', 'ουσα', 'ομεθα', 'αμεν', 'ουσι', 'ωσιν', 'ωμεν', 'ασιν', 
-                'οισ', 'αισ', 'ουσ', 'ασ', 'ησ', 'ου', 'ον', 'οσ', 'ει', 'εισ', 'αι', 'οι', 'ω', 'α', 'η', 'ν', 'σ', 'ι'
-            ];
-
-            for (let suf of suffixes) {
-                if (wordNorm.endsWith(suf)) {
-                    // Evitar que la desinencia se coma toda la raíz
-                    if (originalWord.length - suf.length > prefixIdx) {
-                        suffixIdx = originalWord.length - suf.length;
-                        break;
-                    }
-                }
-            }
-
-            // Ensamblaje Visual
-            if (suffixIdx <= prefixIdx) return `<span class="text-cyan-400 font-bold">${originalWord}</span>`;
-            
-            let pref = originalWord.substring(0, prefixIdx);
-            let root = originalWord.substring(prefixIdx, suffixIdx);
-            let suff = originalWord.substring(suffixIdx);
-            let html = '';
-            
-            if (pref) {
-                html += `<span class="text-purple-400 border-b-4 border-purple-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${pref}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-purple-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap font-sans font-black shadow-lg uppercase tracking-widest z-50">Aumento/Prev.</span></span> <span class="text-slate-600 font-black mx-1 opacity-50">+</span> `;
-            }
-            if (root) {
-                html += `<span class="text-cyan-400 border-b-4 border-cyan-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${root}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-cyan-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap font-sans font-black shadow-lg uppercase tracking-widest z-50">Raíz</span></span>`;
-            }
-            if (suff) {
-                html += ` <span class="text-slate-600 font-black mx-1 opacity-50">+</span> <span class="text-emerald-400 border-b-4 border-emerald-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${suff}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-emerald-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap font-sans font-black shadow-lg uppercase tracking-widest z-50">Desinencia</span></span>`;
-            }
-            return html;
+            return `<span class="text-cyan-400 font-bold">${originalWord}</span>`;
         }
 
         function consultarOraculo(word) {
-            // --- Feedback Visual de la palabra seleccionada ---
             document.querySelectorAll('.word-token').forEach(t => {
                 t.classList.remove('bg-cyan-500/40', 'ring-2', 'ring-cyan-400', 'rounded');
                 if (t.innerText.replace(/[»"”“'’!,;·.?:()]/g, '') === word) {
@@ -1929,120 +1876,6 @@ document.querySelectorAll('.word-token').forEach(t => {
                             <div class="flex items-center justify-start text-5xl md:text-7xl mb-6 font-serif tracking-widest bg-black/40 p-8 rounded-3xl border-2 border-slate-800 w-max shadow-[inset_0_0_30px_rgba(0,0,0,1)]">
                                 ${diseccionarPalabra(word, entry)}
                             </div>
-                            <p class="text-3xl text-${colorTema}-400 font-cinzel italic lowercase tracking-wider flex items-center gap-3">
-                                <i data-lucide="microscope" class="w-6 h-6"></i> Lema: ${entry.l}
-                            </p>
-                        </div>
-                        <div class="bg-${colorTema}-950/50 p-4 rounded-xl border border-${colorTema}-800 text-right shadow-inner hidden md:block">
-                            <p class="text-xs text-${colorTema}-300 uppercase tracking-widest font-black mb-1">Análisis Forense</p>
-                            <p class="font-serif text-slate-200">Raíz deducida + Desinencias</p>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="bg-slate-900 p-8 rounded-3xl border-t-4 border-${colorTema}-500 shadow-2xl hover:-translate-y-1 transition-transform">
-                            <div class="flex items-center gap-3 mb-6">
-                                <span class="lang-tag bg-${colorTema}-900 text-${colorTema}-100">Morfología</span>
-                            </div>
-                            <p class="text-xl leading-relaxed text-slate-100 font-serif">${entry.m}</p>
-                        </div>
-                        <div class="bg-slate-900 p-8 rounded-3xl border-t-4 border-slate-600 shadow-2xl hover:-translate-y-1 transition-transform">
-                            <div class="flex items-center gap-3 mb-6">
-                                <span class="lang-tag bg-slate-800 text-slate-300">Sintaxis</span>
-                            </div>
-                            <p class="text-xl leading-relaxed text-slate-100 font-serif">${entry.s}</p>
-                        </div>
-                    </div>
-                    <div class="bg-gradient-to-br from-slate-900 to-black p-10 rounded-3xl mt-8 border border-slate-800 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
-                        <span class="lang-tag bg-amber-900 text-amber-100 mb-6 inline-block">Traducción de Contexto</span>
-                        <p class="text-4xl italic font-serif text-white border-l-4 border-amber-500 pl-6 py-2">"${entry.d}"</p>
-                    </div>
-                    ${etimHTML}
-                    <div class="mt-12 bg-slate-950/50 p-6 rounded-2xl border border-slate-800">
-                        ${entry.t()}
-                    </div>`;
-                lucide.createIcons();
-            }, 600);
-        }
-                });
-
-                const etimologias = {
-                    'θεοσ': 'Teología, Ateísmo, Panteón, Apoteosis.',
-                    'χρονοσ': 'Cronómetro, Cronología, Sincronizar, Anacronismo.',
-                    'ψυχη': 'Psicología, Psiquiatra, Psicópata.',
-                    'οφθαλμοσ': 'Oftalmólogo.',
-                    'γαστηρ': 'Gastroenteritis, Gastronomía, Gástrico.',
-                    'πολεμοσ': 'Polémica.',
-                    'ανηρ': 'Androide, Andrología, Alejandro, Poliandria.',
-                    'γυνη': 'Ginecólogo, Misógino, Andrógino.',
-                    'ιατροσ': 'Pediatra, Psiquiatra, Foniatra.',
-                    'υπνοσ': 'Hipnosis, Hipnótico.',
-                    'ναυσ': 'Náutico, Nausea, Astronauta, Cibernética.',
-                    'μονοσ': 'Monólogo, Monopolio, Monje, Monótono.',
-                    'λιμην': 'Limnología.',
-                    'αστυ': 'Astucia.',
-                    'πατηρ': 'Patriarca, Patrimonio, Patronímico.',
-                    'αγγελοσ': 'Ángel, Arcángel, Evangelio.'
-                };
-                
-                let etimHTML = '';
-                let rootKey = entry.l.split(',')[0].normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/ς/g, 'σ');
-                
-                if(etimologias[rootKey] || etimologias[key]) {
-                    let etimText = etimologias[rootKey] || etimologias[key];
-                    etimHTML = `<div class="bg-indigo-950/50 p-6 rounded-2xl border-l-4 border-indigo-500 mt-6 shadow-inner relative overflow-hidden">
-                                    <div class="absolute right-0 top-0 opacity-10 text-indigo-500"><i data-lucide="quote" class="w-24 h-24"></i></div>
-                                    <p class="text-indigo-300 text-xs font-black uppercase tracking-widest mb-2 flex items-center gap-2"><i data-lucide="link" class="w-4 h-4"></i> Ecos de la Hélade (Etimología)</p>
-                                    <p class="text-indigo-100 font-serif text-xl relative z-10">${etimText}</p>
-                                </div>`;
-                }
-                
-                content.innerHTML = `
-                    <div class="mb-12 border-b-2 border-${colorTema}-900 pb-8 flex justify-between items-start">
-                        <div>
-                            <div class="flex items-center justify-start text-5xl md:text-7xl mb-6 font-serif tracking-widest bg-black/40 p-8 rounded-3xl border-2 border-slate-800 w-max shadow-[inset_0_0_30px_rgba(0,0,0,1)]">
-                                ${diseccionarPalabra(word, entry)}
-                            </div>
-                            <p class="text-3xl text-${colorTema}-400 font-cinzel italic lowercase tracking-wider flex items-center gap-3">
-                                <i data-lucide="microscope" class="w-6 h-6"></i> Lema: ${entry.l}
-                            </p>
-                        </div>
-                        <div class="bg-${colorTema}-950/50 p-4 rounded-xl border border-${colorTema}-800 text-right shadow-inner hidden md:block">
-                            <p class="text-xs text-${colorTema}-300 uppercase tracking-widest font-black mb-1">Análisis Forense</p>
-                            <p class="font-serif text-slate-200">Raíz deducida + Desinencias</p>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="bg-slate-900 p-8 rounded-3xl border-t-4 border-${colorTema}-500 shadow-2xl hover:-translate-y-1 transition-transform">
-                            <div class="flex items-center gap-3 mb-6">
-                                <span class="lang-tag bg-${colorTema}-900 text-${colorTema}-100">Morfología</span>
-                            </div>
-                            <p class="text-xl leading-relaxed text-slate-100 font-serif">${entry.m}</p>
-                        </div>
-                        <div class="bg-slate-900 p-8 rounded-3xl border-t-4 border-slate-600 shadow-2xl hover:-translate-y-1 transition-transform">
-                            <div class="flex items-center gap-3 mb-6">
-                                <span class="lang-tag bg-slate-800 text-slate-300">Sintaxis</span>
-                            </div>
-                            <p class="text-xl leading-relaxed text-slate-100 font-serif">${entry.s}</p>
-                        </div>
-                    </div>
-                    <div class="bg-gradient-to-br from-slate-900 to-black p-10 rounded-3xl mt-8 border border-slate-800 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
-                        <span class="lang-tag bg-amber-900 text-amber-100 mb-6 inline-block">Traducción de Contexto</span>
-                        <p class="text-4xl italic font-serif text-white border-l-4 border-amber-500 pl-6 py-2">"${entry.d}"</p>
-                    </div>
-                    ${etimHTML}
-                    <div class="mt-12 bg-slate-950/50 p-6 rounded-2xl border border-slate-800">
-                        ${entry.t()}
-                    </div>`;
-                lucide.createIcons();
-            }, 600);
-        }
-                
-                content.innerHTML = `
-                    <div class="mb-12 border-b-2 border-${colorTema}-900 pb-8 flex justify-between items-start">
-                        <div>
-                            <div class="flex items-center justify-start text-5xl md:text-7xl mb-6 font-serif tracking-widest bg-black/40 p-8 rounded-3xl border-2 border-slate-800 w-max shadow-[inset_0_0_30px_rgba(0,0,0,1)]">
-    ${diseccionarPalabra(word, entry.m)}
-</div>
                             <p class="text-3xl text-${colorTema}-400 font-cinzel italic lowercase tracking-wider flex items-center gap-3">
                                 <i data-lucide="microscope" class="w-6 h-6"></i> Lema: ${entry.l}
                             </p>
