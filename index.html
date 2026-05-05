@@ -173,7 +173,16 @@
             background-size: 400px 400px;
             animation: particleZoom 35s linear infinite;
         }
-
+@keyframes cronosWrath {
+            0% { box-shadow: inset 0 0 0px rgba(153, 27, 27, 0); }
+            50% { box-shadow: inset 0 0 100px rgba(153, 27, 27, 0.8); }
+            100% { box-shadow: inset 0 0 0px rgba(153, 27, 27, 0); }
+        }
+        .time-critical {
+            animation: cronosWrath 2s infinite;
+            border: 4px solid #991b1b !important;
+        }
+        
         /* Notificaciones Toast (Logros) */
         #toast-container {
             position: fixed;
@@ -235,6 +244,9 @@
     <!-- Audio Elements -->
     <audio id="musicaFondo" loop preload="auto">
         <source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_1efc7bb905.mp3?filename=ancient-mystery-105152.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="sonidoOraculo" preload="auto">
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_73e72eb1ee.mp3?filename=magic-sparkle-190030.mp3" type="audio/mpeg">
     </audio>
 
     <!-- Contenedor de Logros Toast -->
@@ -314,7 +326,7 @@
         <div class="bg-slate-900/80 p-12 rounded-3xl border-2 border-cyan-900 shadow-2xl backdrop-blur-xl w-full relative overflow-hidden">
            <div class="w-full rounded-3xl border-4 border-cyan-900/50 overflow-hidden shadow-[0_0_50px_rgba(6,182,212,0.4)] relative flex items-center justify-center bg-black mb-8">
     
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Sanctuary_of_Athena_Pronaia_-_Tholos_-_Delphi.jpg/1200px-Sanctuary_of_Athena_Pronaia_-_Tholos_-_Delphi.jpg" alt="Santuario Sagrado" class="w-full h-[350px] md:h-[450px] object-cover opacity-80 transition-opacity hover:opacity-100 duration-500">
+    <img src="https://images.unsplash.com/photo-1544260233-0498b89d4fb9?auto=format&fit=crop&q=80&w=1200" alt="Santuario Sagrado" class="w-full h-[350px] md:h-[450px] object-cover opacity-80 transition-opacity hover:opacity-100 duration-500">
     
     <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-cyan-900/30 pointer-events-none"></div>
     
@@ -477,6 +489,25 @@
                         </div>
                     </div>
                 </div>
+                <div class="bg-white/50 p-8 rounded-2xl shadow">
+                            <h3 class="text-2xl font-cinzel font-bold text-slate-800 mb-4 border-b-2 border-slate-300 inline-block">4. El Ábaton y la "Incubatio"</h3>
+                            <p>En el santuario de Asclepio en Epidauro, la curación física estaba íntimamente ligada a la fe. El ritual central era la <strong>ἐγκοίμησις</strong> (enkoimesis) o <em>incubatio</em>. Los enfermos, tras purificarse, dormían en un pórtico sagrado llamado <strong>Ábaton</strong>. Creían que, durante la noche, el dios Asclepio se les aparecía en sueños para operarlos o dictarles el tratamiento, a menudo acompañado de las serpientes sagradas que lamían sus heridas.</p>
+                        </div>
+                        <div class="bg-white/50 p-8 rounded-2xl shadow">
+                            <h3 class="text-2xl font-cinzel font-bold text-slate-800 mb-4 border-b-2 border-slate-300 inline-block">5. Mardonio y la Segunda Destrucción de Atenas</h3>
+                            <p>Tras la batalla de las Termópilas y Artemisio (480 a.C.), Jerjes saqueó Atenas. Al año siguiente (479 a.C.), su general <strong>Mardonio</strong> volvió a invadir el Ática. Los atenienses tuvieron que evacuar su ciudad por segunda vez, cruzando a la isla de <strong>Salamina</strong>. La negativa de Esparta a enviar tropas más allá del Istmo de Corinto generó una profunda crisis diplomática entre los aliados griegos, reflejada fielmente en nuestro Texto Persas.</p>
+                        </div>
+                        <div class="bg-white/50 p-8 rounded-2xl shadow">
+                            <h3 class="text-2xl font-cinzel font-bold text-slate-800 mb-4 border-b-2 border-slate-300 inline-block">6. Vocabulario Fundamental</h3>
+                            <div class="grid grid-cols-2 gap-4 mt-4 font-serif text-lg">
+                                <div><strong class="text-cyan-800">ἡ ναῦς, νεώς:</strong> Nave, barco.</div>
+                                <div><strong class="text-cyan-800">ἡ γαστήρ, -έρος:</strong> Estómago.</div>
+                                <div><strong class="text-cyan-800">ἡ ἑσπέρα, -ας:</strong> Tarde, atardecer.</div>
+                                <div><strong class="text-cyan-800">τὸ ἱερόν, -οῦ:</strong> Templo, santuario.</div>
+                                <div><strong class="text-cyan-800">σκότος, -ους:</strong> Oscuridad.</div>
+                                <div><strong class="text-cyan-800">τυφλός, -ή, -όν:</strong> Ciego.</div>
+                            </div>
+                        </div>
 
                 <div class="mt-16 pt-10 border-t-4 border-slate-300 text-lg italic text-slate-800 bg-amber-50/50 p-10 rounded-2xl shadow-xl">
                     <p class="font-black flex items-center gap-4 text-amber-900 uppercase tracking-widest mb-4 text-xl">
@@ -501,15 +532,30 @@
                 <div class="space-y-8">
                     <div class="bg-slate-900/60 p-6 rounded-2xl border-2 border-slate-800 hover:border-cyan-900 transition-colors">
                         <label class="text-xs font-black text-cyan-500 uppercase tracking-[0.2em] block mb-4">1. Participio de futuro activo (nom. sg. masc) de ζητέω (texto β):</label>
-                        <input type="text" id="p1-q1" class="input-griego w-full py-4 px-6" placeholder="zeteson..." autocomplete="off" spellcheck="false">
+                        <select id="p1-q1" class="select-griego w-full py-4 px-6 text-xl">
+                            <option value="">-- Selecciona la forma correcta --</option>
+                            <option value="ζητησων">ζητήσων (zeteson)</option>
+                            <option value="ζητων">ζητῶν (zetôn)</option>
+                            <option value="ζητησας">ζητήσας (zetesas)</option>
+                        </select>
                     </div>
                     <div class="bg-slate-900/60 p-6 rounded-2xl border-2 border-slate-800 hover:border-cyan-900 transition-colors">
                         <label class="text-xs font-black text-cyan-500 uppercase tracking-[0.2em] block mb-4">2. Futuro indicativo medio (1ª pers plural) de "llegaremos" (texto α):</label>
-                        <input type="text" id="p1-q2" class="input-griego w-full py-4 px-6" placeholder="aphixo..." autocomplete="off" spellcheck="false">
+                        <select id="p1-q2" class="select-griego w-full py-4 px-6 text-xl">
+                            <option value="">-- Selecciona la forma correcta --</option>
+                            <option value="αφικοντο">ἀφίκοντο (aphikonto)</option>
+                            <option value="αφιξομεθα">ἀφιξόμεθα (aphixometha)</option>
+                            <option value="αφικεσθαι">ἀφικέσθαι (aphikesthai)</option>
+                        </select>
                     </div>
                     <div class="bg-slate-900/60 p-6 rounded-2xl border-2 border-slate-800 hover:border-cyan-900 transition-colors">
                         <label class="text-xs font-black text-cyan-500 uppercase tracking-[0.2em] block mb-4">3. Infinitivo Aoristo Pasivo del verbo ἐπιφαίνω (texto β):</label>
-                        <input type="text" id="p1-q3" class="input-griego w-full py-4 px-6" placeholder="epipha..." autocomplete="off" spellcheck="false">
+                        <select id="p1-q3" class="select-griego w-full py-4 px-6 text-xl">
+                            <option value="">-- Selecciona la forma correcta --</option>
+                            <option value="επιφανηναι">ἐπιφανῆναι (epiphanenai)</option>
+                            <option value="επιφαινειν">ἐπιφαίνειν (epiphainein)</option>
+                            <option value="επιφανεις">ἐπιφανείς (epiphaneis)</option>
+                        </select>
                     </div>
                 </div>
                 <div class="mt-10 flex flex-col md:flex-row justify-end gap-4">
@@ -1413,13 +1459,14 @@
                 document.getElementById('timerDisplay').innerText = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
                 
                 if(timeRemaining === 1800) showToast("Quedan 30 minutos. Mardonio se acerca.", "alert-triangle");
-                if (timeRemaining <= 0) {
-                    clearInterval(timerInterval);
-                    gameOver();
+                
+                // Función Premium: Furia de Cronos (Últimos 5 minutos)
+                if (timeRemaining === 300) {
+                    showToast("¡CRONOS DESPIERTA! 5 minutos restantes.", "skull");
+                    document.getElementById('timerContainer').classList.add('time-critical', 'text-red-500');
+                    document.getElementById('timerContainer').classList.remove('text-cyan-300', 'border-cyan-500/50');
+                    document.body.style.animation = "cronosWrath 2s infinite";
                 }
-            }, 1000);
-        }
-
         function formatTime(s) {
             const m = Math.floor(s / 60);
             const sec = s % 60;
@@ -1470,6 +1517,9 @@
         }
 
         function consultarOraculo(word) {
+            // Reproducir efecto sonoro Premium
+            const sound = document.getElementById('sonidoOraculo');
+            if (sound) { sound.currentTime = 0; sound.volume = 0.5; sound.play().catch(e=>console.log(e)); }
             const drawer = document.getElementById('oracle-drawer');
             const content = document.getElementById('oracle-content');
             const key = normalizeGreekForInput(word);
@@ -1590,9 +1640,9 @@
         }
 
         function checkPrueba1() {
-            const q1 = normalizeGreekForInput(document.getElementById('p1-q1').value);
-            const q2 = normalizeGreekForInput(document.getElementById('p1-q2').value);
-            const q3 = normalizeGreekForInput(document.getElementById('p1-q3').value);
+            const q1 = document.getElementById('p1-q1').value;
+            const q2 = document.getElementById('p1-q2').value;
+            const q3 = document.getElementById('p1-q3').value;
             if (q1 === 'ζητησων' && q2 === 'αφιξομεθα' && q3 === 'επιφανηναι') successPrueba('prueba1', 'prueba2', "Prueba I Superada: Dominas el Futuro.");
             else failPrueba('p1-error');
         }
