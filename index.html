@@ -1620,6 +1620,50 @@
             'ναυσ': { l: 'ναῦς, νεώς, ἡ', m: 'Sust. Irreg., Nom. Sg. Fem.', s: 'Sujeto', d: 'la nave', estructura: ['', 'ναυ', '', '', 'σ'], t: () => buildNounT('ναῦς','-','ναῦν','νεώς','νηΐ','-','-','-','-','-') },
             'νεωσ': { l: 'ναῦς, νεώς, ἡ', m: 'Sust. Irreg., Gen. Sg. Fem.', s: 'Compl. Nombre', d: 'de la nave', estructura: ['', 'νε', '', '', 'ως'], t: () => buildNounT('ναῦς','-','ναῦν','νεώς','νηΐ','-','-','-','-','-') },
             'αθηνασ': { l: 'Ἀθῆναι, -ῶν, αἱ', m: 'Sust. Propio, Acus. Pl.', s: 'Dirección', d: 'Atenas', estructura: ['', 'αθην', '', '', 'ας'], t: () => buildNounT('-','-','-','-','-','Ἀθῆναι','-','Ἀθήνας','Ἀθηνῶν','Ἀθήναις') },
+            // --- REFUERZO MASIVO DE LÉXICO (Unidad XVIII) ---
+            
+            // SUSTANTIVOS Y NOMBRES
+            'παι': { l: 'παῖς, παιδός, ὁ', m: 'Sustantivo, Vocativo Sg.', s: 'Invocación', d: '¡oh hijo!', estructura: ['', 'παι', '', '', ''], t: () => buildNounT('παῖς','παῖ','παῖδα','παιδός','παιδί','παῖδες','παῖδες','παῖδας','παίδων','παισί') },
+            'παιδα': { l: 'παῖς, παιδός, ὁ', m: 'Sustantivo, Acusativo Sg.', s: 'Comp. Directo', d: 'al niño / al hijo', estructura: ['', 'παιδ', '', '', 'α'], t: () => buildNounT('παῖς','παῖ','παῖδα','παιδός','παιδί','παῖδες','παῖδες','παῖδας','παίδων','παισί') },
+            'παιδι': { l: 'παῖς, παιδός, ὁ', m: 'Sustantivo, Dativo Sg.', s: 'Comp. Indirecto', d: 'al niño', estructura: ['', 'παιδ', '', '', 'ι'], t: () => buildNounT('παῖς','παῖ','παῖδα','παιδός','παιδί','παῖδες','παῖδες','παῖδας','παίδων','παισί') },
+            'πατερ': { l: 'πατήρ, πατρός, ὁ', m: 'Sustantivo, Vocativo Sg.', s: 'Invocación', d: '¡oh padre!', estructura: ['', 'πατερ', '', '', ''], t: () => buildNounT('πατήρ','πάτερ','πατέρα','πατρός','πατρί','πατέρες','-','πατέρας','πατέρων','πατράσι') },
+            'γυναικα': { l: 'γυνή, γυναικός, ἡ', m: 'Sustantivo, Acusativo Sg.', s: 'Comp. Directo', d: 'a la mujer / esposa', estructura: ['', 'γυναικ', '', '', 'α'], t: () => buildNounT('γυνή','γύναι','γυναῖκα','γυναικός','γυναικί','γυναῖκες','-','γυναῖκας','γυναικῶν','γυναιξί') },
+            'γυνη': { l: 'γυνή, γυναικός, ἡ', m: 'Sustantivo, Nominativo Sg.', s: 'Sujeto', d: 'una mujer', estructura: ['', 'γυν', '', '', 'η'], t: () => buildNounT('γυνή','γύναι','γυναῖκα','γυναικός','γυναικί','γυναῖκες','-','γυναῖκας','γυναικῶν','γυναιξί') },
+            'λιμενοσ': { l: 'λιμήν, -ένος, ὁ', m: 'Sustantivo, Genitivo Sg.', s: 'Compl. de Lugar', d: 'del puerto', estructura: ['', 'λιμεν', '', '', 'ος'], t: () => buildNounT('λιμήν','-','λιμένα','λιμένος','λιμένι','λιμένες','-','λιμένας','λιμένων','λιμέσι') },
+            'λιμενα': { l: 'λιμήν, -ένος, ὁ', m: 'Sustantivo, Acusativo Sg.', s: 'Dirección', d: 'al puerto', estructura: ['', 'λιμεν', '', '', 'α'], t: () => buildNounT('λιμήν','-','λιμένα','λιμένος','λιμένι','λιμένες','-','λιμένας','λιμένων','λιμέσι') },
+            'πυλαι': { l: 'πύλη, -ης, ἡ', m: 'Sustantivo, Nominativo Pl.', s: 'Sujeto', d: 'las puertas', estructura: ['', 'πυλ', '', '', 'αι'], t: () => G.n1F('πύλ', true) },
+            'βωμον': { l: 'βωμός, -οῦ, ὁ', m: 'Sustantivo, Acusativo Sg.', s: 'Dirección', d: 'el altar', estructura: ['', 'βωμ', '', 'ο', 'ν'], t: () => G.n2M('βωμ') },
+            'βασιλει': { l: 'βασιλεύς, -έως, ὁ', m: 'Sustantivo, Dativo Sg.', s: 'Comp. Indirecto', d: 'al Rey', estructura: ['', 'βασιλε', '', '', 'ι'], t: () => buildNounT('βασιλεύς','-','βασιλέα','βασιλέως','βασileῖ','-','-','-','-','-') },
+            'βασιλευσ': { l: 'βασιλεύς, -έως, ὁ', m: 'Sustantivo, Nominativo Sg.', s: 'Sujeto', d: 'el Rey', estructura: ['', 'βασιλε', '', '', 'υς'], t: () => buildNounT('βασιλεύς','-','βασιλέα','βασιλέως','βασileῖ','-','-','-','-','-') },
+            'χειρασ': { l: 'χείρ, χειρός, ἡ', m: 'Sustantivo, Acusativo Plural', s: 'Comp. Directo', d: 'las manos', estructura: ['', 'χειρ', '', '', 'ας'], t: () => buildNounT('χείρ','-','χεῖρα','χειρός','χειρί','χεῖρες','-','χεῖρας','χειρῶν','χερσί') },
+
+            // VERBOS: ACCIÓN Y MOVIMIENTO
+            'κελευουσιν': { l: 'κελεύω', m: 'Verbo, 3ª pl. Pres. Ind. Act.', s: 'Núcleo', d: 'ordenan / mandan', estructura: ['', 'κελευ', '', 'ου', 'σιν'], t: () => G.vPresA('κελεύ') },
+            'ηγησατο': { l: 'ἡγέομαι', m: 'Verbo, 3ª sg. Aoristo Ind. Medio', s: 'Núcleo', d: 'guio / lideró', estructura: ['', 'ηγη', 'σα', '', 'το'], t: () => G.vAorM('', 'ηγη') },
+            'εζητησαν': { l: 'ζητέω', m: 'Verbo, 3ª pl. Aoristo Ind. Act.', s: 'Núcleo', d: 'buscaron', estructura: ['ε', 'ζητη', 'σα', '', 'ν'], t: () => G.vAorA('ε', 'ζητη') },
+            'επεμψεν': { l: 'πέμπω', m: 'Verbo, 3ª sg. Aoristo Ind. Act.', s: 'Núcleo', d: 'envió', estructura: ['ε', 'πεμψ', '', '', 'εν'], t: () => G.vAorA('ε', 'πεμψ') },
+            'ειπον': { l: 'λέγω', m: 'Verbo, 3ª pl. Aoristo Radical Act.', s: 'Núcleo', d: 'dijeron', estructura: ['', 'ειπ', '', '', 'ον'], t: () => buildVerbT('εἶπον','εἶπες','εἶπε(ν)','εἴπομεν','εἴπετε','εἶπον', "Aoristo de λέγω") },
+            'εφη': { l: 'φημί', m: 'Verbo, 3ª sg. Imperf. Act.', s: 'Núcleo', d: 'dijo / afirmaba', estructura: ['', 'ε', '', '', 'φη'], t: () => buildVerbT('ἔφην','ἔφησθα','ἔφη','ἔφαμεν','ἔφατε','ἔφασαν', "Imperf. de φημί") },
+            'εδοξεν': { l: 'δοκέω', m: 'Verbo, 3ª sg. Aoristo Ind. Act.', s: 'Núcleo (Impersonal)', d: 'pareció bien / decidió', estructura: ['ε', 'δοξ', '', '', 'εν'], t: () => buildVerbT('ἔδοξα','ἔδοξας','ἔδοξε','-','-','-','Aoristo de δοκέω') },
+            'κοψον': { l: 'κόπτω', m: 'Verbo, 2ª sg. Imperativo Aoristo', s: 'Mandato', d: '¡llama / golpea!', estructura: ['', 'κοψ', '', '', 'ον'], t: () => buildVerbT('ἔκοψα','ἔκοψας','ἔκοψε','-','-','-','Aoristo de κόπτω') },
+            'εκοψεν': { l: 'κόπτω', m: 'Verbo, 3ª sg. Aoristo Ind. Act.', s: 'Núcleo', d: 'llamó (a la puerta)', estructura: ['ε', 'κοψ', '', '', 'εν'], t: () => G.vAorA('ε', 'κοψ') },
+            'μενεισ': { l: 'μένω', m: 'Verbo, 2ª sg. Futuro Ind. Act.', s: 'Núcleo', d: 'permanecerás', estructura: ['', 'μεν', 'ει', '', 'ς'], t: () => buildVerbT('μενῶ','μενεῖς','μενεῖ','μενοῦμεν','μενεῖτε','μενοῦσι', "Futuro de μένω") },
+            'πεμψει': { l: 'πέμπω', m: 'Verbo, 3ª sg. Futuro Ind. Act.', s: 'Núcleo', d: 'enviará', estructura: ['', 'πεμψ', '', 'ει', ''], t: () => G.vFutA('πέμψ') },
+            'εβοηθουν': { l: 'βοηθέω', m: 'Verbo, 3ª pl. Imperf. Ind. Act.', s: 'Núcleo', d: 'ayudaban', estructura: ['ε', 'βοηθ', 'ου', '', 'ν'], t: () => G.vImpfA('ε', 'βοηθ') },
+
+            // ADJETIVOS Y PRONOMBRES
+            'ερημον': { l: 'ἔρημος, -ον', m: 'Adjetivo, Acusativo Sg. Neutro', s: 'Atributo', d: 'desierta', estructura: ['', 'ερημ', '', 'ο', 'ν'], t: () => G.n2N('ἐρήμ') },
+            'ετοιμα': { l: 'ἕτοιμος, -η, -ον', m: 'Adjetivo, Nom. Pl. Neutro', s: 'Atributo', d: 'preparadas / listas', estructura: ['', 'ετοιμ', '', '', 'α'], t: () => G.n2N('ἕτοιμ') },
+            'παντα': { l: 'πᾶς, πᾶσα, πᾶν', m: 'Adjetivo, Acusativo Pl. Neutro', s: 'Compl. Directo', d: 'todo / todas las cosas', estructura: ['', 'παντ', '', '', 'α'], t: () => buildNounT('πᾶν','-','πᾶν','παντός','παντί','πάντα','-','πάντα','πάντων','πᾶσι') },
+            'εκεινη': { l: 'ἐκεῖνος, -η, -ο', m: 'Pronombre Demost., Dativo Sg. Fem.', s: 'Compl. Tiempo', d: 'en aquel (día)', estructura: ['', 'εκειν', '', '', 'η'], t: () => buildNounT('ἐκείνη','-','ἐκείνην','ἐκείνης','ἐκείνῃ','-','-','-','-','-') },
+            'ουδεν': { l: 'οὐδείς, οὐδεμία, οὐδέν', m: 'Pronombre Indef., Acus. Sg. Neutro', s: 'Compl. Directo', d: 'nada / ningún mal', estructura: ['', 'ουδ', '', '', 'εν'], t: () => inv },
+
+            // INFINITIVOS Y PARTICPIOS EXTRAS
+            'ιεναι': { l: 'εἶμι', m: 'Verbo, Infinitivo Presente', s: 'Comp. de Mandato', d: 'ir', estructura: ['', 'ι', '', '', 'εναι'], t: () => inv },
+            'αφικεσθαι': { l: 'ἀφικνέομαι', m: 'Verbo, Infinitivo Aoristo Medio', s: 'Sujeto de δεῖ', d: 'llegar', estructura: ['αφ', 'ικ', '', '', 'εσθαι'], t: () => inv },
+            'αποθανοντας': { l: 'ἀποθνῄσκω', m: 'Verbo, Part. Aoristo Radical, Acus. Pl. Masc.', s: 'Part. Sustantivado', d: 'a los que murieron', estructura: ['', 'αποθαν', '', '', 'οντας'], t: () => buildNounT('ἀποθανών','-','ἀποθανόντα','-ος','-τι','-','-','ἀποθανόντας','-ων','-') },
+            'ιδων': { l: 'ὁράω', m: 'Verbo, Part. Aoristo Radical, Nom. Sg. Masc.', s: 'Part. Concertado', d: 'habiendo visto', estructura: ['', 'ιδ', '', '', 'ων'], t: () => buildNounT('ἰδών','-','ἰδόντα','ἰδόντος','ἰδόντι','-','-','-','-','-') },
+            'εισβητε': { l: 'εἰσβαίνω', m: 'Verbo, 2ª pl. Imperativo Aoristo', s: 'Mandato', d: '¡embarcad!', estructura: ['εισ', 'βη', '', '', 'τε'], t: () => buildVerbT('-','-','-','-','εἰσβῆτε','-', 'Imp. Aoristo') },
         };
 
         // ==========================================
@@ -1838,8 +1882,8 @@
             return `<span class="text-cyan-400 font-bold">${originalWord}</span>`;
         }
 
-        function consultarOraculo(word) {
-            // Marcar palabra en el texto
+       function consultarOraculo(word) {
+            // Animación de selección
             document.querySelectorAll('.word-token').forEach(t => {
                 t.classList.remove('bg-cyan-500/40', 'ring-2', 'ring-cyan-400');
                 if (t.innerText.replace(/[»"”“'’!,;·.?:()]/g, '') === word) {
@@ -1856,21 +1900,21 @@
             const key = normalizeGreekForInput(word);
             let entry = wordDB[key];
 
-            // Abrir Drawer
+            // ABRIR PANEL
             overlay.classList.remove('pointer-events-none', 'opacity-0');
             drawer.classList.remove('translate-x-full');
             content.innerHTML = `<div class="flex flex-col items-center py-40"><i data-lucide="loader" class="w-12 h-12 animate-spin text-cyan-500 mb-4"></i><p class="font-cinzel text-cyan-400 animate-pulse">Consultando el Códice...</p></div>`;
             lucide.createIcons();
 
             setTimeout(() => {
-                // --- SEGURIDAD: FALLBACK PARA PALABRAS NO REGISTRADAS ---
+                // --- SEGURIDAD: SI LA PALABRA NO ESTÁ REGISTRADA ---
                 if (!entry) {
                     entry = {
                         l: word,
-                        m: "Forma gramatical bajo estudio.",
-                        s: "Función sintáctica según contexto.",
-                        d: "Traducción en proceso.",
-                        t: () => '<p class="text-slate-500 italic text-center p-4">La tabla de flexión completa está en los archivos de la Academia.</p>'
+                        m: "Palabra o partícula gramatical.",
+                        s: "Análisis disponible en el Códice completo.",
+                        d: "Traducción en proceso de descifrado.",
+                        t: () => '<p class="text-slate-500 italic text-center p-4">Consulta el glosario de Cultura para más detalles.</p>'
                     };
                 }
 
@@ -1878,12 +1922,10 @@
                 let m = (entry.m || "").toLowerCase();
                 if (m.includes('nom') || m.includes('voc')) color = 'blue';
                 else if (m.includes('acus')) color = 'emerald';
-                else if (m.includes('gen')) color = 'purple';
-                else if (m.includes('dat')) color = 'amber';
-                else if (m.includes('verbo')) color = 'red';
+                else if (m.includes('verbo') || m.includes('participio')) color = 'red';
 
                 content.innerHTML = `
-                    <div class="mb-10 border-b border-${color}-900/50 pb-8">
+                    <div class="mb-10 border-b border-${color}-900/50 pb-8 text-center md:text-left">
                         <div class="inline-block text-4xl md:text-6xl mb-6 font-serif bg-black/80 p-8 rounded-3xl border-2 border-${color}-500/50 shadow-2xl overflow-x-auto max-w-full">
                             ${diseccionarPalabra(word, entry)}
                         </div>
