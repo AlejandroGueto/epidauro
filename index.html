@@ -1635,6 +1635,7 @@
                         else t.classList.add('analyzed-inv');
                     }
                 });
+               // PREMIUM: Radar Gramatical (Colorear la palabra en el texto original)
 
                 content.innerHTML = `
                     <div class="mb-12 border-b-2 border-${colorTema}-900 pb-8 flex justify-between items-start">
@@ -1788,13 +1789,11 @@
             document.getElementById('finalTime').innerText = document.getElementById('timerDisplay').innerText;
             document.getElementById('finalMistakes').innerText = mistakes;
             
-            // Cálculo de Score
             const finalScoreVal = Math.max(0, BASE_SCORE - (90*60 - timeRemaining)*5 - (mistakes * 500));
             
             let currentDisplayScore = 0;
             const scoreElement = document.getElementById('finalScore');
             
-            // Animación de conteo de puntos
             const countInterval = setInterval(() => {
                 currentDisplayScore += 353;
                 if(currentDisplayScore >= finalScoreVal) {
@@ -1813,22 +1812,21 @@
         let mapaGrecia = null;
 
         function initRealMap() {
-            if (mapaGrecia) return; // Si ya se creó, no hacemos nada.
+            const mapContainer = document.getElementById('mapa-real');
+            if (mapaGrecia || !mapContainer) return; 
 
-            // 1. Inicializar mapa centrado en el Golfo Sarónico
+            // Crear el objeto del mapa
             mapaGrecia = L.map('mapa-real', {
-                zoomControl: false // Quitamos el zoom default para ponerlo mejor luego
+                zoomControl: false 
             }).setView([38.0500, 23.3000], 8);
 
             L.control.zoom({ position: 'topright' }).addTo(mapaGrecia);
 
-            // 2. Capa base: Satélite de ESRI (da un aspecto realista, de época, sin carreteras modernas)
             L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
                 maxZoom: 12
             }).addTo(mapaGrecia);
 
-            // 3. Coordenadas Históricas (NOMBRES CORREGIDOS)
+            // Coordenadas
             const tesalia = [39.4000, 22.4000];
             const termopilas = [38.7966, 22.5350];
             const beocia = [38.3233, 23.3194]; 
@@ -1836,12 +1834,16 @@
             const salamina = [37.9600, 23.5000];
             const epidauro = [37.5960, 23.0746];
 
-            // 4. Estilo común para las etiquetas (tooltips)
-            const tooltipStyle = {
-                permanent: true, 
-                direction: 'right', 
-                className: 'bg-transparent border-none text-white drop-shadow-[0_2px_4px_rgba(0,0,0,1)] font-cinzel text-lg font-black tracking-widest'
-            };
+            const tooltipStyle = { permanent: true, direction: 'right', className: 'bg-transparent border-none text-white drop-shadow-[0_2px_4px_rgba(0,0,0,1)] font-cinzel text-lg font-black' };
+
+            L.circleMarker(tesalia, { color: '#dc2626', radius: 6 }).addTo(mapaGrecia).bindTooltip("Tesalia", tooltipStyle);
+            L.circleMarker(beocia, { color: '#dc2626', radius: 6 }).addTo(mapaGrecia).bindTooltip("Beocia", tooltipStyle);
+            L.circleMarker(atenas, { color: '#0ea5e9', radius: 8 }).addTo(mapaGrecia).bindTooltip("Atenas", tooltipStyle);
+            L.circleMarker(epidauro, { color: '#22c55e', radius: 10 }).addTo(mapaGrecia).bindTooltip("Epidauro", tooltipStyle);
+
+            L.polyline([tesalia, termopilas, beocia, atenas], { color: '#ef4444', weight: 4, dashArray: '10, 15' }).addTo(mapaGrecia);
+            L.polyline([atenas, salamina, epidauro], { color: '#22c55e', weight: 4, dashArray: '8, 12' }).addTo(mapaGrecia);
+        }
 
             // 5. Marcadores de Posición
             // Ejército Persa (Rojo)
