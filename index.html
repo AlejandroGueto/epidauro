@@ -268,10 +268,10 @@
     
     <!-- Audio Elements -->
     <audio id="musicaFondo" loop preload="auto">
-        <source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_1efc7bb905.mp3?filename=ancient-mystery-105152.mp3" type="audio/mpeg">
+        <source src="https://www.chosic.com/wp-content/uploads/2021/07/The-Ancient-Oracle.mp3">
     </audio>
     <audio id="sonidoOraculo" preload="auto">
-        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_73e72eb1ee.mp3?filename=magic-sparkle-190030.mp3" type="audio/mpeg">
+        <source src="https://www.soundjay.com/misc/sounds/magic-chime-01.mp3" type="audio/mpeg">
     </audio>
 
     <!-- Contenedor de Logros Toast -->
@@ -1833,15 +1833,7 @@
             const salamina = [37.9600, 23.5000];
             const epidauro = [37.5960, 23.0746];
 
-            const tooltipStyle = { permanent: true, direction: 'right', className: 'bg-transparent border-none text-white drop-shadow-[0_2px_4px_rgba(0,0,0,1)] font-cinzel text-lg font-black' };
-
-            L.circleMarker(tesalia, { color: '#dc2626', radius: 6 }).addTo(mapaGrecia).bindTooltip("Tesalia", tooltipStyle);
-            L.circleMarker(beocia, { color: '#dc2626', radius: 6 }).addTo(mapaGrecia).bindTooltip("Beocia", tooltipStyle);
-            L.circleMarker(atenas, { color: '#0ea5e9', radius: 8 }).addTo(mapaGrecia).bindTooltip("Atenas", tooltipStyle);
-            L.circleMarker(epidauro, { color: '#22c55e', radius: 10 }).addTo(mapaGrecia).bindTooltip("Epidauro", tooltipStyle);
-
-            L.polyline([tesalia, termopilas, beocia, atenas], { color: '#ef4444', weight: 4, dashArray: '10, 15' }).addTo(mapaGrecia);
-            L.polyline([atenas, salamina, epidauro], { color: '#22c55e', weight: 4, dashArray: '8, 12' }).addTo(mapaGrecia);
+            const tooltipStyle = { permanent: true, direction: 'right', className: 'bg-transparent border-none text-white drop-shadow-[0_2px_4px_rgba(0,0,0,1)] font-cinzel text-lg font-black tracking-widest' };
 
             // 5. Marcadores de Posición
             // Ejército Persa (Rojo)
@@ -1861,31 +1853,14 @@
              .bindTooltip("SANTUARIO DE EPIDAURO", { ...tooltipStyle, className: 'bg-black/60 p-2 border border-green-500 rounded text-green-400 drop-shadow-2xl font-cinzel text-xl font-black tracking-widest' });
 
             // 6. Dibujar Rutas Estratégicas
-            // Ruta Invasión Persa
             const rutaPersa = [tesalia, termopilas, beocia, atenas];
-            L.polyline(rutaPersa, {
-                color: '#ef4444', 
-                weight: 4, 
-                dashArray: '10, 15', 
-                opacity: 0.8
-            }).addTo(mapaGrecia);
+            L.polyline(rutaPersa, { color: '#ef4444', weight: 4, dashArray: '10, 15', opacity: 0.8 }).addTo(mapaGrecia);
 
-            // Ruta de Refugio (Hacia Salamina y Epidauro)
             const rutaEscape = [atenas, salamina];
-            L.polyline(rutaEscape, {
-                color: '#0ea5e9', 
-                weight: 3, 
-                dashArray: '5, 10', 
-                opacity: 0.8
-            }).addTo(mapaGrecia);
+            L.polyline(rutaEscape, { color: '#0ea5e9', weight: 3, dashArray: '5, 10', opacity: 0.8 }).addTo(mapaGrecia);
 
-            const rutaEpidauro = [atenas, [37.8, 23.5], epidauro]; // Trayecto en barco esquivando la costa
-            L.polyline(rutaEpidauro, {
-                color: '#22c55e', 
-                weight: 4, 
-                dashArray: '8, 12', 
-                opacity: 0.9
-            }).addTo(mapaGrecia);
+            const rutaEpidauro = [atenas, [37.8, 23.5], epidauro];
+            L.polyline(rutaEpidauro, { color: '#22c55e', weight: 4, dashArray: '8, 12', opacity: 0.9 }).addTo(mapaGrecia);
         }
         function gameOver() {
             clearInterval(timerInterval);
