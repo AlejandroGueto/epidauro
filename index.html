@@ -130,9 +130,9 @@
            ========================================= */
        .word-token { 
             display: inline-block; 
-            padding: 4px 6px; 
-            margin: 4px 0; /* Da margen superior para que quepan los espíritus */
-            line-height: 1.2; 
+            padding: 8px 6px 4px 6px; /* Más espacio arriba para los espíritus y acentos altos */
+            margin: 2px 0; 
+            line-height: 1.1; 
             cursor: pointer; 
             transition: all 0.3s; 
             border-radius: 6px; 
@@ -146,8 +146,9 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .greek-display {
-            line-height: 2.4 !important; /* Interlineado ancho obligatorio para griego */
-            font-size: 1.3rem;
+            line-height: 2.8 !important; /* Interlineado extra ancho obligatorio para griego */
+            font-size: 1.35rem; /* Letra un pelín más grande para leer mejor */
+            padding-top: 10px; /* Evita que la primera línea de arriba del todo se corte */
         }
         .drawer { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); z-index: 300; }
         
@@ -1574,13 +1575,15 @@ function switchRightTab(id) {
     }
 
     if (id === 'tab-mapa') {
-        if (!mapInitialized) {
-            setTimeout(() => initRealMap(), 100); 
-            mapInitialized = true;
-        } else {
-            // EL TRUCO ESTÁ AQUÍ: Recalcula el tamaño si ya estaba creado
-            setTimeout(() => { if (mapaReal) mapaReal.invalidateSize(); }, 100);
-        }
+        // El truco definitivo para Leaflet oculto: esperar 300ms a que el navegador termine de dibujar y forzar recálculo
+        setTimeout(() => {
+            if (!mapInitialized) {
+                initRealMap(); 
+                mapInitialized = true;
+            } else if (mapaReal) {
+                mapaReal.invalidateSize(true); // Despierta el mapa a la fuerza
+            }
+        }, 300);
     }
 }
       
