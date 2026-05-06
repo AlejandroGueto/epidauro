@@ -30,7 +30,8 @@
             color: #e2e8f0; 
             background-image: radial-gradient(circle at 50% 50%, #1e3a8a 0%, #020617 100%); 
             min-height: 100vh; 
-            overflow-x: hidden; 
+            overflow-x: hidden;
+            margin: 0;
         }
         
         h1, h2, h3, .font-cinzel { font-family: 'Cinzel', serif; }
@@ -43,7 +44,7 @@
             letter-spacing: 0.02em; 
         }
         
-        /* Contenedor Pergamino Sagrado con textura SVG inyectada */
+        /* Contenedor Pergamino */
         .pergamino { 
             background-color: #fdfbf7; 
             color: #1e293b; 
@@ -52,8 +53,72 @@
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" opacity="0.05"><rect width="200" height="200" fill="%2394a3b8"/><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="4" stitchTiles="stitch"/></filter><rect width="200" height="200" filter="url(%23n)" opacity="0.4"/></svg>'); 
             border-radius: 8px;
             position: relative;
+            z-index: 10;
         }
 
+        .hidden-stage { display: none !important; }
+        
+        /* CABECERA: La bajamos de prioridad para que no flote sobre el Oráculo */
+        header {
+            position: sticky !important;
+            top: 0;
+            z-index: 100 !important; 
+            background: rgba(2, 6, 23, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 1.5rem !important;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+            display: flex;
+            justify-content: justify-between;
+            align-items: center;
+        }
+
+        /* EL ORÁCULO: Z-INDEX 2000 (MÁXIMA PRIORIDAD) */
+        #oracle-drawer {
+            z-index: 2000 !important; 
+            background-color: #020617 !important; /* Totalmente opaco */
+            border-left: 4px solid var(--mythic-cyan);
+            box-shadow: -20px 0 60px rgba(0,0,0,1);
+            position: fixed;
+            right: 0;
+            top: 0;
+            height: 100vh;
+            width: 100%;
+            max-width: 850px;
+            overflow-y: auto;
+        }
+
+        #drawer-overlay {
+            z-index: 1999 !important;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(4px);
+            position: fixed;
+            inset: 0;
+        }
+
+        /* PRUEBAS: Espaciado para que no se pisen */
+        #pruebasContainer {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            padding-bottom: 100px;
+        }
+
+        /* QUITAMOS MAYÚSCULAS FORZADAS */
+        .lema-display {
+            text-transform: none !important; /* Respetará tus acentos y minúsculas */
+            font-variant: normal !important;
+        }
+
+        .candado-input { 
+            width: 3.2rem; 
+            height: 4.2rem; 
+            font-size: 1.6rem; 
+            background: #0f172a;
+            border: 2px solid #1e3a8a;
+            text-align: center;
+            color: #38bdf8;
+            border-radius: 8px;
+        }
         .hidden-stage { display: none !important; }
         
         /* =========================================
@@ -1462,7 +1527,6 @@
             'εξεκομισαν': { l: 'ἐκκομίζω', m: 'Verbo, 3ª Plural Aoristo Activo', s: 'Núcleo', d: 'evacuaron', t: () => G.vAorA('ἐξεκόμισ', '') },
             'ηκουε': { l: 'ἀκούω', m: 'Verbo, 3ª Sg. Imperfecto Activo', s: 'Núcleo', d: 'escuchaba', t: () => G.vImpfA('ἤκου', '') },
             'ερωτησω': { l: 'ἐρωτάω', m: 'Verbo, 1ª Sg. Futuro Activo', s: 'Núcleo', d: 'preguntaré', t: () => G.vFutA('ἐρωτήσ') },
-            'ειμι': { l: 'εἰμί', m: 'Verbo, 1ª pers. sg. Presente Indicativo', s: 'Núcleo del Predicado (Cópula)', d: 'soy / estoy', estructura: ['', 'ει', '', '', 'μι'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. Indicativo de εἰμί") },
             'εστι': { l: 'εἰμί', m: 'Verbo, 3ª pers. sg. Presente Indicativo', s: 'Núcleo del Predicado (Cópula)', d: 'es / está', estructura: ['', 'εσ', '', '', 'τι'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. Indicativo de εἰμί") },
             'εστιν': { l: 'εἰμί', m: 'Verbo, 3ª pers. sg. Presente Indicativo', s: 'Núcleo del Predicado (Cópula)', d: 'es / está', estructura: ['', 'εσ', '', '', 'τιν'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. Indicativo de εἰμί") },
             'εισι': { l: 'εἰμί', m: 'Verbo, 3ª pers. pl. Presente Indicativo', s: 'Núcleo del Predicado (Cópula)', d: 'son / están', estructura: ['', 'ει', '', '', 'σι'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. Indicativo de εἰμί") },
@@ -1664,7 +1728,24 @@
             'αποθανοντας': { l: 'ἀποθνῄσκω', m: 'Verbo, Part. Aoristo Radical, Acus. Pl. Masc.', s: 'Part. Sustantivado', d: 'a los que murieron', estructura: ['', 'αποθαν', '', '', 'οντας'], t: () => buildNounT('ἀποθανών','-','ἀποθανόντα','-ος','-τι','-','-','ἀποθανόντας','-ων','-') },
             'ιδων': { l: 'ὁράω', m: 'Verbo, Part. Aoristo Radical, Nom. Sg. Masc.', s: 'Part. Concertado', d: 'habiendo visto', estructura: ['', 'ιδ', '', '', 'ων'], t: () => buildNounT('ἰδών','-','ἰδόντα','ἰδόντος','ἰδόντι','-','-','-','-','-') },
             'εισβητε': { l: 'εἰσβαίνω', m: 'Verbo, 2ª pl. Imperativo Aoristo', s: 'Mandato', d: '¡embarcad!', estructura: ['εισ', 'βη', '', '', 'τε'], t: () => buildVerbT('-','-','-','-','εἰσβῆτε','-', 'Imp. Aoristo') },
-        };
+        // --- AMPLIACIÓN DE LÉXICO (UNIDAD XVIII) ---
+            'οι': { l: 'ὁ, ἡ, τό', m: 'Artículo, Nominativo Plural Masc.', s: 'Determinante', d: 'los', t: () => G.artM() },
+            'αι': { l: 'ὁ, ἡ, τό', m: 'Artículo, Nominativo Plural Fem.', s: 'Determinante', d: 'las', t: () => G.artF() },
+            'τα': { l: 'ὁ, ἡ, τό', m: 'Artículo, Nom/Acus Plural Neutro', s: 'Determinante', d: 'los / las cosas', t: () => G.artN() },
+            'τον': { l: 'ὁ, ἡ, τό', m: 'Artículo, Acusativo Singular Masc.', s: 'Determinante', d: 'al / el', t: () => G.artM() },
+            'την': { l: 'ὁ, ἡ, τό', m: 'Artículo, Acusativo Singular Fem.', s: 'Determinante', d: 'la', t: () => G.artF() },
+            'του': { l: 'ὁ, ἡ, τό', m: 'Artículo, Genitivo Singular Masc.', s: 'Determinante', d: 'del', t: () => G.artM() },
+            'τησ': { l: 'ὁ, ἡ, τό', m: 'Artículo, Genitivo Singular Fem.', s: 'Determinante', d: 'de la', t: () => G.artF() },
+            'τω': { l: 'ὁ, ἡ, τό', m: 'Artículo, Dativo Singular Masc.', s: 'Determinante', d: 'al', t: () => G.artM() },
+            'ιατροσ': { l: 'ἰατρός, -οῦ, ὁ', m: 'Sustantivo, Nom. Sg. Masc.', s: 'Sujeto', d: 'médico', estructura: ['', 'ιατρ', '', 'ο', 'ς'], t: () => G.n2M('ἰατρ') },
+            'ιατρων': { l: 'ἰατρός, -οῦ, ὁ', m: 'Sustantivo, Gen. Pl. Masc.', s: 'Compl. Nombre', d: 'de los médicos', estructura: ['', 'ιατρ', '', '', 'ων'], t: () => G.n2M('ἰατρ') },
+            'ωφελησει': { l: 'ὠφελέω', m: 'Verbo, 3ª sg. Futuro Ind. Act.', s: 'Núcleo', d: 'ayudará', estructura: ['', 'ωφελη', 'σ', 'ει', ''], t: () => G.vFutA('ὠφελή') },
+            'αφιξομεθα': { l: 'ἀφικνέομαι', m: 'Verbo, 1ª pl. Futuro Ind. Med.', s: 'Núcleo', d: 'llegaremos', estructura: ['αφ', 'ιξ', 'ο', 'με', 'θα'], t: () => G.vFutM('ἀφίξ') },
+            'μενεισ': { l: 'μένω', m: 'Verbo, 2ª sg. Futuro Ind. Act.', s: 'Núcleo', d: 'permanecerás', estructura: ['', 'μεν', 'ει', '', 'ς'], t: () => buildVerbT('μενῶ','μενεῖς','μενεῖ','μενοῦμεν','μενεῖτε','μενοῦσι', "Futuro de μένω") },
+            'πεμψει': { l: 'πέμπω', m: 'Verbo, 3ª sg. Futuro Ind. Act.', s: 'Núcleo', d: 'enviará', estructura: ['', 'πεμψ', '', 'ει', ''], t: () => G.vFutA('πέμψ') },
+            'λογουσ': { l: 'λόγος, -ου, ὁ', m: 'Sustantivo, Acus. Pl. Masc.', s: 'Comp. Directo', d: 'palabras / propuestas', estructura: ['', 'λογ', '', 'ου', 'ς'], t: () => G.n2M('λογ') },
+            'ναυται': { l: 'ναύτης, -ου, ὁ', m: 'Sustantivo, Nom. Pl. Masc.', s: 'Sujeto', d: 'marineros', estructura: ['', 'ναυτ', '', '', 'αι'], t: () => G.n1M('ναύτ') },
+        };
 
         // ==========================================
         // 5. LÓGICA DE CONTROL DE AUDIO
@@ -1883,83 +1964,84 @@
         }
 
        function consultarOraculo(word) {
-            // Animación de selección
-            document.querySelectorAll('.word-token').forEach(t => {
-                t.classList.remove('bg-cyan-500/40', 'ring-2', 'ring-cyan-400');
-                if (t.innerText.replace(/[»"”“'’!,;·.?:()]/g, '') === word) {
-                    t.classList.add('bg-cyan-500/40', 'ring-2', 'ring-cyan-400');
-                }
-            });
-
-            const sound = document.getElementById('sonidoOraculo');
-            if (sound) { sound.currentTime = 0; sound.play().catch(e=>{}); }
-            
-            const drawer = document.getElementById('oracle-drawer');
-            const overlay = document.getElementById('drawer-overlay');
-            const content = document.getElementById('oracle-content');
-            const key = normalizeGreekForInput(word);
-            let entry = wordDB[key];
-
-            // ABRIR PANEL
-            overlay.classList.remove('pointer-events-none', 'opacity-0');
-            drawer.classList.remove('translate-x-full');
-            content.innerHTML = `<div class="flex flex-col items-center py-40"><i data-lucide="loader" class="w-12 h-12 animate-spin text-cyan-500 mb-4"></i><p class="font-cinzel text-cyan-400 animate-pulse">Consultando el Códice...</p></div>`;
-            lucide.createIcons();
-
-            setTimeout(() => {
-                // --- SEGURIDAD: SI LA PALABRA NO ESTÁ REGISTRADA ---
-                if (!entry) {
-                    entry = {
-                        l: word,
-                        m: "Palabra o partícula gramatical.",
-                        s: "Análisis disponible en el Códice completo.",
-                        d: "Traducción en proceso de descifrado.",
-                        t: () => '<p class="text-slate-500 italic text-center p-4">Consulta el glosario de Cultura para más detalles.</p>'
-                    };
-                }
-
-                let color = 'cyan';
-                let m = (entry.m || "").toLowerCase();
-                if (m.includes('nom') || m.includes('voc')) color = 'blue';
-                else if (m.includes('acus')) color = 'emerald';
-                else if (m.includes('verbo') || m.includes('participio')) color = 'red';
-
-                content.innerHTML = `
-                    <div class="mb-10 border-b border-${color}-900/50 pb-8 text-center md:text-left">
-                        <div class="inline-block text-4xl md:text-6xl mb-6 font-serif bg-black/80 p-8 rounded-3xl border-2 border-${color}-500/50 shadow-2xl overflow-x-auto max-w-full">
-                            ${diseccionarPalabra(word, entry)}
-                        </div>
-                        <h3 class="text-2xl text-${color}-400 font-cinzel tracking-widest mt-2 uppercase">Lema: ${entry.l}</h3>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-slate-900/90 p-8 rounded-2xl border-t-4 border-${color}-500 shadow-xl">
-                            <span class="text-[11px] font-black text-${color}-400 uppercase tracking-widest block mb-2">Morfología</span>
-                            <p class="text-xl text-slate-100 font-serif leading-relaxed">${entry.m}</p>
-                        </div>
-                        <div class="bg-slate-900/90 p-8 rounded-2xl border-t-4 border-slate-500 shadow-xl">
-                            <span class="text-[11px] font-black text-slate-400 uppercase tracking-widest block mb-2">Sintaxis</span>
-                            <p class="text-xl text-slate-100 font-serif leading-relaxed">${entry.s}</p>
-                        </div>
-                    </div>
-
-                    <div class="bg-gradient-to-br from-slate-900 to-black p-10 rounded-3xl mt-8 border border-slate-800 shadow-2xl">
-                        <span class="text-[11px] font-black text-amber-500 uppercase tracking-widest block mb-4">Traducción</span>
-                        <p class="text-4xl italic font-serif text-white border-l-4 border-amber-500 pl-6 py-2">"${entry.d}"</p>
-                    </div>
-
-                    <div class="mt-10 bg-black/40 rounded-2xl p-4 overflow-x-auto border border-slate-800">
-                        ${entry.t()}
-                    </div>`;
-                lucide.createIcons();
-            }, 350);
+    const drawer = document.getElementById('oracle-drawer');
+    const overlay = document.getElementById('drawer-overlay');
+    const content = document.getElementById('oracle-content');
+    
+    // Resaltar palabra en el texto
+    document.querySelectorAll('.word-token').forEach(t => {
+        t.classList.remove('bg-cyan-500/40', 'ring-2', 'ring-cyan-400');
+        if (t.innerText.replace(/[»"”“'’!,;·.?:()]/g, '') === word) {
+            t.classList.add('bg-cyan-500/40', 'ring-2', 'ring-cyan-400');
         }
+    });
+
+    const key = normalizeGreekForInput(word);
+    let entry = wordDB[key];
+
+    overlay.classList.remove('pointer-events-none', 'opacity-0');
+    drawer.classList.remove('translate-x-full');
+    content.innerHTML = `<div class="flex flex-col items-center py-40"><i data-lucide="loader" class="w-12 h-12 animate-spin text-cyan-500 mb-4"></i><p class="font-cinzel text-cyan-400">Consultando Códice...</p></div>`;
+    lucide.createIcons();
+
+    setTimeout(() => {
+        if (!entry) {
+            entry = {
+                l: word,
+                m: "Análisis gramatical pendiente.",
+                s: "Función sintáctica según contexto.",
+                d: "Traducción en proceso de descifrado.",
+                t: () => '<p class="text-slate-500 italic text-center p-4">Consulta el glosario de Cultura para más detalles.</p>'
+            };
+        }
+
+        let color = 'cyan';
+        let m = (entry.m || "").toLowerCase();
+        if (m.includes('nom') || m.includes('voc')) color = 'blue';
+        else if (m.includes('acus')) color = 'emerald';
+        else if (m.includes('verbo')) color = 'red';
+
+        content.innerHTML = `
+            <div class="mb-10 border-b border-${color}-900/50 pb-8 text-center md:text-left">
+                <div class="inline-block text-4xl md:text-6xl mb-6 font-serif bg-black/80 p-8 rounded-3xl border-2 border-${color}-500/50 shadow-2xl overflow-x-auto max-w-full">
+                    ${diseccionarPalabra(word, entry)}
+                </div>
+                <h3 class="text-2xl text-${color}-400 font-cinzel tracking-widest mt-2 lema-display">
+                    Lema: <span class="normal-case">${entry.l}</span>
+                </h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-slate-900/90 p-8 rounded-2xl border-t-4 border-${color}-500 shadow-xl">
+                    <span class="text-[11px] font-black text-slate-400 uppercase tracking-widest block mb-2">Morfología</span>
+                    <p class="text-xl text-slate-100 font-serif leading-relaxed">${entry.m}</p>
+                </div>
+                <div class="bg-slate-900/90 p-8 rounded-2xl border-t-4 border-slate-500 shadow-xl">
+                    <span class="text-[11px] font-black text-slate-400 uppercase tracking-widest block mb-2">Sintaxis</span>
+                    <p class="text-xl text-slate-100 font-serif leading-relaxed">${entry.s}</p>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-slate-900 to-black p-10 rounded-3xl mt-8 border border-slate-800 shadow-2xl">
+                <span class="text-[11px] font-black text-amber-500 uppercase tracking-widest block mb-4">Traducción</span>
+                <p class="text-4xl italic font-serif text-white border-l-4 border-amber-500 pl-6 py-2">"${entry.d}"</p>
+            </div>
+
+            <div class="mt-10 bg-black/40 rounded-2xl p-4 overflow-x-auto border border-white/5">
+                ${entry.t()}
+            </div>`;
+        lucide.createIcons();
+    }, 350);
+}
 
         function closeOracle() { 
             const drawer = document.getElementById('oracle-drawer');
             const overlay = document.getElementById('drawer-overlay');
             if(drawer) drawer.classList.add('translate-x-full'); 
-            if(overlay) overlay.classList.add('opacity-0', 'pointer-events-none');
+            if(overlay) {
+                overlay.classList.add('opacity-0');
+                overlay.classList.add('pointer-events-none');
+            }
         }
       
         function toggleTranslation() {
@@ -2033,19 +2115,25 @@
         }
 
         function checkPrueba3() {
-            if (document.getElementById('p3-q1').value.trim() === 'b' && document.getElementById('p3-q2').value === 'b') successPrueba('prueba3', 'prueba4', "Prueba III Superada: Eres un Sabio.");
-            else failPrueba('p3-error'); 
-        }
+    if (document.getElementById('p3-q1').value === 'b' && 
+        document.getElementById('p3-q2').value === 'b') {
+        successPrueba('prueba3', 'prueba4', "Prueba III Superada: Sabiduría de los Antiguos.");
+    } else failPrueba('p3-error');
+}
 
-        function checkPrueba4() {
-            if (document.getElementById('p4-q1').value.trim() === 'b' && document.getElementById('p4-q2').value === 'c') successPrueba('prueba4', 'prueba5', "Prueba IV Superada: La Historia te avala.");
-            else failPrueba('p4-error');
-        }
+function checkPrueba4() {
+    if (document.getElementById('p4-q1').value === 'b' && 
+        document.getElementById('p4-q2').value === 'c') {
+        successPrueba('prueba4', 'prueba5', "Prueba IV Superada: Historia de la Hélade.");
+    } else failPrueba('p4-error');
+}
 
-        function checkPrueba5() {
-            if (document.getElementById('p5-q1').value.trim() === 'a' && document.getElementById('p5-q2').value === 'b') successPrueba('prueba5', 'prueba6', "Prueba V Superada: Hermenéutica Perfecta.");
-            else failPrueba('p5-error');
-        }
+function checkPrueba5() {
+    if (document.getElementById('p5-q1').value === 'a' && 
+        document.getElementById('p5-q2').value === 'b') {
+        successPrueba('prueba5', 'prueba6', "Prueba V Superada: Hermenéutica Perfecta.");
+    } else failPrueba('p5-error');
+}
 
         function checkPrueba6() {
             const code = [
