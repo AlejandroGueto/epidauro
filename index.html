@@ -14,8 +14,8 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     
     <style>
-        /* =========================================
-           1. ARQUITECTURA VISUAL Y VARIABLES
+    /* =========================================
+           ARQUITECTURA VISUAL ARREGLADA
            ========================================= */
         :root {
             --greek-gold: #d4af37;
@@ -34,63 +34,26 @@
             margin: 0;
         }
         
-        h1, h2, h3, .font-cinzel { font-family: 'Cinzel', serif; }
-        
-        /* Tipografía académica para el griego antiguo */
-        .greek-display { 
-            font-family: 'Noto Serif', 'Playfair Display', serif; 
-            font-size: 1.6rem; 
-            line-height: 2.8; 
-            letter-spacing: 0.02em; 
-        }
-        
-        /* Contenedor Pergamino */
-        .pergamino { 
-            background-color: #fdfbf7; 
-            color: #1e293b; 
-            box-shadow: inset 0 0 60px rgba(148, 163, 184, 0.4), 0 15px 40px rgba(0,0,0,0.8); 
-            border: 1px solid #cbd5e1; 
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" opacity="0.05"><rect width="200" height="200" fill="%2394a3b8"/><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="4" stitchTiles="stitch"/></filter><rect width="200" height="200" filter="url(%23n)" opacity="0.4"/></svg>'); 
-            border-radius: 8px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .hidden-stage { display: none !important; }
-        
-        /* CABECERA: La bajamos de prioridad para que no flote sobre el Oráculo */
+        /* EL RELOJ Y LOS PASOS (HEADER) */
         header {
-            position: sticky !important;
-            top: 0;
-            z-index: 100 !important; 
+            position: relative; /* Ya no es sticky para que no flote sobre el panel */
+            z-index: 10 !important; 
             background: rgba(2, 6, 23, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 0.75rem 1.5rem !important;
-            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
-            display: flex;
-            justify-content: justify-between;
-            align-items: center;
+            padding: 1rem !important;
+            border-bottom: 2px solid var(--mythic-cyan);
         }
 
-        /* EL ORÁCULO: Z-INDEX 2000 (MÁXIMA PRIORIDAD) */
+        /* EL ORÁCULO (EL PANEL DERECHO) */
         #oracle-drawer {
-            z-index: 2000 !important; 
-            background-color: #020617 !important; /* Totalmente opaco */
-            border-left: 4px solid var(--mythic-cyan);
-            box-shadow: -20px 0 60px rgba(0,0,0,1);
+            z-index: 10000 !important; /* Aumentamos el número para que gane a todos */
+            background-color: #020617 !important;
             position: fixed;
-            right: 0;
-            top: 0;
-            height: 100vh;
-            width: 100%;
-            max-width: 850px;
-            overflow-y: auto;
+            /* ... el resto igual ... */
         }
 
         #drawer-overlay {
-            z-index: 1999 !important;
-            background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(4px);
+            z-index: 9999 !important; /* El velo negro justo debajo del panel */
+            background: rgba(0,0,0,0.8);
             position: fixed;
             inset: 0;
         }
@@ -355,63 +318,48 @@
     <!-- =========================================
          CABECERA SUPERIOR
          ========================================= -->
-  <header class="w-full max-w-[1400px] flex flex-col md:flex-row justify-between items-center border-b border-cyan-900/50 pb-2 pt-2 mb-4 hidden-stage sticky top-0 z-50 bg-[#020617]/95 backdrop-blur-md px-6 shadow-xl" id="gameHeader">
-        <div class="flex flex-col text-center md:text-left">
-            <div class="text-3xl md:text-4xl font-cinzel text-cyan-400 tracking-[0.15em] flex items-center justify-center md:justify-start gap-4 font-black drop-shadow-md">
-                <i data-lucide="landmark" class="w-10 h-10"></i> EPIDAUROS
+ <header class="w-full flex flex-col lg:flex-row justify-between items-center gap-6 px-8 py-4 mb-8 hidden-stage" id="gameHeader">
+        <!-- Título -->
+        <div class="flex flex-col text-center lg:text-left">
+            <div class="text-2xl md:text-3xl font-cinzel text-cyan-400 tracking-widest flex items-center justify-center lg:justify-start gap-3 font-black">
+                <i data-lucide="landmark" class="w-8 h-8"></i> EPIDAUROS
             </div>
-            <div class="text-[11px] text-cyan-600 font-bold uppercase tracking-[0.4em] mt-2">Santuarium Asclepii - Unit XVIII</div>
+            <div class="text-[10px] text-cyan-600 font-bold uppercase tracking-[0.3em]">Santuarium Asclepii</div>
         </div>
         
-        <!-- Barra de Progreso Mística -->
-        <div id="mission-progress" class="flex flex-wrap justify-center items-center gap-2 md:gap-4 bg-black/60 p-4 rounded-2xl border border-cyan-900 shadow-[0_0_20px_rgba(15,23,42,0.8)] w-full md:w-auto">
-            <div class="flex flex-col items-center group cursor-pointer" onclick="showToast('Prueba I: Morfología. En curso.')">
-                <div id="step-1" class="w-4 h-4 rounded-full bg-cyan-400 border-2 border-cyan-200 shadow-[0_0_10px_#38bdf8] transition-all duration-500 group-hover:scale-125"></div>
-                <span class="text-[10px] mt-2 text-cyan-400 font-bold tracking-widest">I</span>
-            </div>
-            <div class="w-6 md:w-10 h-1 bg-slate-800 rounded-full"></div>
-            <div class="flex flex-col items-center group">
-                <div id="step-2" class="w-4 h-4 rounded-full bg-slate-800 border-2 border-transparent transition-all duration-500"></div>
-                <span class="text-[10px] mt-2 text-slate-500 font-bold tracking-widest">II</span>
-            </div>
-            <div class="w-6 md:w-10 h-1 bg-slate-800 rounded-full"></div>
-            <div class="flex flex-col items-center group">
-                <div id="step-3" class="w-4 h-4 rounded-full bg-slate-800 border-2 border-transparent transition-all duration-500"></div>
-                <span class="text-[10px] mt-2 text-slate-500 font-bold tracking-widest">III</span>
-            </div>
-            <div class="w-6 md:w-10 h-1 bg-slate-800 rounded-full"></div>
-            <div class="flex flex-col items-center group">
-                <div id="step-4" class="w-4 h-4 rounded-full bg-slate-800 border-2 border-transparent transition-all duration-500"></div>
-                <span class="text-[10px] mt-2 text-slate-500 font-bold tracking-widest">IV</span>
-            </div>
-            <div class="w-6 md:w-10 h-1 bg-slate-800 rounded-full"></div>
-            <div class="flex flex-col items-center group">
-                <div id="step-5" class="w-4 h-4 rounded-full bg-slate-800 border-2 border-transparent transition-all duration-500"></div>
-                <span class="text-[10px] mt-2 text-slate-500 font-bold tracking-widest">V</span>
-            </div>
-            <div class="w-6 md:w-10 h-1 bg-slate-800 rounded-full"></div>
-            <div class="flex flex-col items-center group">
-                <div id="step-6" class="w-6 h-6 rounded-full bg-slate-900 flex items-center justify-center border-2 border-slate-700 transition-all duration-500 shadow-inner">
-                    <i data-lucide="flame" class="w-3 h-3 text-slate-600 transition-all duration-500" id="icon-flame"></i>
-                </div>
-                <span class="text-[10px] mt-2 text-slate-500 font-bold tracking-widest">PIRA</span>
+        <!-- Barra de Progreso (Los 5 números y la pira) -->
+        <div id="mission-progress" class="flex items-center gap-3 bg-black/40 p-3 rounded-xl border border-cyan-900/50">
+            <div id="step-1" class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_#38bdf8]"></div>
+            <span class="text-[10px] text-cyan-400 font-bold">I</span>
+            <div class="w-4 h-0.5 bg-slate-800"></div>
+            <div id="step-2" class="w-3 h-3 rounded-full bg-slate-800"></div>
+            <span class="text-[10px] text-slate-500 font-bold">II</span>
+            <div class="w-4 h-0.5 bg-slate-800"></div>
+            <div id="step-3" class="w-3 h-3 rounded-full bg-slate-800"></div>
+            <span class="text-[10px] text-slate-500 font-bold">III</span>
+            <div class="w-4 h-0.5 bg-slate-800"></div>
+            <div id="step-4" class="w-3 h-3 rounded-full bg-slate-800"></div>
+            <span class="text-[10px] text-slate-500 font-bold">IV</span>
+            <div class="w-4 h-0.5 bg-slate-800"></div>
+            <div id="step-5" class="w-3 h-3 rounded-full bg-slate-800"></div>
+            <span class="text-[10px] text-slate-500 font-bold">V</span>
+            <div class="w-4 h-0.5 bg-slate-800"></div>
+            <div id="step-6" class="w-5 h-5 rounded-full bg-slate-900 flex items-center justify-center border border-slate-700">
+                <i data-lucide="flame" class="w-3 h-3 text-slate-600" id="icon-flame"></i>
             </div>
         </div>
 
-        <div class="flex items-center gap-6">
-            <!-- Botón Mute Audio -->
-          <button onclick="toggleAudio()" id="btn-audio" aria-label="Silenciar música" title="Silenciar música" class="p-3 bg-slate-800 rounded-full border border-cyan-900 text-cyan-400 hover:text-white hover:bg-cyan-900 transition shadow-lg">
+        <!-- Reloj y Sonido -->
+        <div class="flex items-center gap-4">
+            <button onclick="toggleAudio()" class="p-2 bg-slate-800 rounded-full text-cyan-400 hover:bg-slate-700 transition">
                 <i data-lucide="volume-2" id="icon-audio"></i>
             </button>
-
-            <!-- Cronómetro -->
-            <div class="flex items-center justify-center gap-4 text-cyan-300 font-cinzel text-3xl md:text-4xl font-black bg-cyan-950/80 px-6 py-3 md:px-8 md:py-4 rounded-xl shadow-[0_0_30px_rgba(6,182,212,0.3)] border-2 border-cyan-500/50" id="timerContainer">
-                <i data-lucide="hourglass" class="w-8 h-8 animate-spin-slow"></i>
+            <div class="flex items-center gap-3 text-cyan-300 font-cinzel text-2xl font-black bg-cyan-950/80 px-5 py-2 rounded-lg border border-cyan-500/50 shadow-lg" id="timerContainer">
+                <i data-lucide="hourglass" class="w-5 h-5"></i>
                 <span id="timerDisplay">90:00</span>
             </div>
         </div>
     </header>
-
     <!-- =========================================
          ETAPA 0: EL PROPILEO (INTRO)
          ========================================= -->
@@ -1950,7 +1898,7 @@
        function consultarOraculo(word) {
     const drawer = document.getElementById('oracle-drawer');
     const overlay = document.getElementById('drawer-overlay');
-    const content = document.getElementById('oracle-content');
+    const content = document.getElementById('oracle-content'); // <-- Faltaba esto
     
     // Resaltar palabra en el texto
     document.querySelectorAll('.word-token').forEach(t => {
@@ -1961,10 +1909,15 @@
     });
 
     const key = normalizeGreekForInput(word);
-    let entry = wordDB[key];
+    let entry = wordDB[key]; // <-- Faltaba esto
 
+    // Abrir panel y poner velo oscuro
     overlay.classList.remove('pointer-events-none', 'opacity-0');
+    overlay.classList.add('opacity-100', 'pointer-events-auto');
     drawer.classList.remove('translate-x-full');
+    drawer.classList.add('translate-x-0');
+
+    // Animación de carga
     content.innerHTML = `<div class="flex flex-col items-center py-40"><i data-lucide="loader" class="w-12 h-12 animate-spin text-cyan-500 mb-4"></i><p class="font-cinzel text-cyan-400">Consultando Códice...</p></div>`;
     lucide.createIcons();
 
@@ -1991,8 +1944,8 @@
                     ${diseccionarPalabra(word, entry)}
                 </div>
                 <h3 class="text-2xl text-${color}-400 font-cinzel tracking-widest mt-2 lema-display">
-    Lema: <span class="normal-case">${entry.l}</span>
-</h3>
+                    Lema: <span class="normal-case">${entry.l}</span>
+                </h3>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -2000,7 +1953,7 @@
                     <span class="text-[11px] font-black text-slate-400 uppercase tracking-widest block mb-2">Morfología</span>
                     <p class="text-xl text-slate-100 font-serif leading-relaxed">${entry.m}</p>
                 </div>
-                <div class="bg-slate-900/90 p-8 rounded-2xl border-t-4 border-slate-500 shadow-xl">
+                <div class="bg-slate-900/90 p-8 rounded-2xl border-t-4 border-${color}-500 shadow-xl">
                     <span class="text-[11px] font-black text-slate-400 uppercase tracking-widest block mb-2">Sintaxis</span>
                     <p class="text-xl text-slate-100 font-serif leading-relaxed">${entry.s}</p>
                 </div>
@@ -2017,8 +1970,7 @@
         lucide.createIcons();
     }, 350);
 }
-
-        function closeOracle() { 
+       function closeOracle() { 
             const drawer = document.getElementById('oracle-drawer');
             const overlay = document.getElementById('drawer-overlay');
             if(drawer) drawer.classList.add('translate-x-full'); 
