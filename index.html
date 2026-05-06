@@ -1013,7 +1013,7 @@
             artF: () => buildNounT('ἡ','-','τὴν','τῆς','τῇ','αἱ','-','τὰς','τῶν','ταῖς'),
             artN: () => buildNounT('τὸ','-','τὸ','τοῦ','τῷ','τὰ','-','τὰ','τῶν','τοῖς')
         };
-
+        
        let wordDB = {
             // VERBOS: FUTUROS
             'ωφελησει': { l: 'ὠφελέω', m: '3ª sg. Futuro Ind. Act.', s: 'Núcleo', d: 'ayudará', t: () => G.vFutA('ὠφελή'), estructura: ['', 'ὠφελή', 'σ', '', 'ει'] },
@@ -1868,6 +1868,26 @@
         }
 
         lucide.createIcons();
+        function lluviaDracmas() {
+            for(let i=0; i<40; i++) {
+                let coin = document.createElement('div');
+                coin.innerHTML = '🪙';
+                coin.className = 'dracma text-3xl md:text-5xl';
+                coin.style.left = Math.random() * 100 + 'vw';
+                coin.style.animation = `dracmaFall ${Math.random() * 2 + 2}s linear forwards`;
+                document.body.appendChild(coin);
+                setTimeout(() => coin.remove(), 4000);
+            }
+        }
+
+        function initFire() {
+            const canvas = document.getElementById('fireCanvas');
+            if(canvas) {
+                canvas.style.background = 'radial-gradient(circle at bottom, #ea580c 0%, #991b1b 40%, transparent 80%)';
+                canvas.style.opacity = '0.8';
+                canvas.style.animation = 'pulseSVG 2s infinite alternate';
+            }
+        }
         let ateneaActive = false;
         function toggleAtenea() {
             ateneaActive = !ateneaActive;
