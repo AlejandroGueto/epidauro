@@ -36,7 +36,7 @@
         
         /* EL RELOJ Y LOS PASOS (HEADER) */
         header {
-            position: relative; /* Ya no es sticky para que no flote sobre el panel */
+            position: relative; 
             z-index: 10 !important; 
             background: rgba(2, 6, 23, 0.95);
             padding: 1rem !important;
@@ -45,14 +45,13 @@
 
         /* EL ORÁCULO (EL PANEL DERECHO) */
         #oracle-drawer {
-            z-index: 10000 !important; /* Aumentamos el número para que gane a todos */
+            z-index: 10000 !important; 
             background-color: #020617 !important;
             position: fixed;
-            /* ... el resto igual ... */
         }
 
         #drawer-overlay {
-            z-index: 9999 !important; /* El velo negro justo debajo del panel */
+            z-index: 9999 !important; 
             background: rgba(0,0,0,0.8);
             position: fixed;
             inset: 0;
@@ -66,9 +65,8 @@
             padding-bottom: 100px;
         }
 
-        /* QUITAMOS MAYÚSCULAS FORZADAS */
         .lema-display {
-            text-transform: none !important; /* Respetará tus acentos y minúsculas */
+            text-transform: none !important; 
             font-variant: normal !important;
         }
 
@@ -110,14 +108,6 @@
             cursor: pointer;
         }
         
-        .candado-input { 
-            width: 2.8rem; 
-            height: 3.8rem; 
-            font-size: 1.4rem; 
-            background: #0f172a;
-            border: 2px solid #1e3a8a;
-            margin: 0 auto;
-        }
         .candado-input:focus { border-color: #38bdf8; outline: none; box-shadow: 0 0 20px rgba(56, 189, 248, 0.6); transform: scale(1.05); }
 
         /* Ocultar flechas nativas en input type="number" */
@@ -128,12 +118,11 @@
         /* =========================================
            3. INTERACTIVIDAD DE TEXTOS Y TABS
            ========================================= */
-       .word-token { 
+        .word-token { 
             display: inline-block; 
-            padding: 0.3em 0.2em 0.1em 0.2em; 
-            margin: 0.1em 0; 
-            line-height: 1.5; /* Altura suficiente para los espíritus mayúsculos */
-            vertical-align: bottom; /* Evita que las cajas salten de nivel */
+            padding: 8px 6px 4px 6px; 
+            margin: 2px 0; 
+            line-height: 1.2; 
             cursor: pointer; 
             transition: all 0.3s; 
             border-radius: 6px; 
@@ -147,9 +136,9 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .greek-display {
-            line-height: 2.8 !important; /* Interlineado extra ancho obligatorio para griego */
-            font-size: 1.35rem; /* Letra un pelín más grande para leer mejor */
-            padding-top: 10px; /* Evita que la primera línea de arriba del todo se corte */
+            line-height: 2.8 !important; 
+            font-size: 1.35rem; 
+            padding-top: 10px; 
         }
         .drawer { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); z-index: 300; }
         
@@ -181,30 +170,29 @@
         ::-webkit-scrollbar-track { background: #020617; }
         ::-webkit-scrollbar-thumb { background: #1e3a8a; border-radius: 6px; border: 3px solid #020617; }
         ::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
-        /* --- ESTILO DEL PERGAMINO (AÑADIR ESTO) --- */
-.pergamino {
-    background: #f4e4bc; /* Color crema base */
-    background-image: url('https://www.transparenttextures.com/patterns/papyros.png'); /* Textura de papiro */
-    color: #1a1a1a !important; /* Forzamos texto oscuro para que se lea sobre el crema */
-    position: relative;
-    box-shadow: inset 0 0 80px rgba(0,0,0,0.15), 0 30px 60px rgba(0,0,0,0.5);
-    border-radius: 0 0 1rem 1rem;
-}
+        
+        /* --- ESTILO DEL PERGAMINO --- */
+        .pergamino {
+            background: #f4e4bc; 
+            background-image: url('https://www.transparenttextures.com/patterns/papyros.png'); 
+            color: #1a1a1a !important; 
+            position: relative;
+            box-shadow: inset 0 0 80px rgba(0,0,0,0.15), 0 30px 60px rgba(0,0,0,0.5);
+            border-radius: 0 0 1rem 1rem;
+        }
 
-/* Forzamos que los títulos dentro del pergamino sean oscuros */
-.pergamino h2, .pergamino h3, .pergamino p, .pergamino div {
-    color: #1a1a1a !important;
-}
+        .pergamino h2, .pergamino h3, .pergamino p, .pergamino div {
+            color: #1a1a1a !important;
+        }
 
-/* Las palabras interactivas en el pergamino */
-.pergamino .word-token {
-    border-bottom: 2px solid rgba(30, 58, 138, 0.2);
-}
+        .pergamino .word-token {
+            border-bottom: 2px solid rgba(30, 58, 138, 0.2);
+        }
 
-.pergamino .word-token:hover {
-    background: rgba(30, 58, 138, 0.1);
-    color: #1e3a8a !important;
-}
+        .pergamino .word-token:hover {
+            background: rgba(30, 58, 138, 0.1);
+            color: #1e3a8a !important;
+        }
 
         /* =========================================
            4. ANIMACIONES PREMIUM (GOD MODE)
@@ -231,7 +219,7 @@
             background-size: 400px 400px;
             animation: particleZoom 35s linear infinite;
         }
-@keyframes cronosWrath {
+        @keyframes cronosWrath {
             0% { box-shadow: inset 0 0 0px rgba(153, 27, 27, 0); }
             50% { box-shadow: inset 0 0 100px rgba(153, 27, 27, 0.8); }
             100% { box-shadow: inset 0 0 0px rgba(153, 27, 27, 0); }
@@ -267,24 +255,6 @@
         }
         .toast.show { transform: translateX(0); }
 
-        /* Animaciones SVG Mapa */
-        .path-line {
-            stroke-dasharray: 1000;
-            stroke-dashoffset: 1000;
-            animation: drawPath 4s linear forwards;
-        }
-        @keyframes drawPath { to { stroke-dashoffset: 0; } }
-        
-        .pulse-dot {
-            transform-origin: center;
-            animation: pulseSVG 2s infinite;
-        }
-        @keyframes pulseSVG {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.5); opacity: 0.5; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
         /* Fuego y Errores */
         @keyframes shake { 
             0%, 100% { transform: translateX(0); } 
@@ -292,20 +262,8 @@
             20%, 40%, 60%, 80% { transform: translateX(6px); } 
         }
         .error-shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; border-color: #ef4444 !important; }
-        /* --- PREMIUM 3: ANIMACIÓN LLUVIA DE DRACMAS --- */
-        @keyframes dracmaFall {
-            0% { transform: translateY(-50px) rotateY(0deg) scale(1); opacity: 1; }
-            100% { transform: translateY(100vh) rotateY(720deg) scale(1.5); opacity: 0; }
-        }
-       .dracma {
-            position: fixed;
-            top: -50px;
-            z-index: 9999;
-            pointer-events: none;
-            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 1));
-        }
-
-        /* --- PREMIUM: Radar Morfosintáctico --- */
+        
+        /* Premium: Radar Morfosintáctico */
         .analyzed-verb { color: #f87171 !important; text-shadow: 0 0 8px rgba(248,113,113,0.4); border-bottom-color: #f87171 !important; }
         .analyzed-nom { color: #60a5fa !important; text-shadow: 0 0 8px rgba(96,165,250,0.4); border-bottom-color: #60a5fa !important; }
         .analyzed-acus { color: #34d399 !important; text-shadow: 0 0 8px rgba(52,211,153,0.4); border-bottom-color: #34d399 !important; }
@@ -326,7 +284,7 @@
     <!-- =========================================
          CABECERA SUPERIOR
          ========================================= -->
- <header class="w-full flex flex-col lg:flex-row justify-between items-center gap-6 px-8 py-4 mb-8 hidden-stage" id="gameHeader">
+    <header class="w-full flex flex-col lg:flex-row justify-between items-center gap-6 px-8 py-4 mb-8 hidden-stage" id="gameHeader">
         <!-- Título -->
         <div class="flex flex-col text-center lg:text-left">
             <div class="text-2xl md:text-3xl font-cinzel text-cyan-400 tracking-widest flex items-center justify-center lg:justify-start gap-3 font-black">
@@ -335,7 +293,7 @@
             <div class="text-[10px] text-cyan-600 font-bold uppercase tracking-[0.3em]">Santuarium Asclepii</div>
         </div>
         
-        <!-- Barra de Progreso (Los 5 números y la pira) -->
+        <!-- Barra de Progreso -->
         <div id="mission-progress" class="flex items-center gap-3 bg-black/40 p-3 rounded-xl border border-cyan-900/50">
             <div id="step-1" class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_#38bdf8]"></div>
             <span class="text-[10px] text-cyan-400 font-bold">I</span>
@@ -357,7 +315,7 @@
             </div>
         </div>
 
-        <!-- Reloj y Sonido -->
+        <!-- Reloj -->
         <div class="flex items-center gap-4">
             <div class="flex items-center gap-3 text-cyan-300 font-cinzel text-2xl font-black bg-cyan-950/80 px-5 py-2 rounded-lg border border-cyan-500/50 shadow-lg" id="timerContainer">
                 <i data-lucide="hourglass" class="w-5 h-5"></i>
@@ -365,6 +323,7 @@
             </div>
         </div>
     </header>
+
     <!-- =========================================
          ETAPA 0: EL PROPILEO (INTRO)
          ========================================= -->
@@ -378,30 +337,22 @@
         
         <div class="bg-slate-900/80 p-12 rounded-3xl border-2 border-cyan-900 shadow-2xl backdrop-blur-xl w-full relative overflow-hidden">
           <div class="w-full rounded-3xl border-4 border-cyan-900/50 overflow-hidden shadow-[0_0_50px_rgba(6,182,212,0.4)] relative flex items-center justify-center bg-gradient-to-b from-slate-900 to-black mb-8 h-[350px] md:h-[450px] group">
-
                <div class="absolute inset-0 bg-cyan-500/10 opacity-40 group-hover:opacity-80 transition-opacity duration-1000 blur-3xl pointer-events-none"></div>
-              
                <svg viewBox="0 0 800 400" class="w-full h-full relative z-10 drop-shadow-[0_0_15px_rgba(56,189,248,0.3)]">
-                
                    <path d="M100,350 L700,350 L720,380 L80,380 Z" fill="#0f172a" stroke="#1e3a8a" stroke-width="2"/>
                    <path d="M120,320 L680,320 L700,350 L100,350 Z" fill="#020617" stroke="#1e3a8a" stroke-width="2"/>
-
-                   <!-- Columnas Dóricas -->
                    <rect x="180" y="150" width="35" height="170" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
                    <rect x="280" y="150" width="35" height="170" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
                    <rect x="382" y="150" width="35" height="170" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
                    <rect x="485" y="150" width="35" height="170" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
                    <rect x="585" y="150" width="35" height="170" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
-
                    <path d="M130,150 L670,150 L400,40 Z" fill="#020617" stroke="#38bdf8" stroke-width="3"/>
                    <path d="M160,140 L640,140 L400,60 Z" fill="#0f172a" stroke="#0ea5e9" stroke-width="1"/>
-
                    <circle cx="400" cy="110" r="12" fill="#000" stroke="#38bdf8" stroke-width="2"/>
                    <circle cx="400" cy="110" r="4" fill="#38bdf8">
                        <animate attributeName="r" values="2;6;2" dur="3s" repeatCount="indefinite" />
                        <animate attributeName="opacity" values="0.4;1;0.4" dur="3s" repeatCount="indefinite" />
                    </circle>
-                   
                    <circle cx="230" cy="250" r="2" fill="#fff">
                        <animate attributeName="cy" values="250;130;250" dur="4s" repeatCount="indefinite"/>
                        <animate attributeName="opacity" values="0;0.8;0" dur="4s" repeatCount="indefinite"/>
@@ -419,14 +370,12 @@
                        <animate attributeName="opacity" values="0;0.7;0" dur="5s" repeatCount="indefinite"/>
                    </circle>
                </svg>
-              
                <div class="absolute bottom-8 w-full text-center z-20 pointer-events-none">
                    <p class="text-cyan-200 font-cinzel tracking-[0.3em] uppercase text-sm md:text-base font-black drop-shadow-[0_4px_6px_rgba(0,0,0,1)] bg-black/40 inline-block px-6 py-2 rounded-full border border-cyan-900/50 backdrop-blur-sm">El Propileo de Epidauro</p>
                </div>
            </div>
             <div class="absolute -top-24 -left-24 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl"></div>
             
-
             <p class="text-2xl md:text-3xl leading-relaxed mb-12 text-slate-200 text-justify font-serif italic border-l-4 border-cyan-600 pl-8">
                 "Año 480 a.C. Mardonio avanza con las huestes persas. Diceópolis y Filipo esperan un milagro en el santuario de Asclepio. Solo vuestra pericia con el griego de la Unidad XVIII podrá descifrar los textos, superar las pruebas gramaticales y encender la pira de señales para advertir a Atenas. El tiempo se agota como arena en la clepsidra."
             </p>
@@ -444,9 +393,6 @@
     </div>
 
     <!-- =========================================
-         ETAPA 1: EL JUEGO PRINCIPAL
-         ========================================= -->
-    <!-- =========================================
          ETAPA 1: EL JUEGO PRINCIPAL (INTERFAZ DOBLE PANEL)
          ========================================= -->
     <div id="gameStage" class="w-full max-w-[1600px] grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 hidden-stage relative z-10">
@@ -456,7 +402,7 @@
             <!-- Botonera Izquierda -->
             <div class="bg-slate-950/90 rounded-t-2xl p-4 shadow-lg border-b-4 border-cyan-900 flex flex-wrap justify-between items-center relative z-20 gap-4">
                 <div class="flex flex-wrap gap-2">
-                    <button onclick="switchLeftTab('tab-alfa')" id="btn-alfa" class="left-tab-btn px-5 py-2.5 bg-slate-800 border-2 border-cyan-500 rounded-xl font-cinzel text-xs font-black uppercase text-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.3)] transition">Texto α</button>
+                    <button onclick="switchLeftTab('tab-alfa')" id="btn-alfa" class="left-tab-btn active px-5 py-2.5 bg-slate-800 border-2 border-cyan-500 rounded-xl font-cinzel text-xs font-black uppercase text-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.3)] transition">Texto α</button>
                     <button onclick="switchLeftTab('tab-beta')" id="btn-beta" class="left-tab-btn px-5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl font-cinzel text-xs font-bold uppercase text-slate-400 hover:bg-slate-800 hover:text-white transition">Texto β</button>
                     <button onclick="switchLeftTab('tab-persas')" id="btn-persas" class="left-tab-btn px-5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl font-cinzel text-xs font-bold uppercase text-slate-400 hover:bg-slate-800 hover:text-white transition">Persas</button>
                     <button onclick="switchLeftTab('tab-eval')" id="btn-eval" class="left-tab-btn px-5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl font-cinzel text-xs font-bold uppercase text-slate-400 hover:bg-slate-800 hover:text-white transition">Eval</button>
@@ -551,7 +497,7 @@
         <div class="lg:col-span-5 flex flex-col h-full gap-6">
             <!-- Botonera Derecha -->
             <div class="bg-slate-950/90 rounded-t-2xl p-4 shadow-lg border-b-4 border-emerald-900 flex justify-center gap-4 relative z-20">
-                <button onclick="switchRightTab('tab-enigmas')" id="btn-enigmas" class="right-tab-btn px-6 py-2.5 bg-slate-800 border-2 border-emerald-500 rounded-xl font-cinzel text-sm font-black uppercase text-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.3)] transition w-1/2">Enigmas</button>
+                <button onclick="switchRightTab('tab-enigmas')" id="btn-enigmas" class="right-tab-btn active px-6 py-2.5 bg-slate-800 border-2 border-emerald-500 rounded-xl font-cinzel text-sm font-black uppercase text-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.3)] transition w-1/2">Enigmas</button>
                 <button onclick="switchRightTab('tab-mapa')" id="btn-mapa" class="right-tab-btn px-6 py-2.5 bg-slate-900 border border-slate-700 rounded-xl font-cinzel text-sm font-bold uppercase text-slate-400 hover:bg-slate-800 hover:text-white transition flex items-center justify-center gap-2 w-1/2">
                     <i data-lucide="map" class="w-4 h-4"></i> Mapa Estratégico
                 </button>
@@ -746,7 +692,8 @@
             Recomenzar Peregrinaje
         </button>
     </div>
-<div id="drawer-overlay" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[399] transition-opacity duration-500 opacity-0 pointer-events-none" onclick="closeOracle()"></div>
+
+    <div id="drawer-overlay" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[399] transition-opacity duration-500 opacity-0 pointer-events-none" onclick="closeOracle()"></div>
         
     <!-- =========================================
          PANEL LATERAL: EL ORÁCULO DE ALEJANDRÍA
@@ -766,11 +713,7 @@
         </div>
     </div>
 
-    <!-- =========================================
-         SCRIPTS: LÓGICA FILOLÓGICA Y JUEGO
-         ========================================= -->
-  <script>
-        // --- 1. BASE DE DATOS DE TEXTOS GRIEGOS ÍNTEGROS ---
+    <script>
         const texts = {
             alfa: `«οἱ ἰατροὶ κελεύουσί με παρὰ τὸν Ἀσκλήπιον ἰέναι· ἴσως γὰρ ὠφελήσει με ὁ θεός.» ἐν δὲ τούτῳ ὁ Δικαιόπολις τῷ Φιλίππῳ ἡγούμενος ἐκ τῆς νεὼς ἐξέβη καί, «ἄγε δή, ὦ παῖ», ἔφη, «τί δεῖ ποιεῖν; ἆρα βούλῃ οἰνοπώλιον ζητῆσαι καὶ δεῖπνον ἑλέσθαι;» ὁ δέ, «μάλιστά γε, ὦ πάτερ. σὺ μὲν οὖν ἡγοῦ, ἐγὼ δ' ἕψομαι». οἰνοπώλιον οὖν εὑρόντες ἐγγὺς τοῦ λιμένος ἐκαθίζοντο οἶνόν τε πίνοντες καὶ τοῖς παροῦσι διαλεγόμενοι. τῶν δὲ παρόντων γυνή τις τὸν Δικαιόπολιν ἤρετο ποῖ πορεύεται καὶ μαθοῦσα ὅτι πρὸς τὴν Ἐπίδαυρον πορεύεται, «καὶ ἐγώ», ἔφη, «πρὸς τὴν Ἐπίδαυρον πορεύομαι. νοσῶ γὰρ τὴν γαστέρα καὶ οὐδὲν δύνανται ὠφελεῖν με οἱ ἰατροί· κελεύουσί μ' οὖν παρὰ τὸν Ἀσκλήπιον ἰέναι· ἴσως γὰρ ὠφελήσει με ὁ θεός. ἀλλ' εἰπέ μοι, πότε δὴ ἀποπλεύσεται ἡ ναῦς; πότερον τήμερον εἰς τὴν Ἐπίδαυρον ἀφιξόμεθα ἢ οὔ;» ὁ δὲ Δικαιόπολις, «οὐκ οἶδα ἔγωγε· λέγουσι δὲ ὅτι οὐ πολὺ ἀπέχει ἡ Ἐπίδαυρος. ἴσως οὖν ἀφιξόμεθα πρὸ τῆς νυκτὸς ἢ καὶ πρότερον. ἀλλ' ἄκουε δή· δι' ὀλίγου γὰρ γνωσόμεθα· τοῦ γὰρ ναυκλήρου ἀκούω ἡμᾶς καλοῦντος. ἆρ' οὐ ταχέως ἐπάνιμεν πρὸς τὴν ναῦν;» κάναστάντες οὖν πρὸς τὴν ναῦν ἔσπευδον. ὁ δὲ ναύκληρος ἰδὼν αὐτοὺς προσιόντας, βοήσας, «εἴσβητε ταχέως,» ἔφη, «εὐθὺς γὰρ ὁρμησόμεθα· δεῖ γὰρ πρὸ τῆς νυκτὸς εἰς τὴν Ἐπίδαυρον ἀφικέσθαι». ὁ δὲ Δικαιόπολις, «πότε δή,» ἔφη, «ἐκεῖσε ἀφιξόμεθα;» ὁ δὲ ναύκληρος, «οὐρίου γε ἀνέμου τυχόντες σὺν θεοῖς ταχέως πλευσόμεθα καὶ πρὸς ἑσπέραν παρεσόμεθα. ἀλλὰ σπεύδετε· εὐθὺς γὰρ λύσομεν τὴν ναῦν.» οἱ μὲν οὖν ταχέως εἰσέβησαν, οἱ δὲ ναῦται τὴν ναῦν λύσαντες καὶ πρὸς τὴν θάλατταν προερέσαντες τὰ ἱστία ἦραν. ἄνεμος δὲ οὔριος τὰ ἱστία ἔπλησεν ὥστε ἡ ναῦς ταχέως διὰ τῶν κυμάτων ἔτρεχεν.`,
             beta: `ὁ Δικαιόπολις τὴν γυναῖκα χαίρειν κελεύσας, τῷ Φιλίππῳ πρὸς τὴν ναῦν ἡγήσατο. πλεύσαντες οὖν πᾶσαν τὴν ἡμέραν, ὡς ἐγίγνετο ἡ ἑσπέρα, εἰς τὴν Ἐπίδαυρον ἀφίκοντο, οὐδὲν κακὸν παθόντες. ὡς δ' ἐξέβησαν εἰς τὴν γῆν τῷ μὲν Δικαιοπόλει ἔδοξεν εὐθὺς πρὸς τὸ Ἀσκληπιεῖον ἰέναι· οὐ γὰρ πολὺ ἀπεῖχεν· ἡ δὲ γυνὴ ἡ τὴν γαστέρα νοσοῦσα οὕτως ἔκαμνεν ὥστε οὐκ ἤθελεν ἰέναι ἐκείνῃ τῇ ἡμέρᾳ ἀλλ' ἔμεινεν ἐν καταγωγίῳ τινὶ ἐγγὺς τοῦ λιμένος. οἱ δὲ ὥρμησαν καὶ δι' ὀλίγου ἀφικόμενοι ηὗρον τὰς πύλας κεκλεισμένας. ὁ οὖν Δικαιόπολις, «κεκλεισμέναι εἰσὶν αἱ πύλαι», ἔφη, «τί οὖν δεῖ ποιεῖν; πότερον κόψω τὰς πύλας ἢ εἰς τὸν λιμένα ἐπάνιμεν; ὀψὲ γάρ ἐστιν». ὁ δὲ Φίλιππος, «ἀλλὰ κόψον, ὦ πάτερ, εἰ δοκεῖ. ἴσως γὰρ ἀκούσεταί τις καὶ ἡγήσεται ἡμῖν παρὰ τὸν ἱερέα». ὁ μὲν οὖν Δικαιόπολις ἔκοψεν, ἐξελθὼν δὲ ὑπηρέτης τις οὐ διὰ πολλοῦ, «τίς ὢν σύ», ἔφη, «κόπτεις τὰς πύλας τηνικαῦτα τῆς ἡμέρας; πόθεν ἤλθετε καὶ τί βουλόμενοι πάρεστε;». ὁ δὲ Δικαιόπολις, «ἐγὼ μέν εἰμι Δικαιόπολις Ἀθηναῖος ὤν, τὸν δὲ παῖδα κομίζω, ἐάν πως ὁ θεὸς ἐθέλῃ τοὺς ὀφθαλμοὺς αὐτῷ ἀκεῖσθαι. τυφλὸς γὰρ γέγονεν. ἆρ' οὐχ ἡγήσῃ ἡμῖν παρὰ τὸν σὸν δεσπότην;». ὁ δὲ ὑπηρέτης, «ὀψέ ἐστιν, ἀλλ' ὅμως μείνατε ἐνταῦθα, ἐγὼ γὰρ εἶμι ὡς ζητήσων τὸν δεσπότην καὶ ἐρωτήσω εἰ ἐθέλει ὑμᾶς δέξασθαι». οἱ μὲν οὖν ἔμενον ἐπὶ ταῖς πύλαις· οὐ πολλῷ δ' ὕστερον ἐπανελθὼν ὁ ὑπηρέτης, «εἴσιτε», ἔφη, «ὁ γὰρ δεσπότης ὑμᾶς δέξεται». ταῦτα δ' εἰπὼν ἡγεῖτο αὐτοῖς εἰς τὸ τέμενος. ἀμειψάμενοι οὖν τὰς πύλας εἰς αὐλὴν μεγάλην εἰσῆλθον· ἐκεῖ δὲ ἐγγὺς τοῦ ἱεροῦ ἐκαθίζετο ἀνήρ τις γεραιός, ὃς ἰδὼν αὐτοὺς προσιόντας, «χαίρετε, ὦ φίλοι», ἔφη. «τί βουλόμενοι ἥκετε;» ὁ μὲν οὖν Δικαιόπολις πάντα ἐξηγήσατο, ὁ δὲ ἱερεὺς πρὸς τὸν παῖδα εὐμενῶς βλέψας, «εἰπέ μοι, ὦ παῖ», ἔφη, «ἆρα σεαυτὸν τῷ Ἀσκλήπιον ἐπιτρέψεις; ἆρα τοῦτο πιστεύεις, ὅτι ὁ θεὸς δυνήσεταί σε ὠφελεῖν;» ὁ δὲ Φίλιππος, «μάλιστά γε· πάντα γὰρ τοῖς θεοῖς δυνατά· τῷ θεῷ πιστεύω καὶ ἐμαυτὸν αὐτῷ ἐπιτρέψω». ὁ δὲ γέρων, «εὖ γε, ὦ παῖ. νῦν μὲν ἄπιτε εἰς τὸ καταγώγιον, αὔριον δὲ ὁ ὑπηρέτης ὑμῖν πάρεσται ὡς ἡγησόμενος τῷ παιδὶ παρά με». ἀπελθόντες οὖν ὅ τε πατὴρ καὶ ὁ παῖς τὴν νύκτα ἔμενον ἐν τῷ καταγωγίῳ. τῇ δὲ ὑστεραίᾳ ἐπεὶ πρῶτον ἐγένετο ἡ ἡμέρα, παρελθὼν ὁ ὑπηρέτης τὸν Φίλιππον ἤγαγε παρὰ τὸν ἱερέα. ὁ δὲ εὐμενῶς δεξάμενος τὸν παῖδα, «ἄγε δή, ὦ παῖ», ἔφη, «νῦν χρή σε παρασκευάζεσθαι· δεῖ γὰρ ὅσιά τε φρονεῖν καὶ καθαρὸν εἶναι τὴν ψυχήν. ἀλλὰ μηδὲν φοβοῦ· φιλανθρωπότατος γάρ ἐστιν ὁ Ἀσκλήπιος τῶν θεῶν καὶ τοῖς καθαροῖς οὖσι τὴν ψυχὴν αἰεὶ ἵλαός ἐστιν. θάρρει οὖν.» οὕτω δ' εἰπὼν τὸν παῖδα εἰς τὸ ἱερὸν ἤγαγεν. ἐκεῖ δὲ πρῶτον μὲν ὁ Φίλιππος ἐκαθήρατο, ἔπειτα δὲ πᾶσαν τὴν ἡμέραν ἐν τῷ ἱερῷ ἔμενεν, ὅσιά τε φρονῶν καὶ τὸν θεὸν εὐχόμενος ἐν τῷ ὕπνῳ ἐπιφανῆναι. τέλος δὲ ἐπεὶ ἐγίγνετο ἡ ἑσπέρα, ἐπανελθὼν ὁ ἱερεύς, «ἄγε δή, ὦ παῖ», ἔφη, «πάντα γὰρ ἕτοιμά ἐστιν. ἕπου μοι». τὸν δὲ παῖδα ἐκ τοῦ ἱεροῦ ἀγαγὼν πρὸς τὸν βωμόν, ἐκέλευσεν αὐτὸν σπονδὴν κατὰ νόμον ποιεῖσθαι. ὁ δὲ τὴν φιάλην ταῖς χερσὶ λαβὼν σπονδὴν ἐποιήσατο καὶ τὰς χεῖρας πρὸς τὸν οὐρανὸν ἄρας, «Ἀσκλήπιε», ἔφη, «σῶτερ, φιλανθρωπότατε τῶν θεῶν, ἄκουέ μου εὐχομένου, ὃς ὅσιά τε φρονῶν καὶ καθαρὸς ὢν τὴν ψυχὴν ἱκέτης σοῦ πάρειμι. ἵλαος ἴσθι μοι τυφλῷ γεγονότι καί, εἴ σοι δοκεῖ, τοὺς ὀφθαλμούς μοι ἀκοῦ». ἐνταῦθα δὴ ὁ ἱερεὺς τῷ παιδὶ εἰς τὸ ἄβατον ἡγησάμενος ἐκέλευσεν αὐτὸν ἐπὶ τῇ γῇ κείμενον καθεύδειν. ὁ οὖν Φίλιππος κατέκειτο ἀλλὰ πολὺν δὴ χρόνον οὐκ ἐδύνατο καθεύδειν· μόνος γὰρ ὢν ἐν τῷ ἀβάτῳ μάλα ἐφοβεῖτο· νὺξ γὰρ ἦν καὶ πανταχοῦ σκότος καὶ σιγή, εἰ μὴ σπανίως ἤκουε τῶν ἱερῶν ὄφεων ἠρέμα συριζόντων.`,
@@ -778,7 +721,6 @@
             eval: `α) πότερον ἐν τῷ ἄστει πᾶσαν τὴν ἡμέραν μενεῖς ἢ οἴκαδε σπεύσεις;\nβ) ταῦτα μαθὼν ὁ στρατηγὸς βοήθειαν ἡμῖν εὐθὺς πέμψει.\nγ) δεῖ σε ἄγγελον πέμψαι ὡς τῷ βασιλεῖ πάντα λέξοντα.\nδ) τοὺς ἐν ταύτῃ τῇ μάχῃ ἀποθανόντας αἰεὶ τιμήσομεν.`
         };
 
-        // --- 2. TRADUCCIONES CASTELLANAS ---
         const translations = {
             alfa: `
                 <div class="space-y-6">
@@ -831,8 +773,7 @@
                 </div>`
         };
 
-        // --- 3. MOTORES DE GENERACIÓN GRAMATICAL DINÁMICA ---
-       function buildNounT(nS, vS, aS, gS, dS, nP, vP, aP, gP, dP) {
+        function buildNounT(nS, vS, aS, gS, dS, nP, vP, aP, gP, dP) {
             return `<div class="overflow-x-auto w-full mt-6 rounded-xl border border-cyan-800 shadow-[0_0_15px_rgba(6,182,212,0.15)]">
                 <table class="w-full text-sm text-left border-collapse font-serif bg-slate-950/80">
                 <thead class="bg-gradient-to-r from-cyan-950 to-blue-950 text-cyan-200 border-b-2 border-cyan-600">
@@ -863,7 +804,7 @@
                     <tr class="hover:bg-blue-900/40 transition-colors"><td class="p-4 font-bold text-blue-400 text-center uppercase text-xs tracking-widest bg-black/20 border-r border-blue-900/50">3ª Pl (Autoi)</td><td class="p-4 text-slate-300 text-center">${p6}</td></tr>
                 </tbody></table></div>`;
         }
-       
+        
         const inv = '<div class="mt-8 p-6 border-l-4 border-slate-500 bg-slate-900/80 rounded-r-xl shadow-md flex items-center gap-4"><i data-lucide="lock" class="w-8 h-8 text-slate-400"></i><div><p class="text-sm uppercase tracking-widest font-bold text-slate-300">Naturaleza Invariable</p><p class="text-base font-serif text-slate-400 mt-1">Esta palabra es una partícula, conjunción, preposición o adverbio. No se declina ni se conjuga en la oración.</p></div></div>';
 
         const G = {
@@ -883,10 +824,7 @@
             artN: () => buildNounT('τὸ','-','τὸ','τοῦ','τῷ','τὰ','-','τὰ','τῶν','τοῖς')
         };
 
-        // --- 4. CÓDICE LÉXICO ENCICLOPÉDICO (DEPURADO) ---
-       // --- 4. EL MEGA-CÓDICE LÉXICO (TODAS LAS PALABRAS DEL TEXTO) ---
         let wordDB = {
-            // VERBOS: FUTUROS
             'ωφελησει': { l: 'ὠφελέω', m: '3ª sg. Futuro Ind. Act.', s: 'Núcleo', d: 'ayudará', t: () => G.vFutA('ὠφελή') },
             'αφιξομεθα': { l: 'ἀφικνέομαι', m: '1ª pl. Futuro Ind. Med.', s: 'Núcleo', d: 'llegaremos', t: () => G.vFutM('ἀφίξ') },
             'αποπλευσεται': { l: 'ἀποπλέω', m: '3ª sg. Futuro Ind. Med.', s: 'Núcleo', d: 'zarpará', t: () => G.vFutM('ἀποπλεύ') },
@@ -909,7 +847,6 @@
             'ακουσεται': { l: 'ἀκούω', m: '3ª sg. Futuro Medio', s: 'Núcleo', d: 'escuchará', t: () => G.vFutM('ἀκούσ') },
             'ηγησεται': { l: 'ἡγέομαι', m: '3ª sg. Futuro Medio', s: 'Núcleo', d: 'guiará', t: () => G.vFutM('ἡγήσ') },
 
-            // VERBOS: AORISTOS Y PERFECTOS
             'εγενετο': { l: 'γίγνομαι', m: '3ª Sg. Aoristo Radical Medio', s: 'Núcleo', d: 'llegó a ser / sucedió', t: () => buildVerbT('ἐγενόμην','-ου','ἐγένετο','-όμεθα','-εσθε','-οντο','Aoristo Radical') },
             'αφικετο': { l: 'ἀφικνέομαι', m: '3ª Sg. Aoristo Medio', s: 'Núcleo', d: 'llegó', t: () => G.vAorM('ἀφίκ', '') },
             'εξεκομισαν': { l: 'ἐκκομίζω', m: '3ª Plural Aoristo Activo', s: 'Núcleo', d: 'evacuaron / sacaron', t: () => G.vAorA('ἐξεκόμισ', '') },
@@ -942,7 +879,6 @@
             'γεγονεν': { l: 'γίγνομαι', m: '3ª Sg. Perfecto Activo', s: 'Núcleo', d: 'ha llegado a estar (ciego)', t: () => buildVerbT('γέγονα','-ας','γέγονε(ν)','-αμεν','-ατε','-ασι','Perfecto') },
             'οιδα': { l: 'οἶδα', m: '1ª Sg. Perfecto (con valor presente)', s: 'Núcleo', d: 'sé / conozco', t: () => buildVerbT('οἶδα','οἶσθα','οἶδε','ἴσμεν','ἴστε','ἴσασι','Perfecto') },
 
-            // VERBOS: PRESENTES E IMPERFECTOS
             'ειμι': { l: 'εἰμί', m: '1ª sg. Pres. Ind. Act.', s: 'Núcleo del Predicado', d: 'soy / estoy', t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
             'εστι': { l: 'εἰμί', m: '3ª sg. Pres. Ind. Act.', s: 'Cópula', d: 'es / está', t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
             'εστιν': { l: 'εἰμί', m: '3ª sg. Pres. Ind. Act.', s: 'Cópula', d: 'es / está', t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
@@ -989,7 +925,6 @@
             'ηρετο': { l: 'ἔρομαι', m: '3ª Sg. Imperfecto Medio', s: 'Núcleo', d: 'preguntaba', t: () => G.vImpfA('ἤρ','ετ') },
             'βουλη': { l: 'βούλομαι', m: '2ª Sg. Presente Medio', s: 'Núcleo', d: 'quieres', t: () => G.vPresM('βούλ') },
 
-            // IMPERATIVOS, INFINITIVOS Y SUBJUNTIVOS
             'χρη': { l: 'χρή', m: 'Verbo Impersonal', s: 'Núcleo', d: 'es necesario', t: () => inv },
             'δει': { l: 'δεῖ', m: 'Verbo Impersonal', s: 'Núcleo', d: 'es necesario', t: () => inv },
             'απιτε': { l: 'ἄπειμι', m: '2ª Plural Imperativo', s: 'Orden', d: '¡marchaos!', t: () => inv },
@@ -1011,7 +946,6 @@
             'ηγηση': { l: 'ἡγέομαι', m: '2ª Sg. Subjuntivo Medio', s: 'Condicional', d: 'guíes', t: () => inv },
             'παυσωνται': { l: 'παύω', m: '3ª Plural Subjuntivo Medio', s: 'Condicional', d: 'cesen', t: () => inv },
             
-            // INFINITIVOS
             'παρασκευαζεσθαι': { l: 'παρασκευάζω', m: 'Infinitivo Presente Medio', s: 'Sujeto de χρή', d: 'prepararse', t: () => inv },
             'αποδουναι': { l: 'ἀποδίδωμι', m: 'Infinitivo Aoristo', s: 'O. Directo', d: 'devolver', t: () => inv },
             'πεμψαι': { l: 'πέμπω', m: 'Infinitivo Aoristo', s: 'Sujeto de δεῖ', d: 'enviar', t: () => inv },
@@ -1031,7 +965,6 @@
             'ειναι': { l: 'εἰμί', m: 'Infinitivo Presente', s: 'Sujeto', d: 'ser', t: () => inv },
             'επιφανηναι': { l: 'ἐπιφαίνω', m: 'Infinitivo Aoristo Pasivo', s: 'Sujeto', d: 'aparecer', t: () => inv },
 
-            // PARTICIPIOS
             'λεξοντα': { l: 'λέγω', m: 'Participio Futuro, Acus. Sg.', s: 'Finalidad (con ὡς)', d: 'para decir', t: () => buildNounT('λέξων','-','λέξοντα','λέξοντος','λέξοντι','-','-','-','-','-') },
             'αμυνουσαν': { l: 'ἀμύνω', m: 'Participio Futuro, Acus. Sg. Fem.', s: 'Finalidad', d: 'para defender', t: () => buildNounT('ἀμυνοῦσα','-','ἀμυνοῦσαν','-ούσης','-ούσῃ','-','-','-','-','-') },
             'αποθανοντας': { l: 'ἀποθνῄσκω', m: 'Participio Aoristo, Acus. Pl.', s: 'Sustantivado', d: 'a los que murieron', t: () => buildNounT('ἀποθανών','-','-όντα','-όντος','-όντι','-','-','ἀποθανόντας','-όντων','-') },
@@ -1082,7 +1015,6 @@
             'αδικουμενοι': { l: 'ἀδικέω', m: 'Participio Presente Pasivo, Nom. Pl.', s: 'Concesivo', d: 'siendo agraviados', t: () => G.n2M('ἀδικούμεν') },
             'μεμψομενοι': { l: 'μέμφομαι', m: 'Participio Futuro Medio, Nom. Pl.', s: 'Finalidad (con ὡς)', d: 'para quejarse', t: () => G.n2M('μεμψόμεν') },
 
-            // SUSTANTIVOS, ADJETIVOS Y PRONOMBRES (TODOS LOS DEL TEXTO)
             'θαλατταν': { l: 'θάλαττα, -ης, ἡ', m: 'Sustantivo (1ª decl), Acus. Sg.', s: 'Dirección (hacia el mar)', d: 'el mar', t: () => buildNounT('θάλαττα', 'θάλαττα', 'θάλατταν', 'θαλάττης', 'θαλάττῃ', 'θάλατται', 'θάλατται', 'θαλάττας', 'θαλαττῶν', 'θαλάτταις') },
             'ιστια': { l: 'ἱστίον, -ου, τό', m: 'Sustantivo (2ª decl), Acus. Pl. Neutro', s: 'Objeto Directo', d: 'las velas', t: () => G.n2N('ἱστί') },
             'αθηνασ': { l: 'Ἀθῆναι, -ῶν, αἱ', m: 'Sust. Propio (1ª), Acus. Pl.', s: 'Dirección', d: 'Atenas', t: () => buildNounT('-','-','-','-','-','Ἀθῆναι','-','Ἀθήνας','Ἀθηνῶν','Ἀθήναις') },
@@ -1178,14 +1110,11 @@
             'σιγη': { l: 'σιγή, -ῆς, ἡ', m: 'Sust. (1ª decl), Nom. Sg.', s: 'Sujeto', d: 'el silencio', t: () => G.n1F('σιγ', true) },
             'οφεων': { l: 'ὄφις, -εως, ὁ', m: 'Sust. (3ª decl), Gen. Pl.', s: 'Complemento Régimen (de ἀκούω)', d: 'de las serpientes', t: () => buildNounT('ὄφις','-','-ιν','-εως','-ει','-εις','-','-εις','-εων','-εσι') },
             
-            // LÉXICO "PERSAS" Y "EVALUACIÓN"
             'ηρι': { l: 'ἔαρ, ἦρος, τό', m: 'Sust. (3ª decl), Dat. Sg.', s: 'Dativo Absoluto (Tiempo)', d: 'en primavera', t: () => inv },
             'μαρδονιοσ': { l: 'Μαρδόνιος, -ου, ὁ', m: 'Sust. Propio, Nom. Sg.', s: 'Sujeto', d: 'Mardonio', t: () => G.n2M('Μαρδόνι') },
             'θεσσαλιασ': { l: 'Θεσσαλία, -ας, ἡ', m: 'Sust. Propio, Gen. Sg.', s: 'Procedencia', d: 'de Tesalia', t: () => G.n1F('Θεσσαλί', false) },
             'στρατον': { l: 'στρατός, -οῦ, ὁ', m: 'Sust. (2ª decl), Acus. Sg.', s: 'O. Directo', d: 'el ejército', t: () => G.n2M('στρατ') },
             'σπουδη': { l: 'σπουδή, -ῆς, ἡ', m: 'Sust. (1ª decl), Dat. Sg.', s: 'Modo', d: 'con prisa', t: () => G.n1F('σπουδ', true) },
-            'αθηνασ': { l: 'Ἀθῆναι, -ῶν, αἱ', m: 'Sust. Propio, Acus. Pl.', s: 'Dirección', d: 'Atenas', t: () => buildNounT('-','-','-','-','-','Ἀθῆναι','-','Ἀθήνας','Ἀθηνῶν','Ἀθήναις') },
-            'αθηναισ': { l: 'Ἀθῆναι, -ῶν, αἱ', m: 'Sust. Propio, Dat. Pl.', s: 'Lugar en donde', d: 'en Atenas', t: () => buildNounT('-','-','-','-','-','Ἀθῆναι','-','Ἀθήνας','Ἀθηνῶν','Ἀθήναις') },
             'ουδεισ': { l: 'οὐδείς, οὐδεμία, οὐδέν', m: 'Pronombre, Nom. Sg. Masc.', s: 'Sujeto', d: 'ninguno / nadie', t: () => inv },
             'βοιωτων': { l: 'Βοιωτοί, -ῶν, οἱ', m: 'Sust. Propio, Gen. Pl.', s: 'Genitivo Partitivo', d: 'de los beocios', t: () => G.n2M('Βοιωτ') },
             'αθηναιοισ': { l: 'Ἀθηναῖος, -α, -ον', m: 'Adjetivo, Dat. Pl. Masc.', s: 'O. Indirecto', d: 'a los atenienses', t: () => G.n2M('Ἀθηναί') },
@@ -1222,7 +1151,6 @@
             'ταυτη': { l: 'οὗτος, αὕτη, τοῦτο', m: 'Pronombre Demostrativo, Dat. Sg. Fem.', s: 'Determinante', d: 'esta', t: () => buildNounT('αὕτη','-','ταύτην','ταύτης','ταύτῃ','-','-','-','-','-') },
             'ταυτα': { l: 'οὗτος, αὕτη, τοῦτο', m: 'Pronombre Demostrativo, Acus. Pl. Neutro', s: 'O. Directo', d: 'estas cosas', t: () => buildNounT('τοῦτο','-','τοῦτο','τούτου','τούτῳ','ταῦτα','-','ταῦτα','τούτων','τούτοις') },
 
-            // INVARIABLES Y PARTICULAS COMPLETAS
             'ο': { l: 'ὁ', m: 'Art. Masc. Nom. Sg.', s: 'Det.', d: 'el', t: () => G.artM() },
             'η': { l: 'ἡ / ἤ', m: 'Art. Fem. Nom. Sg. o Conj.', s: 'Det. / Nexo', d: 'la / o', t: () => G.artF() },
             'το': { l: 'τό', m: 'Art. Neutro Nom/Acus Sg.', s: 'Det.', d: 'el / lo', t: () => G.artN() },
@@ -1304,7 +1232,6 @@
             'πανταχου': { l: 'πανταχοῦ', m: 'Adverbio', s: 'CC de Lugar', d: 'en todas partes', t: () => inv },
             'ω': { l: 'ὦ', m: 'Partícula Exclamativa', s: 'Acompaña Voc.', d: '¡oh!', t: () => inv },
             
-            // ELISIONES (Las que causaban problemas al final de las frases)
             'μ': { l: 'ἐγώ (elidido: μ\')', m: 'Pron. Personal, 1ª Acus. Sg.', s: 'O. Directo', d: 'me / a mí', t: () => inv },
             'δ': { l: 'δέ (elidido: δ\')', m: 'Partícula / Conjunción', s: 'Nexo', d: 'pero / y', t: () => inv },
             'αλλ': { l: 'ἀλλά (elidido: ἀλλ\')', m: 'Conjunción Adversativa', s: 'Nexo', d: 'sino / pero', t: () => inv },
@@ -1321,177 +1248,259 @@
             'ποι': { l: 'ποῖ', m: 'Adverbio Interrogativo', s: 'CC Dirección', d: '¿a dónde?', t: () => inv }
         };
 
-        let achievements = new Set();
-        function showToast(message, iconName = 'bell') {
-            if(achievements.has(message)) return;
-            achievements.add(message);
-            const container = document.getElementById('toast-container');
-            const toast = document.createElement('div');
-            toast.className = 'toast flex items-center bg-slate-900 border-l-4 border-cyan-400 text-white p-4 rounded shadow-lg transition-transform duration-500 transform translate-x-full mb-3 font-serif';
-            toast.innerHTML = `<i data-lucide="${iconName}" class="w-6 h-6 text-cyan-400 mr-3"></i> <span class="text-sm font-bold tracking-wider">${message}</span>`;
-            container.appendChild(toast);
-            lucide.createIcons();
-            setTimeout(() => { toast.style.transform = 'translateX(0)'; }, 50);
-            setTimeout(() => {
-                toast.style.transform = 'translateX(150%)';
-                setTimeout(() => toast.remove(), 500);
-            }, 4000);
-        }
-
-        // ==========================================
-        // 6. LÓGICA DE CONTROL DEL JUEGO
-        // ==========================================
-        let timeRemaining = 90 * 60;
-        let timerInterval = null;
-        let teamName = "";
-        let mistakes = 0;
-        const BASE_SCORE = 30000;
-
-        function normalizeGreekForInput(str) {
-            if (!str) return "";
-            return str.normalize("NFD")
-                      .replace(/[\u0300-\u036f\u0345]/g, "") 
-                      .replace(/[»"”“'’«<>\[\],;·.!?:()]/g, "") 
-                      .toLowerCase()
-                      .trim()
-                      .replace(/ς/g, 'σ');
-        }
-
-        function startGame() {
-            const input = document.getElementById('teamName');
-            if (!input.value.trim()) {
-                document.getElementById('name-error').classList.remove('hidden');
-                return;
-            }
-            teamName = input.value;
-            document.getElementById('introStage').classList.add('hidden-stage');
-            document.getElementById('gameHeader').classList.remove('hidden-stage');
-            document.getElementById('gameStage').classList.remove('hidden-stage');
-            initTexts(); 
-            startTimer(); 
-            lucide.createIcons(); 
-          
-            showToast("Habéis entrado en el Ábaton.", "footprints");
-        }
-
-        function applyXRay(filterType) {
-            document.querySelectorAll('.word-token').forEach(t => {
-                const word = normalizeGreekForInput(t.innerText); 
-                const entry = wordDB[word];
-                let m = (entry && entry.m) ? entry.m.toLowerCase() : "";
-                
-                if (!entry) {
-                    if (word.endsWith('ω') || word.endsWith('ει') || word.endsWith('ουσι') || word.endsWith('ονται') || word.endsWith('εται') || word.endsWith('ετο') || word.endsWith('ντο') || word.endsWith('ομεν') || word.endsWith('εθα') || word.endsWith('τε') || word.endsWith('ειν') || word.endsWith('σθαι') || word.endsWith('ναι') || word.endsWith('σα') || word.endsWith('εν') || word.endsWith('ον') || word.endsWith('σαν')) m += " verbo";
-                    if (word.endsWith('ων') || word.endsWith('οντεσ') || word.endsWith('οντασ') || word.endsWith('μενοσ') || word.endsWith('μενοι') || word.endsWith('ουσα') || word.endsWith('σασ') || word.endsWith('σαντεσ')) m += " verbo participio";
-                    
-                    if (!m.includes('verbo')) {
-                        if (word.endsWith('οσ') || word.endsWith('η') || word.endsWith('α') || word.endsWith('οι') || word.endsWith('αι') || word.endsWith('εσ') || word.endsWith('ουσ')) m += " nom. nominativo";
-                        if (word.endsWith('ον') || word.endsWith('ην') || word.endsWith('αν') || word.endsWith('ασ') || word.endsWith('ουσ')) m += " acus. acusativo";
-                        if (word.endsWith('ου') || word.endsWith('ησ') || word.endsWith('ων') || word.endsWith('εωσ')) m += " gen. genitivo";
-                        if (word.endsWith('ω') || word.endsWith('ῳ') || word.endsWith('η') || word.endsWith('ῃ') || word.endsWith('οισ') || word.endsWith('αισ') || word.endsWith('σι')) m += " dat. dativo";
-                    }
-                }
-
-                let match = false;
-                if (filterType === 'Nom.' && (m.includes('nom.') || m.includes('nominativo') || m.includes('nom '))) match = true;
-                if (filterType === 'Acus.' && (m.includes('acus.') || m.includes('acusativo') || m.includes('acus '))) match = true;
-                if (filterType === 'Gen.' && (m.includes('gen.') || m.includes('genitivo') || m.includes('gen '))) match = true;
-                if (filterType === 'Dat.' && (m.includes('dat.') || m.includes('dativo') || m.includes('dat '))) match = true;
-                if (filterType === 'Verbo' && (m.includes('verbo') || m.includes('participio') || m.includes('infinitivo') || m.includes('imperativo') || m.includes('pres.') || m.includes('aoristo') || m.includes('futuro') || m.includes('imperfecto'))) match = true;
-
-                if (match) {
-                    if (filterType === 'Nom.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-blue-500', 'bg-blue-500/30');
-                    if (filterType === 'Acus.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-emerald-500', 'bg-emerald-500/30');
-                    if (filterType === 'Gen.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-purple-500', 'bg-purple-500/30');
-                    if (filterType === 'Dat.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-amber-500', 'bg-amber-500/30');
-                    if (filterType === 'Verbo') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-red-500', 'bg-red-500/30');
-                }
-            });
-        }
-
-        function startTimer() {
-            timerInterval = setInterval(() => {
-                timeRemaining--;
-                const m = Math.floor(timeRemaining / 60);
-                const s = timeRemaining % 60;
-                document.getElementById('timerDisplay').innerText = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-                
-                if(timeRemaining === 1800) showToast("Quedan 30 minutos. Mardonio se acerca.", "alert-triangle");
-                
-                if (timeRemaining === 300) {
-                    showToast("¡CRONOS DESPIERTA! 5 minutos restantes.", "skull");
-                    document.getElementById('timerContainer').classList.add('time-critical', 'text-red-500');
-                    document.getElementById('timerContainer').classList.remove('text-cyan-300', 'border-cyan-500/50');
-                    document.body.style.animation = "cronosWrath 2s infinite";
-                }
-
-                if (timeRemaining <= 0) {
-                    clearInterval(timerInterval);
-                    gameOver();
-                }
-            }, 1000);
-        } 
-
-        function formatTime(s) {
-            const m = Math.floor(s / 60);
-            const sec = s % 60;
-            return `${m.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
-        }
-
-        let mapInitialized = false;
-
-        function switchTab(id) {
-    // 1. Ocultar todos los contenidos
-    document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-    
-    // 2. Mostrar el seleccionado
-    const tab = document.getElementById(id);
-    if (tab) tab.classList.remove('hidden');
-    
-    // 3. Resetear estilo de TODOS los botones
-    document.querySelectorAll('.tab-btn').forEach(el => {
-        el.classList.remove('active', 'border-2', 'border-cyan-500', 'shadow-[0_0_10px_rgba(6,182,212,0.3)]', 'text-cyan-400');
-        // Devolverlos al estado inactivo genérico
-        if(el.id.includes('alfa') || el.id.includes('beta') || el.id.includes('persas') || el.id.includes('eval')) {
-            el.classList.add('border', 'border-slate-700', 'bg-slate-900', 'text-slate-400');
+        let achievements = new Set();
+        function showToast(message, iconName = 'bell') {
+            if(achievements.has(message)) return;
+            achievements.add(message);
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'toast flex items-center bg-slate-900 border-l-4 border-cyan-400 text-white p-4 rounded shadow-lg transition-transform duration-500 transform translate-x-full mb-3 font-serif';
+            toast.innerHTML = `<i data-lucide="${iconName}" class="w-6 h-6 text-cyan-400 mr-3"></i> <span class="text-sm font-bold tracking-wider">${message}</span>`;
+            container.appendChild(toast);
+            lucide.createIcons();
+            setTimeout(() => { toast.style.transform = 'translateX(0)'; }, 50);
+            setTimeout(() => {
+                toast.style.transform = 'translateX(150%)';
+                setTimeout(() => toast.remove(), 500);
+            }, 4000);
         }
-    });
 
-    // 4. Iluminar el botón pulsado
-    const b = document.getElementById('btn-' + id.split('-')[1]);
-    if (b) {
-        if(b.id.includes('alfa') || b.id.includes('beta') || b.id.includes('persas') || b.id.includes('eval')) {
-            b.classList.remove('border', 'border-slate-700', 'bg-slate-900', 'text-slate-400');
-            b.classList.add('border-2', 'border-cyan-500', 'bg-slate-800', 'text-cyan-400', 'shadow-[0_0_10px_rgba(6,182,212,0.3)]');
-        } else {
-            // Efecto leve si pinchan en mapa o cultura
-            b.classList.add('shadow-[0_0_15px_currentColor]'); 
+        let timeRemaining = 90 * 60;
+        let timerInterval = null;
+        let teamName = "";
+        let mistakes = 0;
+        const BASE_SCORE = 30000;
+
+        function normalizeGreekForInput(str) {
+            if (!str) return "";
+            return str.normalize("NFD")
+                      .replace(/[\u0300-\u036f\u0345]/g, "") 
+                      .replace(/[»"”“'’«<>\[\],;·.!?:()]/g, "") 
+                      .toLowerCase()
+                      .trim()
+                      .replace(/ς/g, 'σ');
         }
-    }
-    
-    // 5. Mostrar/Ocultar "Visión de Linceo" según la pestaña
-    const filtrosLinceo = document.getElementById('xray-filters');
-    if (id === 'tab-mapa' || id === 'tab-cultura' || id === 'tab-eval') {
-        filtrosLinceo.classList.add('hidden');
-    } else {
-        filtrosLinceo.classList.remove('hidden');
-    }
 
-   if (id === 'tab-mapa') {
-        setTimeout(() => {
-            if (!mapInitialized) {
-                initRealMap(); 
-                mapInitialized = true;
+        function startGame() {
+            const input = document.getElementById('teamName');
+            if (!input.value.trim()) {
+                document.getElementById('name-error').classList.remove('hidden');
+                return;
             }
-            if (mapaReal) {
-                mapaReal.invalidateSize(); // Obliga a Leaflet a dibujarse
+            teamName = input.value;
+            document.getElementById('introStage').classList.add('hidden-stage');
+            document.getElementById('gameHeader').classList.remove('hidden-stage');
+            document.getElementById('gameStage').classList.remove('hidden-stage');
+            initTexts(); 
+            startTimer(); 
+            lucide.createIcons(); 
+            showToast("Habéis entrado en el Ábaton.", "footprints");
+        }
+
+        function applyXRay(filterType) {
+            document.querySelectorAll('.word-token').forEach(t => {
+                const word = normalizeGreekForInput(t.innerText); 
+                const entry = wordDB[word];
+                let m = (entry && entry.m) ? entry.m.toLowerCase() : "";
+                
+                if (!entry) {
+                    if (word.endsWith('ω') || word.endsWith('ει') || word.endsWith('ουσι') || word.endsWith('ονται') || word.endsWith('εται') || word.endsWith('ετο') || word.endsWith('ντο') || word.endsWith('ομεν') || word.endsWith('εθα') || word.endsWith('τε') || word.endsWith('ειν') || word.endsWith('σθαι') || word.endsWith('ναι') || word.endsWith('σα') || word.endsWith('εν') || word.endsWith('ον') || word.endsWith('σαν')) m += " verbo";
+                    if (word.endsWith('ων') || word.endsWith('οντεσ') || word.endsWith('οντασ') || word.endsWith('μενοσ') || word.endsWith('μενοι') || word.endsWith('ουσα') || word.endsWith('σασ') || word.endsWith('σαντεσ')) m += " verbo participio";
+                    
+                    if (!m.includes('verbo')) {
+                        if (word.endsWith('οσ') || word.endsWith('η') || word.endsWith('α') || word.endsWith('οι') || word.endsWith('αι') || word.endsWith('εσ') || word.endsWith('ουσ')) m += " nom. nominativo";
+                        if (word.endsWith('ον') || word.endsWith('ην') || word.endsWith('αν') || word.endsWith('ασ') || word.endsWith('ουσ')) m += " acus. acusativo";
+                        if (word.endsWith('ου') || word.endsWith('ησ') || word.endsWith('ων') || word.endsWith('εωσ')) m += " gen. genitivo";
+                        if (word.endsWith('ω') || word.endsWith('ῳ') || word.endsWith('η') || word.endsWith('ῃ') || word.endsWith('οισ') || word.endsWith('αισ') || word.endsWith('σι')) m += " dat. dativo";
+                    }
+                }
+
+                let match = false;
+                if (filterType === 'Nom.' && (m.includes('nom.') || m.includes('nominativo') || m.includes('nom '))) match = true;
+                if (filterType === 'Acus.' && (m.includes('acus.') || m.includes('acusativo') || m.includes('acus '))) match = true;
+                if (filterType === 'Gen.' && (m.includes('gen.') || m.includes('genitivo') || m.includes('gen '))) match = true;
+                if (filterType === 'Dat.' && (m.includes('dat.') || m.includes('dativo') || m.includes('dat '))) match = true;
+                if (filterType === 'Verbo' && (m.includes('verbo') || m.includes('participio') || m.includes('infinitivo') || m.includes('imperativo') || m.includes('pres.') || m.includes('aoristo') || m.includes('futuro') || m.includes('imperfecto'))) match = true;
+
+                if (match) {
+                    if (filterType === 'Nom.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-blue-500', 'bg-blue-500/30');
+                    if (filterType === 'Acus.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-emerald-500', 'bg-emerald-500/30');
+                    if (filterType === 'Gen.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-purple-500', 'bg-purple-500/30');
+                    if (filterType === 'Dat.') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-amber-500', 'bg-amber-500/30');
+                    if (filterType === 'Verbo') t.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#0f172a]', 'ring-red-500', 'bg-red-500/30');
+                }
+            });
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                const m = Math.floor(timeRemaining / 60);
+                const s = timeRemaining % 60;
+                document.getElementById('timerDisplay').innerText = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+                
+                if(timeRemaining === 1800) showToast("Quedan 30 minutos. Mardonio se acerca.", "alert-triangle");
+                
+                if (timeRemaining === 300) {
+                    showToast("¡CRONOS DESPIERTA! 5 minutos restantes.", "skull");
+                    document.getElementById('timerContainer').classList.add('time-critical', 'text-red-500');
+                    document.getElementById('timerContainer').classList.remove('text-cyan-300', 'border-cyan-500/50');
+                    document.body.style.animation = "cronosWrath 2s infinite";
+                }
+
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    gameOver();
+                }
+            }, 1000);
+        } 
+
+        let mapaReal = null;
+        let mapInitialized = false;
+
+        function closeOracle() {
+            document.getElementById('oracle-drawer').classList.add('translate-x-full');
+            document.getElementById('drawer-overlay').classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        function switchLeftTab(id) {
+            document.querySelectorAll('.left-tab-content').forEach(el => el.classList.add('hidden'));
+            const tab = document.getElementById(id);
+            if (tab) tab.classList.remove('hidden');
+            
+            document.querySelectorAll('.left-tab-btn').forEach(el => {
+                el.classList.remove('bg-slate-800', 'border-2', 'border-cyan-500', 'shadow-[0_0_10px_rgba(6,182,212,0.3)]', 'text-cyan-400');
+                el.classList.add('bg-slate-900', 'border', 'border-slate-700', 'text-slate-400');
+            });
+
+            const b = document.getElementById('btn-' + id.split('-')[1]);
+            if (b && id !== 'tab-cultura') {
+                b.classList.remove('bg-slate-900', 'border', 'border-slate-700', 'text-slate-400');
+                b.classList.add('bg-slate-800', 'border-2', 'border-cyan-500', 'text-cyan-400', 'shadow-[0_0_10px_rgba(6,182,212,0.3)]');
             }
-        }, 300); // 300 milisegundos de margen
-    }
-    if (id === 'tab-cultura') showToast("Consultando los saberes antiguos...", "book-open");
-    lucide.createIcons();
-}
-       function initTexts() {
+
+            const filtrosLinceo = document.getElementById('xray-filters');
+            if (id === 'tab-cultura' || id === 'tab-eval') {
+                filtrosLinceo.classList.add('hidden');
+            } else {
+                filtrosLinceo.classList.remove('hidden');
+            }
+        }
+
+        function switchRightTab(id) {
+            document.querySelectorAll('.right-tab-content').forEach(el => el.classList.add('hidden'));
+            const tab = document.getElementById(id);
+            if (tab) tab.classList.remove('hidden');
+            
+            document.querySelectorAll('.right-tab-btn').forEach(el => {
+                el.classList.remove('bg-slate-800', 'border-2', 'border-emerald-500', 'shadow-[0_0_10px_rgba(16,185,129,0.3)]', 'text-emerald-400');
+                el.classList.add('bg-slate-900', 'border', 'border-slate-700', 'text-slate-400');
+            });
+
+            const b = document.getElementById('btn-' + id.split('-')[1]);
+            if (b) {
+                b.classList.remove('bg-slate-900', 'border', 'border-slate-700', 'text-slate-400');
+                b.classList.add('bg-slate-800', 'border-2', 'border-emerald-500', 'text-emerald-400', 'shadow-[0_0_10px_rgba(16,185,129,0.3)]');
+            }
+
+            if (id === 'tab-mapa') {
+                setTimeout(() => {
+                    if (!mapInitialized) {
+                        mapaReal = L.map('mapa-real').setView([37.8, 23.5], 9);
+                        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                            attribution: 'Tiles &copy; Esri'
+                        }).addTo(mapaReal);
+
+                        L.circleMarker([37.5961, 23.0753], {radius: 12, fillColor: 'green', color: '#fff', weight: 3, fillOpacity: 0.9}).addTo(mapaReal).bindPopup('<b style="color:green;font-size:16px;">Epidauro</b>');
+                        L.circleMarker([37.9838, 23.7275], {radius: 12, fillColor: 'cyan', color: '#fff', weight: 3, fillOpacity: 0.9}).addTo(mapaReal).bindPopup('<b style="color:#0ea5e9;font-size:16px;">Atenas</b>');
+                        L.circleMarker([37.9643, 23.4925], {radius: 12, fillColor: 'red', color: '#fff', weight: 3, fillOpacity: 0.9}).addTo(mapaReal).bindPopup('<b style="color:red;font-size:16px;">Salamina</b>');
+                        
+                        mapInitialized = true;
+                    }
+                    if (mapaReal) {
+                        mapaReal.invalidateSize(true);
+                    }
+                }, 300);
+            }
+        }
+              
+        function toggleTranslation() {
+            const activeTab = document.querySelector('.left-tab-content:not(.hidden)');
+            if(!activeTab) return;
+            const esContent = activeTab.querySelector('[id$="-es"]');
+            const grContent = activeTab.querySelector('[id$="-gr"]');
+            
+            if (esContent && esContent.classList.contains('hidden')) {
+                esContent.classList.remove('hidden');
+                grContent.classList.add('opacity-30'); 
+            } else if (esContent) {
+                esContent.classList.add('hidden');
+                grContent.classList.remove('opacity-30');
+            }
+        }
+
+        function consultarOraculo(word) {
+            const cleanWord = normalizeGreekForInput(word);
+            const entry = wordDB[cleanWord];
+            const content = document.getElementById('oracle-content');
+            
+            if (entry) {
+                content.innerHTML = `
+                    <div class="space-y-6 animate-in fade-in slide-in-from-right duration-500">
+                        <h2 class="text-5xl font-serif text-white border-b border-cyan-800 pb-4">${word} <span class="text-cyan-500 text-2xl font-cinzel ml-4">/ ${entry.l} /</span></h2>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-slate-900 p-4 rounded-xl border border-cyan-900/50">
+                                <p class="text-cyan-500 text-xs font-black uppercase tracking-widest">Morfología</p>
+                                <p class="text-xl text-white mt-1">${entry.m}</p>
+                            </div>
+                            <div class="bg-slate-900 p-4 rounded-xl border border-cyan-900/50">
+                                <p class="text-cyan-500 text-xs font-black uppercase tracking-widest">Sintaxis</p>
+                                <p class="text-xl text-white mt-1">${entry.s}</p>
+                            </div>
+                        </div>
+                        <div class="bg-blue-900/30 p-6 rounded-xl border border-blue-500/50 mt-6">
+                            <p class="text-blue-400 text-xs font-black mb-2 uppercase tracking-widest">Significado</p>
+                            <p class="text-3xl italic text-white">"${entry.d}"</p>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <p class="text-cyan-400 text-xs font-black uppercase mb-3 tracking-widest">Estructura Interna</p>
+                            <div class="text-2xl">${diseccionarPalabra(word, entry)}</div>
+                        </div>
+                        <div class="py-6">${entry.t ? entry.t() : ''}</div>
+                    </div>
+                `;
+            } else {
+                content.innerHTML = `<div class="text-center py-20"><i data-lucide="frown" class="w-20 h-20 mx-auto text-slate-700 mb-6"></i><p class="text-2xl text-slate-500">El Oráculo no reconoce esta forma. Prueba con palabras sin elidir.</p></div>`;
+            }
+            
+            document.getElementById('oracle-drawer').classList.remove('translate-x-full');
+            document.getElementById('drawer-overlay').classList.remove('opacity-0', 'pointer-events-none');
+            lucide.createIcons();
+        }
+
+        function diseccionarPalabra(originalWord, entry) {
+            if (!entry || !entry.m) return `<span class="text-cyan-400 font-bold">${originalWord}</span>`;
+            if (entry.m.includes('Invariable') || entry.m.includes('Prep') || entry.m.includes('Conj') || entry.m.includes('Adv') || entry.m.includes('Partícula')) {
+                return `<span class="text-slate-400 font-bold">${originalWord}</span>`;
+            }
+
+            if (entry.estructura && entry.estructura.length === 5) {
+                const [prev, raiz, tiempo, vocTem, desin] = entry.estructura;
+                let html = '';
+                
+                if (prev) html += `<span class="text-purple-400 border-b-4 border-purple-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${prev}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-purple-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg uppercase tracking-widest z-50">Preverbio/Aum.</span></span>`;
+                if (raiz) html += (html ? '<span class="text-slate-600 font-black mx-1 opacity-50">+</span>' : '') + `<span class="text-cyan-400 border-b-4 border-cyan-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${raiz}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-cyan-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg uppercase tracking-widest z-50">Raíz</span></span>`;
+                if (tiempo) html += (html ? '<span class="text-slate-600 font-black mx-1 opacity-50">+</span>' : '') + `<span class="text-pink-400 border-b-4 border-pink-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${tiempo}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-pink-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg uppercase tracking-widest z-50">Marca Temp/Modo</span></span>`;
+                if (vocTem) html += (html ? '<span class="text-slate-600 font-black mx-1 opacity-50">+</span>' : '') + `<span class="text-amber-400 border-b-4 border-amber-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${vocTem}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-amber-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg uppercase tracking-widest z-50">Vocal Temática</span></span>`;
+                if (desin) html += (html ? '<span class="text-slate-600 font-black mx-1 opacity-50">+</span>' : '') + `<span class="text-emerald-400 border-b-4 border-emerald-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${desin}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-emerald-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg uppercase tracking-widest z-50">Desinencia</span></span>`;
+                
+                return html;
+            }
+
+            return `<span class="text-cyan-400 font-bold">${originalWord}</span>`;
+        }
+
+        function initTexts() {
             ['alfa', 'beta', 'persas', 'eval'].forEach(id => {
                 const container = document.getElementById(`content-${id}-gr`);
                 const esContainer = document.getElementById(`content-${id}-es`);
@@ -1503,7 +1512,6 @@
                         if (!chunk.trim()) return chunk;
                         const match = chunk.match(/^([«"”“'’(]*)(.*?)([»"”“'’!,;·.?:)]*)$/);
                         if (match && match[2]) {
-                            // Usamos this.innerText para evitar bugs con los apóstrofes
                             return `${match[1]}<span class="word-token" onclick="consultarOraculo(this.innerText)">${match[2]}</span>${match[3]}`;
                         }
                         return chunk;
@@ -1512,257 +1520,126 @@
             });
         }
 
-        function diseccionarPalabra(originalWord, entry) {
-            if (!entry || !entry.m) return `<span class="text-cyan-400 font-bold">${originalWord}</span>`;
-            if (entry.m.includes('Invariable') || entry.m.includes('Prep') || entry.m.includes('Conj') || entry.m.includes('Adv') || entry.m.includes('Partícula')) {
-                return `<span class="text-slate-400 font-bold">${originalWord}</span>`;
-            }
-
-            if (entry.estructura && entry.estructura.length === 5) {
-                const [prev, raiz, tiempo, vocTem, desin] = entry.estructura;
-                let html = '';
-                
-                if (prev) html += `<span class="text-purple-400 border-b-4 border-purple-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${prev}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-purple-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg uppercase tracking-widest z-50">Preverbio/Aum.</span></span>`;
-                if (raiz) html += (html ? '<span class="text-slate-600 font-black mx-1 opacity-50">+</span>' : '') + `<span class="text-cyan-400 border-b-4 border-cyan-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${raiz}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-cyan-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg uppercase tracking-widest z-50">Raíz</span></span>`;
-                if (tiempo) html += (html ? '<span class="text-slate-600 font-black mx-1 opacity-50">+</span>' : '') + `<span class="text-pink-400 border-b-4 border-pink-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${tiempo}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-pink-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg uppercase tracking-widest z-50">Marca Temp/Modo</span></span>`;
-                if (vocTem) html += (html ? '<span class="text-slate-600 font-black mx-1 opacity-50">+</span>' : '') + `<span class="text-amber-400 border-b-4 border-amber-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${vocTem}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-amber-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg uppercase tracking-widest z-50">Vocal Temática</span></span>`;
-                if (desin) html += (html ? '<span class="text-slate-600 font-black mx-1 opacity-50">+</span>' : '') + `<span class="text-emerald-400 border-b-4 border-emerald-500 pb-2 mx-1 relative group cursor-help hover:-translate-y-1 transition-transform inline-block"><b>${desin}</b><span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-emerald-900 text-white text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg uppercase tracking-widest z-50">Desinencia</span></span>`;
-                
-                return html;
-            }
-
-            return `<span class="text-cyan-400 font-bold">${originalWord}</span>`;
-        }
-// --- FUNCIONES DE DOBLE PANEL Y TRADUCCIÓN ---
-function closeOracle() {
-    document.getElementById('oracle-drawer').classList.add('translate-x-full');
-    document.getElementById('drawer-overlay').classList.add('opacity-0', 'pointer-events-none');
-}
-
-function switchLeftTab(id) {
-    document.querySelectorAll('.left-tab-content').forEach(el => el.classList.add('hidden'));
-    const tab = document.getElementById(id);
-    if (tab) tab.classList.remove('hidden');
-    
-    document.querySelectorAll('.left-tab-btn').forEach(el => {
-        el.classList.remove('bg-slate-800', 'border-2', 'border-cyan-500', 'shadow-[0_0_10px_rgba(6,182,212,0.3)]', 'text-cyan-400');
-        el.classList.add('bg-slate-900', 'border', 'border-slate-700', 'text-slate-400');
-    });
-
-    const b = document.getElementById('btn-' + id.split('-')[1]);
-    if (b && id !== 'tab-cultura') {
-        b.classList.remove('bg-slate-900', 'border', 'border-slate-700', 'text-slate-400');
-        b.classList.add('bg-slate-800', 'border-2', 'border-cyan-500', 'text-cyan-400', 'shadow-[0_0_10px_rgba(6,182,212,0.3)]');
-    }
-
-    const filtrosLinceo = document.getElementById('xray-filters');
-    if (id === 'tab-cultura' || id === 'tab-eval') {
-        filtrosLinceo.classList.add('hidden');
-    } else {
-        filtrosLinceo.classList.remove('hidden');
-    }
-}
-
-function switchRightTab(id) {
-    document.querySelectorAll('.right-tab-content').forEach(el => el.classList.add('hidden'));
-    const tab = document.getElementById(id);
-    if (tab) tab.classList.remove('hidden');
-    
-    document.querySelectorAll('.right-tab-btn').forEach(el => {
-        el.classList.remove('bg-slate-800', 'border-2', 'border-emerald-500', 'shadow-[0_0_10px_rgba(16,185,129,0.3)]', 'text-emerald-400');
-        el.classList.add('bg-slate-900', 'border', 'border-slate-700', 'text-slate-400');
-    });
-
-    const b = document.getElementById('btn-' + id.split('-')[1]);
-    if (b) {
-        b.classList.remove('bg-slate-900', 'border', 'border-slate-700', 'text-slate-400');
-        b.classList.add('bg-slate-800', 'border-2', 'border-emerald-500', 'text-emerald-400', 'shadow-[0_0_10px_rgba(16,185,129,0.3)]');
-    }
-
-    if (id === 'tab-mapa') {
-        // El truco definitivo para Leaflet oculto: esperar 300ms a que el navegador termine de dibujar y forzar recálculo
-        setTimeout(() => {
-            if (!mapInitialized) {
-                initRealMap(); 
-                mapInitialized = true;
-            } else if (mapaReal) {
-                mapaReal.invalidateSize(true); // Despierta el mapa a la fuerza
+        function successPrueba(currentId, nextId, message) {
+            showToast(message, "check-circle");
+            document.getElementById(currentId).classList.add('hidden');
+            const next = document.getElementById(nextId);
+            if(next) {
+                next.classList.remove('hidden');
+                next.classList.add('unlocked-glow');
+                const stepNum = nextId.replace('prueba', '');
+                const stepDot = document.getElementById('step-' + stepNum);
+                if(stepDot) {
+                    stepDot.classList.remove('bg-slate-800');
+                    stepDot.classList.add('bg-cyan-400', 'shadow-[0_0_8px_#38bdf8]');
+                }
             }
-        }, 300);
-    }
-}
-      
-function toggleTranslation() {
-    const activeTab = document.querySelector('.left-tab-content:not(.hidden)');
-    if(!activeTab) return;
-    const esContent = activeTab.querySelector('[id$="-es"]');
-    const grContent = activeTab.querySelector('[id$="-gr"]');
-    
-    if (esContent && esContent.classList.contains('hidden')) {
-        esContent.classList.remove('hidden');
-        grContent.classList.add('opacity-30'); 
-    } else if (esContent) {
-        esContent.classList.add('hidden');
-        grContent.classList.remove('opacity-30');
-    }
-}
-
-function startGame() {
-    const input = document.getElementById('teamName');
-    if (!input.value.trim()) {
-        document.getElementById('name-error').classList.remove('hidden');
-        return;
-    }
-    teamName = input.value;
-    document.getElementById('introStage').classList.add('hidden-stage');
-    document.getElementById('gameHeader').classList.remove('hidden-stage');
-    document.getElementById('gameStage').classList.remove('hidden-stage');
-    initTexts(); 
-    startTimer(); 
-    lucide.createIcons(); 
-    showToast("Habéis entrado en el Ábaton.", "footprints");
-}
-
-function consultarOraculo(word) {
-    const cleanWord = normalizeGreekForInput(word);
-    const entry = wordDB[cleanWord];
-    const content = document.getElementById('oracle-content');
-    
-    if (entry) {
-        content.innerHTML = `
-            <div class="space-y-6 animate-in fade-in slide-in-from-right duration-500">
-                <h2 class="text-5xl font-serif text-white border-b border-cyan-800 pb-4">${word} <span class="text-cyan-500 text-2xl font-cinzel ml-4">/ ${entry.l} /</span></h2>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-slate-900 p-4 rounded-xl border border-cyan-900/50">
-                        <p class="text-cyan-500 text-xs font-black uppercase tracking-widest">Morfología</p>
-                        <p class="text-xl text-white mt-1">${entry.m}</p>
-                    </div>
-                    <div class="bg-slate-900 p-4 rounded-xl border border-cyan-900/50">
-                        <p class="text-cyan-500 text-xs font-black uppercase tracking-widest">Sintaxis</p>
-                        <p class="text-xl text-white mt-1">${entry.s}</p>
-                    </div>
-                </div>
-                <div class="bg-blue-900/30 p-6 rounded-xl border border-blue-500/50 mt-6">
-                    <p class="text-blue-400 text-xs font-black mb-2 uppercase tracking-widest">Significado</p>
-                    <p class="text-3xl italic text-white">"${entry.d}"</p>
-                </div>
-                <div class="mt-6 text-center">
-                    <p class="text-cyan-400 text-xs font-black uppercase mb-3 tracking-widest">Estructura Interna</p>
-                    <div class="text-2xl">${diseccionarPalabra(word, entry)}</div>
-                </div>
-                <div class="py-6">${entry.t ? entry.t() : ''}</div>
-            </div>
-        `;
-    } else {
-        content.innerHTML = `<div class="text-center py-20"><i data-lucide="frown" class="w-20 h-20 mx-auto text-slate-700 mb-6"></i><p class="text-2xl text-slate-500">El Oráculo no reconoce esta forma. Prueba con palabras sin elidir.</p></div>`;
-    }
-    
-    document.getElementById('oracle-drawer').classList.remove('translate-x-full');
-    document.getElementById('drawer-overlay').classList.remove('opacity-0', 'pointer-events-none');
-    lucide.createIcons();
-}
-
-// --- MAPA SATÉLITE REALISTA ---
-function initRealMap() {
-    if(mapaReal) return; 
-    mapaReal = L.map('mapa-real').setView([37.8, 23.5], 9);
-    
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-        attribution: 'Tiles &copy; Esri'
-    }).addTo(mapaReal);
-
-    L.circleMarker([37.5961, 23.0753], {radius: 12, fillColor: 'green', color: '#fff', weight: 3, fillOpacity: 0.9}).addTo(mapaReal).bindPopup('<b style="color:green;font-size:16px;">Epidauro</b>');
-    L.circleMarker([37.9838, 23.7275], {radius: 12, fillColor: 'cyan', color: '#fff', weight: 3, fillOpacity: 0.9}).addTo(mapaReal).bindPopup('<b style="color:#0ea5e9;font-size:16px;">Atenas</b>');
-    L.circleMarker([37.9643, 23.4925], {radius: 12, fillColor: 'red', color: '#fff', weight: 3, fillOpacity: 0.9}).addTo(mapaReal).bindPopup('<b style="color:red;font-size:16px;">Salamina</b>');
-
-    setTimeout(() => { mapaReal.invalidateSize(); }, 300);
-}
-       // =========================================
-// MOTOR DE VICTORIA Y VALIDACIÓN FINAL
-// =========================================
-
-function checkPrueba3() {
-    const q1 = document.getElementById('p3-q1').value; 
-    const q2 = document.getElementById('p3-q2').value; 
-    if (q1 === 'b' && q2 === 'b') {
-        successPrueba('prueba3', 'prueba4', "Prueba III Superada: Sabiduría de los Antiguos.");
-    } else {
-        failPrueba('p3-error');
-    }
-}
-
-function checkPrueba4() {
-    const q1 = document.getElementById('p4-q1').value; 
-    const q2 = document.getElementById('p4-q2').value; 
-    if (q1 === 'b' && q2 === 'c') {
-        successPrueba('prueba4', 'prueba5', "Prueba IV Superada: Historia de la Hélade.");
-    } else {
-        failPrueba('p4-error');
-    }
-}
-
-function checkPrueba5() {
-    const q1 = document.getElementById('p5-q1').value; 
-    const q2 = document.getElementById('p5-q2').value; 
-    if (q1 === 'a' && q2 === 'b') {
-        successPrueba('prueba5', 'prueba6', "Prueba V Superada: Hermenéutica Perfecta.");
-    } else {
-        failPrueba('p5-error');
-    }
-}
-
-function checkPrueba6() {
-    const code = [
-        document.getElementById('lock1').value,
-        document.getElementById('lock2').value,
-        document.getElementById('lock3').value,
-        document.getElementById('lock4').value,
-        document.getElementById('lock5').value,
-        document.getElementById('lock6').value
-    ].join('');
-
-    if (code === '134231') {
-        victory();
-    } else {
-        failPrueba('p6-error');
-    }
-}
-
-function victory() {
-    clearInterval(timerInterval);
-    const sound = document.getElementById('sonidoOraculo');
-    if(sound) { sound.play(); }
-    
-    document.getElementById('gameStage').classList.add('hidden-stage');
-    document.getElementById('gameHeader').classList.add('hidden-stage');
-    
-    const victoryDiv = document.getElementById('victoryStage');
-    victoryDiv.classList.remove('hidden-stage');
-    
-    document.getElementById('finalTeamName').innerText = teamName;
-    document.getElementById('finalTime').innerText = document.getElementById('timerDisplay').innerText;
-    document.getElementById('finalMistakes').innerText = mistakes;
-    
-    const score = Math.max(0, 10000 - (mistakes * 200) + (timeRemaining * 2));
-    
-    let count = 0;
-    const scoreEl = document.getElementById('finalScore');
-    const interval = setInterval(() => {
-        count += Math.ceil(score / 50);
-        if (count >= score) {
-            count = score;
-            clearInterval(interval);
         }
-        scoreEl.innerText = count.toLocaleString() + " DRACMAS";
-    }, 30);
 
-    initFire();
-    lluviaDracmas();
-    showToast("¡ATENAS HA SIDO SALVADA!", "trophy");
-}
+        function failPrueba(errorId) {
+            mistakes++;
+            const errEl = document.getElementById(errorId);
+            if(errEl) {
+                errEl.classList.remove('hidden');
+                document.getElementById(errorId.split('-')[0]).classList.add('error-shake');
+                setTimeout(() => {
+                    errEl.classList.add('hidden');
+                    document.getElementById(errorId.split('-')[0]).classList.remove('error-shake');
+                }, 3000);
+            }
+        }
 
-// Iconos finales
-lucide.createIcons();
-    </script>
+        function checkPrueba1() {
+            const q1 = document.getElementById('p1-q1').value; 
+            const q2 = document.getElementById('p1-q2').value; 
+            const q3 = document.getElementById('p1-q3').value; 
+            if(q1 === 'ζητησων' && q2 === 'αφιξομεθα' && q3 === 'επιφανηναι') {
+                successPrueba('prueba1', 'prueba2', "Prueba I superada: El tiempo es tuyo.");
+            } else { failPrueba('p1-error'); }
+        }
+
+        function checkPrueba2() {
+            const q1 = document.getElementById('p2-q1').value; 
+            const q2 = document.getElementById('p2-q2').value; 
+            if(q1 === 'b' && q2 === 'a') {
+                successPrueba('prueba2', 'prueba3', "Prueba II superada: Sintaxis purificada.");
+            } else { failPrueba('p2-error'); }
+        }
+
+        function checkPrueba3() {
+            const q1 = document.getElementById('p3-q1').value; 
+            const q2 = document.getElementById('p3-q2').value; 
+            if (q1 === 'b' && q2 === 'b') {
+                successPrueba('prueba3', 'prueba4', "Prueba III Superada: Sabiduría de los Antiguos.");
+            } else { failPrueba('p3-error'); }
+        }
+
+        function checkPrueba4() {
+            const q1 = document.getElementById('p4-q1').value; 
+            const q2 = document.getElementById('p4-q2').value; 
+            if (q1 === 'b' && q2 === 'c') {
+                successPrueba('prueba4', 'prueba5', "Prueba IV Superada: Historia de la Hélade.");
+            } else { failPrueba('p4-error'); }
+        }
+
+        function checkPrueba5() {
+            const q1 = document.getElementById('p5-q1').value; 
+            const q2 = document.getElementById('p5-q2').value; 
+            if (q1 === 'a' && q2 === 'b') {
+                successPrueba('prueba5', 'prueba6', "Prueba V Superada: Hermenéutica Perfecta.");
+            } else { failPrueba('p5-error'); }
+        }
+
+        function checkPrueba6() {
+            const code = [
+                document.getElementById('lock1').value,
+                document.getElementById('lock2').value,
+                document.getElementById('lock3').value,
+                document.getElementById('lock4').value,
+                document.getElementById('lock5').value,
+                document.getElementById('lock6').value
+            ].join('');
+
+            if (code === '134231') {
+                victory();
+            } else {
+                failPrueba('p6-error');
+            }
+        }
+
+        function gameOver() {
+            document.getElementById('gameStage').classList.add('hidden-stage');
+            document.getElementById('gameHeader').classList.add('hidden-stage');
+            document.getElementById('defeatStage').classList.remove('hidden-stage');
+        }
+
+        function victory() {
+            clearInterval(timerInterval);
+            document.getElementById('gameStage').classList.add('hidden-stage');
+            document.getElementById('gameHeader').classList.add('hidden-stage');
+            const victoryDiv = document.getElementById('victoryStage');
+            victoryDiv.classList.remove('hidden-stage');
+            
+            document.getElementById('finalTeamName').innerText = teamName;
+            document.getElementById('finalTime').innerText = document.getElementById('timerDisplay').innerText;
+            document.getElementById('finalMistakes').innerText = mistakes;
+            
+            const score = Math.max(0, 10000 - (mistakes * 200) + (timeRemaining * 2));
+            let count = 0;
+            const scoreEl = document.getElementById('finalScore');
+            const interval = setInterval(() => {
+                count += Math.ceil(score / 50);
+                if (count >= score) {
+                    count = score;
+                    clearInterval(interval);
+                }
+                scoreEl.innerText = count.toLocaleString() + " DRACMAS";
+            }, 30);
+
+            showToast("¡ATENAS HA SIDO SALVADA!", "trophy");
+        }
+
+        lucide.createIcons();
+    </script>
 </body>
 </html>
