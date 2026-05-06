@@ -273,28 +273,39 @@
 /* =========================================
            EL OJO DE ATENEA (GLOSA INTERLINEAL)
            ========================================= */
+        .ojo-atenea-active .greek-display {
+            line-height: 4.2 !important; /* Separa las líneas de texto mágicamente para hacer hueco */
+            transition: line-height 0.5s ease;
+        }
         .ojo-atenea-active .word-token {
             position: relative;
+            border-bottom: 2px dashed rgba(212, 175, 55, 0.8) !important; /* Subraya en dorado las palabras traducidas */
         }
         .ojo-atenea-active .word-token[data-glosa]::before {
             content: attr(data-glosa);
             position: absolute;
-            top: -1.6em;
+            bottom: 100%; /* Lo ancla perfectamente al ras de la palabra */
             left: 50%;
             transform: translateX(-50%);
             font-family: 'Cinzel', serif;
-            font-size: 0.55rem;
-            color: #d4af37;
+            font-size: 0.65rem;
+            font-weight: 900;
+            color: #fde047; /* Texto amarillo/dorado brillante */
+            background: rgba(2, 6, 23, 0.95); /* Fondo oscuro elegante */
+            border: 1px solid rgba(212, 175, 55, 0.5); /* Borde dorado */
+            padding: 4px 8px;
+            border-radius: 6px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            letter-spacing: 0.5px;
             white-space: nowrap;
             pointer-events: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
             animation: ateneaReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            z-index: 10;
         }
         @keyframes ateneaReveal {
-            0% { opacity: 0; margin-top: 10px; }
-            100% { opacity: 1; margin-top: 0; }
+            0% { opacity: 0; transform: translate(-50%, 8px); }
+            100% { opacity: 1; transform: translate(-50%, -4px); } /* Sube con elegancia */
         }
         
     </style>
