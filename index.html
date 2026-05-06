@@ -819,128 +819,112 @@
             </div>
 
             <!-- PRUEBA II -->
-            <div id="prueba2" class="hidden bg-slate-950/95 border-2 border-blue-900 p-10 rounded-3xl transition-all duration-1000">
-                <h3 class="text-3xl text-blue-400 mb-8 flex items-center gap-5 font-cinzel font-black uppercase tracking-wider">
-                    <span class="bg-blue-900 text-blue-100 px-5 py-2 rounded-xl border-2 border-blue-400 shadow-md">II</span> Sintaxis de la Sanación
-                </h3>
-                <div class="space-y-8">
-                    <div class="flex flex-col gap-4 bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
-                        <label class="text-base font-bold text-slate-300">1. En la frase "νοσῶ τὴν γαστέρα", ¿qué función cumple τὴν γαστέρα?</label>
-                        <select id="p2-q1" class="select-griego text-lg p-5 rounded-xl focus:border-blue-500 transition">
-                            <option value="">-- Elige la función --</option>
-                            <option value="a">Objeto Directo (A quién enfermo)</option>
-                            <option value="b">Acusativo de Relación (En qué aspecto estoy enfermo)</option>
-                            <option value="c">Acusativo de extensión temporal</option>
-                        </select>
-                    </div>
-                    <div class="flex flex-col gap-4 bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
-                        <label class="text-base font-bold text-slate-300">2. En "οὐρίου ἀνέμου τυχόντες" (Texto α), ¿por qué se usa el Genitivo?</label>
-                        <select id="p2-q2" class="select-griego text-lg p-5 rounded-xl focus:border-blue-500 transition">
-                            <option value="">-- Elige la regla gramatical --</option>
-                            <option value="a">Es un Genitivo Absoluto (Sujeto+Participio separado)</option>
-                            <option value="b">Régimen del verbo τυγχάνω (alcanzar/obtener rige genitivo)</option>
-                            <option value="c">Complemento de posesión de "nave"</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="mt-10 flex justify-end">
-                    <button onclick="checkPrueba2()" class="px-10 py-4 bg-blue-700 hover:bg-blue-600 text-white font-cinzel font-black text-xl rounded-xl transition transform hover:scale-105 uppercase tracking-widest w-full md:w-auto shadow-2xl">Validar Enigma II</button>
-                </div>
-                <p id="p2-error" class="text-red-500 text-sm mt-6 hidden font-black text-center uppercase tracking-widest">⚠️ Error sintáctico. La piedad lógica es necesaria.</p>
-            </div>
+            <div id="prueba2" class="hidden bg-slate-950/95 border-2 border-blue-900 p-10 rounded-3xl transition-all duration-1000">
+                <h3 class="text-3xl text-blue-400 mb-8 flex items-center gap-5 font-cinzel font-black uppercase tracking-wider">
+                    <span class="bg-blue-900 text-blue-100 px-5 py-2 rounded-xl border-2 border-blue-400 shadow-md">II</span> Sintaxis de la Sanación
+                </h3>
+                <div class="space-y-8">
+                    <div class="flex flex-col gap-4 bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
+                        <label class="text-base font-bold text-slate-300">1. En la frase "νοσῶ τὴν γαστέρα", ¿qué función cumple τὴν γαστέρα?</label>
+                        <select id="p2-q1" class="select-griego text-lg p-5 rounded-xl focus:border-blue-500 transition">
+                            <option value="">-- Elige la función --</option>
+                            <option value="a">Objeto Directo</option>
+                            <option value="b">Acusativo de Relación</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col gap-4 bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
+                        <label class="text-base font-bold text-slate-300">2. En "οὐρίου ἀνέμου τυχόντες", ¿por qué se usa el Genitivo?</label>
+                        <select id="p2-q2" class="select-griego text-lg p-5 rounded-xl focus:border-blue-500 transition">
+                            <option value="">-- Elige la regla --</option>
+                            <option value="a">Genitivo Absoluto</option>
+                            <option value="b">Régimen del verbo τυγχάνω</option>
+                        </select>
+                    </div>
+                </div>
+                <button onclick="checkPrueba2()" class="w-full mt-10 py-4 bg-blue-700 text-white font-cinzel font-black text-xl rounded-xl shadow-2xl">Validar Enigma II</button>
+                <p id="p2-error" class="text-red-500 text-sm mt-6 hidden font-black text-center uppercase tracking-widest">⚠️ Error sintáctico.</p>
+            </div>
 
-            <!-- PRUEBA III -->
-           <div id="prueba3" class="hidden bg-slate-950/95 border-2 border-amber-900 p-10 rounded-3xl transition-all duration-1000">
-                <h3 class="text-3xl text-amber-500 mb-8 flex items-center gap-5 font-cinzel font-black uppercase tracking-wider">
-                    <span class="bg-amber-900 text-amber-100 px-5 py-2 rounded-xl border-2 border-amber-400 shadow-md">III</span> Saberes de la Physis
-                </h3>
-                <div class="space-y-8">
-                    <div class="flex flex-col gap-4 bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
-                        <label class="text-base font-bold text-slate-300">1. ¿Qué filósofo afirmó que el universo se compone de átomos y vacío?</label>
-                        <select id="p3-q1" class="select-griego text-lg p-5 rounded-xl focus:border-amber-500 transition">
-                            <option value="">-- Identifica al Sabio --</option>
-                            <option value="a">Pitágoras</option>
-                            <option value="b">Demócrito</option>
-                            <option value="c">Arquímedes</option>
-                        </select>
-                    </div>
-                    <div class="flex flex-col gap-4 bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
-                        <label class="text-base font-bold text-slate-300">2. ¿Qué significa la "Teleología" propuesta por Aristóteles?</label>
-                        <select id="p3-q2" class="select-griego text-lg p-5 rounded-xl focus:border-amber-500 transition">
-                            <option value="">-- Define el concepto --</option>
-                            <option value="a">El estudio de la distancia de las estrellas.</option>
-                            <option value="b">El principio de que la naturaleza no hace nada en vano; todo tiene un fin.</option>
-                            <option value="c">La teoría de la armonía musical en las esferas.</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="mt-10 flex justify-end">
-                    <button onclick="checkPrueba3()" class="px-10 py-4 bg-amber-700 hover:bg-amber-600 text-white font-cinzel font-black text-xl rounded-xl transition transform hover:scale-105 uppercase tracking-widest w-full md:w-auto shadow-2xl">Validar Enigma III</button>
-                </div>
-                <p id="p3-error" class="text-red-500 text-sm mt-6 hidden font-black text-center uppercase tracking-widest">⚠️ Has olvidado las lecciones de los sabios.</p>
-            </div>
+            <!-- PRUEBA III -->
+            <div id="prueba3" class="hidden bg-slate-950/95 border-2 border-amber-900 p-10 rounded-3xl transition-all duration-1000">
+                <h3 class="text-3xl text-amber-500 mb-8 flex items-center gap-5 font-cinzel font-black uppercase tracking-wider">
+                    <span class="bg-amber-900 text-amber-100 px-5 py-2 rounded-xl border-2 border-amber-400 shadow-md">III</span> Saberes de la Physis
+                </h3>
+                <div class="space-y-8">
+                    <div class="flex flex-col gap-4 bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
+                        <label class="text-base font-bold text-slate-300">1. ¿Qué filósofo afirmó que el universo es átomos y vacío?</label>
+                        <select id="p3-q1" class="select-griego text-lg p-5 rounded-xl focus:border-amber-500 transition">
+                            <option value="">-- Identifica al Sabio --</option>
+                            <option value="a">Pitágoras</option>
+                            <option value="b">Demócrito</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col gap-4 bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
+                        <label class="text-base font-bold text-slate-300">2. ¿Qué significa la "Teleología" de Aristóteles?</label>
+                        <select id="p3-q2" class="select-griego text-lg p-5 rounded-xl focus:border-amber-500 transition">
+                            <option value="">-- Define el concepto --</option>
+                            <option value="a">Estudio de los astros</option>
+                            <option value="b">La naturaleza no hace nada en vano; todo tiene un fin.</option>
+                        </select>
+                    </div>
+                </div>
+                <button onclick="checkPrueba3()" class="w-full mt-10 py-4 bg-amber-700 text-white font-cinzel font-black text-xl rounded-xl shadow-2xl">Validar Enigma III</button>
+                <p id="p3-error" class="text-red-500 text-sm mt-6 hidden font-black text-center uppercase tracking-widest">⚠️ Has olvidado las lecciones.</p>
+            </div>
 
-            <!-- PRUEBA IV -->
-            <div id="prueba4" class="hidden bg-slate-950/95 border-2 border-purple-900 p-10 rounded-3xl transition-all duration-1000">
-                <h3 class="text-3xl text-purple-400 mb-8 flex items-center gap-5 font-cinzel font-black uppercase tracking-wider">
-                    <span class="bg-purple-900 text-purple-100 px-5 py-2 rounded-xl border-2 border-purple-400 shadow-md">IV</span> Las Sombras Persas
-                </h3>
-                <div class="space-y-8">
-                    <div class="flex flex-col gap-4 bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
-                        <label class="text-base font-bold text-slate-300">1. Según el texto, ¿qué líder persa avanzaba hacia las naves atenienses?</label>
-                        <select id="p4-q1" class="select-griego text-lg p-5 rounded-xl focus:border-purple-500 transition">
-                            <option value="">-- Elige al líder --</option>
-                            <option value="a">Jerjes</option>
-                            <option value="b">Mardonio</option>
-                            <option value="c">Darío</option>
-                        </select>
-                    </div>
-                    <div class="flex flex-col gap-4 bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
-                        <label class="text-base font-bold text-slate-300">2. ¿A qué isla cruzaron los atenienses evacuando el Ática para protegerse?</label>
-                        <select id="p4-q2" class="select-griego text-lg p-5 rounded-xl focus:border-purple-500 transition">
-                            <option value="">-- Elige el refugio --</option>
-                            <option value="a">Eubea</option>
-                            <option value="b">Egina</option>
-                            <option value="c">Salamina</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="mt-10 flex justify-end">
-                    <button onclick="checkPrueba4()" class="px-10 py-4 bg-purple-700 hover:bg-purple-600 text-white font-cinzel font-black text-xl rounded-xl transition transform hover:scale-105 uppercase tracking-widest w-full md:w-auto shadow-2xl">Validar Enigma IV</button>
-                </div>
-                <p id="p4-error" class="text-red-500 text-sm mt-6 hidden font-black text-center uppercase tracking-widest">⚠️ Mardonio avanza por tu error histórico.</p>
-            </div>
+            <!-- PRUEBA IV -->
+            <div id="prueba4" class="hidden bg-slate-950/95 border-2 border-purple-900 p-10 rounded-3xl transition-all duration-1000 shadow-2xl">
+                <h3 class="text-3xl text-purple-400 mb-8 flex items-center gap-5 font-cinzel font-black uppercase tracking-wider">
+                    <span class="bg-purple-900 text-purple-100 px-5 py-2 rounded-xl border-2 border-purple-400 shadow-md">IV</span> Las Sombras Persas
+                </h3>
+                <div class="space-y-8">
+                    <div class="flex flex-col gap-4 bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
+                        <label class="text-base font-bold text-slate-300">1. ¿Qué líder persa avanzaba hacia Atenas?</label>
+                        <select id="p4-q1" class="select-griego text-lg p-5 rounded-xl focus:border-purple-500 transition">
+                            <option value="">-- Elige al líder --</option>
+                            <option value="a">Darío</option>
+                            <option value="b">Mardonio</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col gap-4 bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
+                        <label class="text-base font-bold text-slate-300">2. ¿A qué isla evacuaron los atenienses?</label>
+                        <select id="p4-q2" class="select-griego text-lg p-5 rounded-xl focus:border-purple-500 transition">
+                            <option value="">-- Elige el refugio --</option>
+                            <option value="a">Egina</option>
+                            <option value="c">Salamina</option>
+                        </select>
+                    </div>
+                </div>
+                <button onclick="checkPrueba4()" class="w-full mt-10 py-4 bg-purple-700 text-white font-cinzel font-black text-xl rounded-xl shadow-2xl">Validar Enigma IV</button>
+                <p id="p4-error" class="text-red-500 text-sm mt-6 hidden font-black text-center uppercase tracking-widest">⚠️ Mardonio avanza.</p>
+            </div>
 
-            <!-- PRUEBA V -->
-           <div id="prueba5" class="hidden bg-slate-950/95 border-2 border-pink-900 p-10 rounded-3xl transition-all duration-1000">
-                <h3 class="text-3xl text-pink-400 mb-8 flex items-center gap-5 font-cinzel font-black uppercase tracking-wider">
-                    <span class="bg-pink-900 text-pink-100 px-5 py-2 rounded-xl border-2 border-pink-400 shadow-md">V</span> Hermenéutica Superior
-                </h3>
-                <div class="space-y-8">
-                    <div class="flex flex-col gap-5 bg-slate-900/60 p-8 rounded-2xl border-l-8 border-pink-600">
-                        <p class="text-xl text-pink-200 italic font-serif leading-loose border-b border-pink-900 pb-4">"δεῖ σε ἄγγελον πέμψαι ὡς τῷ βασιλεῖ πάντα λέξοντα."</p>
-                        <select id="p5-q1" class="select-griego text-base p-4 rounded-xl mt-4 focus:border-pink-500">
-                            <option value="">¿Cuál es la traducción exacta?</option>
-                            <option value="a">Es necesario que envíes a un mensajero para decirle todo al rey.</option>
-                            <option value="b">El mensajero dice que es necesario enviar todo al rey rápidamente.</option>
-                            <option value="c">Debes enviar el mensaje que el rey ha dicho por el mensajero.</option>
-                        </select>
-                    </div>
-                    <div class="flex flex-col gap-5 bg-slate-900/60 p-8 rounded-2xl border-l-8 border-pink-600">
-                        <p class="text-xl text-pink-200 italic font-serif leading-loose border-b border-pink-900 pb-4">"τοὺς ἐν ταύτῃ τῇ μάχῃ ἀποθανόντας αἰεὶ τιμήσομεν."</p>
-                        <select id="p5-q2" class="select-griego text-base p-4 rounded-xl mt-4 focus:border-pink-500">
-                            <option value="">¿Cuál es la traducción exacta?</option>
-                            <option value="a">Honramos siempre a los que murieron en esta batalla gloriosa.</option>
-                            <option value="b">Siempre honraremos a los que murieron en esta batalla.</option>
-                            <option value="c">Será digno honrar a la batalla donde murieron todos pronto.</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="mt-10 flex justify-end">
-                    <button onclick="checkPrueba5()" class="px-10 py-4 bg-pink-700 hover:bg-pink-600 text-white font-cinzel font-black text-xl rounded-xl transition transform hover:scale-105 uppercase tracking-widest w-full md:w-auto shadow-2xl">Validar Enigma V</button>
-                </div>
-                <p id="p5-error" class="text-red-500 text-sm mt-6 hidden font-black text-center uppercase tracking-widest">⚠️ Traducción inaceptable para los clásicos.</p>
-            </div>
+            <!-- PRUEBA V -->
+            <div id="prueba5" class="hidden bg-slate-950/95 border-2 border-pink-900 p-10 rounded-3xl transition-all duration-1000 shadow-2xl">
+                <h3 class="text-3xl text-pink-400 mb-8 flex items-center gap-5 font-cinzel font-black uppercase tracking-wider">
+                    <span class="bg-pink-900 text-pink-100 px-5 py-2 rounded-xl border-2 border-pink-400 shadow-md">V</span> Hermenéutica Superior
+                </h3>
+                <div class="space-y-8">
+                    <div class="flex flex-col gap-5 bg-slate-900/60 p-8 rounded-2xl border-l-8 border-pink-600">
+                        <p class="text-xl text-pink-200 italic font-serif leading-loose border-b border-pink-900 pb-4">"δεῖ σε ἄγγελον πέμψαι ὡς τῷ βασιλεῖ πάντα λέξοντα."</p>
+                        <select id="p5-q1" class="select-griego text-base p-4 rounded-xl mt-4 focus:border-pink-500">
+                            <option value="">¿Cuál es la traducción exacta?</option>
+                            <option value="a">Es necesario que envíes a un mensajero para decirle todo al rey.</option>
+                            <option value="b">El mensajero dice que es necesario enviar todo.</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col gap-5 bg-slate-900/60 p-8 rounded-2xl border-l-8 border-pink-600">
+                        <p class="text-xl text-pink-200 italic font-serif leading-loose border-b border-pink-900 pb-4">"τοὺς ἐν ταύτῃ τῇ μάχῃ ἀποθανόντας αἰεὶ τιμήσομεν."</p>
+                        <select id="p5-q2" class="select-griego text-base p-4 rounded-xl mt-4 focus:border-pink-500">
+                            <option value="">¿Cuál es la traducción exacta?</option>
+                            <option value="a">Honramos siempre a los que mueren hoy.</option>
+                            <option value="b">Siempre honraremos a los que murieron en esta batalla.</option>
+                        </select>
+                  </div>
+                </div>
+                <button onclick="checkPrueba5()" class="w-full mt-10 py-4 bg-pink-700 text-white font-cinzel font-black text-xl rounded-xl shadow-2xl transition transform hover:scale-105 uppercase tracking-widest">Validar Enigma V</button>
+                <p id="p5-error" class="text-red-500 text-sm mt-6 hidden font-black text-center uppercase tracking-widest">⚠️ Error hermenéutico.</p>
+            </div>
 
             <!-- PRUEBA VI -->
            <div id="prueba6" class="hidden bg-black/95 border-4 border-emerald-500 p-12 rounded-3xl shadow-[0_0_80px_rgba(16,185,129,0.3)] transition-all duration-1000 relative overflow-hidden">
@@ -2007,8 +1991,8 @@
                     ${diseccionarPalabra(word, entry)}
                 </div>
                 <h3 class="text-2xl text-${color}-400 font-cinzel tracking-widest mt-2 lema-display">
-                    Lema: <span class="normal-case">${entry.l}</span>
-                </h3>
+    Lema: <span class="normal-case">${entry.l}</span>
+</h3>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
