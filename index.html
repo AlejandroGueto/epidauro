@@ -2298,6 +2298,102 @@ function checkPrueba5() {
                 }, Math.random() * 2500);
             }
         }
+      // =========================================
+// FUNCIONES DE VALIDACIÓN DE ENIGMAS (III - V)
+// =========================================
+
+function checkPrueba3() {
+    const q1 = document.getElementById('p3-q1').value; // Demócrito (b)
+    const q2 = document.getElementById('p3-q2').value; // Fin/Propósito (b)
+    if (q1 === 'b' && q2 === 'b') {
+        successPrueba('prueba3', 'prueba4', "Prueba III Superada: Eres un Sabio de la Physis.");
+    } else {
+        failPrueba('p3-error');
+    }
+}
+
+function checkPrueba4() {
+    const q1 = document.getElementById('p4-q1').value; // Mardonio (b)
+    const q2 = document.getElementById('p4-q2').value; // Salamina (c)
+    if (q1 === 'b' && q2 === 'c') {
+        successPrueba('prueba4', 'prueba5', "Prueba IV Superada: La historia te avala.");
+    } else {
+        failPrueba('p4-error');
+    }
+}
+
+function checkPrueba5() {
+    const q1 = document.getElementById('p5-q1').value; // Es necesario enviar... (a)
+    const q2 = document.getElementById('p5-q2').value; // Siempre honraremos... (b)
+    if (q1 === 'a' && q2 === 'b') {
+        successPrueba('prueba5', 'prueba6', "Prueba V Superada: Hermenéutica Perfecta.");
+    } else {
+        failPrueba('p5-error');
+    }
+}
+
+// =========================================
+// MOTOR DE VICTORIA Y EFECTOS FINALES
+// =========================================
+
+function checkPrueba6() {
+    const code = [
+        document.getElementById('lock1').value,
+        document.getElementById('lock2').value,
+        document.getElementById('lock3').value,
+        document.getElementById('lock4').value,
+        document.getElementById('lock5').value,
+        document.getElementById('lock6').value
+    ].join('');
+
+    if (code === '134231') {
+        victory();
+    } else {
+        failPrueba('p6-error');
+    }
+}
+
+function victory() {
+    clearInterval(timerInterval);
+    const sound = document.getElementById('sonidoOraculo');
+    if(sound) { sound.play(); }
+    
+    // Ocultar Interfaz de Juego
+    document.getElementById('gameStage').classList.add('hidden-stage');
+    document.getElementById('gameHeader').classList.add('hidden-stage');
+    
+    // Mostrar Pantalla de Victoria
+    const victoryDiv = document.getElementById('victoryStage');
+    victoryDiv.classList.remove('hidden-stage');
+    
+    // Inyectar Datos Finales
+    document.getElementById('finalTeamName').innerText = teamName;
+    document.getElementById('finalTime').innerText = document.getElementById('timerDisplay').innerText;
+    document.getElementById('finalMistakes').innerText = mistakes;
+    
+    // Puntuación Pro: Base 10.000 - (Errores * 200) + (Segundos restantes * 2)
+    const score = Math.max(0, 10000 - (mistakes * 200) + (timeRemaining * 2));
+    
+    // Animación de contador de puntos
+    let count = 0;
+    const scoreEl = document.getElementById('finalScore');
+    const interval = setInterval(() => {
+        count += Math.ceil(score / 50);
+        if (count >= score) {
+            count = score;
+            clearInterval(interval);
+        }
+        scoreEl.innerText = count.toLocaleString() + " DRACMAS";
+    }, 30);
+
+    // Iniciar efectos GOD MODE
+    initFire();
+    lluviaDracmas();
+    showToast("¡ATENAS HA SIDO SALVADA POR TU FILOLOGÍA!", "trophy");
+}
+
+// Asegurar que Lucide cargue todos los iconos al final
+lucide.createIcons();
     </script>
 </body>
 </html>
