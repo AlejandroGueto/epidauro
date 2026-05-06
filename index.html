@@ -1379,9 +1379,9 @@
             'μαχη': { l: 'μάχη, -ης, ἡ', m: 'Sust. (1ª decl), Dat. Sg.', s: 'Lugar en donde', d: 'en la batalla', t: () => G.n1F('μάχ', true), estructura: ['', 'μάχ', '', '', 'ῃ'] },
             
             // PRONOMBRES (NOMINALES) E INVARIABLES
-            'εγω': { l: 'ἐγώ', m: 'Pron. Personal, 1ª Nom. Sg.', s: 'Sujeto', d: 'yo', t: () => inv, estructura: ['', 'ἐγώ', '', '', ''] },
-            'συ': { l: 'σύ', m: 'Pron. Personal, 2ª Nom. Sg.', s: 'Sujeto', d: 'tú', t: () => inv, estructura: ['', 'σύ', '', '', ''] },
-            'ημεισ': { l: 'ἡμεῖς', m: 'Pron. Personal, 1ª Nom. Pl.', s: 'Sujeto', d: 'nosotros', t: () => inv, estructura: ['', 'ἡμεῖς', '', '', ''] },
+            'εγω': { l: 'ἐγώ', m: 'Pron. Personal, 1ª Nom. Sg.', s: 'Sujeto (Sujeto)', d: 'yo', t: () => buildPronounT('ἐγώ','ἐμέ','ἐμοῦ','ἐμοί','ἡμεῖς','ἡμᾶς','ἡμῶν','ἡμῖν','1ª Persona'), estructura: ['', 'ἐγώ', '', '', ''] },
+            'συ': { l: 'σύ', m: 'Pron. Personal, 2ª Nom. Sg.', s: 'Sujeto (Sujeto)', d: 'tú', t: () => buildPronounT('σύ','σέ','σοῦ','σοί','ὑμεῖς','ὑμᾶς','ὑμῶν','ὑμῖν','2ª Persona'), estructura: ['', 'σύ', '', '', ''] },
+            'ημεισ': { l: 'ἡμεῖς', m: 'Pron. Personal, 1ª Nom. Pl.', s: 'Sujeto (Sujeto)', d: 'nosotros', t: () => buildPronounT('ἐγώ','ἐμέ','ἐμοῦ','ἐμοί','ἡμεῖς','ἡμᾶς','ἡμῶν','ἡμῖn','1ª Persona'), estructura: ['', 'ἡμεῖς', '', '', ''] },
             'υμεισ': { l: 'ὑμεῖς', m: 'Pron. Personal, 2ª Nom. Pl.', s: 'Sujeto', d: 'vosotros', t: () => inv, estructura: ['', 'ὑμεῖς', '', '', ''] },
             'με': { l: 'ἐγώ', m: 'Pron. Personal, 1ª Acus. Sg.', s: 'O. Directo', d: 'me / a mí', t: () => inv, estructura: ['', 'με', '', '', ''] },
             'σου': { l: 'σύ', m: 'Pron. Personal, 2ª Gen. Sg.', s: 'C. Nombre', d: 'de ti', t: () => inv, estructura: ['', 'σοῦ', '', '', ''] },
@@ -1392,9 +1392,9 @@
             'υμων': { l: 'ὑμεῖς', m: 'Pron. Personal, 2ª Gen. Pl.', s: 'Compl. Agente (ὑπό)', d: 'de vosotros', t: () => inv, estructura: ['', 'ὑμ', '', '', 'ῶν'] },
             
             'ουδεισ': { l: 'οὐδείς, οὐδεμία, οὐδέν', m: 'Pron. Indefinido, Nom. Sg. Masc.', s: 'Sujeto', d: 'nadie / ninguno', t: () => inv, estructura: ['οὐδ', 'εἰς', '', '', ''] },
-            'τις': { l: 'τις, τι', m: 'Pron. Indefinido, Nom. Sg.', s: 'Determinante', d: 'alguna', t: () => inv, estructura: ['', 'τις', '', '', ''] },
-            'τινι': { l: 'τις, τι', m: 'Pron. Indefinido, Dat. Sg.', s: 'Determinante', d: 'alguna', t: () => inv, estructura: ['', 'τιν', '', '', 'ί'] },
-            'τι': { l: 'τίς, τί', m: 'Pron. Interrogativo, Acus. Sg.', s: 'O. Directo', d: '¿qué?', t: () => inv, estructura: ['', 'τί', '', '', ''] },
+           'τισ': { l: 'τις, τι', m: 'Pron. Indefinido, Nom. Sg. Masc/Fem.', s: 'Sujeto / Det.', d: 'alguien / un / una', t: () => buildPronounT('τις','τινά','τινός','τινί','τινές','τινάς','τινῶν','τισί','Pron. Indefinido'), estructura: ['', 'τις', '', '', ''] },
+            'τινι': { l: 'τις, τι', m: 'Pron. Indefinido, Dat. Sg.', s: 'Determinante', d: 'alguna', t: () => buildPronounT('τίς','τίνα','τίνος','τίνι','τίνες','τίνας','τίνων','τίσι','Pron. Interrogativo'), estructura: ['', 'τί', '', '', ''] },
+            'τι': { l: 'τίς, τί', m: 'Pron. Interrogativo, Nom/Acus Sg. Neutro', s: 'O. Directo / Sujeto', d: 'qué / por qué', t: () => buildPronounT('τίς','τίνα','τίνος','τίνι','τίνες','τίνας','τίνων','τίσι','Pron. Interrogativo'), estructura: ['', 'τί', '', '', ''] },
             'οσ': { l: 'ὅς, ἥ, ὅ', m: 'Pron. Relativo, Nom. Sg. Masc.', s: 'Sujeto', d: 'el cual / que', t: () => inv, estructura: ['', 'ὅ', '', '', 'ς'] },
             
             'ταυτη': { l: 'οὗτος, αὕτη, τοῦτο', m: 'Pron. Demostrativo, Dat. Sg. Fem.', s: 'Determinante', d: 'esta', t: () => buildNounT('αὕτη','-','ταύτην','ταύτης','ταύτῃ','-','-','-','-','-'), estructura: ['', 'ταύτ', '', '', 'ῃ'] },
