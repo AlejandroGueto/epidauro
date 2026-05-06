@@ -1085,7 +1085,14 @@
 
             // VERBOS: AORISTOS Y PERFECTOS
             'εγενετο': { l: 'γίγνομαι', m: '3ª Sg. Aoristo Radical Medio', s: 'Núcleo', d: 'sucedió', t: () => buildVerbT('ἐγενόμην','-ου','ἐγένετο','-όμεθα','-εσθε','-οντο','Aoristo Radical'), estructura: ['ἐ', 'γέν', '', 'ε', 'το'] },
-            'αφικετο': { l: 'ἀφικνέομαι', m: '3ª Sg. Aoristo Medio', s: 'Núcleo', d: 'llegó', t: () => G.vAorM('ἀφίκ', ''), estructura: ['ἀφ', 'ίκ', '', 'ε', 'το'] },
+            'αφικετο': { 
+    l: 'ἀφικνέομαι', 
+    m: '3ª Sg. Aoristo Radical Medio', 
+    s: 'Núcleo', 
+    d: 'llegó', 
+    t: () => buildVerbT('ἀφικόμην', 'ἀφίκου', 'ἀφίκετο', 'ἀφικόμεθα', 'ἀφίκεσθε', 'ἀφίκοντο', 'Aoristo Radical Medio'), 
+    estructura: ['ἀφ', 'ίκ', '', 'ε', 'το'] 
+},
             'εξεκομισαν': { l: 'ἐκκομίζω', m: '3ª Plural Aoristo Activo', s: 'Núcleo', d: 'evacuaron', t: () => G.vAorA('ἐξεκόμισ', ''), estructura: ['ἐξε', 'κόμισ', 'α', '', 'ν'] },
             'ωρμησαν': { l: 'ὁρμάω', m: '3ª Plural Aoristo Activo', s: 'Núcleo', d: 'se pusieron en marcha', t: () => G.vAorA('ὥρμησ', ''), estructura: ['', 'ὥρμη', 'σ', 'α', 'ν'] },
             'ηυρον': { l: 'εὑρίσκω', m: '3ª Plural Aoristo Radical', s: 'Núcleo', d: 'encontraron', t: () => buildVerbT('ηὗρον','-ες','-ε','-ομεν','-ετε','ηὗρον','Aoristo Radical'), estructura: ['', 'ηὗρ', '', 'ο', 'ν'] },
