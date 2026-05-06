@@ -1181,7 +1181,8 @@
             'επιφανηναι': { l: 'ἐπιφαίνω', m: 'Infinitivo Aoristo Pasivo', s: 'Sujeto', d: 'aparecer', t: () => inv, estructura: ['ἐπι', 'φαν', 'ῆ', '', 'ναι'] },
 
             // PARTICIPIOS
-            'λεξοντα': { l: 'λέγω', m: 'Participio Futuro, Acus. Sg.', s: 'Finalidad (con ὡς)', d: 'para decir', t: () => buildNounT('λέξων','-','λέξοντα','λέξοντος','λέξοντι','-','-','-','-','-'), estructura: ['', 'λέξ', '', 'οντ', 'α'] },
+            'αρασ': { l: 'αἴρω', m: 'Participio Aoristo Activo, Nom. Sg. Masc.', s: 'Concertado', d: 'habiendo levantado', t: () => buildNounT('ἄρας','-','-αντα','-αντος','-αντι','-','-','-','-','-'), estructura: ['', 'ἄρ', 'α', '', 'ς'] },
+           'λεξοντα': { l: 'λέγω', m: 'Participio Futuro, Acus. Sg.', s: 'Finalidad (con ὡς)', d: 'para decir', t: () => buildNounT('λέξων','-','λέξοντα','λέξοντος','λέξοντι','-','-','-','-','-'), estructura: ['', 'λέξ', '', 'οντ', 'α'] },
             'αμυνουσαν': { l: 'ἀμύνω', m: 'Participio Futuro, Acus. Sg. Fem.', s: 'Finalidad', d: 'para defender', t: () => buildNounT('ἀμυνοῦσα','-','ἀμυνοῦσαν','-ούσης','-ούσῃ','-','-','-','-','-'), estructura: ['', 'ἀμυν', '', 'ούσ', 'αν'] },
             'αποθανοντας': { l: 'ἀποθνῄσκω', m: 'Participio Aoristo, Acus. Pl.', s: 'Sustantivado', d: 'a los que murieron', t: () => buildNounT('ἀποθανών','-','-όντα','-όντος','-όντι','-','-','ἀποθανόντας','-όντων','-'), estructura: ['ἀπο', 'θαν', '', 'όντ', 'ας'] },
             'ζητησων': { l: 'ζητέω', m: 'Participio Futuro, Nom. Sg. Masc.', s: 'Finalidad', d: 'para buscar', t: () => buildNounT('ζητήσων','-','ζητήσοντα','-οντος','-οντι','-','-','-','-','-'), estructura: ['', 'ζητή', 'σ', 'ων', ''] },
@@ -1236,7 +1237,11 @@
             'μεμψομενοι': { l: 'μέμφομαι', m: 'Participio Futuro Medio, Nom. Pl.', s: 'Finalidad (con ὡς)', d: 'para quejarse', t: () => G.n2M('μεμψόμεν'), estructura: ['', 'μέμψ', '', 'ομεν', 'οι'] },
 
             // SUSTANTIVOS, ADJETIVOS Y PRONOMBRES
-            'ασκληπιον': { l: 'Ἀσκλήπιος, -ου, ὁ', m: 'Sust. (2ª decl), Acus. Sg.', s: 'Dirección (con παρά)', d: 'a Asclepio', t: () => G.n2M('Ἀσκλήπι'), estructura: ['', 'Ἀσκλήπι', '', '', 'ον'] },
+            'υστεραια': { l: 'ὑστεραία, -ας, ἡ', m: 'Sustantivo, Dat. Sg. Fem.', s: 'CC Tiempo', d: 'al día siguiente', t: () => G.n1F('ὑστεραί', false), estructura: ['', 'ὑστεραί', '', '', 'ᾳ'] },
+            'φιαλην': { l: 'φιάλη, -ης, ἡ', m: 'Sustantivo, Acus. Sg. Fem.', s: 'O. Directo', d: 'la copa / tazón', t: () => G.n1F('φιάλ', true), estructura: ['', 'φιάλ', '', '', 'ην'] },
+            'σωτερ': { l: 'σωτήρ, -ῆρος, ὁ', m: 'Sustantivo, Voc. Sg. Masc.', s: 'Invocación', d: '¡salvador!', t: () => buildNounT('σωτήρ','σῶτερ','-ῆρα','-ῆρος','-ῆρι','-','-','-','-','-'), estructura: ['', 'σῶτερ', '', '', ''] },
+            'ικετησ': { l: 'ἱκέτης, -ου, ὁ', m: 'Sustantivo, Nom. Sg. Masc.', s: 'Predicativo', d: 'suplicante', t: () => G.n1M('ἱκέτ'), estructura: ['', 'ἱκέτ', '', '', 'ης'] },
+           'ασκληπιον': { l: 'Ἀσκλήπιος, -ου, ὁ', m: 'Sust. (2ª decl), Acus. Sg.', s: 'Dirección (con παρά)', d: 'a Asclepio', t: () => G.n2M('Ἀσκλήπι'), estructura: ['', 'Ἀσκλήπι', '', '', 'ον'] },
             'ασκληπιε': { l: 'Ἀσκλήπιος, -ου, ὁ', m: 'Sust. (2ª decl), Voc. Sg.', s: 'Invocación', d: '¡oh Asclepio!', t: () => G.n2M('Ἀσκλήπι'), estructura: ['', 'Ἀσκλήπι', '', '', 'ε'] },
             'ασκληπιοσ': { l: 'Ἀσκλήπιος, -ου, ὁ', m: 'Sust. (2ª decl), Nom. Sg.', s: 'Sujeto', d: 'Asclepio', t: () => G.n2M('Ἀσκλήπι'), estructura: ['', 'Ἀσκλήπι', '', '', 'ος'] },
             'θαλατταν': { l: 'θάλαττα, -ης, ἡ', m: 'Sustantivo (1ª decl), Acus. Sg.', s: 'Dirección (hacia el mar)', d: 'el mar', t: () => buildNounT('θάλαττα', 'θάλαττα', 'θάλατταν', 'θαλάττης', 'θαλάττῃ', 'θάλατται', 'θάλατται', 'θαλάττας', 'θαλαττῶν', 'θαλάτταις'), estructura: ['', 'θάλαττ', '', '', 'αν'] },
@@ -1336,6 +1341,9 @@
             'οφεων': { l: 'ὄφις, -εως, ὁ', m: 'Sust. (3ª decl), Gen. Pl.', s: 'Complemento Régimen (de ἀκούω)', d: 'de las serpientes', t: () => buildNounT('ὄφις','-','-ιν','-εως','-ει','-εις','-','-εις','-εων','-εσι'), estructura: ['', 'ὄφ', '', '', 'εων'] },
             'χερσι': { l: 'χείρ, χειρός, ἡ', m: 'Sust. (3ª), Dat. Pl.', s: 'Instrumento', d: 'con las manos', t: () => buildNounT('χείρ','-','χεῖρα','χειρός','χειρί','χεῖρες','-','χεῖρας','χειρῶν','χερσί'), estructura: ['', 'χερ', '', '', 'σί'] },
             'χειρασ': { l: 'χείρ, χειρός, ἡ', m: 'Sust. (3ª), Acus. Pl.', s: 'O. Directo', d: 'las manos', t: () => buildNounT('χείρ','-','χεῖρα','χειρός','χειρί','χεῖρες','-','χεῖρας','χειρῶν','χερσί'), estructura: ['', 'χεῖρ', '', '', 'ας'] },
+           'οσια': { l: 'ὅσιος, -α, -ον', m: 'Adjetivo, Acus. Pl. Neutro', s: 'O. Directo', d: 'cosas santas', t: () => G.n2N('ὅσι'), estructura: ['', 'ὅσι', '', '', 'α'] },
+            'φιλανθρωποτατε': { l: 'φιλανθρωπότατος', m: 'Adjetivo Superlativo, Voc. Sg. Masc.', s: 'Invocación', d: '¡oh más amigo del hombre!', t: () => G.n2M('φιλανθρωπότατ'), estructura: ['', 'φιλανθρωπότατ', '', '', 'ε'] },
+            'καθαροσ': { l: 'καθαρός, -ά, -όν', m: 'Adjetivo, Nom. Sg. Masc.', s: 'Atributo / Predicativo', d: 'limpio / puro', t: () => G.n2M('καθαρ'), estructura: ['', 'καθαρ', '', '', 'ός'] }
             
             // LÉXICO "PERSAS" Y "EVALUACIÓN"
             'ηρι': { l: 'ἔαρ, ἦρος, τό', m: 'Sust. (3ª decl), Dat. Sg.', s: 'Dativo Absoluto (Tiempo)', d: 'en primavera', t: () => inv, estructura: ['', 'ἦρ', '', '', 'ι'] },
@@ -1384,6 +1392,7 @@
             'ημεισ': { l: 'ἡμεῖς', m: 'Pron. Personal, 1ª Nom. Pl.', s: 'Sujeto (Sujeto)', d: 'nosotros', t: () => buildPronounT('ἐγώ','ἐμέ','ἐμοῦ','ἐμοί','ἡμεῖς','ἡμᾶς','ἡμῶν','ἡμῖn','1ª Persona'), estructura: ['', 'ἡμεῖς', '', '', ''] },
             'υμεισ': { l: 'ὑμεῖς', m: 'Pron. Personal, 2ª Nom. Pl.', s: 'Sujeto', d: 'vosotros', t: () => inv, estructura: ['', 'ὑμεῖς', '', '', ''] },
             'με': { l: 'ἐγώ', m: 'Pron. Personal, 1ª Acus. Sg.', s: 'O. Directo', d: 'me / a mí', t: () => inv, estructura: ['', 'με', '', '', ''] },
+           'σε': { l: 'σύ', m: 'Pron. Personal, 2ª Acus. Sg.', s: 'O. Directo', d: 'te / a ti', t: () => buildPronounT('σύ','σέ','σοῦ','σοί','ὑμεῖς','ὑμᾶς','ὑμῶν','ὑμῖν','2ª Persona'), estructura: ['', 'σε', '', '', ''] },
             'σου': { l: 'σύ', m: 'Pron. Personal, 2ª Gen. Sg.', s: 'C. Nombre', d: 'de ti', t: () => inv, estructura: ['', 'σοῦ', '', '', ''] },
             'μοι': { l: 'ἐγώ', m: 'Pron. Personal, 1ª Dat. Sg.', s: 'O. Indirecto', d: 'me / a mí', t: () => inv, estructura: ['', 'μοι', '', '', ''] },
             'ημασ': { l: 'ἡμεῖς', m: 'Pron. Personal, 1ª Acus. Pl.', s: 'O. Directo', d: 'nos / a nosotros', t: () => inv, estructura: ['', 'ἡμ', '', '', 'ᾶς'] },
@@ -1479,7 +1488,8 @@
             'ποθεν': { l: 'πόθεν', m: 'Adverbio interrogativo', s: 'CC Origen', d: '¿de dónde?', t: () => inv, estructura: ['', 'πόθεν', '', '', ''] },
             'επειτα': { l: 'ἔπειτα', m: 'Adverbio', s: 'Tiempo', d: 'después / luego', t: () => inv, estructura: ['', 'ἔπειτα', '', '', ''] },
             'υστερον': { l: 'ὕστερον', m: 'Adverbio temporal', s: 'CC Tiempo', d: 'después', t: () => inv, estructura: ['', 'ὕστερον', '', '', ''] },
-            'πρωτον': { l: 'πρῶτον', m: 'Adverbio', s: 'CC Tiempo', d: 'primero / tan pronto como', t: () => inv, estructura: ['', 'πρῶτον', '', '', ''] },
+        'ευμενωσ': { l: 'εὐμενῶς', m: 'Adverbio', s: 'CC Modo', d: 'benévolamente', t: () => inv, estructura: ['', 'εὐμενῶς', '', '', ''] },    
+        'πρωτον': { l: 'πρῶτον', m: 'Adverbio', s: 'CC Tiempo', d: 'primero / tan pronto como', t: () => inv, estructura: ['', 'πρῶτον', '', '', ''] },
             'τελοσ': { l: 'τέλος', m: 'Sustantivo adverbializado', s: 'Tiempo', d: 'al final / por fin', t: () => inv, estructura: ['', 'τέλος', '', '', ''] },
             'επει': { l: 'ἐπεί', m: 'Conjunción Temporal', s: 'Nexo', d: 'cuando / después de que', t: () => inv, estructura: ['', 'ἐπεί', '', '', ''] },
             'εαν': { l: 'ἐάν', m: 'Conjunción Condicional', s: 'Nexo (rige Subjuntivo)', d: 'si (eventual)', t: () => inv, estructura: ['', 'ἐάν', '', '', ''] },
