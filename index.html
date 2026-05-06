@@ -439,496 +439,240 @@
     <!-- =========================================
          ETAPA 1: EL JUEGO PRINCIPAL
          ========================================= -->
-    <div id="gameStage" class="w-full max-w-[1600px] grid grid-cols-1 xl:grid-cols-12 gap-12 hidden-stage relative z-10">
+    <!-- =========================================
+         ETAPA 1: EL JUEGO PRINCIPAL (INTERFAZ DOBLE PANEL)
+         ========================================= -->
+    <div id="gameStage" class="w-full max-w-[1600px] grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 hidden-stage relative z-10">
         
-        <!-- COLUMNA IZQUIERDA: CODEX, MAPA Y CULTURA -->
-        <div class="xl:col-span-7 flex flex-col h-full gap-8">
-            
-            <!-- Botonera Superior Reorganizada -->
-            <div class="bg-slate-950/90 rounded-t-2xl p-5 shadow-lg border-b-4 border-cyan-900 flex flex-col xl:flex-row justify-between items-start xl:items-center gap-6 relative z-20">
-                
-                <!-- Grupo 1: Textos Griegos -->
-                <div class="flex flex-col w-full xl:w-auto">
-                    <span class="text-[10px] text-cyan-600 font-black uppercase tracking-[0.2em] mb-3 pl-2 flex items-center gap-2"><i data-lucide="scroll" class="w-3 h-3"></i> Pergaminos de Epidauro</span>
-                    <div class="flex flex-wrap gap-2">
-                        <button onclick="switchTab('tab-alfa')" id="btn-alfa" class="tab-btn active px-5 py-2.5 bg-slate-800 border-2 border-cyan-500 rounded-xl font-cinzel text-xs font-black uppercase text-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.3)] transition transform hover:-translate-y-1">Texto α</button>
-                        <button onclick="switchTab('tab-beta')" id="btn-beta" class="tab-btn px-5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl font-cinzel text-xs font-bold uppercase text-slate-400 hover:bg-slate-800 hover:text-white transition transform hover:-translate-y-1">Texto β</button>
-                        <button onclick="switchTab('tab-persas')" id="btn-persas" class="tab-btn px-5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl font-cinzel text-xs font-bold uppercase text-slate-400 hover:bg-slate-800 hover:text-white transition transform hover:-translate-y-1">Persas</button>
-                        <button onclick="switchTab('tab-eval')" id="btn-eval" class="tab-btn px-5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl font-cinzel text-xs font-bold uppercase text-slate-400 hover:bg-slate-800 hover:text-white transition transform hover:-translate-y-1">Eval</button>
-                    </div>
+        <!-- PANEL IZQUIERDO: LECTURA Y CULTURA (lg:col-span-7) -->
+        <div class="lg:col-span-7 flex flex-col h-full gap-6">
+            <!-- Botonera Izquierda -->
+            <div class="bg-slate-950/90 rounded-t-2xl p-4 shadow-lg border-b-4 border-cyan-900 flex flex-wrap justify-between items-center relative z-20 gap-4">
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="switchLeftTab('tab-alfa')" id="btn-alfa" class="left-tab-btn px-5 py-2.5 bg-slate-800 border-2 border-cyan-500 rounded-xl font-cinzel text-xs font-black uppercase text-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.3)] transition">Texto α</button>
+                    <button onclick="switchLeftTab('tab-beta')" id="btn-beta" class="left-tab-btn px-5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl font-cinzel text-xs font-bold uppercase text-slate-400 hover:bg-slate-800 hover:text-white transition">Texto β</button>
+                    <button onclick="switchLeftTab('tab-persas')" id="btn-persas" class="left-tab-btn px-5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl font-cinzel text-xs font-bold uppercase text-slate-400 hover:bg-slate-800 hover:text-white transition">Persas</button>
+                    <button onclick="switchLeftTab('tab-eval')" id="btn-eval" class="left-tab-btn px-5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl font-cinzel text-xs font-bold uppercase text-slate-400 hover:bg-slate-800 hover:text-white transition">Eval</button>
+                    <div class="w-px h-8 bg-slate-700 mx-1 hidden sm:block"></div>
+                    <button onclick="switchLeftTab('tab-cultura')" id="btn-cultura" class="left-tab-btn px-5 py-2.5 bg-slate-900 border border-amber-800/50 rounded-xl font-cinzel text-xs font-bold uppercase text-amber-500 hover:bg-amber-900/40 transition flex items-center gap-2">
+                        <i data-lucide="book" class="w-4 h-4"></i> Cultura
+                    </button>
                 </div>
-
-                <!-- Grupo 2: Herramientas del Sabio -->
-                <div class="flex flex-col w-full xl:w-auto">
-                    <span class="text-[10px] text-amber-600 font-black uppercase tracking-[0.2em] mb-3 pl-2 flex items-center gap-2"><i data-lucide="compass" class="w-3 h-3"></i> Archivos y Utilidades</span>
-                    <div class="flex flex-wrap gap-3 items-center">
-                        <button onclick="switchTab('tab-mapa')" id="btn-mapa" class="tab-btn px-5 py-2.5 bg-emerald-950/40 border border-emerald-800 rounded-xl font-cinzel text-xs font-bold uppercase text-emerald-500 hover:bg-emerald-900 hover:text-emerald-300 transition flex items-center gap-2 transform hover:-translate-y-1">
-                            <i data-lucide="map" class="w-4 h-4"></i> Mapa
-                        </button>
-                        <button onclick="switchTab('tab-cultura')" id="btn-cultura" class="tab-btn px-5 py-2.5 bg-amber-950/40 border border-amber-800 rounded-xl font-cinzel text-xs font-bold uppercase text-amber-500 hover:bg-amber-900 hover:text-amber-300 transition flex items-center gap-2 transform hover:-translate-y-1">
-                            <i data-lucide="book" class="w-4 h-4"></i> Cultura
-                        </button>
-                        <div class="w-px h-8 bg-slate-700 mx-2 hidden sm:block"></div>
-                        <button onclick="toggleTranslation()" id="btn-translate" class="px-5 py-2.5 bg-cyan-900/40 border border-cyan-600 rounded-xl font-cinzel text-xs font-black uppercase text-white hover:bg-cyan-700 transition flex items-center gap-2 transform hover:scale-105 shadow-lg">
-                            <i data-lucide="languages" class="w-4 h-4"></i> Traducir
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <!-- PREMIUM 1: VISIÓN DE LINCEO (Filtros de Rayos X) -->
-          <div id="xray-filters" class="flex flex-wrap items-center justify-center md:justify-start gap-3 mt-4 mb-2 bg-slate-900/50 p-4 rounded-xl border border-slate-700 shadow-inner">
-                <span class="text-cyan-400 font-cinzel font-bold mr-2 flex items-center gap-2">
-                    <i data-lucide="scan-eye" class="w-5 h-5"></i> Visión de Linceo:
-                </span>
-                <button onclick="applyXRay('Nom.')" class="px-4 py-2 bg-blue-900/50 text-blue-300 text-xs font-bold rounded-lg border border-blue-800 hover:bg-blue-800 transition shadow">Sujetos (Nom)</button>
-                <button onclick="applyXRay('Acus.')" class="px-4 py-2 bg-emerald-900/50 text-emerald-300 text-xs font-bold rounded-lg border border-emerald-800 hover:bg-emerald-800 transition shadow">O. Directos (Acus)</button>
-                <button onclick="applyXRay('Gen.')" class="px-4 py-2 bg-purple-900/50 text-purple-300 text-xs font-bold rounded-lg border border-purple-800 hover:bg-purple-800 transition shadow">Genitivos</button>
-                <button onclick="applyXRay('Dat.')" class="px-4 py-2 bg-amber-900/50 text-amber-300 text-xs font-bold rounded-lg border border-amber-800 hover:bg-amber-800 transition shadow">Dativos</button>
-                <button onclick="applyXRay('Verbo')" class="px-4 py-2 bg-red-900/50 text-red-300 text-xs font-bold rounded-lg border border-red-800 hover:bg-red-800 transition shadow">Verbos</button>
-                <button onclick="applyXRay('clear')" class="px-4 py-2 bg-slate-800 text-slate-400 text-xs font-bold rounded-lg hover:bg-slate-700 transition shadow border border-slate-600">Limpiar Lente</button>
+                <button onclick="toggleTranslation()" id="btn-translate" class="px-5 py-2.5 bg-cyan-900/40 border border-cyan-600 rounded-xl font-cinzel text-xs font-black uppercase text-white hover:bg-cyan-700 transition flex items-center gap-2 shadow-lg">
+                    <i data-lucide="languages" class="w-4 h-4"></i> TRADUCCIÓN
+                </button>
             </div>
             
-            <!-- Área de Contenido (Pergamino) -->
-            <div class="pergamino p-10 md:p-16 rounded-b-2xl relative shadow-[0_30px_60px_rgba(0,0,0,0.9)] min-h-[500px] max-h-[85vh] overflow-y-auto custom-scrollbar">
+            <!-- Visión Linceo -->
+            <div id="xray-filters" class="flex flex-wrap items-center gap-3 p-4 bg-slate-900/50 rounded-xl border border-slate-700 shadow-inner">
+                <span class="text-cyan-400 font-cinzel font-bold flex items-center gap-2"><i data-lucide="scan-eye" class="w-5 h-5"></i> Visión de Linceo:</span>
+                <button onclick="applyXRay('Nom.')" class="px-3 py-1 bg-blue-900/50 text-blue-300 text-xs font-bold rounded border border-blue-800 hover:bg-blue-800">Sujetos</button>
+                <button onclick="applyXRay('Acus.')" class="px-3 py-1 bg-emerald-900/50 text-emerald-300 text-xs font-bold rounded border border-emerald-800 hover:bg-emerald-800">Acusativos</button>
+                <button onclick="applyXRay('Gen.')" class="px-3 py-1 bg-purple-900/50 text-purple-300 text-xs font-bold rounded border border-purple-800 hover:bg-purple-800">Genitivos</button>
+                <button onclick="applyXRay('Dat.')" class="px-3 py-1 bg-amber-900/50 text-amber-300 text-xs font-bold rounded border border-amber-800 hover:bg-amber-800">Dativos</button>
+                <button onclick="applyXRay('Verbo')" class="px-3 py-1 bg-red-900/50 text-red-300 text-xs font-bold rounded border border-red-800 hover:bg-red-800">Verbos</button>
+                <button onclick="applyXRay('clear')" class="px-3 py-1 bg-slate-800 text-slate-400 text-xs font-bold rounded hover:bg-slate-700 ml-auto border border-slate-600">Limpiar</button>
+            </div>
+            
+            <!-- Pergamino -->
+            <div class="pergamino p-10 md:p-16 rounded-b-2xl relative shadow-[0_30px_60px_rgba(0,0,0,0.9)] min-h-[600px] max-h-[80vh] overflow-y-auto custom-scrollbar">
                 <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-48 h-2.5 bg-slate-400/20 rounded-full"></div>
                 
-                <!-- TEXTOS GRIEGOS -->
-                <div id="tab-alfa" class="tab-content">
-                    <h2 class="text-4xl md:text-5xl font-cinzel text-center border-b-4 border-slate-300 pb-8 mb-12 mt-4 font-black uppercase text-slate-900 tracking-[0.3em]">Η ΕΠΙΔΑΥΡΟΣ (α)</h2>
+                <div id="tab-alfa" class="left-tab-content">
+                    <h2 class="text-4xl font-cinzel text-center border-b-4 border-slate-300 pb-8 mb-12 mt-4 font-black uppercase text-slate-900">Η ΕΠΙΔΑΥΡΟΣ (α)</h2>
                     <div class="greek-display text-slate-950 text-justify" id="content-alfa-gr"></div>
                     <div class="text-xl leading-relaxed text-justify font-serif text-slate-700 hidden pt-12 border-t-2 border-dashed border-slate-300 mt-12 bg-white/40 p-10 rounded-xl" id="content-alfa-es"></div>
                 </div>
 
-                <div id="tab-beta" class="tab-content hidden">
-                    <h2 class="text-4xl md:text-5xl font-cinzel text-center border-b-4 border-slate-300 pb-8 mb-12 mt-4 font-black uppercase text-slate-900 tracking-[0.3em]">Η ΕΠΙΔΑΥΡΟΣ (β)</h2>
+                <div id="tab-beta" class="left-tab-content hidden">
+                    <h2 class="text-4xl font-cinzel text-center border-b-4 border-slate-300 pb-8 mb-12 mt-4 font-black uppercase text-slate-900">Η ΕΠΙΔΑΥΡΟΣ (β)</h2>
                     <div class="greek-display text-slate-950 text-justify" id="content-beta-gr"></div>
                     <div class="text-xl leading-relaxed text-justify font-serif text-slate-700 hidden pt-12 border-t-2 border-dashed border-slate-300 mt-12 bg-white/40 p-10 rounded-xl" id="content-beta-es"></div>
                 </div>
 
-                <div id="tab-persas" class="tab-content hidden">
-                    <h2 class="text-4xl md:text-5xl font-cinzel text-center border-b-4 border-slate-300 pb-8 mb-12 mt-4 font-black uppercase text-slate-900 tracking-[0.3em]">ΟΙ ΠΕΡΣΑΙ ΤΑΣ ΑΘΗΝΑΣ ΔΕΥΤΕΡΟΝ ΑΙΡΟΥΣΙΝ</h2>
+                <div id="tab-persas" class="left-tab-content hidden">
+                    <h2 class="text-3xl font-cinzel text-center border-b-4 border-slate-300 pb-8 mb-12 mt-4 font-black uppercase text-slate-900">ΟΙ ΠΕΡΣΑΙ ΤΑΣ ΑΘΗΝΑΣ ΔΕΥΤΕΡΟΝ ΑΙΡΟΥΣΙΝ</h2>
                     <div class="greek-display text-slate-950 text-justify" id="content-persas-gr"></div>
                     <div class="text-xl leading-relaxed text-justify font-serif text-slate-700 hidden pt-12 border-t-2 border-dashed border-slate-300 mt-12 bg-white/40 p-10 rounded-xl" id="content-persas-es"></div>
                 </div>
 
-                <div id="tab-eval" class="tab-content hidden">
-                    <h2 class="text-4xl md:text-5xl font-cinzel text-center border-b-4 border-slate-300 pb-8 mb-12 mt-4 font-black uppercase text-slate-900 tracking-[0.3em]">SENTENTIAE</h2>
+                <div id="tab-eval" class="left-tab-content hidden">
+                    <h2 class="text-4xl font-cinzel text-center border-b-4 border-slate-300 pb-8 mb-12 mt-4 font-black uppercase text-slate-900">SENTENTIAE</h2>
                     <div class="greek-display text-slate-950 text-justify" id="content-eval-gr"></div>
                     <div class="text-xl leading-relaxed text-justify font-serif text-slate-700 hidden pt-12 border-t-2 border-dashed border-slate-300 mt-12 bg-white/40 p-10 rounded-xl" id="content-eval-es"></div>
                 </div>
 
-                <!-- MAPA INTERACTIVO (NUEVO) -->
-                <div id="tab-mapa" class="tab-content hidden">
-                    <h2 class="text-4xl md:text-5xl font-cinzel text-center border-b-4 border-slate-300 pb-8 mb-12 mt-4 font-black uppercase text-slate-900 tracking-[0.3em]">Mapa Estratégico</h2>
-                    <p class="text-lg italic text-slate-600 mb-8 font-serif text-center">La ruta de la invasión de Mardonio hacia el Ática y nuestra posición.</p>
-                    
-                    <div class="w-full bg-blue-50/50 rounded-2xl border-4 border-slate-300 p-4 relative" style="min-height: 500px;">
-                        <!-- Mapa SVG Geográfico de Grecia -->
-                        <div class="w-full bg-slate-900 rounded-2xl border-4 border-slate-500 p-2 shadow-[0_0_30px_rgba(0,0,0,0.8)] relative z-0" style="height: 600px;">
-    <!-- Contenedor del Mapa Real -->
-    <div id="mapa-real" class="w-full h-full rounded-xl z-0 relative"></div>
-    
-   <!-- Leyenda Flotante (Corregida) -->
-    <div class="absolute bottom-6 left-6 z-[400] bg-amber-50/95 p-5 rounded-xl border-2 border-amber-900/30 backdrop-blur-md shadow-2xl pointer-events-none">
-        <h4 class="text-amber-900 font-cinzel font-black border-b-2 border-amber-900/20 pb-2 mb-4 uppercase tracking-widest text-lg">Simbología</h4>
-        <div class="flex flex-col gap-3 font-serif text-sm text-slate-900 font-bold">
-            <div class="flex items-center gap-3"><div class="w-4 h-4 rounded-full bg-red-600 shadow-[0_0_8px_red] border border-red-900"></div> Avance de Mardonio</div>
-            <div class="flex items-center gap-3"><div class="w-4 h-4 rounded-full bg-cyan-500 shadow-[0_0_8px_cyan] border border-cyan-900"></div> Fuerzas Atenienses</div>
-            <div class="flex items-center gap-3"><div class="w-4 h-4 rounded-full bg-green-500 shadow-[0_0_8px_green] border border-green-900"></div> Refugio (Epidauro)</div>
-        </div>
-    </div>
-</div>
-</div> 
-</div>
-                <!-- CULTURA -->
-                <div id="tab-cultura" class="tab-content hidden">
-                    <h2 class="text-4xl md:text-5xl font-cinzel text-center border-b-4 border-slate-300 pb-8 mb-12 mt-4 font-black uppercase text-slate-900 tracking-[0.3em]">Sapientia Graeca</h2>
-                    <div class="text-xl leading-relaxed text-justify font-serif text-slate-900 space-y-10" id="content-cultura-es">
+                <div id="tab-cultura" class="left-tab-content hidden">
+                    <h2 class="text-4xl font-cinzel text-center border-b-4 border-slate-300 pb-8 mb-12 mt-4 font-black uppercase text-slate-900">Sapientia Graeca</h2>
+                    <div class="text-xl leading-relaxed text-justify font-serif text-slate-900 space-y-10">
                         <div class="bg-amber-100 p-8 rounded-2xl border-l-8 border-amber-600 shadow-lg">
                             <p class="font-black text-amber-900 text-2xl mb-4">Advertencia del Escriba:</p>
                             <p>Este conocimiento es vital para la Prueba III. Estudiad con detenimiento los conceptos de <i>physis</i>, <i>arkhé</i> y los logros de los sabios.</p>
                         </div>
                         <div class="bg-white/50 p-8 rounded-2xl shadow">
                             <h3 class="text-2xl font-cinzel font-bold text-slate-800 mb-4 border-b-2 border-slate-300 inline-block">1. El Nacimiento de la Razón</h3>
-                            <p>La ciencia nace en Grecia cuando se intenta explicar la naturaleza (<em>physis</em>) sin recurrir al mito, buscando un principio material y racional (<em>arkhé</em>). La palabra "Teorema" significaba originalmente "contemplación" u "observación profunda" (de <em>theorein</em>).</p>
+                            <p>La ciencia nace en Grecia cuando se intenta explicar la naturaleza (<em>physis</em>) sin recurrir al mito, buscando un principio material y racional (<em>arkhé</em>).</p>
                         </div>
                         <div class="bg-white/50 p-8 rounded-2xl shadow">
-                            <h3 class="text-2xl font-cinzel font-bold text-slate-800 mb-4 border-b-2 border-slate-300 inline-block">2. Pericles y la Superstición</h3>
-                            <p>Según Plutarco, Pericles superó la superstición gracias a las doctrinas físicas, que eliminan el temor ignorante y generan piedad firme. Concilió la ciencia del físico Anaxágoras con la religión del adivino Lampón: aceptó que el físico explicaba la "causa natural" (el cómo) y el adivino el "fin divino" (el para qué).</p>
-                        </div>
-                        <div class="bg-white/50 p-8 rounded-2xl shadow">
-                            <h3 class="text-2xl font-cinzel font-bold text-slate-800 mb-6 border-b-2 border-slate-300 inline-block">3. Grandes Sabios y su Legado</h3>
+                            <h3 class="text-2xl font-cinzel font-bold text-slate-800 mb-6 border-b-2 border-slate-300 inline-block">2. Grandes Sabios y su Legado</h3>
                             <ul class="list-disc pl-10 space-y-6">
-                                <li><strong>Tales de Mileto:</strong> Midió las pirámides de Egipto y predijo un eclipse (585 a.C.). Afirmó que el agua es el principio de todo.</li>
-                                <li><strong>Pitágoras:</strong> Descubrió que los intervalos musicales dependían de proporciones numéricas (armonía cósmica).</li>
-                                <li><strong>Demócrito:</strong> Creador de la teoría atómica. Afirmó que el universo se compone únicamente de "átomos" (materia indivisible) y "vacío" moviéndose al azar.</li>
-                                <li><strong>Arquímedes:</strong> En su obra <em>"El arenario"</em> demostró que la mente humana podía formular un número inmensamente mayor que todos los granos de arena del universo, retando al concepto de infinito.</li>
-                                <li><strong>Aristóteles:</strong> En <em>"Acerca del cielo"</em> debatió la posición de la Tierra. Introdujo la <strong>teleología</strong>: el principio de que la naturaleza "no hace nada en vano", todo órgano tiene una función o propósito final.</li>
+                                <li><strong>Tales de Mileto:</strong> Afirmó que el agua es el principio de todo.</li>
+                                <li><strong>Pitágoras:</strong> Descubrió que los intervalos musicales dependían de proporciones numéricas.</li>
+                                <li><strong>Demócrito:</strong> Creador de la teoría atómica. Todo es átomos y vacío.</li>
+                                <li><strong>Aristóteles:</strong> Introdujo la <strong>teleología</strong>: la naturaleza no hace nada en vano, todo tiene un fin.</li>
                             </ul>
+                        </div>
+                        <div class="bg-white/50 p-8 rounded-2xl shadow">
+                            <h3 class="text-2xl font-cinzel font-bold text-slate-800 mb-4 border-b-2 border-slate-300 inline-block">3. El Ábaton y la "Incubatio"</h3>
+                            <p>El ritual central en Epidauro era la <em>incubatio</em>. Los enfermos dormían en el pórtico (<strong>Ábaton</strong>), esperando que Asclepio los curase en sueños.</p>
+                        </div>
+                        <div class="bg-white/50 p-8 rounded-2xl shadow">
+                            <h3 class="text-2xl font-cinzel font-bold text-slate-800 mb-4 border-b-2 border-slate-300 inline-block">4. Mardonio</h3>
+                            <p>General persa que volvió a invadir el Ática y obligó a los atenienses a huir a Salamina.</p>
                         </div>
                     </div>
                 </div>
-                <div class="bg-white/50 p-8 rounded-2xl shadow">
-                            <h3 class="text-2xl font-cinzel font-bold text-slate-800 mb-4 border-b-2 border-slate-300 inline-block">4. El Ábaton y la "Incubatio"</h3>
-                            <p>En el santuario de Asclepio en Epidauro, la curación física estaba íntimamente ligada a la fe. El ritual central era la <strong>ἐγκοίμησις</strong> (enkoimesis) o <em>incubatio</em>. Los enfermos, tras purificarse, dormían en un pórtico sagrado llamado <strong>Ábaton</strong>. Creían que, durante la noche, el dios Asclepio se les aparecía en sueños para operarlos o dictarles el tratamiento, a menudo acompañado de las serpientes sagradas que lamían sus heridas.</p>
-                        </div>
-                        <div class="bg-white/50 p-8 rounded-2xl shadow">
-                            <h3 class="text-2xl font-cinzel font-bold text-slate-800 mb-4 border-b-2 border-slate-300 inline-block">5. Mardonio y la Segunda Destrucción de Atenas</h3>
-                            <p>Tras la batalla de las Termópilas y Artemisio (480 a.C.), Jerjes saqueó Atenas. Al año siguiente (479 a.C.), su general <strong>Mardonio</strong> volvió a invadir el Ática. Los atenienses tuvieron que evacuar su ciudad por segunda vez, cruzando a la isla de <strong>Salamina</strong>. La negativa de Esparta a enviar tropas más allá del Istmo de Corinto generó una profunda crisis diplomática entre los aliados griegos, reflejada fielmente en nuestro Texto Persas.</p>
-                        </div>
-                        <div class="bg-white/50 p-8 md:p-10 rounded-2xl shadow border border-slate-200">
-    <h3 class="text-3xl font-cinzel font-bold text-slate-800 mb-8 border-b-2 border-slate-300 inline-block">6. Gran Glosario de Epidauro (Top 100)</h3>
-    <p class="text-slate-600 italic font-serif mb-8 text-base">El conocimiento de estas cien palabras sagradas separa a los iniciados de los profanos. Estudiadlas bien antes de enfrentaros al Oráculo.</p>
-    
-    <!-- SUSTANTIVOS -->
-    <h4 class="text-xl font-cinzel font-bold text-cyan-900 mb-4 bg-cyan-100/50 p-3 rounded-lg border-l-4 border-cyan-600">I. Sustantivos (Ὀνόματα)</h4>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-3 mb-10 font-serif text-base text-slate-800">
-        <div><strong class="text-cyan-800">ὁ θεός, -οῦ:</strong> Dios.</div>
-        <div><strong class="text-cyan-800">ἡ ναῦς, νεώς:</strong> Nave, barco.</div>
-        <div><strong class="text-cyan-800">ὁ παῖς, παιδός:</strong> Niño, hijo.</div>
-        <div><strong class="text-cyan-800">ὁ πατήρ, πατρός:</strong> Padre.</div>
-        <div><strong class="text-cyan-800">ἡ γυνή, γυναικός:</strong> Mujer, esposa.</div>
-        <div><strong class="text-cyan-800">ὁ ἰατρός, -οῦ:</strong> Médico.</div>
-        <div><strong class="text-cyan-800">ἡ θάλαττα, -ης:</strong> Mar.</div>
-        <div><strong class="text-cyan-800">ὁ λιμήν, -ένος:</strong> Puerto.</div>
-        <div><strong class="text-cyan-800">ἡ γαστήρ, -έρος:</strong> Estómago.</div>
-        <div><strong class="text-cyan-800">ἡ ἡμέρα, -ας:</strong> Día.</div>
-        <div><strong class="text-cyan-800">ἡ ἑσπέρα, -ας:</strong> Tarde, atardecer.</div>
-        <div><strong class="text-cyan-800">ἡ νύξ, νυκτός:</strong> Noche.</div>
-        <div><strong class="text-cyan-800">ἡ πύλη, -ης:</strong> Puerta.</div>
-        <div><strong class="text-cyan-800">ὁ ἱερεύς, -έως:</strong> Sacerdote.</div>
-        <div><strong class="text-cyan-800">ὁ ὀφθαλμός, -οῦ:</strong> Ojo.</div>
-        <div><strong class="text-cyan-800">ὁ ὕπνος, -ου:</strong> Sueño.</div>
-        <div><strong class="text-cyan-800">ὁ βωμός, -οῦ:</strong> Altar.</div>
-        <div><strong class="text-cyan-800">ὁ οὐρανός, -οῦ:</strong> Cielo.</div>
-        <div><strong class="text-cyan-800">τὸ ἄβατον, -ου:</strong> Lugar sagrado/prohibido.</div>
-        <div><strong class="text-cyan-800">τὸ ἱερόν, -οῦ:</strong> Templo, santuario.</div>
-        <div><strong class="text-cyan-800">τὸ καταγώγιον, -ου:</strong> Posada, albergue.</div>
-        <div><strong class="text-cyan-800">ὁ στρατός, -οῦ:</strong> Ejército.</div>
-        <div><strong class="text-cyan-800">τὸ ἄστυ, ἄστεως:</strong> Ciudad.</div>
-        <div><strong class="text-cyan-800">ὁ ἄγγελος, -ου:</strong> Mensajero.</div>
-        <div><strong class="text-cyan-800">ὁ βασιλεύς, -έως:</strong> Rey.</div>
-        <div><strong class="text-cyan-800">ἡ συμμαχία, -ας:</strong> Alianza.</div>
-        <div><strong class="text-cyan-800">ὁ πόλεμος, -ου:</strong> Guerra.</div>
-        <div><strong class="text-cyan-800">ὁ ἄνεμος, -ου:</strong> Viento.</div>
-        <div><strong class="text-cyan-800">τὸ κῦμα, -ατος:</strong> Ola.</div>
-        <div><strong class="text-cyan-800">ὁ χρόνος, -ου:</strong> Tiempo.</div>
-        <div><strong class="text-cyan-800">τὸ σκότος, -ους:</strong> Oscuridad.</div>
-        <div><strong class="text-cyan-800">ἡ σιγή, -ῆς:</strong> Silencio.</div>
-        <div><strong class="text-cyan-800">ὁ ὄφις, -εως:</strong> Serpiente.</div>
-        <div><strong class="text-cyan-800">ὁ ἀνήρ, ἀνδρός:</strong> Hombre, varón.</div>
-        <div><strong class="text-cyan-800">ὁ δεσπότης, -ου:</strong> Amo, señor.</div>
-        <div><strong class="text-cyan-800">ἡ χείρ, χειρός:</strong> Mano.</div>
-    </div>
-
-    <!-- ADJETIVOS Y PRONOMBRES -->
-    <h4 class="text-xl font-cinzel font-bold text-amber-900 mb-4 bg-amber-100/50 p-3 rounded-lg border-l-4 border-amber-600">II. Adjetivos y Pronombres (Ἐπίθετα καὶ Ἀντωνυμίαι)</h4>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-3 mb-10 font-serif text-base text-slate-800">
-        <div><strong class="text-amber-800">ἐγώ / σύ:</strong> Yo / Tú.</div>
-        <div><strong class="text-amber-800">ἡμεῖς / ὑμεῖς:</strong> Nosotros / Vosotros.</div>
-        <div><strong class="text-amber-800">αὐτός, -ή, -ό:</strong> Él mismo / Mismo.</div>
-        <div><strong class="text-amber-800">οὗτος, αὕτη, τοῦτο:</strong> Este, esta, esto.</div>
-        <div><strong class="text-amber-800">ἐκεῖνος, -η, -ο:</strong> Aquel, aquella, aquello.</div>
-        <div><strong class="text-amber-800">ὅς, ἥ, ὅ:</strong> Que, el cual (Relativo).</div>
-        <div><strong class="text-amber-800">τις / τίς:</strong> Alguien, algún / ¿Quién?</div>
-        <div><strong class="text-amber-800">πᾶς, πᾶσα, πᾶν:</strong> Todo, cada.</div>
-        <div><strong class="text-amber-800">τυφλός, -ή, -όν:</strong> Ciego.</div>
-        <div><strong class="text-amber-800">ὅσιος, -α, -ον:</strong> Santo, piadoso.</div>
-        <div><strong class="text-amber-800">καθαρός, -ά, -όν:</strong> Puro, limpio.</div>
-        <div><strong class="text-amber-800">μόνος, -η, -ον:</strong> Solo, único.</div>
-        <div><strong class="text-amber-800">ἕτοιμος, -η, -ον:</strong> Listo, preparado.</div>
-        <div><strong class="text-amber-800">δυνατός, -ή, -όν:</strong> Posible, capaz.</div>
-        <div><strong class="text-amber-800">ἔρημος, -ον:</strong> Desierto, vacío.</div>
-        <div><strong class="text-amber-800">οὔριος, -α, -ον:</strong> Favorable (viento).</div>
-    </div>
-
-    <!-- VERBOS -->
-    <h4 class="text-xl font-cinzel font-bold text-red-900 mb-2 mt-8 bg-red-100/50 p-3 rounded-lg border-l-4 border-red-600">III. Verbos (Ῥήματα)</h4>
-    
-    <h5 class="text-lg font-bold text-red-800 mb-3 border-b border-red-200">Tema de Presente e Imperfecto</h5>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-3 mb-6 font-serif text-base text-slate-800">
-        <div><strong class="text-red-800">εἰμί:</strong> Ser, estar, haber.</div>
-        <div><strong class="text-red-800">ἔρχομαι / εἶμι:</strong> Ir, venir.</div>
-        <div><strong class="text-red-800">λέγω / φημί:</strong> Decir, hablar.</div>
-        <div><strong class="text-red-800">κελεύω:</strong> Ordenar, mandar.</div>
-        <div><strong class="text-red-800">ἡγέομαι:</strong> Guiar, liderar (+ Dat).</div>
-        <div><strong class="text-red-800">βούλομαι:</strong> Querer, desear.</div>
-        <div><strong class="text-red-800">εὑρίσκω:</strong> Encontrar.</div>
-        <div><strong class="text-red-800">νοσέω:</strong> Estar enfermo.</div>
-        <div><strong class="text-red-800">δύναμαι:</strong> Poder, ser capaz.</div>
-        <div><strong class="text-red-800">ἀκούω:</strong> Escuchar, oír (+ Gen/Acus).</div>
-        <div><strong class="text-red-800">σπεύδω:</strong> Apresurarse.</div>
-        <div><strong class="text-red-800">ὁρμάω:</strong> Ponerse en marcha.</div>
-        <div><strong class="text-red-800">πλέω:</strong> Navegar.</div>
-        <div><strong class="text-red-800">λύω:</strong> Desatar, soltar.</div>
-        <div><strong class="text-red-800">τρέχω:</strong> Correr.</div>
-        <div><strong class="text-red-800">πάσχω:</strong> Sufrir, padecer.</div>
-        <div><strong class="text-red-800">κάμνω:</strong> Trabajar, estar cansado.</div>
-        <div><strong class="text-red-800">μένω:</strong> Quedarse, permanecer.</div>
-        <div><strong class="text-red-800">κόπτω:</strong> Golpear, llamar.</div>
-        <div><strong class="text-red-800">δέχομαι:</strong> Recibir, aceptar.</div>
-        <div><strong class="text-red-800">πιστεύω:</strong> Creer, confiar.</div>
-        <div><strong class="text-red-800">φοβέομαι:</strong> Temer, tener miedo.</div>
-        <div><strong class="text-red-800">καθεύδω:</strong> Dormir.</div>
-        <div><strong class="text-red-800">ἄγω:</strong> Llevar, conducir.</div>
-        <div><strong class="text-red-800">ποιέω:</strong> Hacer, fabricar.</div>
-        <div><strong class="text-red-800">πέμπω:</strong> Enviar.</div>
-        <div><strong class="text-red-800">αἱρέω:</strong> Tomar, capturar.</div>
-    </div>
-
-    <h5 class="text-lg font-bold text-red-800 mb-3 border-b border-red-200">Tema de Futuro</h5>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-3 mb-6 font-serif text-base text-slate-800">
-        <div><strong class="text-red-800">ἀφιξόμεθα:</strong> Llegaremos (ἀφικνέομαι).</div>
-        <div><strong class="text-red-800">γνωσόμεθα:</strong> Sabremos (γιγνώσκω).</div>
-        <div><strong class="text-red-800">πλευσόμεθα:</strong> Navegaremos (πλέω).</div>
-        <div><strong class="text-red-800">τιμήσομεν:</strong> Honraremos (τιμάω).</div>
-        <div><strong class="text-red-800">ζητήσων:</strong> Para buscar (Part. Fut.).</div>
-        <div><strong class="text-red-800">λεξοντα:</strong> Para decir (Part. Fut.).</div>
-    </div>
-
-    <h5 class="text-lg font-bold text-red-800 mb-3 border-b border-red-200">Tema de Aoristo y Perfecto</h5>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-3 mb-10 font-serif text-base text-slate-800">
-        <div><strong class="text-red-800">οἶδα:</strong> Saber, conocer (Perf.).</div>
-        <div><strong class="text-red-800">ἦλθον:</strong> Fui / Vine (Aor. ἔρχομαι).</div>
-        <div><strong class="text-red-800">εἶπον:</strong> Dije (Aor. λέγω).</div>
-        <div><strong class="text-red-800">ἔλαβον:</strong> Tomé (Aor. λαμβάνω).</div>
-        <div><strong class="text-red-800">ἔμαθον:</strong> Aprendí (Aor. μανθάνω).</div>
-        <div><strong class="text-red-800">ἔπαθον:</strong> Sufrí (Aor. πάσχω).</div>
-    </div>
-                            
-    <!-- INVARIABLES -->
-    <h4 class="text-xl font-cinzel font-bold text-emerald-900 mb-4 bg-emerald-100/50 p-3 rounded-lg border-l-4 border-emerald-600">IV. Invariables (Preposiciones, Conjunciones y Adverbios)</h4>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-3 font-serif text-base text-slate-800">
-        <div><strong class="text-emerald-800">ἐν (+ Dat):</strong> En (lugar en donde).</div>
-        <div><strong class="text-emerald-800">εἰς (+ Acus):</strong> Hacia, a (dirección).</div>
-        <div><strong class="text-emerald-800">ἐκ / ἐξ (+ Gen):</strong> De, desde (salida).</div>
-        <div><strong class="text-emerald-800">πρός (+ Acus):</strong> Hacia, contra.</div>
-        <div><strong class="text-emerald-800">παρά (+ Acus):</strong> Junto a, a la presencia de.</div>
-        <div><strong class="text-emerald-800">διά (+ Gen):</strong> A través de.</div>
-        <div><strong class="text-emerald-800">μετά (+ Gen):</strong> Con, en compañía de.</div>
-        <div><strong class="text-emerald-800">καί:</strong> Y, también.</div>
-        <div><strong class="text-emerald-800">δέ:</strong> Pero, y (continuación).</div>
-        <div><strong class="text-emerald-800">γάρ:</strong> Pues, porque.</div>
-        <div><strong class="text-emerald-800">οὖν:</strong> Así pues, por tanto.</div>
-        <div><strong class="text-emerald-800">ἀλλά:</strong> Sino, pero (fuerte).</div>
-        <div><strong class="text-emerald-800">ὅτι:</strong> Que, porque.</div>
-        <div><strong class="text-emerald-800">ὡς:</strong> Como / Para (con participio de fin).</div>
-        <div><strong class="text-emerald-800">μή / οὐ (οὐκ, οὐχ):</strong> No.</div>
-        <div><strong class="text-emerald-800">ταχέως:</strong> Rápidamente.</div>
-        <div><strong class="text-emerald-800">εὐθύς:</strong> Inmediatamente.</div>
-        <div><strong class="text-emerald-800">αὔριον:</strong> Mañana.</div>
-        <div><strong class="text-emerald-800">τήμερον:</strong> Hoy.</div>
-</div>
-
+                
                 <div class="mt-16 pt-10 border-t-4 border-slate-300 text-lg italic text-slate-800 bg-amber-50/50 p-10 rounded-2xl shadow-xl">
-                    <p class="font-black flex items-center gap-4 text-amber-900 uppercase tracking-widest mb-4 text-xl">
-                        <i data-lucide="book-open" class="w-8 h-8"></i> El Oráculo de Epidauro está activo
-                    </p>
-                    <p>Pulsad sobre cualquier palabra del texto sagrado para que el Oráculo deduzca su morfología y revele su sentido en nuestra lengua.</p>
+                    <p class="font-black flex items-center gap-4 text-amber-900 uppercase tracking-widest mb-4 text-xl"><i data-lucide="book-open" class="w-8 h-8"></i> El Oráculo está activo</p>
+                    <p>Pulsad sobre cualquier palabra del texto sagrado para que el Oráculo deduzca su morfología.</p>
                 </div>
             </div>
         </div>
 
-        <!-- =========================================
-             COLUMNA DERECHA: LOS 6 ENIGMAS (PRUEBAS)
-             ========================================= -->
-        <div class="xl:col-span-5 flex flex-col space-y-10 max-h-[85vh] overflow-y-auto pr-6 custom-scrollbar" id="pruebasContainer">
-            
-            <!-- PRUEBA I -->
-            <div id="prueba1" class="bg-slate-950/95 border-2 border-cyan-500 p-10 rounded-3xl shadow-[0_0_50px_rgba(6,182,212,0.3)] relative transition-all duration-700">
-                <h3 class="text-3xl text-cyan-400 mb-8 flex items-center gap-5 font-cinzel font-black uppercase tracking-wider">
-                    <span class="bg-cyan-900 text-cyan-100 px-5 py-2 rounded-xl border-2 border-cyan-400 shadow-md">I</span> Morfología del Tiempo
-                </h3>
-                <p class="mb-8 text-slate-300 text-lg font-serif">El futuro lleva la marca de la sigma.</p>
-                <div class="space-y-8">
-                    <div class="bg-slate-900/60 p-6 rounded-2xl border-2 border-slate-800 hover:border-cyan-900 transition-colors">
-                        <label class="text-xs font-black text-cyan-500 uppercase tracking-[0.2em] block mb-4">1. Participio de futuro activo (nom. sg. masc) de ζητέω (texto β):</label>
-                        <select id="p1-q1" class="select-griego w-full py-4 px-6 text-xl">
-                            <option value="">-- Selecciona la forma correcta --</option>
-                            <option value="ζητησων">ζητήσων</option>
-                            <option value="ζητων">ζητῶν</option>
-                            <option value="ζητησας">ζητήσας</option>
-                        </select>
-                    </div>
-                    <div class="bg-slate-900/60 p-6 rounded-2xl border-2 border-slate-800 hover:border-cyan-900 transition-colors">
-                        <label class="text-xs font-black text-cyan-500 uppercase tracking-[0.2em] block mb-4">2. Futuro indicativo medio (1ª pers plural) de "llegaremos" (texto α):</label>
-                        <select id="p1-q2" class="select-griego w-full py-4 px-6 text-xl">
-                            <option value="">-- Selecciona la forma correcta --</option>
-                            <option value="αφικοντο">ἀφίκοντο</option>
-                            <option value="αφιξομεθα">ἀφιξόμεθα</option>
-                            <option value="αφικεσθαι">ἀφικέσθαι</option>
-                        </select>
-                    </div>
-                    <div class="bg-slate-900/60 p-6 rounded-2xl border-2 border-slate-800 hover:border-cyan-900 transition-colors">
-                        <label class="text-xs font-black text-cyan-500 uppercase tracking-[0.2em] block mb-4">3. Infinitivo Aoristo Pasivo del verbo ἐπιφαίνω (texto β):</label>
-                        <select id="p1-q3" class="select-griego w-full py-4 px-6 text-xl">
-                            <option value="">-- Selecciona la forma correcta --</option>
-                            <option value="επιφανηναι">ἐπιφανῆναι</option>
-                            <option value="επιφαινειν">ἐπιφαίνειν</option>
-                            <option value="επιφανεις">ἐπιφανείς</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="mt-10 flex flex-col md:flex-row justify-end gap-4">
-                    <button onclick="pedirPista('Los participios de futuro activos suelen terminar en -ων. Los futuros medios de verbos en -εομαι usan -ομεθα.')" class="px-5 py-3 bg-amber-950/60 text-amber-500 text-sm font-black font-cinzel rounded-xl border-2 border-amber-800 hover:bg-amber-900 transition uppercase w-full md:w-auto">Consultar Pista (-3 min)</button>
-                    <button onclick="checkPrueba1()" class="px-10 py-4 bg-cyan-700 hover:bg-cyan-600 text-white font-cinzel font-black text-xl rounded-xl shadow-2xl transition transform hover:scale-105 uppercase tracking-widest w-full md:w-auto">Validar Enigma I</button>
-                </div>
-                <p id="p1-error" class="text-red-500 text-sm mt-6 hidden font-black text-center animate-bounce uppercase tracking-widest">⚠️ Error morfológico. La Pitia se enfurece.</p>
+        <!-- PANEL DERECHO: ENIGMAS Y MAPA (lg:col-span-5) -->
+        <div class="lg:col-span-5 flex flex-col h-full gap-6">
+            <!-- Botonera Derecha -->
+            <div class="bg-slate-950/90 rounded-t-2xl p-4 shadow-lg border-b-4 border-emerald-900 flex justify-center gap-4 relative z-20">
+                <button onclick="switchRightTab('tab-enigmas')" id="btn-enigmas" class="right-tab-btn px-6 py-2.5 bg-slate-800 border-2 border-emerald-500 rounded-xl font-cinzel text-sm font-black uppercase text-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.3)] transition w-1/2">Enigmas</button>
+                <button onclick="switchRightTab('tab-mapa')" id="btn-mapa" class="right-tab-btn px-6 py-2.5 bg-slate-900 border border-slate-700 rounded-xl font-cinzel text-sm font-bold uppercase text-slate-400 hover:bg-slate-800 hover:text-white transition flex items-center justify-center gap-2 w-1/2">
+                    <i data-lucide="map" class="w-4 h-4"></i> Mapa Estratégico
+                </button>
             </div>
 
-            <!-- PRUEBA II -->
-            <div id="prueba2" class="hidden bg-slate-950/95 border-2 border-blue-900 p-10 rounded-3xl transition-all duration-1000">
-                <h3 class="text-3xl text-blue-400 mb-8 flex items-center gap-5 font-cinzel font-black uppercase tracking-wider">
-                    <span class="bg-blue-900 text-blue-100 px-5 py-2 rounded-xl border-2 border-blue-400 shadow-md">II</span> Sintaxis de la Sanación
-                </h3>
-                <div class="space-y-8">
-                    <div class="flex flex-col gap-4 bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
-                        <label class="text-base font-bold text-slate-300">1. En la frase "νοσῶ τὴν γαστέρα", ¿qué función cumple τὴν γαστέρα?</label>
-                        <select id="p2-q1" class="select-griego text-lg p-5 rounded-xl focus:border-blue-500 transition">
-                            <option value="">-- Elige la función --</option>
-                            <option value="a">Objeto Directo</option>
-                            <option value="b">Acusativo de Relación</option>
-                        </select>
-                    </div>
-                    <div class="flex flex-col gap-4 bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
-                        <label class="text-base font-bold text-slate-300">2. En "οὐρίου ἀνέμου τυχόντες", ¿por qué se usa el Genitivo?</label>
-                        <select id="p2-q2" class="select-griego text-lg p-5 rounded-xl focus:border-blue-500 transition">
-                            <option value="">-- Elige la regla --</option>
-                            <option value="a">Genitivo Absoluto</option>
-                            <option value="b">Régimen del verbo τυγχάνω</option>
-                        </select>
-                    </div>
-                </div>
-                <button onclick="checkPrueba2()" class="w-full mt-10 py-4 bg-blue-700 text-white font-cinzel font-black text-xl rounded-xl shadow-2xl">Validar Enigma II</button>
-                <p id="p2-error" class="text-red-500 text-sm mt-6 hidden font-black text-center uppercase tracking-widest">⚠️ Error sintáctico.</p>
-            </div>
-
-            <!-- PRUEBA III -->
-            <div id="prueba3" class="hidden bg-slate-950/95 border-2 border-amber-900 p-10 rounded-3xl transition-all duration-1000">
-                <h3 class="text-3xl text-amber-500 mb-8 flex items-center gap-5 font-cinzel font-black uppercase tracking-wider">
-                    <span class="bg-amber-900 text-amber-100 px-5 py-2 rounded-xl border-2 border-amber-400 shadow-md">III</span> Saberes de la Physis
-                </h3>
-                <div class="space-y-8">
-                    <div class="flex flex-col gap-4 bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
-                        <label class="text-base font-bold text-slate-300">1. ¿Qué filósofo afirmó que el universo es átomos y vacío?</label>
-                        <select id="p3-q1" class="select-griego text-lg p-5 rounded-xl focus:border-amber-500 transition">
-                            <option value="">-- Identifica al Sabio --</option>
-                            <option value="a">Pitágoras</option>
-                            <option value="b">Demócrito</option>
-                        </select>
-                    </div>
-                    <div class="flex flex-col gap-4 bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
-                        <label class="text-base font-bold text-slate-300">2. ¿Qué significa la "Teleología" de Aristóteles?</label>
-                        <select id="p3-q2" class="select-griego text-lg p-5 rounded-xl focus:border-amber-500 transition">
-                            <option value="">-- Define el concepto --</option>
-                            <option value="a">Estudio de los astros</option>
-                            <option value="b">La naturaleza no hace nada en vano; todo tiene un fin.</option>
-                        </select>
-                    </div>
-                </div>
-                <button onclick="checkPrueba3()" class="w-full mt-10 py-4 bg-amber-700 text-white font-cinzel font-black text-xl rounded-xl shadow-2xl">Validar Enigma III</button>
-                <p id="p3-error" class="text-red-500 text-sm mt-6 hidden font-black text-center uppercase tracking-widest">⚠️ Has olvidado las lecciones.</p>
-            </div>
-
-            <!-- PRUEBA IV -->
-            <div id="prueba4" class="hidden bg-slate-950/95 border-2 border-purple-900 p-10 rounded-3xl transition-all duration-1000 shadow-2xl">
-                <h3 class="text-3xl text-purple-400 mb-8 flex items-center gap-5 font-cinzel font-black uppercase tracking-wider">
-                    <span class="bg-purple-900 text-purple-100 px-5 py-2 rounded-xl border-2 border-purple-400 shadow-md">IV</span> Las Sombras Persas
-                </h3>
-                <div class="space-y-8">
-                    <div class="flex flex-col gap-4 bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
-                        <label class="text-base font-bold text-slate-300">1. ¿Qué líder persa avanzaba hacia Atenas?</label>
-                        <select id="p4-q1" class="select-griego text-lg p-5 rounded-xl focus:border-purple-500 transition">
-                            <option value="">-- Elige al líder --</option>
-                            <option value="a">Darío</option>
-                            <option value="b">Mardonio</option>
-                        </select>
-                    </div>
-                    <div class="flex flex-col gap-4 bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
-                        <label class="text-base font-bold text-slate-300">2. ¿A qué isla evacuaron los atenienses?</label>
-                        <select id="p4-q2" class="select-griego text-lg p-5 rounded-xl focus:border-purple-500 transition">
-                            <option value="">-- Elige el refugio --</option>
-                            <option value="a">Egina</option>
-                            <option value="c">Salamina</option>
-                        </select>
-                    </div>
-                </div>
-                <button onclick="checkPrueba4()" class="w-full mt-10 py-4 bg-purple-700 text-white font-cinzel font-black text-xl rounded-xl shadow-2xl">Validar Enigma IV</button>
-                <p id="p4-error" class="text-red-500 text-sm mt-6 hidden font-black text-center uppercase tracking-widest">⚠️ Mardonio avanza.</p>
-            </div>
-
-            <!-- PRUEBA V -->
-            <div id="prueba5" class="hidden bg-slate-950/95 border-2 border-pink-900 p-10 rounded-3xl transition-all duration-1000 shadow-2xl">
-                <h3 class="text-3xl text-pink-400 mb-8 flex items-center gap-5 font-cinzel font-black uppercase tracking-wider">
-                    <span class="bg-pink-900 text-pink-100 px-5 py-2 rounded-xl border-2 border-pink-400 shadow-md">V</span> Hermenéutica Superior
-                </h3>
-                <div class="space-y-8">
-                    <div class="flex flex-col gap-5 bg-slate-900/60 p-8 rounded-2xl border-l-8 border-pink-600">
-                        <p class="text-xl text-pink-200 italic font-serif leading-loose border-b border-pink-900 pb-4">"δεῖ σε ἄγγελον πέμψαι ὡς τῷ βασιλεῖ πάντα λέξοντα."</p>
-                        <select id="p5-q1" class="select-griego text-base p-4 rounded-xl mt-4 focus:border-pink-500">
-                            <option value="">¿Cuál es la traducción exacta?</option>
-                            <option value="a">Es necesario que envíes a un mensajero para decirle todo al rey.</option>
-                            <option value="b">El mensajero dice que es necesario enviar todo.</option>
-                        </select>
-                    </div>
-                    <div class="flex flex-col gap-5 bg-slate-900/60 p-8 rounded-2xl border-l-8 border-pink-600">
-                        <p class="text-xl text-pink-200 italic font-serif leading-loose border-b border-pink-900 pb-4">"τοὺς ἐν ταύτῃ τῇ μάχῃ ἀποθανόντας αἰεὶ τιμήσομεν."</p>
-                        <select id="p5-q2" class="select-griego text-base p-4 rounded-xl mt-4 focus:border-pink-500">
-                            <option value="">¿Cuál es la traducción exacta?</option>
-                            <option value="a">Honramos siempre a los que mueren hoy.</option>
-                            <option value="b">Siempre honraremos a los que murieron en esta batalla.</option>
-                        </select>
-                  </div>
-                </div>
-                <button onclick="checkPrueba5()" class="w-full mt-10 py-4 bg-pink-700 text-white font-cinzel font-black text-xl rounded-xl shadow-2xl transition transform hover:scale-105 uppercase tracking-widest">Validar Enigma V</button>
-                <p id="p5-error" class="text-red-500 text-sm mt-6 hidden font-black text-center uppercase tracking-widest">⚠️ Error hermenéutico.</p>
-            </div>
-
-            <!-- PRUEBA VI -->
-           <div id="prueba6" class="hidden bg-black/95 border-4 border-emerald-500 p-12 rounded-3xl shadow-[0_0_80px_rgba(16,185,129,0.3)] transition-all duration-1000 relative overflow-hidden">
-                <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl"></div>
-                <h3 class="text-4xl text-emerald-400 mb-8 flex items-center gap-6 font-cinzel font-black uppercase tracking-tighter">
-                    <span class="bg-emerald-900 text-emerald-100 px-6 py-4 rounded-2xl border-4 border-emerald-400 shadow-lg">VI</span> CÓDIGO DE LA HÉLADE
-                </h3>
-                <p class="mb-12 text-slate-100 text-xl leading-relaxed font-serif italic border-b-2 border-emerald-900/50 pb-8">
-                    "Para encender la pira de señales y salvar Atenas, introducid los seis dígitos numéricos derivados de vuestro análisis filológico más estricto."
-                </p>
+            <!-- CONTENEDOR DE ENIGMAS -->
+            <div id="tab-enigmas" class="right-tab-content w-full flex flex-col space-y-10 max-h-[80vh] overflow-y-auto pr-4 custom-scrollbar">
                 
-                <div class="grid grid-cols-3 md:grid-cols-6 gap-6 mb-16 relative z-10">
-                    <div class="bg-emerald-950/80 p-6 rounded-2xl text-center border-2 border-emerald-800 shadow-inner group transition-all hover:border-emerald-400 hover:-translate-y-2">
-                        <p class="text-[12px] text-emerald-400 mb-4 font-black uppercase tracking-widest group-hover:text-white transition">Decl. de<br><span class="text-xl text-white font-serif mt-2 block drop-shadow">Ἀθήνας</span></p>
-                        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="lock1" class="candado-input w-full" oninput="this.value=this.value.replace(/[^0-9]/g,''); if(this.value) document.getElementById('lock2').focus();">
+                <!-- Prueba I -->
+                <div id="prueba1" class="bg-slate-950/95 border-2 border-cyan-500 p-8 rounded-3xl shadow-[0_0_30px_rgba(6,182,212,0.3)] relative">
+                    <h3 class="text-2xl text-cyan-400 mb-6 flex items-center gap-4 font-cinzel font-black uppercase"><span class="bg-cyan-900 text-cyan-100 px-4 py-1.5 rounded-lg border-2 border-cyan-400">I</span> Morfología</h3>
+                    <div class="space-y-6">
+                        <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-800">
+                            <label class="text-xs font-black text-cyan-500 uppercase block mb-3">1. Participio de futuro activo de ζητέω:</label>
+                            <select id="p1-q1" class="select-griego w-full py-3 px-4 text-lg"><option value="">-- Elige --</option><option value="ζητησων">ζητήσων</option><option value="ζητων">ζητῶν</option></select>
+                        </div>
+                        <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-800">
+                            <label class="text-xs font-black text-cyan-500 uppercase block mb-3">2. "Llegaremos" (Futuro Medio, 1ª pl):</label>
+                            <select id="p1-q2" class="select-griego w-full py-3 px-4 text-lg"><option value="">-- Elige --</option><option value="αφικοντο">ἀφίκοντο</option><option value="αφιξομεθα">ἀφιξόμεθα</option></select>
+                        </div>
+                        <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-800">
+                            <label class="text-xs font-black text-cyan-500 uppercase block mb-3">3. Infinitivo Aoristo Pasivo ἐπιφαίνω:</label>
+                            <select id="p1-q3" class="select-griego w-full py-3 px-4 text-lg"><option value="">-- Elige --</option><option value="επιφανηναι">ἐπιφανῆναι</option><option value="επιφαινειν">ἐπιφαίνειν</option></select>
+                        </div>
                     </div>
-                    <div class="bg-emerald-950/80 p-6 rounded-2xl text-center border-2 border-emerald-800 shadow-inner group transition-all hover:border-emerald-400 hover:-translate-y-2">
-                        <p class="text-[12px] text-emerald-400 mb-4 font-black uppercase tracking-widest group-hover:text-white transition">Decl. de<br><span class="text-xl text-white font-serif mt-2 block drop-shadow">γαστέρα</span></p>
-                        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="lock2" class="candado-input w-full" oninput="this.value=this.value.replace(/[^0-9]/g,''); if(this.value) document.getElementById('lock3').focus();">
-                    </div>
-                    <div class="bg-emerald-950/80 p-6 rounded-2xl text-center border-2 border-emerald-800 shadow-inner group transition-all hover:border-emerald-400 hover:-translate-y-2">
-                        <p class="text-[12px] text-emerald-400 mb-4 font-black uppercase tracking-widest group-hover:text-white transition">Caso del<br><span class="text-sm mt-2 block">Genitivo</span></p>
-                        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="lock3" class="candado-input w-full" oninput="this.value=this.value.replace(/[^0-9]/g,''); if(this.value) document.getElementById('lock4').focus();">
-                    </div>
-                    <div class="bg-emerald-950/80 p-6 rounded-2xl text-center border-2 border-emerald-800 shadow-inner group transition-all hover:border-emerald-400 hover:-translate-y-2">
-                        <p class="text-[12px] text-emerald-400 mb-4 font-black uppercase tracking-widest group-hover:text-white transition">Decl. de<br><span class="text-xl text-white font-serif mt-2 block drop-shadow">ὕπνῳ</span></p>
-                        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="lock4" class="candado-input w-full" oninput="this.value=this.value.replace(/[^0-9]/g,''); if(this.value) document.getElementById('lock5').focus();">
-                    </div>
-                    <div class="bg-emerald-950/80 p-6 rounded-2xl text-center border-2 border-emerald-800 shadow-inner group transition-all hover:border-emerald-400 hover:-translate-y-2">
-                        <p class="text-[12px] text-emerald-400 mb-4 font-black uppercase tracking-widest group-hover:text-white transition">Pers. de<br><span class="text-xl text-white font-serif mt-2 block drop-shadow">ἔμενεν</span></p>
-                        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="lock5" class="candado-input w-full" oninput="this.value=this.value.replace(/[^0-9]/g,''); if(this.value) document.getElementById('lock6').focus();">
-                    </div>
-                    <div class="bg-emerald-950/80 p-6 rounded-2xl text-center border-2 border-emerald-800 shadow-inner group transition-all hover:border-emerald-400 hover:-translate-y-2">
-                        <p class="text-[10px] text-emerald-400 mb-4 font-black uppercase tracking-widest group-hover:text-white transition">Nº Part. Fut.<br><span class="text-[10px] mt-2 block opacity-70">en texto VI</span></p>
-                        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="lock6" class="candado-input w-full" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
-                    </div>
+                    <button onclick="checkPrueba1()" class="w-full mt-8 py-3 bg-cyan-700 hover:bg-cyan-600 text-white font-cinzel font-black text-lg rounded-xl transition uppercase">Validar Enigma I</button>
+                    <p id="p1-error" class="text-red-500 text-xs mt-4 hidden font-black text-center uppercase">⚠️ Error morfológico.</p>
                 </div>
 
-                <div class="text-center relative z-10">
-                    <button onclick="checkPrueba6()" class="w-full py-8 bg-gradient-to-r from-emerald-800 via-emerald-600 to-emerald-800 bg-[length:200%_auto] hover:bg-right transition-all duration-700 text-white font-cinzel font-black text-4xl rounded-2xl shadow-[0_0_60px_rgba(16,185,129,0.7)] border-4 border-emerald-400 uppercase tracking-[0.5em] active:scale-95">
-                        ENCIENDE LA PIRA
-                    </button>
-                    <p id="p6-error" class="text-red-500 text-xl mt-8 hidden font-black text-center animate-pulse tracking-widest uppercase">La madera está húmeda. El código es erróneo (-200 pts).</p>
+                <!-- Prueba II -->
+                <div id="prueba2" class="hidden bg-slate-950/95 border-2 border-blue-900 p-8 rounded-3xl">
+                    <h3 class="text-2xl text-blue-400 mb-6 flex items-center gap-4 font-cinzel font-black uppercase"><span class="bg-blue-900 text-blue-100 px-4 py-1.5 rounded-lg border-2 border-blue-400">II</span> Sintaxis</h3>
+                    <div class="space-y-6">
+                        <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-800">
+                            <label class="text-sm font-bold text-slate-300 block mb-3">1. ¿Qué función cumple τὴν γαστέρα en "νοσῶ τὴν γαστέρα"?</label>
+                            <select id="p2-q1" class="select-griego w-full py-3 px-4 text-lg"><option value="">-- Elige --</option><option value="a">Objeto Directo</option><option value="b">Acusativo de Relación</option></select>
+                        </div>
+                        <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-800">
+                            <label class="text-sm font-bold text-slate-300 block mb-3">2. ¿Por qué "οὐρίου ἀνέμου τυχόντες" va en Genitivo?</label>
+                            <select id="p2-q2" class="select-griego w-full py-3 px-4 text-lg"><option value="">-- Elige --</option><option value="a">Genitivo Absoluto</option><option value="b">Régimen de τυγχάνω</option></select>
+                        </div>
+                    </div>
+                    <button onclick="checkPrueba2()" class="w-full mt-8 py-3 bg-blue-700 text-white font-cinzel font-black text-lg rounded-xl uppercase">Validar Enigma II</button>
+                    <p id="p2-error" class="text-red-500 text-xs mt-4 hidden font-black text-center uppercase">⚠️ Error sintáctico.</p>
+                </div>
+
+                <!-- Prueba III -->
+                <div id="prueba3" class="hidden bg-slate-950/95 border-2 border-amber-900 p-8 rounded-3xl">
+                    <h3 class="text-2xl text-amber-500 mb-6 flex items-center gap-4 font-cinzel font-black uppercase"><span class="bg-amber-900 text-amber-100 px-4 py-1.5 rounded-lg border-2 border-amber-400">III</span> Physis</h3>
+                    <div class="space-y-6">
+                        <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-800">
+                            <label class="text-sm font-bold text-slate-300 block mb-3">1. ¿El universo es átomos y vacío?</label>
+                            <select id="p3-q1" class="select-griego w-full py-3 px-4 text-lg"><option value="">-- Elige --</option><option value="a">Pitágoras</option><option value="b">Demócrito</option></select>
+                        </div>
+                        <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-800">
+                            <label class="text-sm font-bold text-slate-300 block mb-3">2. Significado de "Teleología":</label>
+                            <select id="p3-q2" class="select-griego w-full py-3 px-4 text-lg"><option value="">-- Elige --</option><option value="b">Todo tiene un fin.</option><option value="a">Astros.</option></select>
+                        </div>
+                    </div>
+                    <button onclick="checkPrueba3()" class="w-full mt-8 py-3 bg-amber-700 text-white font-cinzel font-black text-lg rounded-xl uppercase">Validar Enigma III</button>
+                    <p id="p3-error" class="text-red-500 text-xs mt-4 hidden font-black text-center uppercase">⚠️ Error de los Sabios.</p>
+                </div>
+
+                <!-- Prueba IV -->
+                <div id="prueba4" class="hidden bg-slate-950/95 border-2 border-purple-900 p-8 rounded-3xl">
+                    <h3 class="text-2xl text-purple-400 mb-6 flex items-center gap-4 font-cinzel font-black uppercase"><span class="bg-purple-900 text-purple-100 px-4 py-1.5 rounded-lg border-2 border-purple-400">IV</span> Historia</h3>
+                    <div class="space-y-6">
+                        <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-800">
+                            <label class="text-sm font-bold text-slate-300 block mb-3">1. ¿Qué líder persa avanzaba a Atenas?</label>
+                            <select id="p4-q1" class="select-griego w-full py-3 px-4 text-lg"><option value="">-- Elige --</option><option value="a">Darío</option><option value="b">Mardonio</option></select>
+                        </div>
+                        <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-800">
+                            <label class="text-sm font-bold text-slate-300 block mb-3">2. ¿A qué isla evacuaron los atenienses?</label>
+                            <select id="p4-q2" class="select-griego w-full py-3 px-4 text-lg"><option value="">-- Elige --</option><option value="c">Salamina</option><option value="a">Egina</option></select>
+                        </div>
+                    </div>
+                    <button onclick="checkPrueba4()" class="w-full mt-8 py-3 bg-purple-700 text-white font-cinzel font-black text-lg rounded-xl uppercase">Validar Enigma IV</button>
+                    <p id="p4-error" class="text-red-500 text-xs mt-4 hidden font-black text-center uppercase">⚠️ Mardonio ataca.</p>
+                </div>
+
+                <!-- Prueba V -->
+                <div id="prueba5" class="hidden bg-slate-950/95 border-2 border-pink-900 p-8 rounded-3xl">
+                    <h3 class="text-2xl text-pink-400 mb-6 flex items-center gap-4 font-cinzel font-black uppercase"><span class="bg-pink-900 text-pink-100 px-4 py-1.5 rounded-lg border-2 border-pink-400">V</span> Hermenéutica</h3>
+                    <div class="space-y-6">
+                        <div class="bg-slate-900/60 p-5 rounded-xl border-l-4 border-pink-600">
+                            <p class="text-lg text-pink-200 italic font-serif mb-4">"δεῖ σε ἄγγελον πέμψαι ὡς τῷ βασιλεῖ πάντα λέξοντα."</p>
+                            <select id="p5-q1" class="select-griego w-full py-2 px-3 text-sm"><option value="">Traducción exacta...</option><option value="a">Es necesario que envíes a un mensajero para decirle todo al rey.</option><option value="b">El mensajero dice que es necesario enviar todo.</option></select>
+                        </div>
+                        <div class="bg-slate-900/60 p-5 rounded-xl border-l-4 border-pink-600">
+                            <p class="text-lg text-pink-200 italic font-serif mb-4">"τοὺς ἐν ταύτῃ τῇ μάχῃ ἀποθανόντας αἰεὶ τιμήσομεν."</p>
+                            <select id="p5-q2" class="select-griego w-full py-2 px-3 text-sm"><option value="">Traducción exacta...</option><option value="a">Honramos siempre a los que mueren hoy.</option><option value="b">Siempre honraremos a los que murieron en esta batalla.</option></select>
+                        </div>
+                    </div>
+                    <button onclick="checkPrueba5()" class="w-full mt-8 py-3 bg-pink-700 text-white font-cinzel font-black text-lg rounded-xl uppercase">Validar Enigma V</button>
+                    <p id="p5-error" class="text-red-500 text-xs mt-4 hidden font-black text-center uppercase">⚠️ Error hermenéutico.</p>
+                </div>
+
+                <!-- Prueba VI -->
+                <div id="prueba6" class="hidden bg-black/95 border-4 border-emerald-500 p-8 rounded-3xl shadow-[0_0_40px_rgba(16,185,129,0.3)]">
+                    <h3 class="text-3xl text-emerald-400 mb-6 flex items-center gap-4 font-cinzel font-black uppercase text-center"><span class="bg-emerald-900 text-emerald-100 px-4 py-2 rounded-xl">VI</span> CÓDIGO FINAL</h3>
+                    <div class="grid grid-cols-3 gap-4 mb-8">
+                        <input type="text" inputmode="numeric" maxlength="1" id="lock1" class="candado-input w-full" oninput="this.value=this.value.replace(/[^0-9]/g,''); if(this.value) document.getElementById('lock2').focus();">
+                        <input type="text" inputmode="numeric" maxlength="1" id="lock2" class="candado-input w-full" oninput="this.value=this.value.replace(/[^0-9]/g,''); if(this.value) document.getElementById('lock3').focus();">
+                        <input type="text" inputmode="numeric" maxlength="1" id="lock3" class="candado-input w-full" oninput="this.value=this.value.replace(/[^0-9]/g,''); if(this.value) document.getElementById('lock4').focus();">
+                        <input type="text" inputmode="numeric" maxlength="1" id="lock4" class="candado-input w-full" oninput="this.value=this.value.replace(/[^0-9]/g,''); if(this.value) document.getElementById('lock5').focus();">
+                        <input type="text" inputmode="numeric" maxlength="1" id="lock5" class="candado-input w-full" oninput="this.value=this.value.replace(/[^0-9]/g,''); if(this.value) document.getElementById('lock6').focus();">
+                        <input type="text" inputmode="numeric" maxlength="1" id="lock6" class="candado-input w-full" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
+                    </div>
+                    <button onclick="checkPrueba6()" class="w-full py-5 bg-gradient-to-r from-emerald-800 to-emerald-600 text-white font-cinzel font-black text-2xl rounded-xl shadow-lg border-2 border-emerald-400 uppercase tracking-widest">ENCIENDE LA PIRA</button>
+                    <p id="p6-error" class="text-red-500 text-sm mt-6 hidden font-black text-center animate-pulse uppercase">Código erróneo (-200 pts).</p>
                 </div>
             </div>
 
+            <!-- CONTENEDOR MAPA (SATÉLITE) -->
+            <div id="tab-mapa" class="right-tab-content hidden w-full h-full min-h-[500px]">
+                <div class="w-full h-full bg-slate-900 rounded-2xl border-4 border-slate-500 shadow-2xl relative overflow-hidden">
+                    <div id="mapa-real" class="w-full h-full z-0 absolute inset-0"></div>
+                    <!-- Nueva Leyenda Clara -->
+                    <div class="absolute bottom-6 left-6 z-[400] bg-amber-50/95 p-4 rounded-xl border-2 border-amber-900/30 backdrop-blur-md shadow-2xl pointer-events-none">
+                        <h4 class="text-amber-900 font-cinzel font-black border-b border-amber-900/20 pb-2 mb-3 uppercase tracking-widest text-sm">Simbología</h4>
+                        <div class="flex flex-col gap-2 font-serif text-xs text-slate-900 font-bold">
+                            <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-red-600 border border-red-900"></div> Mardonio</div>
+                            <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-cyan-500 border border-cyan-900"></div> Atenienses</div>
+                            <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-green-500 border border-green-900"></div> Epidauro</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -1777,14 +1521,62 @@
 
             return `<span class="text-cyan-400 font-bold">${originalWord}</span>`;
         }
-// --- FUNCIONES DE NAVEGACIÓN Y TRADUCCIÓN ---
+// --- FUNCIONES DE DOBLE PANEL Y TRADUCCIÓN ---
 function closeOracle() {
     document.getElementById('oracle-drawer').classList.add('translate-x-full');
     document.getElementById('drawer-overlay').classList.add('opacity-0', 'pointer-events-none');
 }
 
+function switchLeftTab(id) {
+    document.querySelectorAll('.left-tab-content').forEach(el => el.classList.add('hidden'));
+    const tab = document.getElementById(id);
+    if (tab) tab.classList.remove('hidden');
+    
+    document.querySelectorAll('.left-tab-btn').forEach(el => {
+        el.classList.remove('bg-slate-800', 'border-2', 'border-cyan-500', 'shadow-[0_0_10px_rgba(6,182,212,0.3)]', 'text-cyan-400');
+        el.classList.add('bg-slate-900', 'border', 'border-slate-700', 'text-slate-400');
+    });
+
+    const b = document.getElementById('btn-' + id.split('-')[1]);
+    if (b && id !== 'tab-cultura') {
+        b.classList.remove('bg-slate-900', 'border', 'border-slate-700', 'text-slate-400');
+        b.classList.add('bg-slate-800', 'border-2', 'border-cyan-500', 'text-cyan-400', 'shadow-[0_0_10px_rgba(6,182,212,0.3)]');
+    }
+
+    const filtrosLinceo = document.getElementById('xray-filters');
+    if (id === 'tab-cultura' || id === 'tab-eval') {
+        filtrosLinceo.classList.add('hidden');
+    } else {
+        filtrosLinceo.classList.remove('hidden');
+    }
+}
+
+function switchRightTab(id) {
+    document.querySelectorAll('.right-tab-content').forEach(el => el.classList.add('hidden'));
+    const tab = document.getElementById(id);
+    if (tab) tab.classList.remove('hidden');
+    
+    document.querySelectorAll('.right-tab-btn').forEach(el => {
+        el.classList.remove('bg-slate-800', 'border-2', 'border-emerald-500', 'shadow-[0_0_10px_rgba(16,185,129,0.3)]', 'text-emerald-400');
+        el.classList.add('bg-slate-900', 'border', 'border-slate-700', 'text-slate-400');
+    });
+
+    const b = document.getElementById('btn-' + id.split('-')[1]);
+    if (b) {
+        b.classList.remove('bg-slate-900', 'border', 'border-slate-700', 'text-slate-400');
+        b.classList.add('bg-slate-800', 'border-2', 'border-emerald-500', 'text-emerald-400', 'shadow-[0_0_10px_rgba(16,185,129,0.3)]');
+    }
+
+    if (id === 'tab-mapa') {
+        if (!mapInitialized) {
+            setTimeout(() => initRealMap(), 100); 
+            mapInitialized = true;
+        }
+    }
+}
+
 function toggleTranslation() {
-    const activeTab = document.querySelector('.tab-content:not(.hidden)');
+    const activeTab = document.querySelector('.left-tab-content:not(.hidden)');
     if(!activeTab) return;
     const esContent = activeTab.querySelector('[id$="-es"]');
     const grContent = activeTab.querySelector('[id$="-gr"]');
@@ -1792,52 +1584,29 @@ function toggleTranslation() {
     if (esContent && esContent.classList.contains('hidden')) {
         esContent.classList.remove('hidden');
         grContent.classList.add('opacity-30'); 
-        showToast("Traducción revelada", "languages");
     } else if (esContent) {
         esContent.classList.add('hidden');
         grContent.classList.remove('opacity-30');
     }
 }
 
-function successPrueba(currentId, nextId, message) {
-    showToast(message, "check-circle");
-    document.getElementById(currentId).classList.add('hidden');
-    const next = document.getElementById(nextId);
-    if(next) {
-        next.classList.remove('hidden');
-        next.classList.add('unlocked-glow');
-        const stepNum = nextId.replace('prueba', '');
-        const stepDot = document.getElementById('step-' + stepNum);
-        if(stepDot) {
-            stepDot.classList.remove('bg-slate-800');
-            stepDot.classList.add('bg-cyan-400', 'shadow-[0_0_8px_#38bdf8]');
-        }
+function startGame() {
+    const input = document.getElementById('teamName');
+    if (!input.value.trim()) {
+        document.getElementById('name-error').classList.remove('hidden');
+        return;
     }
+    teamName = input.value;
+    document.getElementById('introStage').classList.add('hidden-stage');
+    document.getElementById('gameHeader').classList.remove('hidden-stage');
+    document.getElementById('gameStage').classList.remove('hidden-stage');
+    initTexts(); 
+    startTimer(); 
+    lucide.createIcons(); 
+    showToast("Habéis entrado en el Ábaton.", "footprints");
 }
 
-function failPrueba(errorId) {
-    mistakes++;
-    const errEl = document.getElementById(errorId);
-    if(errEl) {
-        errEl.classList.remove('hidden');
-        document.getElementById(errorId.split('-')[0]).classList.add('error-shake');
-        setTimeout(() => {
-            errEl.classList.add('hidden');
-            document.getElementById(errorId.split('-')[0]).classList.remove('error-shake');
-        }, 3000);
-    }
-}
-
-function pedirPista(msg) {
-    timeRemaining -= 180; 
-    showToast("PISTA (-3 min): " + msg, "help-circle");
-}
-
-// --- EL SISTEMA DEL ORÁCULO (ANÁLISIS DE PALABRAS) ---
 function consultarOraculo(word) {
-    const sound = document.getElementById('sonidoOraculo');
-    if(sound) { sound.currentTime = 0; sound.play().catch(e=>console.log(e)); }
-
     const cleanWord = normalizeGreekForInput(word);
     const entry = wordDB[cleanWord];
     const content = document.getElementById('oracle-content');
@@ -1876,43 +1645,18 @@ function consultarOraculo(word) {
     lucide.createIcons();
 }
 
-// --- VALIDACIÓN ENIGMAS I y II ---
-function checkPrueba1() {
-    const q1 = document.getElementById('p1-q1').value;
-    const q2 = document.getElementById('p1-q2').value;
-    const q3 = document.getElementById('p1-q3').value;
-    if(q1 === 'ζητησων' && q2 === 'αφιξομεθα' && q3 === 'επιφανηναι') {
-        successPrueba('prueba1', 'prueba2', "Prueba I superada: El tiempo es tuyo.");
-    } else {
-        failPrueba('p1-error');
-    }
-}
-
-function checkPrueba2() {
-    const q1 = document.getElementById('p2-q1').value;
-    const q2 = document.getElementById('p2-q2').value;
-    if(q1 === 'b' && q2 === 'b') {
-        successPrueba('prueba2', 'prueba3', "Prueba II superada: Sintaxis purificada.");
-    } else {
-        failPrueba('p2-error');
-    }
-}
-
-// --- INICIALIZACIÓN DEL MAPA LEAFLET (VERSIÓN SATÉLITE) ---
-let mapaReal;
+// --- MAPA SATÉLITE REALISTA ---
 function initRealMap() {
     if(mapaReal) return; 
     mapaReal = L.map('mapa-real').setView([37.8, 23.5], 9);
     
-    // Capa de satélite de ESRI (Sin etiquetas modernas)
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
         attribution: 'Tiles &copy; Esri'
     }).addTo(mapaReal);
 
-    // Marcadores puros
-    L.circleMarker([37.5961, 23.0753], {radius: 12, fillColor: 'green', color: '#fff', weight: 3, fillOpacity: 0.9}).addTo(mapaReal).bindPopup('<b style="color:green;font-size:16px;">Epidauro</b><br>Refugio de Diceópolis.');
-    L.circleMarker([37.9838, 23.7275], {radius: 12, fillColor: 'cyan', color: '#fff', weight: 3, fillOpacity: 0.9}).addTo(mapaReal).bindPopup('<b style="color:#0ea5e9;font-size:16px;">Atenas</b><br>Objetivo de la pira.');
-    L.circleMarker([37.9643, 23.4925], {radius: 12, fillColor: 'red', color: '#fff', weight: 3, fillOpacity: 0.9}).addTo(mapaReal).bindPopup('<b style="color:red;font-size:16px;">Salamina</b><br>Evacuación y flota.');
+    L.circleMarker([37.5961, 23.0753], {radius: 12, fillColor: 'green', color: '#fff', weight: 3, fillOpacity: 0.9}).addTo(mapaReal).bindPopup('<b style="color:green;font-size:16px;">Epidauro</b>');
+    L.circleMarker([37.9838, 23.7275], {radius: 12, fillColor: 'cyan', color: '#fff', weight: 3, fillOpacity: 0.9}).addTo(mapaReal).bindPopup('<b style="color:#0ea5e9;font-size:16px;">Atenas</b>');
+    L.circleMarker([37.9643, 23.4925], {radius: 12, fillColor: 'red', color: '#fff', weight: 3, fillOpacity: 0.9}).addTo(mapaReal).bindPopup('<b style="color:red;font-size:16px;">Salamina</b>');
 
     setTimeout(() => { mapaReal.invalidateSize(); }, 300);
 }
