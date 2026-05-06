@@ -528,12 +528,12 @@
     <div id="mapa-real" class="w-full h-full rounded-xl z-0 relative"></div>
     
     <!-- Leyenda Flotante -->
-    <div class="absolute bottom-6 left-6 z-[400] bg-black/80 p-4 rounded-xl border border-slate-600 backdrop-blur-sm shadow-xl pointer-events-none">
-        <h4 class="text-cyan-400 font-cinzel font-bold border-b border-slate-600 pb-2 mb-3">Simbología</h4>
-        <div class="flex flex-col gap-2 font-serif text-sm text-slate-200">
-            <div class="flex items-center gap-3"><div class="w-3 h-3 rounded-full bg-red-600 shadow-[0_0_8px_red]"></div> Avance de Mardonio</div>
-            <div class="flex items-center gap-3"><div class="w-3 h-3 rounded-full bg-cyan-500 shadow-[0_0_8px_cyan]"></div> Fuerzas Atenienses</div>
-            <div class="flex items-center gap-3"><div class="w-3 h-3 rounded-full bg-green-500 shadow-[0_0_8px_green]"></div> Refugio (Epidauro)</div>
+    <div class="absolute bottom-6 left-6 z-[400] bg-amber-50/95 p-5 rounded-xl border-2 border-amber-900/30 backdrop-blur-md shadow-2xl pointer-events-none">
+        <h4 class="text-amber-900 font-cinzel font-black border-b-2 border-amber-900/20 pb-2 mb-4 uppercase tracking-widest text-lg">Simbología</h4>
+        <div class="flex flex-col gap-3 font-serif text-sm text-slate-900 font-bold">
+            <div class="flex items-center gap-3"><div class="w-4 h-4 rounded-full bg-red-600 shadow-[0_0_8px_red] border border-red-900"></div> Avance de Mardonio</div>
+            <div class="flex items-center gap-3"><div class="w-4 h-4 rounded-full bg-cyan-500 shadow-[0_0_8px_cyan] border border-cyan-900"></div> Fuerzas Atenienses</div>
+            <div class="flex items-center gap-3"><div class="w-4 h-4 rounded-full bg-green-500 shadow-[0_0_8px_green] border border-green-900"></div> Refugio (Epidauro)</div>
         </div>
     </div>
 </div>
@@ -1174,7 +1174,6 @@
             'δικαιοπολιν': { l: 'Δικαιόπολις, -εως, ὁ', m: 'Sust. Propio (3ª), Acus. Sg.', s: 'O. Directo', d: 'a Diceópolis', estructura: ['', 'δικαιοπολι', '', '', 'ν'], t: () => buildNounT('Δικαιόπολις','Δικαιόπολι','Δικαιόπολιν','Δικαιοπόλεως','Δικαιοπόλει','-','-','-','-','-') },
             'δικαιοπολει': { l: 'Δικαιόπολις, -εως, ὁ', m: 'Sust. Propio (3ª), Dat. Sg.', s: 'Dativo de Interés', d: 'para Diceópolis', estructura: ['', 'δικαιοπολε', '', '', 'ι'], t: () => buildNounT('Δικαιόπολις','Δικαιόπολι','Δικαιόπολιν','Δικαιοπόλεως','Δικαιοπόλει','-','-','-','-','-') },
             'εμενεν': { l: 'μένω', m: 'Verbo, 3ª Sg. Imperfecto Activo', s: 'Núcleo', d: 'permanecía', estructura: ['ε', 'μεν', '', 'ε', 'ν'], t: () => G.vImpfA('ἔ', 'μεν') },
-            'αφιξομεθα': { l: 'ἀφικνέομαι', m: '1ª Pl. Futuro Medio', s: 'Núcleo', d: 'llegaremos', estructura: ['αφ', 'ιξ', '', 'ο', 'μεθα'], t: () => G.vFutM('ἀφίξ') },
             'φιλιπποσ': { l: 'Φίλιππος, -ου, ὁ', m: 'Sust. Propio (2ª), Nom. Sg.', s: 'Sujeto', d: 'Filipo', t: () => G.n2M('Φίλιππ') },
             'φιλιππω': { l: 'Φίλιππος, -ου, ὁ', m: 'Sust. Propio (2ª), Dat. Sg.', s: 'C. Compañía', d: 'a Filipo', t: () => G.n2M('Φίλιππ') },
             'φιλιππον': { l: 'Φίλιππος, -ου, ὁ', m: 'Sust. Propio (2ª), Acus. Sg.', s: 'O. Directo', d: 'a Filipo', t: () => G.n2M('Φίλιππ') },
@@ -1322,7 +1321,8 @@
             'μηδεν': { l: 'μηδέν', m: 'Pronombre indefinido neutro', s: 'O. Directo', d: 'nada', t: () => inv },
             'παντα': { l: 'πᾶς, πᾶσα, πᾶν', m: 'Adjetivo (3ª decl), Acusativo Pl. Neutro', s: 'O. Directo', d: 'todo / todas las cosas', t: () => buildNounT('πᾶν','-','πᾶν','παντός','παντί','πάντα','-','πάντα','πάντων','πᾶσι') },
             'πασαν': { l: 'πᾶς, πᾶσα, πᾶν', m: 'Adjetivo (1ª decl), Acusativo Sg. Fem.', s: 'Atributo/Modificador', d: 'todo / toda', t: () => buildNounT('πᾶσα','-','πᾶσαν','πάσης','πάσῃ','πᾶσαι','-','πάσας','πασῶν','πάσαις') },
-          // --- PARTICPIOS ---
+            
+            // --- PARTICPIOS ---
             'πινοντεσ': { l: 'πίνω', m: 'Verbo, Participio Presente Act., Nom. Pl. Masc.', s: 'Participio Concertado', d: 'bebiendo', t: () => buildNounT('πίνων','-','πίνοντα','πίνοντος','πίνοντι','πίνοντες','-','πίνοντας','πινόντων','πίνουσι') },
             'ευροντεσ': { l: 'εὑρίσκω', m: 'Verbo, Participio Aoristo Act., Nom. Pl. Masc.', s: 'Participio Concertado', d: 'habiendo encontrado', t: () => buildNounT('εὑρών','-','εὑρόντα','εὑρόντος','εὑρόντι','εὑρόντες','-','εὑρόντας','εὑρόντων','εὑροῦσι') },
             'μαθουσα': { l: 'μανθάνω', m: 'Verbo, Participio Aoristo Act., Nom. Sg. Fem.', s: 'Participio Concertado', d: 'habiendo sabido', t: () => buildNounT('μαθοῦσα','-','μαθοῦσαν','μαθούσης','μαθούσῃ','μαθοῦσαι','-','μαθούσας','μαθουσῶν','μαθούσαις') },
@@ -1377,104 +1377,8 @@
             'ορμωμενοσ': { l: 'ὁρμάω', m: 'Verbo, Participio Presente Medio/Pasivo, Nom. Sg. Masc.', s: 'Participio Concertado', d: 'poniéndose en marcha', t: () => G.n2M('ὁρμώμεν') },
             'ηγησομενοσ': { l: 'ἡγέομαι', m: 'Verbo, Participio Futuro Medio, Nom. Sg. Masc.', s: 'Participio de Finalidad', d: 'para guiar', t: () => G.n2M('ἡγησόμεν') },
             'δεξαμενοσ': { l: 'δέχομαι', m: 'Verbo, Participio Aoristo Medio, Nom. Sg. Masc.', s: 'Participio Concertado', d: 'habiendo recibido', t: () => G.n2M('δεξάμεν') },
-            'ειμι': { l: 'εἰμί', m: 'Verbo, 1ª sg. Pres. Ind. Act.', s: 'Núcleo del Predicado', d: 'soy / estoy', estructura: ['', 'ει', '', '', 'μι'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
-            'εστι': { l: 'εἰμί', m: 'Verbo, 3ª sg. Pres. Ind. Act.', s: 'Cópula', d: 'es / está', estructura: ['', 'εσ', '', '', 'τι'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
-            'εστιν': { l: 'εἰμί', m: 'Verbo, 3ª sg. Pres. Ind. Act.', s: 'Cópula', d: 'es / está', estructura: ['', 'εσ', '', '', 'τιν'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
-            'εισι': { l: 'εἰμί', m: 'Verbo, 3ª pl. Pres. Ind. Act.', s: 'Cópula', d: 'son / están', estructura: ['', 'ει', '', '', 'σι'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
-            'εισιν': { l: 'εἰμί', m: 'Verbo, 3ª pl. Pres. Ind. Act.', s: 'Cópula', d: 'son / están', estructura: ['', 'ει', '', '', 'σιν'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
-            'ην': { l: 'εἰμί', m: 'Verbo, 3ª sg. Imperf. Ind. Act.', s: 'Núcleo del Predicado', d: 'era / estaba', estructura: ['', 'η', '', '', 'ν'], t: () => buildVerbT('ἦν','ἦσθα','ἦν','ἦμεν','ἦτε','ἦσαν', "Imperf. de εἰμί") },
-            'παρειμι': { l: 'πάρειμι', m: 'Verbo, 1ª Sg. Presente Ind.', s: 'Núcleo', d: 'estoy presente', t: () => buildVerbT('πάρειμι','πάρει','πάρεστι(ν)','πάρεσμεν','πάρεστε','πάρεισι(ν)','Presente Ind.') },
-            'παρεστε': { l: 'πάρειμι', m: 'Verbo, 2ª Plural Presente Ind.', s: 'Núcleo', d: 'estáis presentes', t: () => buildVerbT('πάρειμι','πάρει','πάρεστι(ν)','πάρεσμεν','πάρεστε','πάρεισι(ν)','Presente Ind.') },
-            'παρεσται': { l: 'πάρειμι', m: 'Verbo, 3ª Sg. Futuro Medio', s: 'Núcleo', d: 'estará presente', t: () => buildVerbT('παρέσομαι','παρέσῃ','παρέσται','παρεσόμεθα','παρέσεσθε','παρέσονται','Futuro Medio') },
-            'παρεσομεθα': { l: 'πάρειμι', m: 'Verbo Irreg. Compuesto, 1ª Plural, Futuro Medio', s: 'Núcleo', d: 'estaremos presentes', t: () => buildVerbT('παρέσομαι','-σῃ','-σεται','-σόμεθα','-σεσθε','-σονται','Fut. Medio') },
-            'εδοξεν': { l: 'δοκέω', m: 'Verbo Impersonal, 3ª Sg., Aoristo Activo', s: 'Núcleo', d: 'pareció bien, decidió', t: () => buildVerbT('ἔδοξα','ἔδοξας','ἔδοξε(ν)','ἐδόξαμεν','ἐδόξατε','ἔδοξαν','Aoristo Activo') },
-            'ηρετο': { l: 'ἔρομαι', m: 'Verbo, 3ª Sg. Aoristo Medio', s: 'Núcleo', d: 'preguntó', t: () => buildVerbT('ἠρόμην','ἤρου','ἤρετο','ἠρόμεθα','ἤρεσθε','ἤροντο','Aoristo Medio') },
-            'εξηγησατο': { l: 'ἐξηγέομαι', m: 'Verbo, 3ª Sg. Aoristo Medio', s: 'Núcleo', d: 'explicó', t: () => G.vAorM('ἐξ','ηγή') },
-            'εποιησατο': { l: 'ποιέω', m: 'Verbo, 3ª Sg. Aoristo Medio', s: 'Núcleo', d: 'hizo para sí', t: () => G.vAorM('ἐ','ποιή') },
-            'εκαθηρατο': { l: 'καθαίρω', m: 'Verbo, 3ª Sg. Aoristo Medio', s: 'Núcleo', d: 'se purificó', t: () => buildVerbT('ἐκαθηράμην','ἐκαθήρω','ἐκαθήρατο','ἐκαθηράμεθα','ἐκαθήρασθε','ἐκαθήραντο','Aoristo Medio') },
-            'ηγαγεν': { l: 'ἄγω', m: 'Verbo, 3ª Sg. Aoristo Radical Act.', s: 'Núcleo', d: 'llevó / condujo', t: () => buildVerbT('ἤγαγον','ἤγαγες','ἤγαγε(ν)','ἠγάγομεν','ἠγάγετε','ἤγαγον','Aoristo Radical') },
-            'ηγαγε': { l: 'ἄγω', m: 'Verbo, 3ª Sg. Aoristo Radical Act.', s: 'Núcleo', d: 'llevó / condujo', t: () => buildVerbT('ἤγαγον','ἤγαγες','ἤγαγε(ν)','ἠγάγομεν','ἠγάγετε','ἤγαγον','Aoristo Radical') },
-            'ηγε': { l: 'ἄγω', m: 'Verbo, 3ª Sg. Imperfecto Activo', s: 'Núcleo', d: 'conducía / llevaba', t: () => G.vImpfA('ἦγ', '') },
-            'διεβησαν': { l: 'διαβαίνω', m: 'Verbo, 3ª Plural Aoristo Radical Act.', s: 'Núcleo', d: 'cruzaron', t: () => buildVerbT('διέβην','διέβης','διέβη','διέβημεν','διέβητε','διέβησαν','Aoristo Radical') },
-            'εισβησαν': { l: 'εἰσβαίνω', m: 'Verbo, 3ª Plural Aoristo Radical Act.', s: 'Núcleo', d: 'embarcaron', t: () => buildVerbT('εἰσέβην','εἰσέβης','εἰσέβη','εἰσέβημεν','εἰσέβητε','εἰσέβησαν','Aoristo Radical') },
-            'εξεβη': { l: 'ἐκβαίνω', m: '3ª Sg. Aoristo Radical Act.', s: 'Núcleo', d: 'salió / desembarcó', t: () => buildVerbT('ἐξέβην','-ης','-η','-ημεν','-ητε','-ησαν','Aoristo Radical') },
-            'εξεβησαν': { l: 'ἐκβαίνω', m: '3ª Pl. Aoristo Radical Act.', s: 'Núcleo', d: 'salieron / desembarcaron', t: () => buildVerbT('ἐξέβην','-ης','-η','-ημεν','-ητε','ἐξέβησαν','Aoristo Radical') },
-            'δυνανται': { l: 'δύναμαι', m: 'Verbo, 3ª Plural Presente', s: 'Núcleo', d: 'pueden', t: () => buildVerbT('δύναμαι','δύνασαι','δύναται','δυνάμεθα','δύνασθε','δύνανται','Presente Ind. Medio') },
-            'εγιγνετο': { l: 'γίγνομαι', m: 'Verbo, 3ª Sg. Imperfecto Medio', s: 'Núcleo', d: 'se hacía', t: () => buildVerbT('ἐγιγνόμην','ἐγίγνου','ἐγίγνετο','ἐγιγνόμεθα','ἐγίγνοντο','Imperfecto Medio') },
-            'βουλη': { l: 'βούλομαι', m: 'Verbo, 2ª Sg. Presente Ind. Medio', s: 'Núcleo', d: 'quieres', t: () => buildVerbT('βούλομαι','βούλῃ','βούλεται','βουλόμεθα','βούλεσθε','βούλονται','Presente Medio') },
-            'εφη': { l: 'φημί', m: 'Verbo, 3ª Sg. Imperfecto/Aoristo Activo', s: 'Núcleo', d: 'dijo', t: () => buildVerbT('ἔφην','ἔφησθα','ἔφη','ἔφαμεν','ἔφατε','ἔφασαν','Imperfecto Activo') },
-            'επιφανηναι': { l: 'ἐπιφαίνω', m: 'Verbo, Infinitivo Aoristo Pasivo', s: 'Sujeto / Complemento', d: 'aparecer', t: () => inv },
-            'εκαθιζοντο': { l: 'καθίζω', m: 'Verbo, 3ª Plural Imperfecto Medio', s: 'Núcleo', d: 'se sentaban', t: () => buildVerbT('ἐκαθιζόμην','ἐκαθίζου','ἐκαθίζετο','ἐκαθιζόμεθα','ἐκαθίζεσθε','ἐκαθίζοντο','Imperfecto Medio') },
-            'εκαθιζετο': { l: 'καθίζω', m: 'Verbo, 3ª Singular Imperfecto Medio', s: 'Núcleo', d: 'se sentaba', t: () => buildVerbT('ἐκαθιζόμην','ἐκαθίζου','ἐκαθίζετο','ἐκαθιζόμεθα','ἐκαθίζεσθε','ἐκαθίζοντο','Imperfecto Medio') },
-            'κατεκειτο': { l: 'κατάκειμαι', m: 'Verbo, 3ª Singular Imperfecto Medio', s: 'Núcleo', d: 'yacía / estaba acostado', t: () => buildVerbT('κατεκείμην','κατέκεισο','κατέκειτο','κατεκείμεθα','κατέκεισθε','κατέκειντο','Imperfecto Medio') },
-            'εφοβειτο': { l: 'φοβέομαι', m: 'Verbo, 3ª Singular Imperfecto Medio', s: 'Núcleo', d: 'temía', t: () => buildVerbT('ἐφοβούμην','ἐφοβοῦ','ἐφοβεῖτο','ἐφοβούμεθα','ἐφοβεῖσθε','ἐφοβοῦντο','Imperfecto Medio') },
-            'ηκετε': { l: 'ἥκω', m: 'Verbo, 2ª Plural Presente Activo', s: 'Núcleo', d: 'habéis venido / llegáis', t: () => G.vPresA('ἥκ') },
-            'δοκει': { l: 'δοκέω', m: 'Verbo Impersonal, 3ª Sg., Presente Ind.', s: 'Núcleo', d: 'parece bien / conviene', t: () => G.vPresA('δοκ') },
-            'πορευεται': { l: 'πορεύομαι', m: '3ª Sg. Pres. Ind. Medio', s: 'Núcleo', d: 'se dirige', t: () => G.vPresM('πορεύ') },
-            'πορευομαι': { l: 'πορεύομαι', m: '1ª Sg. Pres. Ind. Medio', s: 'Núcleo', d: 'me dirijo', t: () => G.vPresM('πορεύ') },
-            'κελευουσι': { l: 'κελεύω', m: '3ª Pl. Pres. Ind. Activo', s: 'Núcleo', d: 'ordenan', t: () => G.vPresA('κελεύ') },
-            'ωφελησει': { l: 'ὠφελέω', m: '3ª Sg. Futuro Ind. Activo', s: 'Núcleo', d: 'ayudará', t: () => G.vFutA('ὠφελή') },
-            'ηγησατο': { l: 'ἡγέομαι', m: '3ª Sg. Aoristo Ind. Medio', s: 'Núcleo', d: 'guio / lideró', t: () => G.vAorM('ἡγή','') },
-            'εψεσθε': { l: 'ἕπομαι', m: 'Verbo, 2ª Pl. Futuro Ind. Medio', s: 'Núcleo', d: 'seguiréis', t: () => buildVerbT('ἕψομαι','ἕψῃ','ἕψεται','ἑψόμεθα','ἕψεσθε','ἕψονται','Futuro Medio') },
-            'εψομαι': { l: 'ἕπομαι', m: 'Verbo, 1ª Sg. Futuro Ind. Medio', s: 'Núcleo', d: 'seguiré', t: () => buildVerbT('ἕψομαι','ἕψῃ','ἕψεται','ἑψόμεθα','ἕψεσθε','ἕψονται','Futuro Medio') },
-            'ηυρον': { l: 'εὑρίσκω', m: '3ª Pl. Aoristo Radical Act.', s: 'Núcleo', d: 'encontraron', t: () => buildVerbT('ηὗρον','-ες','-ε','-ομεν','-ετε','ηὗρον','Aoristo Radical') },
-            'εμεινεν': { l: 'μένω', m: '3ª Sg. Aoristo Ind. Activo', s: 'Núcleo', d: 'permaneció', t: () => buildVerbT('ἔμεινα','-ας','-ε','-αμεν','-ατε','-αν','Aoristo Activo') },
-            'εμενον': { l: 'μένω', m: 'Verbo, 3ª Plural Imperfecto Activo', s: 'Núcleo', d: 'permanecían', t: () => G.vImpfA('ἔμεν', '') },
-            'μενεισ': { l: 'μένω', m: '2ª Sg. Futuro Activo', s: 'Núcleo', d: 'permanecerás', t: () => buildVerbT('μενῶ','μενεῖς','μενεῖ','μενοῦμεν','μενεῖτε','μενοῦσι','Futuro Activo') },
-            'πεμψει': { l: 'πέμπω', m: '3ª Sg. Futuro Activo', s: 'Núcleo', d: 'enviará', t: () => G.vFutA('πέμψ') },
-            'επεμψεν': { l: 'πέμπω', m: '3ª Sg. Aoristo Ind. Activo', s: 'Núcleo', d: 'envió', t: () => G.vAorA('ἔπεμψ','') },
-            'επεμπον': { l: 'πέμπω', m: 'Verbo, 3ª Plural Imperfecto Activo', s: 'Núcleo', d: 'enviaban', t: () => G.vImpfA('ἔπεμπ', '') },
-            'αφιξομεθα': { l: 'ἀφικνέομαι', m: '1ª Pl. Futuro Medio', s: 'Núcleo', d: 'llegaremos', t: () => G.vFutM('ἀφίξ') },
-            'αφικοντο': { l: 'ἀφικνέομαι', m: '3ª Pl. Aoristo Medio', s: 'Núcleo', d: 'llegaron', t: () => G.vAorM('ἀφίκ','') },
-            'αφικετο': { l: 'ἀφικνέομαι', m: 'Verbo, 3ª Sg. Aoristo Medio', s: 'Núcleo', d: 'llegó', t: () => G.vAorM('ἀφίκ', '') },
-            'αποπλευσεται': { l: 'ἀποπλέω', m: '3ª Sg. Futuro Medio', s: 'Núcleo', d: 'zarpará', t: () => G.vFutM('ἀποπλεύ') },
-            'ειπον': { l: 'λέγω', m: '3ª Pl. Aoristo Radical Act.', s: 'Núcleo', d: 'dijeron', t: () => buildVerbT('εἶπον','-ες','-ε','-ομεν','-ετε','εἶπον','Aoristo Radical') },
-            'εγενετο': { l: 'γίγνομαι', m: '3ª Sg. Aoristo Radical Medio', s: 'Núcleo', d: 'llegó a ser', t: () => buildVerbT('ἐγενόμην','-ου','ἐγέγετο','-όμεθα','-εσθε','-οντο','Aoristo Radical') },
-            'εδυνατο': { l: 'δύναμαι', m: '3ª Sg. Imperfecto', s: 'Núcleo', d: 'podía', t: () => buildVerbT('ἐδυνάμην','ἐδύνασο','ἐδύνατο','ἐδυνάμεθα','ἐδύνασθε','ἐδύναντο','Imperfecto') },
-            'εβοηθουν': { l: 'βοηθέω', m: '3ª Pl. Imperfecto Activo', s: 'Núcleo', d: 'ayudaban', t: () => buildVerbT('ἐβοήθουν','-εις','-ει','-οῦμεν','-εῖτε','-ουν','Imperfecto Activo') },
-            'αιρει': { l: 'αἱρέω', m: '3ª Sg. Presente Ind. Activo', s: 'Núcleo', d: 'toma / captura', t: () => G.vPresA('αἱρ') },
-            'παυσωνται': { l: 'παύω', m: '3ª Pl. Subjuntivo Aoristo Medio', s: 'Condicional', d: 'cesen / se detengan', t: () => buildVerbT('παύσωμαι','-ῃ','-ηται','-ωμεθα','-ησθε','παύσωνται','Subjuntivo Aoristo') },
-            'πιστευω': { l: 'πιστεύω', m: '1ª Sg. Presente Ind. Activo', s: 'Núcleo', d: 'creo / confío', t: () => G.vPresA('πιστεύ') },
-            'πιστευεισ': { l: 'πιστεύω', m: 'Verbo, 2ª Sg. Presente Ind. Activo', s: 'Núcleo', d: 'crees', t: () => G.vPresA('πιστεύ') },
-            'επιτρεψω': { l: 'ἐπιτρέπω', m: '1ª Sg. Futuro Ind. Activo', s: 'Núcleo', d: 'confiaré', t: () => G.vFutA('ἐπιτρέψ') },
-            'επιτρεψεισ': { l: 'ἐπιτρέπω', m: 'Verbo, 2ª Sg. Futuro Ind. Activo', s: 'Núcleo', d: 'confiarás', t: () => G.vFutA('ἐπιτρέψ') },
-            'οιδα': { l: 'οἶδα', m: 'Verbo Irregular, 1ª Sg., Perfecto', s: 'Núcleo', d: 'sé, conozco', t: () => buildVerbT('οἶδα','οἶσθα','οἶδε(ν)','ἴσμεν','ἴστε','ἴσασι(ν)','Perfecto Irreg.') },
-            'απεχει': { l: 'ἀπέχω', m: 'Verbo Compuesto, 3ª Sg., Presente Activo', s: 'Núcleo', d: 'dista, está lejos', t: () => G.vPresA('ἀπέχ') },
-            'απειχεν': { l: 'ἀπέχω', m: 'Verbo Compuesto, 3ª Sg. Imperfecto Activo', s: 'Núcleo', d: 'distaba', t: () => G.vImpfA('ἀπ', 'εῖχ') },
-            'γνωσομεθα': { l: 'γιγνώσκω', m: 'Verbo, 1ª Plural, Futuro Medio', s: 'Núcleo', d: 'sabremos', t: () => G.vFutM('γνώ') },
-            'επανιμεν': { l: 'ἐπάνειμι', m: 'Verbo Irreg. Comp., 1ª Pl., Presente (Valor futuro)', s: 'Núcleo', d: 'regresaremos', t: () => buildVerbT('ἐπάνειμι','-εἶ','-εῖσι','-ιμεν','-ιτε','-ιασιν','Pres. Ind.') },
-            'εσπευδον': { l: 'σπεύδω', m: 'Verbo, 3ª Plural, Imperfecto Activo', s: 'Núcleo', d: 'se apresuraban', t: () => G.vImpfA('ἔ','σπευδ') },
-            'ορμησομεθα': { l: 'ὁρμάω', m: 'Verbo, 1ª Plural, Futuro Medio', s: 'Núcleo', d: 'partiremos', t: () => G.vFutM('ὁρμή') },
-            'πλευσομεθα': { l: 'πλέω', m: 'Verbo, 1ª Plural, Futuro Medio', s: 'Núcleo', d: 'navegaremos', t: () => G.vFutM('πλεύ') },
-            'λυσομεν': { l: 'λύω', m: 'Verbo, 1ª Plural, Futuro Activo', s: 'Núcleo', d: 'desataremos', t: () => G.vFutA('λύ') },
-            'ηραν': { l: 'αἴρω', m: 'Verbo, 3ª Plural, Aoristo Indicativo Activo', s: 'Núcleo', d: 'izaron', t: () => G.vAorA('ἤρ','') },
-            'επλησεν': { l: 'πίμπλημι', m: 'Verbo, 3ª Sg., Aoristo Activo', s: 'Núcleo', d: 'llenó', t: () => G.vAorA('ἔπλ','η') },
-            'ετρεχεν': { l: 'τρέχω', m: 'Verbo, 3ª Sg., Imperfecto Activo', s: 'Núcleo', d: 'corría', t: () => G.vImpfA('ἔ','τρεχ') },
-            'ακουσεται': { l: 'ἀκούω', m: 'Verbo, 3ª Sg., Futuro Medio (valor Activo)', s: 'Núcleo', d: 'escuchará', t: () => G.vFutM('ἀκού') },
-            'κοπτεισ': { l: 'κόπτω', m: 'Verbo, 2ª Sg., Presente Activo', s: 'Núcleo', d: 'golpeas', t: () => G.vPresA('κόπτ') },
-            'ηλθετε': { l: 'ἔρχομαι', m: 'Verbo Irregular, 2ª Pl., Aoristo Radical', s: 'Núcleo', d: 'vinisteis', t: () => buildVerbT('ἦλθον','-ες','-ε','-ομεν','ἤλθετε','-ον','Aoristo Radical') },
-            'κομιζω': { l: 'κομίζω', m: 'Verbo, 1ª Sg., Presente Activo', s: 'Núcleo', d: 'llevo', t: () => G.vPresA('κομίζ') },
-            'εισηλθον': { l: 'εἰσέρχομαι', m: 'Verbo Irregular, 3ª Pl., Aoristo Radical', s: 'Núcleo', d: 'entraron', t: () => buildVerbT('εἰσῆλθον','-ες','-ε','-ομεν','-ετε','εἰσῆλθον','Aoristo Radical') },
-            'αντειχεν': { l: 'ἀντέχω', m: 'Verbo Compuesto, 3ª Sg., Imperfecto Activo', s: 'Núcleo', d: 'resistía', t: () => G.vImpfA('ἀντ','εῖχ') },
-            'εμαθεν': { l: 'μανθάνω', m: 'Verbo, 3ª Sg., Aoristo Radical Activo', s: 'Núcleo', d: 'se enteró', t: () => buildVerbT('ἔμαθον','-ες','ἔμαθε(ν)','-ομεν','-ετε','-ον','Aoristo Radical') },
-            'αποδωσει': { l: 'ἀποδίδωμι', m: 'Verbo (Atemático), 3ª Sg., Futuro Activo', s: 'Núcleo', d: 'devolverá', t: () => G.vFutA('ἀποδώσ') },
-            'τιμησομεν': { l: 'τιμάω', m: 'Verbo, 1ª Plural, Futuro Ind. Activo', s: 'Núcleo', d: 'honraremos', t: () => G.vFutA('τιμή') },
-            'νοσω': { l: 'νοσέω', m: 'Verbo, 1ª Sg. Presente Activo', s: 'Núcleo', d: 'estoy enfermo', t: () => G.vPresA('νοσ') },
-            'ακουω': { l: 'ἀκούω', m: 'Verbo, 1ª Sg. Presente Activo', s: 'Núcleo', d: 'escucho', t: () => G.vPresA('ἀκού') },
-            'εκαμνεν': { l: 'κάμνω', m: 'Verbo, 3ª Sg. Imperfecto Activo', s: 'Núcleo', d: 'trabajaba / estaba enferma', t: () => G.vImpfA('ἔ', 'καμν') },
-            'ηθελεν': { l: 'ἐθέλω', m: 'Verbo, 3ª Sg. Imperfecto Activo', s: 'Núcleo', d: 'quería', t: () => G.vImpfA('ἤθελ', '') },
-            'ωρμησαν': { l: 'ὁρμάω', m: 'Verbo, 3ª Plural Aoristo Activo', s: 'Núcleo', d: 'se pusieron en marcha', t: () => G.vAorA('ὥρμησ', '') },
-            'ηλπιζον': { l: 'ἐλπίζω', m: 'Verbo, 3ª Plural Imperfecto Activo', s: 'Núcleo', d: 'esperaban', t: () => G.vImpfA('ἤλπιζ', '') },
-            'εξεκομισαν': { l: 'ἐκκομίζω', m: 'Verbo, 3ª Plural Aoristo Activo', s: 'Núcleo', d: 'evacuaron', t: () => G.vAorA('ἐξεκόμισ', '') },
-            'ηκουε': { l: 'ἀκούω', m: 'Verbo, 3ª Sg. Imperfecto Activo', s: 'Núcleo', d: 'escuchaba', t: () => G.vImpfA('ἤκου', '') },
-            'ερωτησω': { l: 'ἐρωτάω', m: 'Verbo, 1ª Sg. Futuro Activo', s: 'Núcleo', d: 'preguntaré', t: () => G.vFutA('ἐρωτήσ') },
-            'εστι': { l: 'εἰμί', m: 'Verbo, 3ª pers. sg. Presente Indicativo', s: 'Núcleo del Predicado (Cópula)', d: 'es / está', estructura: ['', 'εσ', '', '', 'τι'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. Indicativo de εἰμί") },
-            'εστιν': { l: 'εἰμί', m: 'Verbo, 3ª pers. sg. Presente Indicativo', s: 'Núcleo del Predicado (Cópula)', d: 'es / está', estructura: ['', 'εσ', '', '', 'τιν'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. Indicativo de εἰμί") },
-            'εισι': { l: 'εἰμί', m: 'Verbo, 3ª pers. pl. Presente Indicativo', s: 'Núcleo del Predicado (Cópula)', d: 'son / están', estructura: ['', 'ει', '', '', 'σι'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. Indicativo de εἰμί") },
-            'εισιν': { l: 'εἰμί', m: 'Verbo, 3ª pers. pl. Presente Indicativo', s: 'Núcleo del Predicado (Cópula)', d: 'son / están', estructura: ['', 'ει', '', '', 'σιν'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. Indicativo de εἰμί") },
-            'ην': { l: 'εἰμί', m: 'Verbo, 3ª pers. sg. Imperfecto Indicativo', s: 'Núcleo del Predicado', d: 'era / estaba', estructura: ['', 'η', '', '', 'ν'], t: () => buildVerbT('ἦν','ἦσθα','ἦν','ἦμεν','ἦτε','ἦσαν', "Impf. Indicativo de εἰμί") },
-
-            // --- 7. INVARIABLES, PREPOSICIONES, INFINITIVOS E IMPERATIVOS ---
+            
+            // --- INVARIABLES, PREPOSICIONES Y OTROS ---
             'ο': { l: 'ὁ', m: 'Art. Masc. Nom. Sg.', s: 'Det.', d: 'el', t: () => G.artM() },
             'η': { l: 'ἡ / ἤ', m: 'Art. Fem. Nom. Sg. o Conj.', s: 'Det. / Nexo', d: 'la / o', t: () => G.artF() },
             'το': { l: 'τό', m: 'Art. Neutro Nom/Acus Sg.', s: 'Det.', d: 'el / lo', t: () => G.artN() },
@@ -1576,7 +1480,7 @@
             'ποιεισθαι': { l: 'ποιέω', m: 'Verbo, Infinitivo Presente Medio', s: 'Objeto de mandato', d: 'hacerse / realizar', t: () => inv },
             'πεμψαι': { l: 'πέμπω', m: 'Verbo, Infinitivo Aoristo Activo', s: 'Sujeto de δεῖ', d: 'enviar', t: () => inv },
             'ιεναι': { l: 'εἶμι', m: 'Verbo, Infinitivo Presente', s: 'O. Directo / Sujeto', d: 'ir', t: () => inv },
-
+            
             // --- IMPERATIVOS ---
             'ισθι': { l: 'εἰμί', m: 'Verbo Copulativo, 2ª Sg. Imperativo', s: 'Orden', d: '¡sé!', t: () => inv },
             'εισιτε': { l: 'εἴσειμι', m: 'Verbo Irregular, 2ª Pl., Imperativo Presente', s: 'Orden', d: '¡entrad!', t: () => inv },
@@ -1600,92 +1504,29 @@
             'εκελευσεν': { l: 'κελεύω', m: 'Verbo, 3ª Sg. Aoristo Indicativo Activo', s: 'Núcleo', d: 'ordenó', t: () => buildVerbT('ἐκέλευσα','-ας','ἐκέλευσε(ν)','-αμεν','-ατε','-αν','Aoristo Activo') },
             'εκοψεν': { l: 'κόπτω', m: 'Verbo, 3ª Sg. Aoristo Indicativo Activo', s: 'Núcleo', d: 'golpeó / llamó a la puerta', t: () => buildVerbT('ἔκοψα','-ας','ἔκοψε(ν)','-αμεν','-ατε','-αν','Aoristo Activo') },
             'ηγησαμενοσ': { l: 'ἡγέομαι', m: 'Verbo, Participio Aoristo Medio, Nom. Sg. Masc.', s: 'Participio Concertado', d: 'habiendo guiado', t: () => G.n2M('ἡγησάμεν') },
-            'εισεβησαν': { l: 'εἰσβαίνω', m: 'Verbo, 3ª Plural Aoristo Radical Activo', s: 'Núcleo', d: 'embarcaron', t: () => buildVerbT('εἰσέβην','εἰσέβης','εἰσέβη','εἰσέβημεν','εἰσέβητε','εἰσέβησαν','Aoristo Radical') },
-            'εισβητε': { l: 'εἰσβαίνω', m: 'Verbo, 2ª Plural Imperativo Aoristo', s: 'Orden', d: '¡embarcad!', t: () => inv },
+            'εισεβησαν': { l: 'εἰσβαίνω', m: 'Verbo, 3ª Plural Aoristo Radical Activo', s: 'Núcleo', d: 'embarcaron', t: () => buildVerbT('εἰσέβην','εἰσέβης','εἰσέβη','εἰσέβημεν','εἰσέβητε','εἰσέβησαν','Aoristo Radical') },
+            'εισβητε': { l: 'εἰσβαίνω', m: 'Verbo, 2ª Plural Imperativo Aoristo', s: 'Orden', d: '¡embarcad!', t: () => inv },
 
-            // --- PARTICULAS EXCLAMATIVAS Y ELISIONES ---
-            'ω': { l: 'ὦ', m: 'Invariable, Partícula Exclamativa', s: 'Acompaña al Vocativo', d: '¡oh!', t: () => inv },
-            'μ': { l: 'ἐγώ (elidido: μ\')', m: 'Invariable / Pron. Personal, 1ª Acus. Sg.', s: 'Objeto Directo', d: 'me / a mí', t: () => inv },
-            'δ': { l: 'δέ (elidido: δ\')', m: 'Invariable, Partícula / Conjunción', s: 'Nexo', d: 'pero / y', t: () => inv },
-            'αλλ': { l: 'ἀλλά (elidido: ἀλλ\')', m: 'Invariable, Conjunción Adversativa', s: 'Nexo', d: 'sino / pero', t: () => inv },
-            'δι': { l: 'διά (elidido: δι\')', m: 'Invariable, Preposición (rige Gen/Acus)', s: 'Tránsito / Causa', d: 'a través de / por', t: () => inv },
-            'υφ': { l: 'ὑπό (elidido: ὑφ\')', m: 'Invariable, Preposición (rige Genitivo)', s: 'Complemento Agente', d: 'por (causa de)', t: () => inv },
-            'καιπερ': { l: 'καίπερ', m: 'Invariable, Conjunción Concesiva', s: 'Nexo', d: 'aunque', t: () => inv },
-            'ειμι': { l: 'εἰμί', m: 'Verbo, 1ª sg. Pres. Ind. Act.', s: 'Núcleo del Predicado', d: 'soy / estoy', estructura: ['', 'ει', '', '', 'μι'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
-            'εστι': { l: 'εἰμί', m: 'Verbo, 3ª sg. Pres. Ind. Act.', s: 'Cópula', d: 'es / está', estructura: ['', 'εσ', '', '', 'τι'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
-            'εστιν': { l: 'εἰμί', m: 'Verbo, 3ª sg. Pres. Ind. Act.', s: 'Cópula', d: 'es / está', estructura: ['', 'εσ', '', '', 'τιν'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
-            'εισι': { l: 'εἰμί', m: 'Verbo, 3ª pl. Pres. Ind. Act.', s: 'Cópula', d: 'son / están', estructura: ['', 'ει', '', '', 'σι'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
-            'εισιν': { l: 'εἰμί', m: 'Verbo, 3ª pl. Pres. Ind. Act.', s: 'Cópula', d: 'son / están', estructura: ['', 'ει', '', '', 'σιν'], t: () => buildVerbT('εἰμί','εἶ','ἐστί(ν)','ἐσμέν','ἐστέ','εἰσί(ν)', "Pres. de εἰμί") },
-            'ην': { l: 'εἰμί', m: 'Verbo, 3ª sg. Imperf. Ind. Act.', s: 'Núcleo del Predicado', d: 'era / estaba', estructura: ['', 'η', '', '', 'ν'], t: () => buildVerbT('ἦν','ἦσθα','ἦν','ἦμεν','ἦte','ἦσαν', "Imperf. de εἰμί") },
-            'ων': { l: 'εἰμί', m: 'Part. Presente, Nom. Sg. Masc.', s: 'Part. Concertado', d: 'siendo', estructura: ['', 'ω', '', '', 'ν'], t: () => buildNounT('ὤν','-','ὄντα','ὄντος','ὄντι','-','-','-','-','-') },
-            'ειναι': { l: 'εἰμί', m: 'Infinitivo Presente', s: 'Sujeto / C. Directo', d: 'ser / estar', estructura: ['', 'ει', '', '', 'ναι'], t: () => inv },
-            'ωφελησει': { l: 'ὠφελέω', m: 'Verbo, 3ª sg. Futuro Ind. Act.', s: 'Núcleo', d: 'ayudará', estructura: ['', 'ωφελη', 'σ', 'ει', ''], t: () => G.vFutA('ὠφελή') },
-            'αφιξομεθα': { l: 'ἀφικνέομαι', m: 'Verbo, 1ª pl. Futuro Ind. Med.', s: 'Núcleo', d: 'llegaremos', estructura: ['αφ', 'ιξ', 'ο', 'με', 'θα'], t: () => G.vFutM('ἀφíξ') },
-            'γνωσομεθα': { l: 'γιγνώσκω', m: 'Verbo, 1ª pl. Futuro Ind. Med.', s: 'Núcleo', d: 'sabremos', estructura: ['', 'γνω', 'σο', 'με', 'θα'], t: () => G.vFutM('γνώ') },
-            'ναυσ': { l: 'ναῦς, νεώς, ἡ', m: 'Sust. Irreg., Nom. Sg. Fem.', s: 'Sujeto', d: 'la nave', estructura: ['', 'ναυ', '', '', 'σ'], t: () => buildNounT('ναῦς','-','ναῦν','νεώς','νηΐ','-','-','-','-','-') },
-            'νεωσ': { l: 'ναῦς, νεώς, ἡ', m: 'Sust. Irreg., Gen. Sg. Fem.', s: 'Compl. Nombre', d: 'de la nave', estructura: ['', 'νε', '', '', 'ως'], t: () => buildNounT('ναῦς','-','ναῦν','νεώς','νηΐ','-','-','-','-','-') },
-            'αθηνασ': { l: 'Ἀθῆναι, -ῶν, αἱ', m: 'Sust. Propio, Acus. Pl.', s: 'Dirección', d: 'Atenas', estructura: ['', 'αθην', '', '', 'ας'], t: () => buildNounT('-','-','-','-','-','Ἀθῆναι','-','Ἀθήνας','Ἀθηνῶν','Ἀθήναις') },
-            // --- REFUERZO MASIVO DE LÉXICO (Unidad XVIII) ---
+            // --- PARTICULAS EXCLAMATIVAS Y ELISIONES ---
+            'ω': { l: 'ὦ', m: 'Invariable, Partícula Exclamativa', s: 'Acompaña al Vocativo', d: '¡oh!', t: () => inv },
+            'μ': { l: 'ἐγώ (elidido: μ\')', m: 'Invariable / Pron. Personal, 1ª Acus. Sg.', s: 'Objeto Directo', d: 'me / a mí', t: () => inv },
+            'δ': { l: 'δέ (elidido: δ\')', m: 'Invariable, Partícula / Conjunción', s: 'Nexo', d: 'pero / y', t: () => inv },
+            'αλλ': { l: 'ἀλλά (elidido: ἀλλ\')', m: 'Invariable, Conjunción Adversativa', s: 'Nexo', d: 'sino / pero', t: () => inv },
+            'δι': { l: 'διά (elidido: δι\')', m: 'Invariable, Preposición (rige Gen/Acus)', s: 'Tránsito / Causa', d: 'a través de / por', t: () => inv },
+            'υφ': { l: 'ὑπό (elidido: ὑφ\')', m: 'Invariable, Preposición (rige Genitivo)', s: 'Complemento Agente', d: 'por (causa de)', t: () => inv },
+            'καιπερ': { l: 'καίπερ', m: 'Invariable, Conjunción Concesiva', s: 'Nexo', d: 'aunque', t: () => inv },
             
-            // SUSTANTIVOS Y NOMBRES
-            'παι': { l: 'παῖς, παιδός, ὁ', m: 'Sustantivo, Vocativo Sg.', s: 'Invocación', d: '¡oh hijo!', estructura: ['', 'παι', '', '', ''], t: () => buildNounT('παῖς','παῖ','παῖδα','παιδός','παιδί','παῖδες','παῖδες','παῖδας','παίδων','παισί') },
-            'παιδα': { l: 'παῖς, παιδός, ὁ', m: 'Sustantivo, Acusativo Sg.', s: 'Comp. Directo', d: 'al niño / al hijo', estructura: ['', 'παιδ', '', '', 'α'], t: () => buildNounT('παῖς','παῖ','παῖδα','παιδός','παιδί','παῖδες','παῖδες','παῖδας','παίδων','παισί') },
-            'παιδι': { l: 'παῖς, παιδός, ὁ', m: 'Sustantivo, Dativo Sg.', s: 'Comp. Indirecto', d: 'al niño', estructura: ['', 'παιδ', '', '', 'ι'], t: () => buildNounT('παῖς','παῖ','παῖδα','παιδός','παιδί','παῖδες','παῖδες','παῖδας','παίδων','παισί') },
-            'πατερ': { l: 'πατήρ, πατρός, ὁ', m: 'Sustantivo, Vocativo Sg.', s: 'Invocación', d: '¡oh padre!', estructura: ['', 'πατερ', '', '', ''], t: () => buildNounT('πατήρ','πάτερ','πατέρα','πατρός','πατρί','πατέρες','-','πατέρας','πατέρων','πατράσι') },
-            'γυναικα': { l: 'γυνή, γυναικός, ἡ', m: 'Sustantivo, Acusativo Sg.', s: 'Comp. Directo', d: 'a la mujer / esposa', estructura: ['', 'γυναικ', '', '', 'α'], t: () => buildNounT('γυνή','γύναι','γυναῖκα','γυναικός','γυναικί','γυναῖκες','-','γυναῖκας','γυναικῶν','γυναιξί') },
-            'γυνη': { l: 'γυνή, γυναικός, ἡ', m: 'Sustantivo, Nominativo Sg.', s: 'Sujeto', d: 'una mujer', estructura: ['', 'γυν', '', '', 'η'], t: () => buildNounT('γυνή','γύναι','γυναῖκα','γυναικός','γυναικί','γυναῖκες','-','γυναῖκας','γυναικῶν','γυναιξί') },
-            'λιμενοσ': { l: 'λιμήν, -ένος, ὁ', m: 'Sustantivo, Genitivo Sg.', s: 'Compl. de Lugar', d: 'del puerto', estructura: ['', 'λιμεν', '', '', 'ος'], t: () => buildNounT('λιμήν','-','λιμένα','λιμένος','λιμένι','λιμένες','-','λιμένας','λιμένων','λιμέσι') },
-            'λιμενα': { l: 'λιμήν, -ένος, ὁ', m: 'Sustantivo, Acusativo Sg.', s: 'Dirección', d: 'al puerto', estructura: ['', 'λιμεν', '', '', 'α'], t: () => buildNounT('λιμήν','-','λιμένα','λιμένος','λιμένι','λιμένες','-','λιμένας','λιμένων','λιμέσι') },
-            'πυλαι': { l: 'πύλη, -ης, ἡ', m: 'Sustantivo, Nominativo Pl.', s: 'Sujeto', d: 'las puertas', estructura: ['', 'πυλ', '', '', 'αι'], t: () => G.n1F('πύλ', true) },
-            'βωμον': { l: 'βωμός, -οῦ, ὁ', m: 'Sustantivo, Acusativo Sg.', s: 'Dirección', d: 'el altar', estructura: ['', 'βωμ', '', 'ο', 'ν'], t: () => G.n2M('βωμ') },
-            'βασιλει': { l: 'βασιλεύς, -έως, ὁ', m: 'Sustantivo, Dativo Sg.', s: 'Comp. Indirecto', d: 'al Rey', estructura: ['', 'βασιλε', '', '', 'ι'], t: () => buildNounT('βασιλεύς','-','βασιλέα','βασιλέως','βασileῖ','-','-','-','-','-') },
-            'βασιλευσ': { l: 'βασιλεύς, -έως, ὁ', m: 'Sustantivo, Nominativo Sg.', s: 'Sujeto', d: 'el Rey', estructura: ['', 'βασιλε', '', '', 'υς'], t: () => buildNounT('βασιλεύς','-','βασιλέα','βασιλέως','βασileῖ','-','-','-','-','-') },
-            'χειρασ': { l: 'χείρ, χειρός, ἡ', m: 'Sustantivo, Acusativo Plural', s: 'Comp. Directo', d: 'las manos', estructura: ['', 'χειρ', '', '', 'ας'], t: () => buildNounT('χείρ','-','χεῖρα','χειρός','χειρί','χεῖρες','-','χεῖρας','χειρῶν','χερσί') },
-
-            // VERBOS: ACCIÓN Y MOVIMIENTO
-            'κελευουσιν': { l: 'κελεύω', m: 'Verbo, 3ª pl. Pres. Ind. Act.', s: 'Núcleo', d: 'ordenan / mandan', estructura: ['', 'κελευ', '', 'ου', 'σιν'], t: () => G.vPresA('κελεύ') },
-            'ηγησατο': { l: 'ἡγέομαι', m: 'Verbo, 3ª sg. Aoristo Ind. Medio', s: 'Núcleo', d: 'guio / lideró', estructura: ['', 'ηγη', 'σα', '', 'το'], t: () => G.vAorM('', 'ηγη') },
-            'εζητησαν': { l: 'ζητέω', m: 'Verbo, 3ª pl. Aoristo Ind. Act.', s: 'Núcleo', d: 'buscaron', estructura: ['ε', 'ζητη', 'σα', '', 'ν'], t: () => G.vAorA('ε', 'ζητη') },
-            'επεμψεν': { l: 'πέμπω', m: 'Verbo, 3ª sg. Aoristo Ind. Act.', s: 'Núcleo', d: 'envió', estructura: ['ε', 'πεμψ', '', '', 'εν'], t: () => G.vAorA('ε', 'πεμψ') },
-            'ειπον': { l: 'λέγω', m: 'Verbo, 3ª pl. Aoristo Radical Act.', s: 'Núcleo', d: 'dijeron', estructura: ['', 'ειπ', '', '', 'ον'], t: () => buildVerbT('εἶπον','εἶπες','εἶπε(ν)','εἴπομεν','εἴπετε','εἶπον', "Aoristo de λέγω") },
-            'εφη': { l: 'φημί', m: 'Verbo, 3ª sg. Imperf. Act.', s: 'Núcleo', d: 'dijo / afirmaba', estructura: ['', 'ε', '', '', 'φη'], t: () => buildVerbT('ἔφην','ἔφησθα','ἔφη','ἔφαμεν','ἔφατε','ἔφασαν', "Imperf. de φημί") },
-            'εδοξεν': { l: 'δοκέω', m: 'Verbo, 3ª sg. Aoristo Ind. Act.', s: 'Núcleo (Impersonal)', d: 'pareció bien / decidió', estructura: ['ε', 'δοξ', '', '', 'εν'], t: () => buildVerbT('ἔδοξα','ἔδοξας','ἔδοξε','-','-','-','Aoristo de δοκέω') },
-            'κοψον': { l: 'κόπτω', m: 'Verbo, 2ª sg. Imperativo Aoristo', s: 'Mandato', d: '¡llama / golpea!', estructura: ['', 'κοψ', '', '', 'ον'], t: () => buildVerbT('ἔκοψα','ἔκοψας','ἔκοψε','-','-','-','Aoristo de κόπτω') },
-            'εκοψεν': { l: 'κόπτω', m: 'Verbo, 3ª sg. Aoristo Ind. Act.', s: 'Núcleo', d: 'llamó (a la puerta)', estructura: ['ε', 'κοψ', '', '', 'εν'], t: () => G.vAorA('ε', 'κοψ') },
-            'μενεισ': { l: 'μένω', m: 'Verbo, 2ª sg. Futuro Ind. Act.', s: 'Núcleo', d: 'permanecerás', estructura: ['', 'μεν', 'ει', '', 'ς'], t: () => buildVerbT('μενῶ','μενεῖς','μενεῖ','μενοῦμεν','μενεῖτε','μενοῦσι', "Futuro de μένω") },
-            'πεμψει': { l: 'πέμπω', m: 'Verbo, 3ª sg. Futuro Ind. Act.', s: 'Núcleo', d: 'enviará', estructura: ['', 'πεμψ', '', 'ει', ''], t: () => G.vFutA('πέμψ') },
-            'εβοηθουν': { l: 'βοηθέω', m: 'Verbo, 3ª pl. Imperf. Ind. Act.', s: 'Núcleo', d: 'ayudaban', estructura: ['ε', 'βοηθ', 'ου', '', 'ν'], t: () => G.vImpfA('ε', 'βοηθ') },
-
-            // ADJETIVOS Y PRONOMBRES
-            'ερημον': { l: 'ἔρημος, -ον', m: 'Adjetivo, Acusativo Sg. Neutro', s: 'Atributo', d: 'desierta', estructura: ['', 'ερημ', '', 'ο', 'ν'], t: () => G.n2N('ἐρήμ') },
-            'ετοιμα': { l: 'ἕτοιμος, -η, -ον', m: 'Adjetivo, Nom. Pl. Neutro', s: 'Atributo', d: 'preparadas / listas', estructura: ['', 'ετοιμ', '', '', 'α'], t: () => G.n2N('ἕτοιμ') },
-            'παντα': { l: 'πᾶς, πᾶσα, πᾶν', m: 'Adjetivo, Acusativo Pl. Neutro', s: 'Compl. Directo', d: 'todo / todas las cosas', estructura: ['', 'παντ', '', '', 'α'], t: () => buildNounT('πᾶν','-','πᾶν','παντός','παντί','πάντα','-','πάντα','πάντων','πᾶσι') },
-            'εκεινη': { l: 'ἐκεῖνος, -η, -ο', m: 'Pronombre Demost., Dativo Sg. Fem.', s: 'Compl. Tiempo', d: 'en aquel (día)', estructura: ['', 'εκειν', '', '', 'η'], t: () => buildNounT('ἐκείνη','-','ἐκείνην','ἐκείνης','ἐκείνῃ','-','-','-','-','-') },
-            'ουδεν': { l: 'οὐδείς, οὐδεμία, οὐδέν', m: 'Pronombre Indef., Acus. Sg. Neutro', s: 'Compl. Directo', d: 'nada / ningún mal', estructura: ['', 'ουδ', '', '', 'εν'], t: () => inv },
-
-            // INFINITIVOS Y PARTICPIOS EXTRAS
-            'ιεναι': { l: 'εἶμι', m: 'Verbo, Infinitivo Presente', s: 'Comp. de Mandato', d: 'ir', estructura: ['', 'ι', '', '', 'εναι'], t: () => inv },
-            'αφικεσθαι': { l: 'ἀφικνέομαι', m: 'Verbo, Infinitivo Aoristo Medio', s: 'Sujeto de δεῖ', d: 'llegar', estructura: ['αφ', 'ικ', '', '', 'εσθαι'], t: () => inv },
-            'αποθανοντας': { l: 'ἀποθνῄσκω', m: 'Verbo, Part. Aoristo Radical, Acus. Pl. Masc.', s: 'Part. Sustantivado', d: 'a los que murieron', estructura: ['', 'αποθαν', '', '', 'οντας'], t: () => buildNounT('ἀποθανών','-','ἀποθανόντα','-ος','-τι','-','-','ἀποθανόντας','-ων','-') },
-            'ιδων': { l: 'ὁράω', m: 'Verbo, Part. Aoristo Radical, Nom. Sg. Masc.', s: 'Part. Concertado', d: 'habiendo visto', estructura: ['', 'ιδ', '', '', 'ων'], t: () => buildNounT('ἰδών','-','ἰδόντα','ἰδόντος','ἰδόντι','-','-','-','-','-') },
-            'εισβητε': { l: 'εἰσβαίνω', m: 'Verbo, 2ª pl. Imperativo Aoristo', s: 'Mandato', d: '¡embarcad!', estructura: ['εισ', 'βη', '', '', 'τε'], t: () => buildVerbT('-','-','-','-','εἰσβῆτε','-', 'Imp. Aoristo') },
-        // --- AMPLIACIÓN DE LÉXICO (UNIDAD XVIII) ---
-            'οι': { l: 'ὁ, ἡ, τό', m: 'Artículo, Nominativo Plural Masc.', s: 'Determinante', d: 'los', t: () => G.artM() },
-            'αι': { l: 'ὁ, ἡ, τό', m: 'Artículo, Nominativo Plural Fem.', s: 'Determinante', d: 'las', t: () => G.artF() },
-            'τα': { l: 'ὁ, ἡ, τό', m: 'Artículo, Nom/Acus Plural Neutro', s: 'Determinante', d: 'los / las cosas', t: () => G.artN() },
-            'τον': { l: 'ὁ, ἡ, τό', m: 'Artículo, Acusativo Singular Masc.', s: 'Determinante', d: 'al / el', t: () => G.artM() },
-            'την': { l: 'ὁ, ἡ, τό', m: 'Artículo, Acusativo Singular Fem.', s: 'Determinante', d: 'la', t: () => G.artF() },
-            'του': { l: 'ὁ, ἡ, τό', m: 'Artículo, Genitivo Singular Masc.', s: 'Determinante', d: 'del', t: () => G.artM() },
-            'τησ': { l: 'ὁ, ἡ, τό', m: 'Artículo, Genitivo Singular Fem.', s: 'Determinante', d: 'de la', t: () => G.artF() },
-            'τω': { l: 'ὁ, ἡ, τό', m: 'Artículo, Dativo Singular Masc.', s: 'Determinante', d: 'al', t: () => G.artM() },
-            'ιατροσ': { l: 'ἰατρός, -οῦ, ὁ', m: 'Sustantivo, Nom. Sg. Masc.', s: 'Sujeto', d: 'médico', estructura: ['', 'ιατρ', '', 'ο', 'ς'], t: () => G.n2M('ἰατρ') },
-            'ιατρων': { l: 'ἰατρός, -οῦ, ὁ', m: 'Sustantivo, Gen. Pl. Masc.', s: 'Compl. Nombre', d: 'de los médicos', estructura: ['', 'ιατρ', '', '', 'ων'], t: () => G.n2M('ἰατρ') },
-            'ωφελησει': { l: 'ὠφελέω', m: 'Verbo, 3ª sg. Futuro Ind. Act.', s: 'Núcleo', d: 'ayudará', estructura: ['', 'ωφελη', 'σ', 'ει', ''], t: () => G.vFutA('ὠφελή') },
-            'αφιξομεθα': { l: 'ἀφικνέομαι', m: 'Verbo, 1ª pl. Futuro Ind. Med.', s: 'Núcleo', d: 'llegaremos', estructura: ['αφ', 'ιξ', 'ο', 'με', 'θα'], t: () => G.vFutM('ἀφίξ') },
-            'μενεισ': { l: 'μένω', m: 'Verbo, 2ª sg. Futuro Ind. Act.', s: 'Núcleo', d: 'permanecerás', estructura: ['', 'μεν', 'ει', '', 'ς'], t: () => buildVerbT('μενῶ','μενεῖς','μενεῖ','μενοῦμεν','μενεῖτε','μενοῦσι', "Futuro de μένω") },
-            'πεμψει': { l: 'πέμπω', m: 'Verbo, 3ª sg. Futuro Ind. Act.', s: 'Núcleo', d: 'enviará', estructura: ['', 'πεμψ', '', 'ει', ''], t: () => G.vFutA('πέμψ') },
-            'λογουσ': { l: 'λόγος, -ου, ὁ', m: 'Sustantivo, Acus. Pl. Masc.', s: 'Comp. Directo', d: 'palabras / propuestas', estructura: ['', 'λογ', '', 'ου', 'ς'], t: () => G.n2M('λογ') },
-            'ναυται': { l: 'ναύτης, -ου, ὁ', m: 'Sustantivo, Nom. Pl. Masc.', s: 'Sujeto', d: 'marineros', estructura: ['', 'ναυτ', '', '', 'αι'], t: () => G.n1M('ναύτ') },
+            // --- PALABRAS AÑADIDAS ---
+            'θαλατταν': { l: 'θάλαττα, -ης, ἡ', m: 'Sustantivo (1ª declinación), Acusativo Singular Femenino', s: 'Dirección (hacia el mar)', d: 'el mar', t: () => buildNounT('θάλαττα', 'θάλαττα', 'θάλατταν', 'θαλάττης', 'θαλάττῃ', 'θάλατται', 'θάλατται', 'θαλάττας', 'θαλαττῶν', 'θαλάτταις') },
+            'ιστια': { l: 'ἱστίον, -ου, τό', m: 'Sustantivo (2ª declinación), Acusativo Plural Neutro', s: 'Objeto Directo', d: 'las velas (del barco)', t: () => G.n2N('ἱστί') },
+            'τουτω': { l: 'οὗτος, αὕτη, τοῦτο', m: 'Pronombre Demostrativo, Dativo Singular Neutro', s: 'CC Tiempo (con ἐν)', d: 'esto', t: () => buildNounT('οὗτος','-','τοῦτον','τούτου','τούτῳ','οὗτοι','-','τούτους','τούτων','τούτοις') },
+            'παρουσι': { l: 'πάρειμι', m: 'Participio Presente Activo, Dativo Plural Masc.', s: 'Participio Sustantivado', d: 'a los presentes', t: () => buildNounT('παρών','-','παρόντα','παρόντος','παρόντι','παρόντες','-','παρόντας','παρόντων','παροῦσι') },
+            'παροντων': { l: 'πάρειμι', m: 'Participio Presente Activo, Genitivo Plural Masc.', s: 'Genitivo Partitivo', d: 'de los presentes', t: () => buildNounT('παρών','-','παρόντα','παρόντος','παρόντι','παρόντες','-','παρόντας','παρόντων','παροῦσι') },
+            'που': { l: 'ποῦ', m: 'Adverbio Interrogativo', s: 'CC Lugar', d: '¿dónde?', t: () => inv },
+            'ποι': { l: 'ποῖ', m: 'Adverbio Interrogativo', s: 'CC Dirección', d: '¿a dónde?', t: () => inv },
+            'αποπλευσεται': { l: 'ἀποπλέω', m: 'Verbo, 3ª Sg. Futuro Medio', s: 'Núcleo', d: 'zarpará', t: () => G.vFutM('ἀποπλεύ') },
+            'αφιξομεθα': { l: 'ἀφικνέομαι', m: 'Verbo, 1ª Plural Futuro Medio', s: 'Núcleo', d: 'llegaremos', t: () => G.vFutM('ἀφίξ') },
+            'σπουδη': { l: 'σπουδή, -ῆς, ἡ', m: 'Sustantivo (1ª declinación), Dativo Singular', s: 'CC Modo', d: 'con prisa', t: () => G.n1F('σπουδ', true) }
         };
 
         // ==========================================
@@ -2030,8 +1871,8 @@ function initRealMap() {
     if(mapaReal) return; // Si ya existe, no lo vuelve a crear
     mapaReal = L.map('mapa-real').setView([37.7, 23.4], 9);
     
-    L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap'
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri'
     }).addTo(mapaReal);
 
     // Epidauro
