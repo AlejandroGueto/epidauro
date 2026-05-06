@@ -270,7 +270,33 @@
         .analyzed-gen { color: #c084fc !important; text-shadow: 0 0 8px rgba(192,132,252,0.4); border-bottom-color: #c084fc !important; }
         .analyzed-dat { color: #fbbf24 !important; text-shadow: 0 0 8px rgba(251,191,36,0.4); border-bottom-color: #fbbf24 !important; }
         .analyzed-inv { color: #94a3b8 !important; border-bottom-style: dotted !important; }
-
+/* =========================================
+           EL OJO DE ATENEA (GLOSA INTERLINEAL)
+           ========================================= */
+        .ojo-atenea-active .word-token {
+            position: relative;
+        }
+        .ojo-atenea-active .word-token[data-glosa]::before {
+            content: attr(data-glosa);
+            position: absolute;
+            top: -1.6em;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Cinzel', serif;
+            font-size: 0.55rem;
+            color: #d4af37;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            white-space: nowrap;
+            pointer-events: none;
+            animation: ateneaReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes ateneaReveal {
+            0% { opacity: 0; margin-top: 10px; }
+            100% { opacity: 1; margin-top: 0; }
+        }
+        
     </style>
 </head>
 <body class="flex flex-col items-center p-4 md:p-8 lg:p-12 relative overflow-y-auto">
@@ -410,10 +436,18 @@
                     <button onclick="switchLeftTab('tab-cultura')" id="btn-cultura" class="left-tab-btn px-5 py-2.5 bg-slate-900 border border-amber-800/50 rounded-xl font-cinzel text-xs font-bold uppercase text-amber-500 hover:bg-amber-900/40 transition flex items-center gap-2">
                         <i data-lucide="book" class="w-4 h-4"></i> Cultura
                     </button>
+               </div> 
+                
+                <div class="flex gap-3"> <!-- Agrupa los dos nuevos botones -->
+                    <button onclick="toggleAtenea()" class="px-5 py-2.5 bg-purple-900/40 border border-purple-600 rounded-xl font-cinzel text-xs font-black uppercase text-purple-300 hover:bg-purple-800 hover:text-white transition flex items-center gap-2 shadow-lg transform hover:scale-105">
+                        <i data-lucide="eye" class="w-4 h-4"></i> OJO DE ATENEA
+                    </button>
+                    
+                    <button onclick="toggleTranslation()" id="btn-translate" class="px-5 py-2.5 bg-cyan-900/40 border border-cyan-600 rounded-xl font-cinzel text-xs font-black uppercase text-white hover:bg-cyan-700 transition flex items-center gap-2 shadow-lg">
+                        <i data-lucide="languages" class="w-4 h-4"></i> TRADUCCIÓN
+                    </button>
                 </div>
-                <button onclick="toggleTranslation()" id="btn-translate" class="px-5 py-2.5 bg-cyan-900/40 border border-cyan-600 rounded-xl font-cinzel text-xs font-black uppercase text-white hover:bg-cyan-700 transition flex items-center gap-2 shadow-lg">
-                    <i data-lucide="languages" class="w-4 h-4"></i> TRADUCCIÓN
-                </button>
+
             </div>
             
             <!-- Visión Linceo -->
@@ -1834,6 +1868,26 @@
         }
 
         lucide.createIcons();
+        let ateneaActive = false;
+        function toggleAtenea() {
+            ateneaActive = !ateneaActive;
+            const container = document.querySelector('.pergamino');
+            
+            if (ateneaActive) {
+                document.querySelectorAll('.word-token').forEach(t => {
+                    const word = normalizeGreekForInput(t.innerText);
+                    if (wordDB[word]) {
+                        t.setAttribute('data-glosa', wordDB[word].d);
+                    }
+                });
+                container.classList.add('ojo-atenea-active');
+                showToast("El Ojo de Atenea revela los significados ocultos.", "eye");
+            } else {
+                container.classList.remove('ojo-atenea-active');
+                showToast("La visión divina se desvanece.", "eye-off");
+            }
+        }
+        
     </script>
 </body>
 </html>
