@@ -312,14 +312,6 @@
 
     <!-- Capa de Fondo Místico -->
     <div class="mystic-bg"></div>
-    
-    <!-- Audio Elements -->
-    <audio id="musicaFondo" loop preload="auto">
-        <source src="https://upload.wikimedia.org/wikipedia/commons/4/4b/The_Tale_of_Viktor_Navorski.ogg" type="audio/ogg">
-    </audio>
-    <audio id="sonidoOraculo" preload="auto">
-        <source src="https://upload.wikimedia.org/wikipedia/commons/1/15/Bells-tibetan.ogg" type="audio/ogg">
-    </audio>
 
     <!-- Contenedor de Logros Toast -->
     <div id="toast-container"></div>
@@ -360,9 +352,6 @@
 
         <!-- Reloj y Sonido -->
         <div class="flex items-center gap-4">
-            <button onclick="toggleAudio()" class="p-2 bg-slate-800 rounded-full text-cyan-400 hover:bg-slate-700 transition">
-                <i data-lucide="volume-2" id="icon-audio"></i>
-            </button>
             <div class="flex items-center gap-3 text-cyan-300 font-cinzel text-2xl font-black bg-cyan-950/80 px-5 py-2 rounded-lg border border-cyan-500/50 shadow-lg" id="timerContainer">
                 <i data-lucide="hourglass" class="w-5 h-5"></i>
                 <span id="timerDisplay">90:00</span>
@@ -455,24 +444,36 @@
         <!-- COLUMNA IZQUIERDA: CODEX, MAPA Y CULTURA -->
         <div class="xl:col-span-7 flex flex-col h-full gap-8">
             
-            <!-- Botonera Superior -->
-            <div class="flex flex-wrap border-b-2 border-cyan-900 bg-slate-950/80 rounded-t-2xl justify-between items-center pr-6 shadow-lg">
-                <div class="flex flex-wrap">
-                    <button onclick="switchTab('tab-alfa')" id="btn-alfa" class="tab-btn active px-6 py-5 font-cinzel text-sm font-black uppercase tracking-widest hover:bg-slate-900">Texto α</button>
-                    <button onclick="switchTab('tab-beta')" id="btn-beta" class="tab-btn px-6 py-5 font-cinzel text-sm font-bold text-slate-500 uppercase tracking-widest hover:bg-slate-900">Texto β</button>
-                    <button onclick="switchTab('tab-persas')" id="btn-persas" class="tab-btn px-6 py-5 font-cinzel text-sm font-bold text-slate-500 uppercase tracking-widest hover:bg-slate-900">Persas</button>
-                    <button onclick="switchTab('tab-eval')" id="btn-eval" class="tab-btn px-6 py-5 font-cinzel text-sm font-bold text-slate-500 uppercase tracking-widest hover:bg-slate-900">Eval</button>
-                    <!-- NUEVO TAB: MAPA ESTRATÉGICO -->
-                    <button onclick="switchTab('tab-mapa')" id="btn-mapa" class="tab-btn px-6 py-5 font-cinzel text-sm font-bold text-emerald-500 uppercase tracking-widest hover:bg-slate-900 flex items-center gap-2 border-l border-cyan-900/30">
-                        <i data-lucide="map" class="w-4 h-4"></i> Mapa
-                    </button>
-                    <button onclick="switchTab('tab-cultura')" id="btn-cultura" class="tab-btn px-6 py-5 font-cinzel text-sm font-bold text-amber-500 uppercase tracking-widest hover:bg-slate-900 flex items-center gap-2 border-l border-cyan-900/30">
-                        <i data-lucide="book" class="w-4 h-4"></i> Cultura
-                    </button>
+            <!-- Botonera Superior Reorganizada -->
+            <div class="bg-slate-950/90 rounded-t-2xl p-5 shadow-lg border-b-4 border-cyan-900 flex flex-col xl:flex-row justify-between items-start xl:items-center gap-6 relative z-20">
+                
+                <!-- Grupo 1: Textos Griegos -->
+                <div class="flex flex-col w-full xl:w-auto">
+                    <span class="text-[10px] text-cyan-600 font-black uppercase tracking-[0.2em] mb-3 pl-2 flex items-center gap-2"><i data-lucide="scroll" class="w-3 h-3"></i> Pergaminos de Epidauro</span>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="switchTab('tab-alfa')" id="btn-alfa" class="tab-btn active px-5 py-2.5 bg-slate-800 border-2 border-cyan-500 rounded-xl font-cinzel text-xs font-black uppercase text-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.3)] transition transform hover:-translate-y-1">Texto α</button>
+                        <button onclick="switchTab('tab-beta')" id="btn-beta" class="tab-btn px-5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl font-cinzel text-xs font-bold uppercase text-slate-400 hover:bg-slate-800 hover:text-white transition transform hover:-translate-y-1">Texto β</button>
+                        <button onclick="switchTab('tab-persas')" id="btn-persas" class="tab-btn px-5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl font-cinzel text-xs font-bold uppercase text-slate-400 hover:bg-slate-800 hover:text-white transition transform hover:-translate-y-1">Persas</button>
+                        <button onclick="switchTab('tab-eval')" id="btn-eval" class="tab-btn px-5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl font-cinzel text-xs font-bold uppercase text-slate-400 hover:bg-slate-800 hover:text-white transition transform hover:-translate-y-1">Eval</button>
+                    </div>
                 </div>
-                <button onclick="toggleTranslation()" id="btn-translate" class="flex items-center gap-3 text-emerald-400 hover:text-white hover:bg-emerald-800 font-cinzel text-xs font-black bg-emerald-950/40 px-5 py-3 rounded-xl border-2 border-emerald-800 transition shadow-lg mt-4 mb-4 md:m-0">
-                    <i data-lucide="languages" class="w-5 h-5"></i> TRADUCCIÓN
-                </button>
+
+                <!-- Grupo 2: Herramientas del Sabio -->
+                <div class="flex flex-col w-full xl:w-auto">
+                    <span class="text-[10px] text-amber-600 font-black uppercase tracking-[0.2em] mb-3 pl-2 flex items-center gap-2"><i data-lucide="compass" class="w-3 h-3"></i> Archivos y Utilidades</span>
+                    <div class="flex flex-wrap gap-3 items-center">
+                        <button onclick="switchTab('tab-mapa')" id="btn-mapa" class="tab-btn px-5 py-2.5 bg-emerald-950/40 border border-emerald-800 rounded-xl font-cinzel text-xs font-bold uppercase text-emerald-500 hover:bg-emerald-900 hover:text-emerald-300 transition flex items-center gap-2 transform hover:-translate-y-1">
+                            <i data-lucide="map" class="w-4 h-4"></i> Mapa
+                        </button>
+                        <button onclick="switchTab('tab-cultura')" id="btn-cultura" class="tab-btn px-5 py-2.5 bg-amber-950/40 border border-amber-800 rounded-xl font-cinzel text-xs font-bold uppercase text-amber-500 hover:bg-amber-900 hover:text-amber-300 transition flex items-center gap-2 transform hover:-translate-y-1">
+                            <i data-lucide="book" class="w-4 h-4"></i> Cultura
+                        </button>
+                        <div class="w-px h-8 bg-slate-700 mx-2 hidden sm:block"></div>
+                        <button onclick="toggleTranslation()" id="btn-translate" class="px-5 py-2.5 bg-cyan-900/40 border border-cyan-600 rounded-xl font-cinzel text-xs font-black uppercase text-white hover:bg-cyan-700 transition flex items-center gap-2 transform hover:scale-105 shadow-lg">
+                            <i data-lucide="languages" class="w-4 h-4"></i> Traducir
+                        </button>
+                    </div>
+                </div>
             </div>
             <!-- PREMIUM 1: VISIÓN DE LINCEO (Filtros de Rayos X) -->
           <div id="xray-filters" class="flex flex-wrap items-center justify-center md:justify-start gap-3 mt-4 mb-2 bg-slate-900/50 p-4 rounded-xl border border-slate-700 shadow-inner">
@@ -1569,27 +1570,6 @@
             'ποι': { l: 'ποῖ', m: 'Adverbio Interrogativo', s: 'CC Dirección', d: '¿a dónde?', t: () => inv }
         };
 
-        // ==========================================
-        // 5. LÓGICA DE CONTROL DE AUDIO
-        // ==========================================
-        let isAudioPlaying = false;
-        function toggleAudio() {
-            const audio = document.getElementById('musicaFondo');
-            const icon = document.getElementById('icon-audio');
-            if (isAudioPlaying) {
-                audio.pause();
-                icon.setAttribute('data-lucide', 'volume-x');
-                icon.classList.replace('text-cyan-400', 'text-slate-500');
-            } else {
-                audio.volume = 0.4;
-                audio.play();
-                icon.setAttribute('data-lucide', 'volume-2');
-                icon.classList.replace('text-slate-500', 'text-cyan-400');
-            }
-            isAudioPlaying = !isAudioPlaying;
-            lucide.createIcons();
-        }
-
         let achievements = new Set();
         function showToast(message, iconName = 'bell') {
             if(achievements.has(message)) return;
@@ -1639,14 +1619,7 @@
             initTexts(); 
             startTimer(); 
             lucide.createIcons(); 
-            
-            const musica = document.getElementById('musicaFondo');
-            musica.volume = 0.4;
-            musica.play().then(() => {
-                isAudioPlaying = true;
-                document.getElementById('icon-audio').setAttribute('data-lucide', 'volume-2');
-                lucide.createIcons();
-            }).catch(e => console.log("Navegador bloqueó el autoplay. Requiere click manual en el header."));
+          
             showToast("Habéis entrado en el Ábaton.", "footprints");
         }
 
@@ -1717,32 +1690,52 @@
         let mapInitialized = false;
 
         function switchTab(id) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            const tab = document.getElementById(id);
-            if (tab) tab.classList.remove('hidden');
-            
-            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active', 'text-cyan-400'));
-            const b = document.getElementById('btn-' + id.split('-')[1]);
-            if (b) b.classList.add('active', 'text-cyan-400');
-            
-            const filtrosLinceo = document.getElementById('xray-filters');
-            if (id === 'tab-mapa' || id === 'tab-cultura' || id === 'tab-eval') {
-                filtrosLinceo.classList.add('hidden');
-            } else {
-                filtrosLinceo.classList.remove('hidden');
-            }
+    // 1. Ocultar todos los contenidos
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+    
+    // 2. Mostrar el seleccionado
+    const tab = document.getElementById(id);
+    if (tab) tab.classList.remove('hidden');
+    
+    // 3. Resetear estilo de TODOS los botones
+    document.querySelectorAll('.tab-btn').forEach(el => {
+        el.classList.remove('active', 'border-2', 'border-cyan-500', 'shadow-[0_0_10px_rgba(6,182,212,0.3)]', 'text-cyan-400');
+        // Devolverlos al estado inactivo genérico
+        if(el.id.includes('alfa') || el.id.includes('beta') || el.id.includes('persas') || el.id.includes('eval')) {
+            el.classList.add('border', 'border-slate-700', 'bg-slate-900', 'text-slate-400');
+        }
+    });
 
-            if (id === 'tab-mapa') {
-                showToast("Habéis desplegado el Mapa de la Hélade.", "map");
-                if (!mapInitialized) {
-                    setTimeout(() => initRealMap(), 100); 
-                    mapInitialized = true;
-                }
-            }
-            if (id === 'tab-cultura') showToast("Consultando los saberes antiguos...", "book-open");
-            lucide.createIcons();
-        }
+    // 4. Iluminar el botón pulsado
+    const b = document.getElementById('btn-' + id.split('-')[1]);
+    if (b) {
+        if(b.id.includes('alfa') || b.id.includes('beta') || b.id.includes('persas') || b.id.includes('eval')) {
+            b.classList.remove('border', 'border-slate-700', 'bg-slate-900', 'text-slate-400');
+            b.classList.add('border-2', 'border-cyan-500', 'bg-slate-800', 'text-cyan-400', 'shadow-[0_0_10px_rgba(6,182,212,0.3)]');
+        } else {
+            // Efecto leve si pinchan en mapa o cultura
+            b.classList.add('shadow-[0_0_15px_currentColor]'); 
+        }
+    }
+    
+    // 5. Mostrar/Ocultar "Visión de Linceo" según la pestaña
+    const filtrosLinceo = document.getElementById('xray-filters');
+    if (id === 'tab-mapa' || id === 'tab-cultura' || id === 'tab-eval') {
+        filtrosLinceo.classList.add('hidden');
+    } else {
+        filtrosLinceo.classList.remove('hidden');
+    }
 
+    if (id === 'tab-mapa') {
+        showToast("Habéis desplegado el Mapa de la Hélade.", "map");
+        if (!mapInitialized) {
+            setTimeout(() => initRealMap(), 100); 
+            mapInitialized = true;
+        }
+    }
+    if (id === 'tab-cultura') showToast("Consultando los saberes antiguos...", "book-open");
+    lucide.createIcons();
+}
         function initTexts() {
             ['alfa', 'beta', 'persas', 'eval'].forEach(id => {
                 const container = document.getElementById(`content-${id}-gr`);
