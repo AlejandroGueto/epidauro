@@ -825,17 +825,36 @@
             <div id="tab-mapa" class="right-tab-content hidden w-full">
                 <div class="w-full bg-slate-900 rounded-2xl border-4 border-slate-500 shadow-2xl relative overflow-hidden" style="height: 600px;">
                     <div id="mapa-real" class="w-full h-full z-0 absolute inset-0"></div>
-                    <!-- Nueva Leyenda Clara -->
-                    <div class="absolute bottom-6 left-6 z-[400] bg-amber-50/95 p-4 rounded-xl border-2 border-amber-900/30 backdrop-blur-md shadow-2xl pointer-events-none">
-                        <h4 class="text-amber-900 font-cinzel font-black border-b border-amber-900/20 pb-2 mb-3 uppercase tracking-widest text-sm">Simbología</h4>
-                        <div class="flex flex-col gap-2 font-serif text-xs text-slate-900 font-bold">
-                            <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-red-600 border border-red-900"></div> Mardonio</div>
-                            <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-cyan-500 border border-cyan-900"></div> Atenienses</div>
-                            <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-green-500 border border-green-900"></div> Epidauro</div>
+                    <!-- Simbología Detallada -->
+                    <div class="absolute bottom-6 left-6 z-[400] bg-slate-950/90 p-5 rounded-2xl border-2 border-cyan-500/50 backdrop-blur-md shadow-[0_0_20px_rgba(0,0,0,0.8)] pointer-events-none w-64">
+                        <h4 class="text-cyan-400 font-cinzel font-black border-b border-cyan-900/50 pb-2 mb-4 uppercase tracking-widest text-sm flex items-center gap-2">
+                            <i data-lucide="map-pinned" class="w-4 h-4"></i> Inteligencia
+                        </h4>
+                        <div class="flex flex-col gap-3 font-serif text-[11px] text-slate-200">
+                            <div class="flex items-center gap-3">
+                                <div class="w-3 h-3 rounded-full bg-red-600 border border-white animate-pulse"></div> 
+                                <span><b>Fuerzas Persas:</b> Avance de Mardonio</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-3 h-3 rounded-full bg-cyan-400 border border-white"></div> 
+                                <span><b>Atenas:</b> Ciudad Evacuada</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-3 h-3 rounded-full bg-green-500 border border-white"></div> 
+                                <span><b>Santuario:</b> Asilo y Curación</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-3 h-3 rounded-full bg-amber-500 border border-white"></div> 
+                                <span><b>Aliados:</b> Istmo de Corinto</span>
+                            </div>
+                            <div class="mt-2 pt-2 border-t border-slate-800">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-0.5 border-t-2 border-dashed border-cyan-400"></div> 
+                                    <span class="italic text-slate-400">Ruta de Evacuación Flota</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -1689,9 +1708,29 @@
                             attribution: 'Tiles &copy; Esri'
                         }).addTo(mapaReal);
 
-                        L.circleMarker([37.5961, 23.0753], {radius: 12, fillColor: 'green', color: '#fff', weight: 3, fillOpacity: 0.9}).addTo(mapaReal).bindPopup('<b style="color:green;font-size:16px;">Epidauro</b>');
-                        L.circleMarker([37.9838, 23.7275], {radius: 12, fillColor: 'cyan', color: '#fff', weight: 3, fillOpacity: 0.9}).addTo(mapaReal).bindPopup('<b style="color:#0ea5e9;font-size:16px;">Atenas</b>');
-                        L.circleMarker([37.9643, 23.4925], {radius: 12, fillColor: 'red', color: '#fff', weight: 3, fillOpacity: 0.9}).addTo(mapaReal).bindPopup('<b style="color:red;font-size:16px;">Salamina</b>');
+                        // 1. Epidauro
+                        L.circleMarker([37.5961, 23.0753], {radius: 10, fillColor: 'green', color: '#fff', weight: 2, fillOpacity: 0.9}).addTo(mapaReal).bindPopup('<b>Epidauro:</b> Santuario de Asclepio. Refugio de Diceópolis.');
+                        
+                        // 2. Atenas
+                        L.circleMarker([37.9838, 23.7275], {radius: 10, fillColor: 'red', color: '#fff', weight: 2, fillOpacity: 0.9}).addTo(mapaReal).bindPopup('<b>Atenas:</b> Tomada por Mardonio.');
+                        
+                        // 3. Salamina
+                        L.circleMarker([37.9643, 23.4925], {radius: 8, fillColor: 'cyan', color: '#fff', weight: 2, fillOpacity: 0.9}).addTo(mapaReal).bindPopup('<b>Salamina:</b> Base de la Flota.');
+                        
+                        // 4. Corinto
+                        L.circleMarker([37.915, 22.923], {radius: 7, fillColor: 'orange', color: '#fff', weight: 2, fillOpacity: 0.9}).addTo(mapaReal).bindPopup('<b>Corinto:</b> El Istmo.');
+
+                        // 5. Trezén
+                        L.circleMarker([37.502, 23.355], {radius: 6, fillColor: '#38bdf8', color: '#fff', weight: 1, fillOpacity: 0.7}).addTo(mapaReal).bindPopup('<b>Trezén:</b> Refugio de familias.');
+
+                        // 6. Egina
+                        L.circleMarker([37.747, 23.427], {radius: 6, fillColor: '#38bdf8', color: '#fff', weight: 1, fillOpacity: 0.7}).addTo(mapaReal).bindPopup('<b>Egina:</b> Isla aliada.');
+
+                        // LÍNEA DE MOVIMIENTO
+                        const evacuationRoute = [
+                            [37.9838, 23.7275], [37.9643, 23.4925], [37.747, 23.427], [37.5961, 23.0753]
+                        ];
+                        L.polyline(evacuationRoute, {color: '#38bdf8', weight: 3, dashArray: '10, 10', opacity: 0.6}).addTo(mapaReal);
                         
                         mapInitialized = true;
                     }
