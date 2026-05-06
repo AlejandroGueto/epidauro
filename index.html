@@ -118,21 +118,6 @@
             border: 2px solid #1e3a8a;
             margin: 0 auto;
         }
-
-        /* Cabecera pegajosa pero que no tape el Oráculo */
-        header {
-            z-index: 50 !important;
-        }
-
-        /* El Oráculo (Panel derecho) SIEMPRE por encima de todo */
-        #oracle-drawer {
-            z-index: 2000 !important;
-            background-color: #020617 !important; /* Fondo opaco para que no se transparente nada */
-        }
-        
-        #drawer-overlay {
-            z-index: 1999 !important;
-        }
         .candado-input:focus { border-color: #38bdf8; outline: none; box-shadow: 0 0 20px rgba(56, 189, 248, 0.6); transform: scale(1.05); }
 
         /* Ocultar flechas nativas en input type="number" */
@@ -1895,382 +1880,39 @@
             return `<span class="text-cyan-400 font-bold">${originalWord}</span>`;
         }
 
-       function consultarOraculo(word) {
-    const drawer = document.getElementById('oracle-drawer');
-    const overlay = document.getElementById('drawer-overlay');
-    const content = document.getElementById('oracle-content'); // <-- Faltaba esto
-    
-    // Resaltar palabra en el texto
-    document.querySelectorAll('.word-token').forEach(t => {
-        t.classList.remove('bg-cyan-500/40', 'ring-2', 'ring-cyan-400');
-        if (t.innerText.replace(/[»"”“'’!,;·.?:()]/g, '') === word) {
-            t.classList.add('bg-cyan-500/40', 'ring-2', 'ring-cyan-400');
-        }
-    });
-
-    const key = normalizeGreekForInput(word);
-    let entry = wordDB[key]; // <-- Faltaba esto
-
-    // Abrir panel y poner velo oscuro
-    overlay.classList.remove('pointer-events-none', 'opacity-0');
-    overlay.classList.add('opacity-100', 'pointer-events-auto');
-    drawer.classList.remove('translate-x-full');
-    drawer.classList.add('translate-x-0');
-
-    // Animación de carga
-    content.innerHTML = `<div class="flex flex-col items-center py-40"><i data-lucide="loader" class="w-12 h-12 animate-spin text-cyan-500 mb-4"></i><p class="font-cinzel text-cyan-400">Consultando Códice...</p></div>`;
-    lucide.createIcons();
-
-    setTimeout(() => {
-        if (!entry) {
-            entry = {
-                l: word,
-                m: "Análisis gramatical pendiente.",
-                s: "Función sintáctica según contexto.",
-                d: "Traducción en proceso de descifrado.",
-                t: () => '<p class="text-slate-500 italic text-center p-4">Consulta el glosario de Cultura para más detalles.</p>'
-            };
-        }
-
-        let color = 'cyan';
-        let m = (entry.m || "").toLowerCase();
-        if (m.includes('nom') || m.includes('voc')) color = 'blue';
-        else if (m.includes('acus')) color = 'emerald';
-        else if (m.includes('verbo')) color = 'red';
-
-        content.innerHTML = `
-            <div class="mb-10 border-b border-${color}-900/50 pb-8 text-center md:text-left">
-                <div class="inline-block text-4xl md:text-6xl mb-6 font-serif bg-black/80 p-8 rounded-3xl border-2 border-${color}-500/50 shadow-2xl overflow-x-auto max-w-full">
-                    ${diseccionarPalabra(word, entry)}
-                </div>
-                <h3 class="text-2xl text-${color}-400 font-cinzel tracking-widest mt-2 lema-display">
-                    Lema: <span class="normal-case">${entry.l}</span>
-                </h3>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-slate-900/90 p-8 rounded-2xl border-t-4 border-${color}-500 shadow-xl">
-                    <span class="text-[11px] font-black text-slate-400 uppercase tracking-widest block mb-2">Morfología</span>
-                    <p class="text-xl text-slate-100 font-serif leading-relaxed">${entry.m}</p>
-                </div>
-                <div class="bg-slate-900/90 p-8 rounded-2xl border-t-4 border-${color}-500 shadow-xl">
-                    <span class="text-[11px] font-black text-slate-400 uppercase tracking-widest block mb-2">Sintaxis</span>
-                    <p class="text-xl text-slate-100 font-serif leading-relaxed">${entry.s}</p>
-                </div>
-            </div>
-
-            <div class="bg-gradient-to-br from-slate-900 to-black p-10 rounded-3xl mt-8 border border-slate-800 shadow-2xl">
-                <span class="text-[11px] font-black text-amber-500 uppercase tracking-widest block mb-4">Traducción</span>
-                <p class="text-4xl italic font-serif text-white border-l-4 border-amber-500 pl-6 py-2">"${entry.d}"</p>
-            </div>
-
-            <div class="mt-10 bg-black/40 rounded-2xl p-4 overflow-x-auto border border-white/5">
-                ${entry.t()}
-            </div>`;
-        lucide.createIcons();
-    }, 350);
-}
-       function closeOracle() { 
-            const drawer = document.getElementById('oracle-drawer');
-            const overlay = document.getElementById('drawer-overlay');
-            if(drawer) drawer.classList.add('translate-x-full'); 
-            if(overlay) {
-                overlay.classList.add('opacity-0');
-                overlay.classList.add('pointer-events-none');
-            }
-        }
-      
-        function toggleTranslation() {
-            const isShowing = document.getElementById('content-alfa-es').classList.contains('hidden');
-            ['alfa', 'beta', 'persas', 'eval'].forEach(id => {
-                document.getElementById(`content-${id}-es`).classList.toggle('hidden', !isShowing);
-            });
-            document.getElementById('btn-translate').innerHTML = isShowing ? '<i data-lucide="eye-off" class="w-5 h-5"></i> OCULTAR ESPAÑOL' : '<i data-lucide="languages" class="w-5 h-5"></i> MOSTRAR ESPAÑOL';
-            if (isShowing) showToast("Traducciones reveladas.", "eye");
-            lucide.createIcons();
-        }
-
-        function successPrueba(currId, nextId, achievementMsg) {
-            const current = document.getElementById(currId);
-            const next = document.getElementById(nextId);
-            
-            current.classList.add('opacity-40', 'pointer-events-none', 'grayscale');
-            current.classList.replace('border-cyan-500', 'border-slate-900');
-            
-            next.classList.remove('hidden');
-            next.classList.add('unlocked-glow', 'ring-4', 'ring-emerald-500/30');
-            
-            setTimeout(() => {
-                next.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 100);
-            
-            const num = nextId.replace('prueba', '');
-            const dot = document.getElementById('step-' + num);
-            if(dot) {
-                dot.classList.remove('bg-slate-800', 'bg-slate-900', 'border-transparent', 'border-slate-700');
-                dot.classList.add('bg-cyan-400', 'border-2', 'border-cyan-200', 'shadow-[0_0_10px_#38bdf8]');
-                if (num === '6') {
-                    const icon = document.getElementById('icon-flame');
-                    if(icon) { icon.classList.remove('text-slate-600'); icon.classList.add('text-orange-500', 'animate-pulse'); }
-                }
-            }
-            showToast(achievementMsg, "check-circle");
-        }
-
-        function failPrueba(id) {
-            mistakes++;
-            const err = document.getElementById(id);
-            err.classList.remove('hidden');
-            setTimeout(() => err.classList.add('hidden'), 4000);
-            const card = err.closest('div[id^="prueba"]');
-            card.classList.add('error-shake');
-            setTimeout(() => card.classList.remove('error-shake'), 600);
-            showToast("Respuesta incorrecta. Los dioses fruncen el ceño.", "x-circle");
-        }
-
-        function pedirPista(mensaje) {
-            if (timeRemaining > 180) {
-                timeRemaining -= 180; 
-                showToast("Los dioses te susurran: " + mensaje, "help-circle");
-                const timerCont = document.getElementById('timerContainer');
-                timerCont.classList.add('border-red-500', 'text-red-500');
-                setTimeout(() => timerCont.classList.remove('border-red-500', 'text-red-500'), 1000);
-            } else {
-                showToast("No tienes tiempo suficiente para consultar a los dioses.", "alert-circle");
-            }
-        }
-
-        function checkPrueba1() {
-            if (document.getElementById('p1-q1').value.trim() === 'ζητησων' && document.getElementById('p1-q2').value === 'αφιξομεθα' && document.getElementById('p1-q3').value === 'επιφανηναι') successPrueba('prueba1', 'prueba2', "Prueba I Superada: Dominas el Futuro.");
-            else failPrueba('p1-error');
-        }
-
-        function checkPrueba2() {
-            if (document.getElementById('p2-q1').value.trim() === 'b' && document.getElementById('p2-q2').value === 'b') successPrueba('prueba2', 'prueba3', "Prueba II Superada: Sintaxis Divina.");
-            else failPrueba('p2-error');
-        }
-
-        function checkPrueba3() {
-    if (document.getElementById('p3-q1').value === 'b' && 
-        document.getElementById('p3-q2').value === 'b') {
-        successPrueba('prueba3', 'prueba4', "Prueba III Superada: Sabiduría de los Antiguos.");
-    } else failPrueba('p3-error');
-}
-
-function checkPrueba4() {
-    if (document.getElementById('p4-q1').value === 'b' && 
-        document.getElementById('p4-q2').value === 'c') {
-        successPrueba('prueba4', 'prueba5', "Prueba IV Superada: Historia de la Hélade.");
-    } else failPrueba('p4-error');
-}
-
-function checkPrueba5() {
-    if (document.getElementById('p5-q1').value === 'a' && 
-        document.getElementById('p5-q2').value === 'b') {
-        successPrueba('prueba5', 'prueba6', "Prueba V Superada: Hermenéutica Perfecta.");
-    } else failPrueba('p5-error');
-}
-
-        function checkPrueba6() {
-            const code = [
-                document.getElementById('lock1').value, document.getElementById('lock2').value,
-                document.getElementById('lock3').value, document.getElementById('lock4').value,
-                document.getElementById('lock5').value, document.getElementById('lock6').value
-            ].join('');
-            if (code === '134231') victory();
-            else failPrueba('p6-error');
-        }
-
-        function victory() {
-            clearInterval(timerInterval);
-            document.getElementById('gameStage').classList.add('hidden-stage');
-            document.getElementById('gameHeader').classList.add('hidden-stage');
-            document.getElementById('victoryStage').classList.remove('hidden-stage');
-            
-            document.getElementById('finalTeamName').innerText = teamName;
-            document.getElementById('finalTime').innerText = document.getElementById('timerDisplay').innerText;
-            document.getElementById('finalMistakes').innerText = mistakes;
-            
-            const finalScoreVal = Math.max(0, BASE_SCORE - (90*60 - timeRemaining)*5 - (mistakes * 500));
-            
-            let currentDisplayScore = 0;
-            const scoreElement = document.getElementById('finalScore');
-            const countInterval = setInterval(() => {
-                currentDisplayScore += 353;
-                if(currentDisplayScore >= finalScoreVal) {
-                    currentDisplayScore = finalScoreVal;
-                    clearInterval(countInterval);
-                }
-                scoreElement.innerText = currentDisplayScore.toLocaleString() + " PTS";
-            }, 20);
-            
-            initFire();
-            lluviaDracmas();
-            showToast("¡ATENAS HA SIDO SALVADA!", "flame");
-        }
-
-        let mapaGrecia = null;
-        function initRealMap() {
-            const mapContainer = document.getElementById('mapa-real');
-            if (!mapContainer) return; 
-            
-            mapContainer.style.height = "600px";
-            
-            mapaGrecia = L.map('mapa-real', { zoomControl: false }).setView([38.0500, 23.3000], 8);
-            L.control.zoom({ position: 'topright' }).addTo(mapaGrecia);
-            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 12 }).addTo(mapaGrecia);
-
-            const tesalia = [39.4000, 22.4000];
-            const termopilas = [38.7966, 22.5350];
-            const beocia = [38.3233, 23.3194]; 
-            const atenas = [37.9838, 23.7275];
-            const salamina = [37.9600, 23.5000];
-            const epidauro = [37.5960, 23.0746];
-            const tooltipStyle = { permanent: true, direction: 'right', className: 'bg-transparent border-none text-white drop-shadow-[0_2px_4px_rgba(0,0,0,1)] font-cinzel text-lg font-black tracking-widest' };
-
-            L.circleMarker(tesalia, { color: '#dc2626', radius: 6, fillOpacity: 0.8 }).addTo(mapaGrecia).bindTooltip("Tesalia (Mardonio)", tooltipStyle);
-            L.circleMarker(beocia, { color: '#dc2626', radius: 6, fillOpacity: 0.8 }).addTo(mapaGrecia).bindTooltip("Beocia", tooltipStyle);
-            L.circleMarker(atenas, { color: '#0ea5e9', radius: 8, fillOpacity: 0.9, weight: 3 }).addTo(mapaGrecia).bindTooltip("Atenas (Saqueada)", tooltipStyle);
-            L.circleMarker(salamina, { color: '#0ea5e9', radius: 6, fillOpacity: 0.9 }).addTo(mapaGrecia).bindTooltip("Salamina", tooltipStyle);
-            L.circleMarker(epidauro, { color: '#22c55e', radius: 10, fillOpacity: 1, weight: 4 }).addTo(mapaGrecia).bindTooltip("SANTUARIO DE EPIDAURO", { ...tooltipStyle, className: 'bg-black/60 p-2 border border-green-500 rounded text-green-400 drop-shadow-2xl font-cinzel text-xl font-black tracking-widest' });
-
-            L.polyline([tesalia, termopilas, beocia, atenas], { color: '#ef4444', weight: 4, dashArray: '10, 15', opacity: 0.8 }).addTo(mapaGrecia);
-            L.polyline([atenas, salamina], { color: '#0ea5e9', weight: 3, dashArray: '5, 10', opacity: 0.8 }).addTo(mapaGrecia);
-            L.polyline([atenas, [37.8, 23.5], epidauro], { color: '#22c55e', weight: 4, dashArray: '8, 12', opacity: 0.9 }).addTo(mapaGrecia);
-            
-            mapaGrecia.invalidateSize();
-        }
-
-        function gameOver() {
-            clearInterval(timerInterval);
-            document.getElementById('gameStage').classList.add('hidden-stage');
-            document.getElementById('gameHeader').classList.add('hidden-stage');
-            document.getElementById('defeatStage').classList.remove('hidden-stage');
-        }
-
-        function initFire() {
-            const canvas = document.getElementById('fireCanvas');
-            const ctx = canvas.getContext('2d');
-            canvas.width = canvas.offsetWidth; 
-            canvas.height = canvas.offsetHeight;
-            let particles = [];
-            
-            class Particle {
-                constructor() {
-                    this.x = canvas.width / 2 + (Math.random() * 100 - 50);
-                    this.y = canvas.height - 20;
-                    this.vx = Math.random() * 4 - 2;
-                    this.vy = Math.random() * -6 - 3;
-                    this.life = Math.random() * 100 + 50;
-                    this.size = Math.random() * 20 + 10;
-                    this.color = `rgba(255, ${Math.floor(Math.random() * 120 + 50)}, 0, `;
-                }
-                draw() {
-                    ctx.fillStyle = this.color + (this.life / 150) + ')';
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size * (this.life / 100), 0, Math.PI * 2);
-                    ctx.fill();
-                }
-            }
-            
-            function animate() {
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                if (particles.length < 350) {
-                    for(let i=0; i<5; i++) particles.push(new Particle());
-                }
-                particles.forEach((p, i) => {
-                    p.x += p.vx + (Math.random() * 2 - 1); 
-                    p.y += p.vy; 
-                    p.life -= 1.5;
-                    p.draw();
-                    if (p.life <= 0) particles.splice(i, 1);
-                });
-                requestAnimationFrame(animate);
-            }
-            animate();
-            window.addEventListener('resize', () => {
-                canvas.width = canvas.offsetWidth;
-                canvas.height = canvas.offsetHeight;
-            });
-        }
-
-        lucide.createIcons();
-
-        const cursorAura = document.createElement('div');
-        cursorAura.style.cssText = "position:fixed; pointer-events:none; width:600px; height:600px; background:radial-gradient(circle, rgba(56,189,248,0.08) 0%, transparent 60%); border-radius:50%; z-index:1; transform:translate(-50%, -50%); transition: opacity 0.2s ease; mix-blend-mode: screen;";
-        document.body.appendChild(cursorAura);
-
-        const mysticBg = document.querySelector('.mystic-bg');
-        document.addEventListener('mousemove', (e) => {
-            cursorAura.style.left = e.clientX + 'px';
-            cursorAura.style.top = e.clientY + 'px';
-            if(mysticBg) {
-                const xAxis = (window.innerWidth / 2 - e.pageX) / 40;
-                const yAxis = (window.innerHeight / 2 - e.pageY) / 40;
-                mysticBg.style.transform = `translate(${xAxis}px, ${yAxis}px)`;
-            }
-        });
-
-        function lluviaDracmas() {
-            const iconos = ['🪙', '✨', '⚡'];
-            const container = document.body;
-            for(let i = 0; i < 80; i++) {
-                setTimeout(() => {
-                    requestAnimationFrame(() => {
-                        let coin = document.createElement('div');
-                        coin.innerText = iconos[Math.floor(Math.random() * iconos.length)];
-                        coin.className = 'dracma';
-                        coin.style.left = Math.random() * 100 + 'vw';
-                        coin.style.fontSize = (Math.random() * 20 + 15) + 'px';
-                        coin.style.animation = `dracmaFall ${Math.random() * 3 + 2}s linear forwards`;
-                        container.appendChild(coin);
-                        
-                        // Reciclaje de memoria limpio
-                        coin.addEventListener('animationend', () => {
-                            coin.remove();
-                        });
-                    });
-                }, Math.random() * 2500);
-            }
-        }
-      // =========================================
-// FUNCIONES DE VALIDACIÓN DE ENIGMAS (III - V)
+       // =========================================
+// MOTOR DE VICTORIA Y VALIDACIÓN FINAL
 // =========================================
 
 function checkPrueba3() {
-    const q1 = document.getElementById('p3-q1').value; // Demócrito (b)
-    const q2 = document.getElementById('p3-q2').value; // Fin/Propósito (b)
+    const q1 = document.getElementById('p3-q1').value; 
+    const q2 = document.getElementById('p3-q2').value; 
     if (q1 === 'b' && q2 === 'b') {
-        successPrueba('prueba3', 'prueba4', "Prueba III Superada: Eres un Sabio de la Physis.");
+        successPrueba('prueba3', 'prueba4', "Prueba III Superada: Sabiduría de los Antiguos.");
     } else {
         failPrueba('p3-error');
     }
 }
 
 function checkPrueba4() {
-    const q1 = document.getElementById('p4-q1').value; // Mardonio (b)
-    const q2 = document.getElementById('p4-q2').value; // Salamina (c)
+    const q1 = document.getElementById('p4-q1').value; 
+    const q2 = document.getElementById('p4-q2').value; 
     if (q1 === 'b' && q2 === 'c') {
-        successPrueba('prueba4', 'prueba5', "Prueba IV Superada: La historia te avala.");
+        successPrueba('prueba4', 'prueba5', "Prueba IV Superada: Historia de la Hélade.");
     } else {
         failPrueba('p4-error');
     }
 }
 
 function checkPrueba5() {
-    const q1 = document.getElementById('p5-q1').value; // Es necesario enviar... (a)
-    const q2 = document.getElementById('p5-q2').value; // Siempre honraremos... (b)
+    const q1 = document.getElementById('p5-q1').value; 
+    const q2 = document.getElementById('p5-q2').value; 
     if (q1 === 'a' && q2 === 'b') {
         successPrueba('prueba5', 'prueba6', "Prueba V Superada: Hermenéutica Perfecta.");
     } else {
         failPrueba('p5-error');
     }
 }
-
-// =========================================
-// MOTOR DE VICTORIA Y EFECTOS FINALES
-// =========================================
 
 function checkPrueba6() {
     const code = [
@@ -2294,23 +1936,18 @@ function victory() {
     const sound = document.getElementById('sonidoOraculo');
     if(sound) { sound.play(); }
     
-    // Ocultar Interfaz de Juego
     document.getElementById('gameStage').classList.add('hidden-stage');
     document.getElementById('gameHeader').classList.add('hidden-stage');
     
-    // Mostrar Pantalla de Victoria
     const victoryDiv = document.getElementById('victoryStage');
     victoryDiv.classList.remove('hidden-stage');
     
-    // Inyectar Datos Finales
     document.getElementById('finalTeamName').innerText = teamName;
     document.getElementById('finalTime').innerText = document.getElementById('timerDisplay').innerText;
     document.getElementById('finalMistakes').innerText = mistakes;
     
-    // Puntuación Pro: Base 10.000 - (Errores * 200) + (Segundos restantes * 2)
     const score = Math.max(0, 10000 - (mistakes * 200) + (timeRemaining * 2));
     
-    // Animación de contador de puntos
     let count = 0;
     const scoreEl = document.getElementById('finalScore');
     const interval = setInterval(() => {
@@ -2322,13 +1959,12 @@ function victory() {
         scoreEl.innerText = count.toLocaleString() + " DRACMAS";
     }, 30);
 
-    // Iniciar efectos GOD MODE
     initFire();
     lluviaDracmas();
-    showToast("¡ATENAS HA SIDO SALVADA POR TU FILOLOGÍA!", "trophy");
+    showToast("¡ATENAS HA SIDO SALVADA!", "trophy");
 }
 
-// Asegurar que Lucide cargue todos los iconos al final
+// Iconos finales
 lucide.createIcons();
     </script>
 </body>
